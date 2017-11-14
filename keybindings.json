@@ -1,0 +1,35 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+    {
+        "key": "ctrl+tab",
+        "command": "workbench.action.nextEditorInGroup"
+    },
+    {
+        "key": "ctrl+tab",
+        "command": "-workbench.action.openNextRecentlyUsedEditorInGroup"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.previousEditorInGroup"
+    },
+    {
+        "key": "ctrl+shift+tab",
+        "command": "-workbench.action.openPreviousRecentlyUsedEditorInGroup"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "spaceBlockJumper.moveUp"
+    },
+    {
+        "key": "ctrl+shift+up",
+        "command": "spaceBlockJumper.selectUp"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "spaceBlockJumper.moveDown"
+    },
+    {
+        "key": "ctrl+shift+down",
+        "command": "spaceBlockJumper.selectDown"
+    }
+]

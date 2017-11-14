@@ -1,0 +1,53 @@
+// Place your settings in this file to overwrite the default settings
+{
+  "workbench.colorTheme": "Monokai",
+  "editor.fontFamily": "Roboto Mono",
+
+  "editor.wordWrap": "on",
+  "editor.fontSize": 14,
+  "editor.tabSize": 2,
+  "editor.rulers": [80],
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+
+  "terminal.integrated.shell.windows": "C:\\Windows\\Sysnative\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "window.menuBarVisibility": "toggle",
+  "editor.minimap.renderCharacters": false,
+
+  "powershell.integratedConsole.showOnStartup": false,
+  "workbench.activityBar.visible": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "app/**/*.js.map": true,
+    "app/**/*.js": true
+  },
+
+  "java.home": "C:/Program Files/Java/jdk1.8.0_131",
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "newUntitledFile",
+
+  "files.associations":{
+    "*.icml": "xsl",
+    "*.fo": "xsl"
+  },
+
+  "[plaintext]": {
+    "editor.quickSuggestions": {
+      "other": false,
+      "comments": false,
+      "strings": false
+    }
+  },
+
+  "[git-commit]": {
+    "editor.quickSuggestions": {
+      "other": false,
+      "comments": false,
+      "strings": false
+    }
+  }
+}
