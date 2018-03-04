@@ -31,5 +31,13 @@
     {
         "key": "ctrl+shift+down",
         "command": "spaceBlockJumper.selectDown"
+    },
+    {
+        "key": "ctrl+shift+b",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
     }
 ]
