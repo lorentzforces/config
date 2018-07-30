@@ -129,7 +129,8 @@
         "scope": [
           "variable",
           "variable.parameter",
-          "entity.other.attribute-name"
+          "entity.other.attribute-name",
+          "constant.other.key"
         ],
         "settings": {
           "foreground": "#e87e7c"
