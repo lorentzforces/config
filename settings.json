@@ -14,9 +14,6 @@
   "window.menuBarVisibility": "toggle",
 
   "editor.minimap.enabled": false,
-  "editor.minimap.renderCharacters": false,
-  "editor.minimap.maxColumn": 80,
-  "editor.minimap.showSlider": "always",
 
   "powershell.integratedConsole.showOnStartup": false,
   "workbench.activityBar.visible": true,
@@ -30,7 +27,6 @@
     "app/**/*.js": true
   },
 
-  "java.home": "C:/Program Files/Java/jdk1.8.0_111",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "editor.acceptSuggestionOnEnter": "off",
@@ -94,6 +90,7 @@
           "entity.name",
           "entity.name.class",
           "entity.name.type",
+          "entity.name.tag",
           "entity.other.inherited-class",
           "storage.type",
           "storage.modifier.import",
@@ -131,7 +128,8 @@
         "name": "variables",
         "scope": [
           "variable",
-          "variable.parameter"
+          "variable.parameter",
+          "entity.other.attribute-name"
         ],
         "settings": {
           "foreground": "#e87e7c"
@@ -170,6 +168,8 @@
         }
       }
     ]
+
+    // TODO: terminal colors
 
   }
 }
