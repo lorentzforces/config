@@ -60,7 +60,7 @@
     "editor.background": "#1f1f1f",
     "editor.foreground": "#e87e7c",
     "editorCursor.foreground": "#BBBBBB",
-    "editor.lineHighlightBackground": "#333333",
+    "editor.lineHighlightBackground": "#000000",
     "statusBar.background": "#000000",
     "tab.inactiveBackground": "#000000",
     "tab.activeForeground": "#e87e7c",
