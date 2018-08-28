@@ -76,7 +76,7 @@
     "editorBracketMatch.border": "#ffffff",
   },
   "editor.tokenColorCustomizations": {
-    "keywords": "#ac83e5",
+    "keywords": "#bb83d1",
     "functions": "#d60010",
     "variables": "#e87e7c",
     "comments": "#808080",
@@ -143,7 +143,7 @@
           "constant.language"
         ],
         "settings": {
-          "foreground": "#ac83e5"
+          "foreground": "#bb83d1"
         }
       },
       {
