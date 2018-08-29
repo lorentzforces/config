@@ -2,6 +2,7 @@
 {
   "workbench.colorTheme": "Monokai",
   "editor.fontFamily": "Hack",
+  "window.titleBarStyle": "custom",
 
   "editor.wordWrap": "on",
   "editor.fontSize": 14,
@@ -84,6 +85,15 @@
     "numbers": "#6fdbb2",
     "strings": "#6fdbb2",
     "textMateRules": [
+      {
+        "name": "keywords",
+        "scope": [
+          "keyword.other.DML.sql"
+        ],
+        "settings": {
+          "foreground": "#bb83d1",
+        }
+      },
       {
         "name": "types",
         "scope": [
