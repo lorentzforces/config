@@ -58,7 +58,7 @@
   // colors
   "workbench.colorCustomizations": {
     "foreground": "#e87e7c",
-    "editor.background": "#1f1f1f",
+    "editor.background": "#101010",
     "editor.foreground": "#e87e7c",
     "editorCursor.foreground": "#BBBBBB",
     "editor.lineHighlightBackground": "#000000",
