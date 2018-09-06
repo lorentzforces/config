@@ -1,6 +1,5 @@
 // Place your settings in this file to overwrite the default settings
 {
-  "workbench.colorTheme": "Monokai",
   "editor.fontFamily": "Hack",
   "window.titleBarStyle": "custom",
 
@@ -75,6 +74,7 @@
     "editor.selectionHighlightBackground": "#000000",
     "editor.selectionHighlightBorder": "#ffffff",
     "editorBracketMatch.border": "#ffffff",
+    "editorGroupHeader.tabsBackground": "#000000"
   },
   "editor.tokenColorCustomizations": {
     "keywords": "#bb83d1",
@@ -86,9 +86,21 @@
     "strings": "#6fdbb2",
     "textMateRules": [
       {
+        "name": "raw/default source",
+        "scope": [
+          "source",
+          "text"
+        ],
+        "settings": {
+          "foreground": "#e87e7c",
+        }
+      },
+      {
         "name": "keywords",
         "scope": [
-          "keyword.other.DML.sql"
+          "storage.modifier",
+          "keyword.other",
+          "variable.language.this"
         ],
         "settings": {
           "foreground": "#bb83d1",
@@ -98,13 +110,13 @@
         "name": "types",
         "scope": [
           "entity.name",
-          "entity.name.class",
-          "entity.name.type",
-          "entity.name.tag",
+          "entity.name.tag.html",
           "entity.other.inherited-class",
           "storage.type",
           "storage.modifier.import",
           "storage.modifier.package",
+          "constant.other.table-name.sql",
+          "constant.other.database-name.sql",
         ],
         "settings": {
           "foreground": "#f39745",
@@ -119,6 +131,13 @@
           "keyword.control.ternary",
           "constant.character.escape",
           "storage.type.function.arrow",
+          "meta.brace.round",
+          "meta.brace.square",
+          "meta.brace.angle",
+          "punctuation.definition.template-expression.begin",
+          "punctuation.definition.template-expression.end",
+          "punctuation.definition.tag.begin.html",
+          "punctuation.definition.tag.end.html"
         ],
         "settings": {
           "foreground": "#ffffff",
@@ -135,12 +154,24 @@
         }
       },
       {
+        "name": "functions and methods",
+        "scope": [
+          "meta.method.declaration",
+        ],
+        "settings": {
+          "foreground": "#d60010"
+        }
+      },
+      {
         "name": "variables",
         "scope": [
           "variable",
           "variable.parameter",
           "entity.other.attribute-name",
-          "constant.other.key"
+          "constant.other.key",
+          "support.variable.property",
+          "support.type.property-name.json",
+          "meta.object-literal.key"
         ],
         "settings": {
           "foreground": "#e87e7c"
@@ -169,7 +200,7 @@
         }
       },
       {
-        "name": "json strings",
+        "name": "strings and primitives",
         "scope": [
           "meta.structure.dictionary.json string.quoted.double.json",
           "meta.structure.dictionary.json string.quoted.single.json",
