@@ -74,7 +74,9 @@
     "editor.selectionHighlightBackground": "#000000",
     "editor.selectionHighlightBorder": "#ffffff",
     "editorBracketMatch.border": "#ffffff",
-    "editorGroupHeader.tabsBackground": "#000000"
+    "editorGroupHeader.tabsBackground": "#000000",
+    "diffEditor.insertedTextBackground": "#294436",
+    "diffEditor.removedTextBackground": "#301b1b",
   },
   "editor.tokenColorCustomizations": {
     "keywords": "#bb83d1",
@@ -148,8 +150,10 @@
         "name": "comments",
         "scope": [
           "comment",
+          "comment.line.number-sign.git-commit"
         ],
         "settings": {
+          "foreground": "#808080",
           "fontStyle": "italic"
         }
       },
@@ -208,7 +212,34 @@
         "settings": {
           "foreground": "#6fdbb2"
         }
-      }
+      },
+      {
+        "name": "sematic: added/inserted",
+        "scope": [
+          "markup.inserted"
+        ],
+        "settings": {
+          "foreground": "#447152"
+        }
+      },
+      {
+        "name": "semantic: deleted/removed",
+        "scope": [
+          "markup.deleted"
+        ],
+        "settings": {
+          "foreground": "#5b1b1b"
+        }
+      },
+      {
+        "name": "semantic: changed/modified",
+        "scope": [
+          "markup.changed"
+        ],
+        "settings": {
+          "foreground": "#43698d"
+        }
+      },
     ]
 
     // TODO: terminal colors
