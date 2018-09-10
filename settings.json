@@ -58,6 +58,7 @@
   "workbench.colorCustomizations": {
     "foreground": "#e87e7c",
     "editor.background": "#101010",
+    "editorGutter.background": "#000000",
     "editor.foreground": "#e87e7c",
     "editorCursor.foreground": "#BBBBBB",
     "editor.lineHighlightBackground": "#000000",
@@ -77,6 +78,15 @@
     "editorGroupHeader.tabsBackground": "#000000",
     "diffEditor.insertedTextBackground": "#294436",
     "diffEditor.removedTextBackground": "#301b1b",
+    "editorGutter.addedBackground": "#447152",
+    "editorGutter.modifiedBackground": "#43698d",
+    "editorGutter.deletedBackground": "#5b1b1b",
+    "gitDecoration.addedResourceForeground": "#447152",
+    "gitDecoration.modifiedResourceForeground": "#43698d",
+    "gitDecoration.conflictingResourceForeground": "#b1a400",
+    "gitDecoration.deletedResourceForeground": "#5b1b1b",
+    "gitDecoration.ignoredResourceForeground": "#808080",
+    "gitDecoration.untrackedResourceForeground": "#d60010"
   },
   "editor.tokenColorCustomizations": {
     "keywords": "#bb83d1",
@@ -91,7 +101,7 @@
         "name": "raw/default source",
         "scope": [
           "source",
-          "text"
+          "text",
         ],
         "settings": {
           "foreground": "#e87e7c",
@@ -101,8 +111,9 @@
         "name": "keywords",
         "scope": [
           "storage.modifier",
+          "keyword.operator.new",
           "keyword.other",
-          "variable.language.this"
+          "variable.language.this",
         ],
         "settings": {
           "foreground": "#bb83d1",
@@ -122,7 +133,7 @@
         ],
         "settings": {
           "foreground": "#f39745",
-          "fontStyle": "italic"
+          "fontStyle": "italic",
         }
       },
       {
@@ -139,22 +150,21 @@
           "punctuation.definition.template-expression.begin",
           "punctuation.definition.template-expression.end",
           "punctuation.definition.tag.begin.html",
-          "punctuation.definition.tag.end.html"
+          "punctuation.definition.tag.end.html",
         ],
         "settings": {
           "foreground": "#ffffff",
-          "fontStyle": ""
         }
       },
       {
         "name": "comments",
         "scope": [
           "comment",
-          "comment.line.number-sign.git-commit"
+          "comment.line.number-sign.git-commit",
         ],
         "settings": {
           "foreground": "#808080",
-          "fontStyle": "italic"
+          "fontStyle": "italic",
         }
       },
       {
@@ -163,7 +173,7 @@
           "meta.method.declaration",
         ],
         "settings": {
-          "foreground": "#d60010"
+          "foreground": "#d60010",
         }
       },
       {
@@ -175,20 +185,20 @@
           "constant.other.key",
           "support.variable.property",
           "support.type.property-name.json",
-          "meta.object-literal.key"
+          "meta.object-literal.key",
         ],
         "settings": {
-          "foreground": "#e87e7c"
+          "foreground": "#e87e7c",
         }
       },
       {
         "name": "primitives",
         "scope": [
           "storage.type.primitive",
-          "constant.language"
+          "constant.language",
         ],
         "settings": {
-          "foreground": "#bb83d1"
+          "foreground": "#bb83d1",
         }
       },
       {
@@ -196,11 +206,11 @@
         "scope": [
           "invalid",
           "invalid.deprecated",
-          "invalid.illegal"
+          "invalid.illegal",
         ],
         "settings": {
           "foreground": "#b1a400",
-          "fontStyle": "bold underline"
+          "fontStyle": "bold underline",
         }
       },
       {
@@ -210,34 +220,34 @@
           "meta.structure.dictionary.json string.quoted.single.json",
         ],
         "settings": {
-          "foreground": "#6fdbb2"
+          "foreground": "#6fdbb2",
         }
       },
       {
         "name": "sematic: added/inserted",
         "scope": [
-          "markup.inserted"
+          "markup.inserted",
         ],
         "settings": {
-          "foreground": "#447152"
+          "foreground": "#447152",
         }
       },
       {
         "name": "semantic: deleted/removed",
         "scope": [
-          "markup.deleted"
+          "markup.deleted",
         ],
         "settings": {
-          "foreground": "#5b1b1b"
+          "foreground": "#5b1b1b",
         }
       },
       {
         "name": "semantic: changed/modified",
         "scope": [
-          "markup.changed"
+          "markup.changed",
         ],
         "settings": {
-          "foreground": "#43698d"
+          "foreground": "#43698d",
         }
       },
     ]
