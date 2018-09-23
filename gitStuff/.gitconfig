@@ -9,33 +9,34 @@
   fa = fetch -a
   unstage = reset HEAD --
 
-  ls = log --date=short --pretty=format:"%C(bold\\ yellow)%h\\ %ad%C(bold\\ red)%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --grep="Merge\\ pull\\ request" --invert-grep
-  ll = log --date=short --pretty=format:"%C(bold\\ yellow)%h\\ %ad%C(bold\\ red)%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --numstat --grep="Merge\\ pull\\ request" --invert-grep
-  lsm = log --date=short --pretty=format:"%C(bold\\ yellow)%h\\ %ad%C(bold\\ red)%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate
-  llm = log --date=short --pretty=format:"%C(bold\\ yellow)%h\\ %ad%C(bold\\ red)%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --numstat
+  ls = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --grep="Merge\\ pull\\ request" --invert-grep
+  ll = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --numstat --grep="Merge\\ pull\\ request" --invert-grep
+  lsm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate
+  llm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --numstat
 
 [core]
-  autocrlf = true
   editor = code --wait --new-window
 
 [diff]
   tool = default-difftool
 
 [difftool "default-difftool"]
-  cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = code --wait --new-window --diff $LOCAL $REMOTE
 
 [fetch]
   prune = true
 
 [color]
-  ui = auto
+  ui = true
 
 [color "branch"]
-  current = white green
-  remote = red bold
+  current = black magenta
+  remote = magenta
+  local = magenta
 
 [color "status"]
-  nobranch = yellow
-  branch = white green
-  changed = dim yellow
-  untracked = bold red
+  nobranch = black magenta
+  branch = black magenta
+  added = green
+  changed = blue
+  untracked = red

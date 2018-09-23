@@ -6,6 +6,7 @@
   "editor.wordWrap": "on",
   "editor.fontSize": 14,
   "editor.tabSize": 2,
+  "editor.renderIndentGuides": false,
   "editor.rulers": [80, 100],
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
@@ -17,14 +18,13 @@
 
   "powershell.integratedConsole.showOnStartup": false,
   "workbench.activityBar.visible": true,
+
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "app/**/*.js.map": true,
-    "app/**/*.js": true
   },
 
   "workbench.sideBar.location": "left",
@@ -33,7 +33,8 @@
 
   "files.associations":{
     "*.icml": "xsl",
-    "*.fo": "xsl"
+    "*.fo": "xsl",
+    ".npmrc": "ini",
   },
 
   "[plaintext]": {
@@ -73,6 +74,7 @@
     "editorGutter.background": "#000000",
     "editorGutter.deletedBackground": "#5b1b1b",
     "editorGutter.modifiedBackground": "#43698d",
+    "editorLineNumber.foreground": "#808080",
     "editorLineNumber.activeForeground": "#e87e7c",
     "foreground": "#e87e7c",
     "gitDecoration.addedResourceForeground": "#447152",
@@ -87,6 +89,7 @@
     "statusBar.noFolderBackground": "#000000",
     "tab.activeForeground": "#e87e7c",
     "tab.inactiveBackground": "#000000",
+    "tab.inactiveForeground": "#808080",
   },
   "editor.tokenColorCustomizations": {
     "keywords": "#bb83d1",
@@ -123,7 +126,7 @@
         "name": "types",
         "scope": [
           "entity.name",
-          "entity.name.tag.html",
+          "entity.name.tag",
           "entity.other.inherited-class",
           "storage.type",
           "storage.modifier.import",
@@ -170,10 +173,12 @@
       {
         "name": "functions and methods",
         "scope": [
+          "entity.name.function",
           "meta.method.declaration",
         ],
         "settings": {
           "foreground": "#d60010",
+          "fontStyle": "",
         }
       },
       {
@@ -254,5 +259,7 @@
 
     // TODO: terminal colors
 
-  }
+  },
+  "editor.renderWhitespace": "none",
+  "powershell.powerShellExePath": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
 }
