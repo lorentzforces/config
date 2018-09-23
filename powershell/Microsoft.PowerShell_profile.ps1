@@ -18,7 +18,7 @@ function prompt {
   Write-Host "`n" -NoNewline
 
   # timestamp
-  Write-Host (Get-Date -Format G) `
+  Write-Host $(Get-Date -UFormat "%m/%d/%y %T") `
     -NoNewline `
     -ForegroundColor $darkColor `
     -BackgroundColor $timeColor
