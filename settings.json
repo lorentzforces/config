@@ -175,6 +175,7 @@
         "scope": [
           "entity.name.function",
           "meta.method.declaration",
+          "support.function.git-rebase"
         ],
         "settings": {
           "foreground": "#d60010",
@@ -197,7 +198,7 @@
         }
       },
       {
-        "name": "primitives",
+        "name": "language built-ins",
         "scope": [
           "storage.type.primitive",
           "constant.language",
@@ -226,6 +227,15 @@
         ],
         "settings": {
           "foreground": "#6fdbb2",
+        }
+      },
+      {
+        "name": "hashes and labels",
+        "scope": [
+          "constant.sha.git-rebase",
+        ],
+        "settings": {
+          "foreground": "#00b8ff"
         }
       },
       {
