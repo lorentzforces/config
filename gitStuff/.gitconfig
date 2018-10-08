@@ -9,8 +9,8 @@
   fa = fetch -a
   unstage = reset HEAD --
 
-  ls = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --grep="Merge\\ pull\\ request" --invert-grep
-  ll = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --numstat --grep="Merge\\ pull\\ request" --invert-grep
+  ls = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --no-merges
+  ll = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --numstat --no-merges
   lsm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate
   llm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --numstat
 
