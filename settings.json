@@ -1,4 +1,6 @@
 {
+  "workbench.settings.editor": "json",
+
   "editor.fontFamily": "Hack",
   "window.titleBarStyle": "custom",
 
@@ -14,27 +16,26 @@
   "terminal.integrated.shell.windows": "C:\\Windows\\Sysnative\\WindowsPowerShell\\v1.0\\powershell.exe",
   "window.menuBarVisibility": "toggle",
 
-  "editor.minimap.enabled": false,
-
   "powershell.integratedConsole.showOnStartup": false,
   "workbench.activityBar.visible": false,
+  "editor.minimap.enabled": false,
 
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,
     "**/.hg": true,
     "**/CVS": true,
-    "**/.DS_Store": true,
+    "**/.DS_Store": true
   },
 
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "editor.acceptSuggestionOnEnter": "off",
 
-  "files.associations":{
+  "files.associations": {
     "*.icml": "xsl",
     "*.fo": "xsl",
-    ".npmrc": "ini",
+    ".npmrc": "ini"
   },
 
   "[plaintext]": {
@@ -151,25 +152,22 @@
     "terminal.ansiBrightBlue": "#00b8ff",
     "terminal.ansiBrightMagenta": "#f39745",
     "terminal.ansiBrightCyan": "#bb83d1",
-    "terminal.ansiBrightWhite": "#ffffff",
+    "terminal.ansiBrightWhite": "#ffffff"
   },
   "editor.tokenColorCustomizations": {
-    "keywords": "#bb83d1",
-    "functions": "#d60010",
+    "keywords": "#d60010",
+    "functions": "#e87e7c",
     "variables": "#e87e7c",
     "comments": "#808080",
-    "types": "#f39745",
-    "numbers": "#6fdbb2",
-    "strings": "#6fdbb2",
+    "types": "#e87e7c",
+    "numbers": "#bb83d1",
+    "strings": "#f39745",
     "textMateRules": [
       {
         "name": "raw/default source",
-        "scope": [
-          "source",
-          "text",
-        ],
+        "scope": ["source", "text"],
         "settings": {
-          "foreground": "#e87e7c",
+          "foreground": "#e87e7c"
         }
       },
       {
@@ -179,13 +177,38 @@
           "keyword.operator.new",
           "keyword.other",
           "variable.language.this",
+          "storage.type.primitive",
+          "storage.type.ts",
+          "constant.language",
+          "storage.type.primitive.java",
+          "storage.type.primitive.array.java",
+          "variable.language.java",
+          "keyword.operator.instanceof",
+          "storage.type.def.groovy",
+          "storage.type.primitive.groovy",
+          "meta.selector.css",
+          "entity.name.tag",
+          "entity.name.tag.css",
+          "keyword.other.unit"
         ],
         "settings": {
-          "foreground": "#bb83d1",
+          "foreground": "#d60010"
         }
       },
       {
-        "name": "types",
+        "name": "HTML/XML tag names",
+        "scope": [
+          "entity.name.tag.html",
+          "entity.name.tag",
+          "entity.name.tag.namespace",
+          "entity.name.tag.localname"
+        ],
+        "settings": {
+          "foreground": "#d60010"
+        }
+      },
+      {
+        "name": "types/variables",
         "scope": [
           "entity.name",
           "entity.name.tag",
@@ -195,12 +218,50 @@
           "storage.modifier.package",
           "constant.other.table-name.sql",
           "constant.other.database-name.sql",
+          "variable",
+          "variable.parameter",
+          "entity.other.attribute-name",
+          "constant.other.key",
+          "support.variable.property",
+          "support.type.property-name.json",
+          "meta.object-literal.key",
+          "entity.name.function",
+          "meta.method.declaration",
+          "support.function.git-rebase",
+          "storage.type.java",
+          "storage.modifier.import.java",
+          "storage.modifier.package.java",
+          "storage.type.object.array.java",
+          "storage.type.generic.java",
+          "storage.type.annotation.java",
+          "meta.definition.variable.name.groovy",
+          "storage.type.groovy",
+          "storage.type.annotation",
+          "storage.type.annotation.groovy",
+          "storage.type.object.array.groovy",
+          "storage.type.generic.groovy",
+          "support.constant",
+          "support.type.property-name",
+          "entity.other.attribute-name.class.css",
+          "support.constant.font-name",
+          "support.constant.property-value",
+          "entity.other.attribute-name.pseudo-class.css",
+          "entity.other.attribute-name.id.css",
+          "support.type.vendored.property-name.css"
         ],
         "settings": {
-          "foreground": "#f39745",
-          "fontStyle": "italic",
+          "foreground": "#e87e7c"
         }
       },
+      {
+        "name": "string literals",
+        "scope": [
+          "variable.parameter.url.css"
+        ],
+        "settings": {
+          "foreground": "#f39745"
+        }
+      }
       {
         "name": "punctuation and operators",
         "scope": [
@@ -214,120 +275,55 @@
           "meta.brace.angle",
           "punctuation.definition.template-expression.begin",
           "punctuation.definition.template-expression.end",
+          "punctuation.definition.tag",
           "punctuation.definition.tag.begin.html",
           "punctuation.definition.tag.end.html",
+          "constant.character.entity",
+          "punctuation.section.embedded.groovy"
         ],
         "settings": {
-          "foreground": "#ffffff",
+          "foreground": "#ffffff"
         }
       },
       {
         "name": "comments",
-        "scope": [
-          "comment",
-          "comment.line.number-sign.git-commit",
-        ],
+        "scope": ["comment", "comment.line.number-sign.git-commit"],
         "settings": {
           "foreground": "#808080",
-          "fontStyle": "italic",
+          "fontStyle": "italic"
         }
       },
       {
-        "name": "functions and methods",
+        "name": "numbers/hashes",
         "scope": [
-          "entity.name.function",
-          "meta.method.declaration",
-          "support.function.git-rebase"
+          "constant.other.color.rgb-value.hex.css",
+          "constant.sha.git-rebase"
         ],
         "settings": {
-          "foreground": "#d60010",
-          "fontStyle": "",
-        }
-      },
-      {
-        "name": "variables",
-        "scope": [
-          "variable",
-          "variable.parameter",
-          "entity.other.attribute-name",
-          "constant.other.key",
-          "support.variable.property",
-          "support.type.property-name.json",
-          "meta.object-literal.key",
-        ],
-        "settings": {
-          "foreground": "#e87e7c",
-        }
-      },
-      {
-        "name": "language built-ins",
-        "scope": [
-          "storage.type.primitive",
-          "constant.language",
-        ],
-        "settings": {
-          "foreground": "#bb83d1",
-        }
-      },
-      {
-        "name": "warnings",
-        "scope": [
-          "invalid",
-          "invalid.deprecated",
-          "invalid.illegal",
-        ],
-        "settings": {
-          "foreground": "#b1a400",
-          "fontStyle": "bold underline",
-        }
-      },
-      {
-        "name": "strings and primitives",
-        "scope": [
-          "meta.structure.dictionary.json string.quoted.double.json",
-          "meta.structure.dictionary.json string.quoted.single.json",
-        ],
-        "settings": {
-          "foreground": "#6fdbb2",
-        }
-      },
-      {
-        "name": "hashes and labels",
-        "scope": [
-          "constant.sha.git-rebase",
-        ],
-        "settings": {
-          "foreground": "#00b8ff"
+          "foreground": "#bb83d1"
         }
       },
       {
         "name": "sematic: added/inserted",
-        "scope": [
-          "markup.inserted",
-        ],
+        "scope": ["markup.inserted"],
         "settings": {
-          "foreground": "#447152",
+          "foreground": "#447152"
         }
       },
       {
         "name": "semantic: deleted/removed",
-        "scope": [
-          "markup.deleted",
-        ],
+        "scope": ["markup.deleted"],
         "settings": {
-          "foreground": "#5b1b1b",
+          "foreground": "#5b1b1b"
         }
       },
       {
         "name": "semantic: changed/modified",
-        "scope": [
-          "markup.changed",
-        ],
+        "scope": ["markup.changed"],
         "settings": {
-          "foreground": "#43698d",
+          "foreground": "#43698d"
         }
-      },
+      }
     ]
-
-  },
+  }
 }
