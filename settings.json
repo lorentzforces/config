@@ -165,7 +165,11 @@
     "textMateRules": [
       {
         "name": "raw/default source",
-        "scope": ["source", "text"],
+        "scope": [
+          "source",
+          "text",
+          "support.variable"
+        ],
         "settings": {
           "foreground": "#e87e7c"
         }
@@ -178,7 +182,9 @@
           "keyword.other",
           "variable.language.this",
           "storage.type.primitive",
+          "storage.type.js",
           "storage.type.ts",
+          "storage.type.function",
           "constant.language",
           "storage.type.primitive.java",
           "storage.type.primitive.array.java",
@@ -261,7 +267,7 @@
         "settings": {
           "foreground": "#f39745"
         }
-      }
+      },
       {
         "name": "punctuation and operators",
         "scope": [
