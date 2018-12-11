@@ -8,6 +8,7 @@
   f = fetch
   fa = fetch -a
   unstage = reset HEAD --
+  dt = difftool
 
   ls = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --no-merges
   ll = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --numstat --no-merges
