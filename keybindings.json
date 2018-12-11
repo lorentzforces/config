@@ -17,22 +17,6 @@
         "command": "-workbench.action.openPreviousRecentlyUsedEditorInGroup"
     },
     {
-        "key": "ctrl+up",
-        "command": "spaceBlockJumper.moveUp"
-    },
-    {
-        "key": "ctrl+shift+up",
-        "command": "spaceBlockJumper.selectUp"
-    },
-    {
-        "key": "ctrl+down",
-        "command": "spaceBlockJumper.moveDown"
-    },
-    {
-        "key": "ctrl+shift+down",
-        "command": "spaceBlockJumper.selectDown"
-    },
-    {
         "key": "ctrl+shift+b",
         "command": "workbench.action.toggleSidebarVisibility"
     },
@@ -40,4 +24,16 @@
         "key": "ctrl+b",
         "command": "-workbench.action.toggleSidebarVisibility"
     },
+    {
+        "key": "ctrl+e",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+shift+space",
+        "command": "-editor.action.triggerParameterHints"
+    },
+    {
+        "key": "ctrl+shift+space",
+        "command": "workbench.action.quickOpen"
+    }
 ]
