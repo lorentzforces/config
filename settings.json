@@ -30,7 +30,6 @@
       "strings": false
     }
   },
-
   "[git-commit]": {
     "editor.quickSuggestions": {
       "other": false,
@@ -52,13 +51,11 @@
   "editor.renderWhitespace": "none",
   "editor.rulers": [80, 100],
   "editor.wordWrap": "on",
-  "explorer.openEditors.visible": 2,
   "search.location": "sidebar",
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "custom",
   "workbench.activityBar.visible": false,
   "workbench.editor.enablePreview": false,
-  "workbench.editor.showTabs": false,
   "workbench.sideBar.location": "left",
   "workbench.statusBar.feedback.visible": false,
 
