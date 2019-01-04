@@ -54,10 +54,15 @@
   "search.location": "sidebar",
   "window.menuBarVisibility": "toggle",
   "window.titleBarStyle": "custom",
+  "window.zoomLevel": 0,
   "workbench.activityBar.visible": false,
   "workbench.editor.enablePreview": false,
   "workbench.sideBar.location": "left",
   "workbench.statusBar.feedback.visible": false,
+  "editor.parameterHints.enabled": false,
+
+  // vscodevim plugin settings
+  "vim.statusBarColorControl": false,
 
   // editor font and color settings
   "editor.fontFamily": "Hack, Consolas, Monaco, 'Courier New', monospace",
@@ -130,9 +135,10 @@
     "sideBarTitle.foreground": "#f39745",
     "statusBar.background": "#101010",
     "statusBar.foreground": "#808080",
+    "statusBar.noFolderBackground": "#101010",
     "tab.activeForeground": "#f39745",
     "tab.inactiveBackground": "#000000",
-    "tab.inactiveForeground": "#808080",
+    "tab.inactiveForeground": "#cccccc",
     "terminal.background": "#101010",
     "terminal.foreground": "#cccccc",
     "terminalCursor.background": "#1f1f1f",
@@ -194,7 +200,9 @@
           "entity.name.tag.css",
           "entity.other.attribute-name.pseudo-element.css",
           "keyword.other.unit",
-          "keyword.operator.expression"
+          "keyword.operator.expression",
+          "variable.language.arguments.js",
+          "storage.type.interface.ts"
         ],
         "settings": {
           "foreground": "#d60010"
@@ -253,7 +261,7 @@
           "support.constant.property-value",
           "entity.other.attribute-name.pseudo-class.css",
           "entity.other.attribute-name.id.css",
-          "support.type.vendored.property-name.css"
+          "support.type.vendored.property-name.css",
         ],
         "settings": {
           "foreground": "#cccccc"
