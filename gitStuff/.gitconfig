@@ -10,10 +10,10 @@
   unstage = reset HEAD --
   dt = difftool
 
-  ls = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --no-merges
-  ll = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --numstat --no-merges
-  lsm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate
-  llm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%cn]" --decorate --numstat
+  ls = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%an]" --decorate --no-merges
+  ll = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%an]" --decorate --numstat --no-merges
+  lsm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%an]" --decorate
+  llm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%an]" --decorate --numstat
 
 [core]
   editor = code --wait --new-window
