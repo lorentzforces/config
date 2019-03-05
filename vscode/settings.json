@@ -65,7 +65,8 @@
   "vim.statusBarColorControl": false,
 
   // editor font and color settings
-  "editor.fontFamily": "Hack, Consolas, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "Hack, Consolas, 'SF Mono', 'Courier New', monospace",
+
   "editor.fontSize": 14,
 
   "workbench.colorCustomizations": {
