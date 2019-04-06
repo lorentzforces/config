@@ -16,7 +16,7 @@
   llm = log --date=short --pretty=format:"%C(bold\\ blue)%h\\ %C(cyan)%ad%C(magenta)%d\\ %Creset%s%C(bold\\ red)\\ [%an]" --decorate --numstat
 
 [core]
-  editor = code --wait --new-window
+  editor = nvim
 
 [diff]
   tool = default-difftool

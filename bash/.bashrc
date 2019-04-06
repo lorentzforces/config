@@ -15,9 +15,9 @@ else
 fi
 
 if [ "$color_prompt" = "yes" ]; then
-  export PS1=$'\\n\\[\\033[30m\\]\\[\\033[46m\\]\\D{%m/%d/%y} \\t\\[\\033[36m\\]\\[\\033[101m\\]\\[\\033[30m\\] \\u@\\h \\[\\033[91m\\]\\[\\033[45m\\]\\[\\033[30m\\] \\w \\[\\033[35m\\]\\[\\033[49m\\]\\n \\[\\033[91m\\]:) \\[\\033[39m\\]'
+  export PS1=$'\\[\\033[36m\\]\\D{%m/%d/%Y} \\t > \\[\\033[91m\\]\\u@\\h > \\[\\033[35m\\]\\w >\\n \\[\\033[91m\\]:) \\[\\033[39m\\]'
 else
-  export PS1=$'\\D{%m/%d/%Y} \\t - \\u@\\h - \\w\\n :) '
+  export PS1=$'\\D{%m/%d/%Y} \\t > \\u@\\h > \\w >\\n :) '
 fi
 
 unset color_prompt
@@ -35,3 +35,13 @@ fi
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
+
+# to turn off any of the .bash_ext/ scripts, do not symlink them
+if [ -r ~/.bash_ext/nvm_init.sh ]; then
+  source ~/.bash_ext/nvm_init.sh
+fi
+
+if [ -r ~/.bash_ext/fzf_func.sh ]; then
+  source ~/.bash_ext/fzf_func.sh
+fi
+
