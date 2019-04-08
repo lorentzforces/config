@@ -1,5 +1,6 @@
 set termguicolors
 
+colorscheme lorentz
 " enable syntax highlighting
 syntax enable
 " show line numbers
