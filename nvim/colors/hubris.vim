@@ -5,7 +5,7 @@ if exists("syntax_on")
 endif
 
 set t_Co=256
-let g:colors_name = "lorentz"
+let g:colors_name = "hubris"
 
 let testMagenta = '#ff00ff'
 
@@ -96,6 +96,7 @@ exe 'highlight javaExternal gui=NONE guifg=' . bright_red
 exe 'highlight javaStorageClass gui=NONE guifg=' . bright_red
 exe 'highlight javaScopeDecl gui=NONE guifg=' . bright_red
 exe 'highlight javaTypedef gui=NONE guifg=' . bright_red
+exe 'highlight javaBoolean gui=NONE guifg=' . bright_red
 exe 'highlight javaExceptions gui=NONE guifg=' . bright_red
 
 " syntax xml
