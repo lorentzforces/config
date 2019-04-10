@@ -1,6 +1,6 @@
 set termguicolors
 
-colorscheme lorentz
+colorscheme hubris
 " enable syntax highlighting
 syntax enable
 " show line numbers
@@ -11,6 +11,7 @@ set cursorline
 
 " soft wrap long lines on word boundaries
 set wrap linebreak nolist
+set breakindent
 
 set splitright
 
@@ -23,6 +24,7 @@ set smartcase
 
 " indentation
 filetype on
+set noexpandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
 
 " language-specifics: java
