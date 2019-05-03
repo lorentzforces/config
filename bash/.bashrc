@@ -25,23 +25,16 @@ unset color_prompt
 # enable programmable completion features
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
 fi
 
 # aliases
 if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+  source ~/.bash_aliases
 fi
 
-# to turn off any of the .bash_ext/ scripts, do not symlink them
-if [ -r ~/.bash_ext/nvm_init.sh ]; then
-  source ~/.bash_ext/nvm_init.sh
-fi
-
-if [ -r ~/.bash_ext/fzf_func.sh ]; then
-  source ~/.bash_ext/fzf_func.sh
-fi
+export EDITOR=nvim
 

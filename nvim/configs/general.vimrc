@@ -26,11 +26,8 @@ set smartcase
 filetype on
 set noexpandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
-
-" language-specifics: java
+" indentation language-specifics
 autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4
-
-" language-specifics: groovy
 autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4
 
 " netrw config

@@ -91,17 +91,30 @@ exe 'highlight vimCommand gui=NONE guifg=' . bright_red 'guibg=NONE'
 exe 'highlight vimExecute gui=NONE guifg=' . bright_red 'guibg=NONE'
 exe 'highlight vimHighlight gui=NONE guifg=' . bright_red 'guibg=NONE'
 
+" syntax git
+exe 'highlight gitcommitSummary gui=NONE guifg=' . orange 'guibg=NONE'
+exe 'highlight gitcommitOverflow gui=NONE guifg=' . bright_yellow 'guibg=NONE'
+exe 'highlight gitcommitBlank gui=NONE guifg=' . dark_grey 'guibg=' . bright_yellow
+exe 'highlight gitcommitBranch gui=NONE guifg=' . dark_grey 'guibg=' . orange
+exe 'highlight gitcommitHeader gui=NONE guifg=' . pure_white 'guibg=NONE'
+exe 'highlight gitrebaseCommit gui=NONE guifg=' . bright_blue 'guibg=NONE'
+exe 'highlight gitrebaseHash gui=NONE guifg=' . bright_blue 'guibg=NONE'
+
 " syntax java
 exe 'highlight javaExternal gui=NONE guifg=' . bright_red
 exe 'highlight javaStorageClass gui=NONE guifg=' . bright_red
 exe 'highlight javaScopeDecl gui=NONE guifg=' . bright_red
 exe 'highlight javaTypedef gui=NONE guifg=' . bright_red
 exe 'highlight javaBoolean gui=NONE guifg=' . bright_red
+exe 'highlight javaConditional gui=NONE guifg=' . bright_red
 exe 'highlight javaExceptions gui=NONE guifg=' . bright_red
 
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . bright_red
 exe 'highlight xmlAttrib gui=NONE guifg=' . off_white
+
+" syntax javascript
+exe 'highlight javaScriptException gui=NONE guifg=' . bright_red
 
 " syntax json
 " TODO: do something about json errors (there are a lot of varieties)
@@ -111,6 +124,10 @@ exe 'highlight jsonBoolean gui=NONE guifg=' . bright_red
 " syntax typescript
 exe 'highlight typescriptBoolean gui=NONE guifg=' . bright_red
 exe 'highlight typescriptParens gui=NONE guifg=' . pure_white
+
+" syntax sql
+exe 'highlight sqlKeyword gui=NONE guifg=' . bright_red
+exe 'highlight sqlSpecial gui=NONE guifg=' . bright_red
 
 " terminal colors
 let g:terminal_color_0 = dark_grey
