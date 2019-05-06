@@ -38,9 +38,6 @@ fi
 
 export EDITOR=nvim
 
-loaded_mes="LOADED     -"
-not_loaded_mes="NOT LOADED -"
-
 # to turn off any of the .bash_ext/ scripts, do not symlink them
 if [ -r ~/.bash_ext/nvm_init.sh ]; then
   source ~/.bash_ext/nvm_init.sh
@@ -54,3 +51,4 @@ fi
 if [ -r ~/.bash_ext/fzf_func.sh ]; then
   source ~/.bash_ext/fzf_func.sh
 fi
+
