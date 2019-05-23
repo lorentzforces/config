@@ -10,3 +10,4 @@ nnoremap <leader>l :tabnext<CR>
 nnoremap <leader>H :tabmove -<CR>
 nnoremap <leader>L :tabmove +<CR>
 
+nnoremap <leader>s :set hlsearch!<CR>

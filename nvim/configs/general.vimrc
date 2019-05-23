@@ -15,8 +15,8 @@ set breakindent
 
 set splitright
 
-" disable highlighting search matches
-set nohlsearch
+" search incrementally
+set incsearch
 " search case-insensitively
 set ignorecase
 " search case-sensitively if search string contains uppercase chars
@@ -26,6 +26,9 @@ set smartcase
 filetype on
 set noexpandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
+" show tabs as ▸ followed by blank space
+set list
+set listchars=tab:▸\ ,
 " indentation language-specifics
 autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4
