@@ -50,7 +50,7 @@ exe 'highlight Directory gui=bold guifg=' . bright_blue
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . pure_black
-exe 'highlight Search gui=NONE guifg=' . dark_grey 'guibg=' . testMagenta
+exe 'highlight Search gui=NONE guifg=' . dark_grey 'guibg=' . bright_blue
 exe 'highlight IncSearch gui=NONE guifg=' . dark_grey 'guibg=' . bright_blue
 exe 'highlight MatchParen gui=bold guifg=' . dark_grey 'guibg=' . bright_blue
 
