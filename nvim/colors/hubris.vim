@@ -4,6 +4,7 @@ if exists("syntax_on")
 	syntax reset
 endif
 
+" this theme really only works with true color terminals
 set t_Co=256
 let g:colors_name = "hubris"
 
@@ -115,6 +116,10 @@ exe 'highlight xmlAttrib gui=NONE guifg=' . off_white
 
 " syntax javascript
 exe 'highlight javaScriptException gui=NONE guifg=' . bright_red
+exe 'highlight javaScriptIdentifier gui=NONE guifg=' . bright_red
+exe 'highlight javaScriptConditional gui=NONE guifg=' . bright_red
+exe 'highlight javaScriptBoolean gui=NONE guifg=' . bright_red
+exe 'highlight javaScriptNumber gui=NONE guifg=' . purple
 
 " syntax json
 " TODO: do something about json errors (there are a lot of varieties)
