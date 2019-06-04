@@ -109,6 +109,7 @@ exe 'highlight javaTypedef gui=NONE guifg=' . bright_red
 exe 'highlight javaBoolean gui=NONE guifg=' . bright_red
 exe 'highlight javaConditional gui=NONE guifg=' . bright_red
 exe 'highlight javaExceptions gui=NONE guifg=' . bright_red
+exe 'highlight javaCommentTitle gui=italic guifg=' . mid_grey
 
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . bright_red
@@ -129,6 +130,11 @@ exe 'highlight jsonBoolean gui=NONE guifg=' . bright_red
 " syntax typescript
 exe 'highlight typescriptBoolean gui=NONE guifg=' . bright_red
 exe 'highlight typescriptParens gui=NONE guifg=' . pure_white
+
+" syntax python
+exe 'highlight pythonBuiltin gui=NONE guifg=' . bright_red
+exe 'highlight pythonException gui=NONE guifg=' . bright_red
+exe 'highlight pythonExceptions gui=NONE guifg=' . bright_red
 
 " syntax sql
 exe 'highlight sqlKeyword gui=NONE guifg=' . bright_red
