@@ -48,7 +48,7 @@ if [ -r ~/.bash_ext/mac_env.sh ]; then
 fi
 
 # to turn off any of the .bash_ext/ scripts, do not symlink them
-if [ -r ~/.bash_ext/fzf_func.sh ]; then
-  source ~/.bash_ext/fzf_func.sh
+if [ -r ~/.bash_ext/fzf.sh ]; then
+  source ~/.bash_ext/fzf.sh
 fi
 
