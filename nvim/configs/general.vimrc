@@ -1,6 +1,7 @@
 set termguicolors
 
 colorscheme hubris
+
 " enable syntax highlighting
 syntax enable
 " show line numbers
@@ -25,7 +26,7 @@ set smartcase
 " indentation
 filetype on
 set noexpandtab
-set tabstop=2 shiftwidth=2 softtabstop=2
+set tabstop=4 shiftwidth=4 softtabstop=4
 " show tabs as ▸ followed by blank space
 set list
 set listchars=tab:▸\ ,
@@ -40,3 +41,5 @@ let g:netrw_banner=0
 " trim trailing whitespace on save
 autocmd bufWritePre * %s/\s\+$//e
 
+" enable mouse interaction
+set mouse=a
