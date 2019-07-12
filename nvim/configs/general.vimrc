@@ -4,7 +4,9 @@ colorscheme hubris
 
 " enable syntax highlighting
 syntax enable
-" show line numbers
+" show relative line numbers
+set relativenumber
+" with current line having its absolute number
 set number
 set ruler
 
@@ -33,6 +35,7 @@ set listchars=tab:▸\ ,
 " indentation language-specifics
 autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4
 autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " netrw config
 " hide netrw banner
