@@ -3,6 +3,7 @@
   co = checkout
   cnb = checkout -b
   st = status
+  rem = remote -v
   cm = commit
   cma = commit -a
   f = fetch
