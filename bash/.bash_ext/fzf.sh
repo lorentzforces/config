@@ -50,7 +50,7 @@ fzf_cd_containing_dir() {
 # Select a docker container to start and attach to
 function fzf_docker_start() {
   local cid
-  cid=$(docker ps -a | sed 1d | fzf-tmux -u20 -1 -q "$1" | awk '{print $1}')
+  cid=$(docker ps -a | sed 1d | fzf-tmux -u20 -q "$1" | awk '{print $1}')
 
   [ -n "$cid" ] && docker start "$cid"
 }
