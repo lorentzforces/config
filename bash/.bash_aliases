@@ -1,5 +1,5 @@
 # how to tell the difference between directories and files
-alias ls="ls --color=auto --classify"
+alias ls="ls --classify"
 
 # ls abbreviations
 alias la="ls -A"
