@@ -28,6 +28,9 @@
 [fetch]
   prune = true
 
+[checkout]
+  defaultRemote = origin
+
 [color]
   ui = true
 
