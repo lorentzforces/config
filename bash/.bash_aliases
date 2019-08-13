@@ -18,3 +18,5 @@ alias Files="fzf_cd_containing_dir"
 alias da="fzf_docker_start"
 alias ds="fzf_docker_stop"
 
+alias lessify="fc -s | less -R"
+alias bigly="du -sh"

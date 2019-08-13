@@ -5,14 +5,26 @@
 #
 # Standard options env var
 #
-
 export FZF_DEFAULT_OPTS='
 	--color fg:-1,bg:-1,fg+:7,bg+:8,hl:12,hl+:12,pointer:5
+'
+
+# env var that replaces "find" as the command fzf uses by default
+# --files: List files that would be searched but do not search
+# --hidden: Search hidden files and folders
+# --follow: Follow symlinks
+# --glob: file/directory name glob matching
+#         ignore .git and node_modules
+# this will respect .gitignore settings, add --no-ignore to ignore .gitignore
+export FZF_DEFAULT_COMMAND='
+	rg --files --hidden --follow --ignore-case --glob "!.git" --glob "!.DS_STORE" --glob "!node_modules"
 '
 
 #
 # Functions
 #
+
+# TODO: consolidate code styles - this is a mess in here right now
 
 # checkout git branch/tag
 fzf_git_checkout() {
@@ -44,14 +56,14 @@ FZF-EOF"
 fzf_cd_containing_dir() {
    local file
    local dir
-   file=$(fzf-tmux -u20 +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+   file=$(fzf-tmux -u20 +m -q "$1") && dir=$(dirname "$file")
+   [ -n "$dir" ] && cd "$dir"
 }
 
 # Select a docker container to start and attach to
 function fzf_docker_start() {
   local cid
   cid=$(docker ps -a | sed 1d | fzf-tmux -u20 -q "$1" | awk '{print $1}')
-
   [ -n "$cid" ] && docker start "$cid"
 }
 
@@ -59,7 +71,13 @@ function fzf_docker_start() {
 function fzf_docker_stop() {
   local cid
   cid=$(docker ps | sed 1d | fzf-tmux -u20 -q "$1" | awk '{print $1}')
-
   [ -n "$cid" ] && docker stop "$cid"
+}
+
+# search file contents
+# experimental
+function fif() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages $1 | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 || rg --ignore-case --pretty --context 10 $1 {}"
 }
 
