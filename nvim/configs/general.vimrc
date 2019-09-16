@@ -4,38 +4,39 @@ colorscheme hubris
 
 " enable syntax highlighting
 syntax enable
-" show relative line numbers
-set relativenumber
-" with current line having its absolute number
-set number
+
+" don't show line numbers
+set nonumber
+set norelativenumber
+
 set ruler
 
 set cursorline
 
 " soft wrap long lines on word boundaries
-set wrap linebreak nolist
+set wrap linebreak
 set breakindent
 
 set splitright
 
 " search incrementally
 set incsearch
-" search case-insensitively
-set ignorecase
 " search case-sensitively if search string contains uppercase chars
-set smartcase
+set ignorecase smartcase
 
-" indentation
+" indentation with reasonable defaults
 filetype on
 set noexpandtab
 set tabstop=4 shiftwidth=4 softtabstop=4
+
 " show tabs as ▸ followed by blank space
 set list
 set listchars=tab:▸\ ,
-" indentation language-specifics
-autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType groovy setlocal tabstop=4 shiftwidth=4 softtabstop=4
-autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+" wrapping indicators without line numbers
+set showbreak=↳
+
+" apply default code styles
+call StyleDefault()
 
 " netrw config
 " hide netrw banner
