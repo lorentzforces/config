@@ -1,4 +1,4 @@
-set background=dark
+set background=light
 hi clear
 if exists("syntax_on")
 	syntax reset
@@ -6,37 +6,38 @@ endif
 
 " this theme really only works with true color terminals
 set t_Co=256
-let g:colors_name = "hubris"
+let g:colors_name = "narcissus"
 
 let testMagenta = '#ff00ff'
 
-let dark_grey = '#101010'
+let medium_grey = '#999999'
+let dark_grey = '#303030'
 let dull_red = '#771313'
 let dull_green = '#447152'
 let dull_yellow = '#413c00'
 let dull_blue = '#43698d'
-let dull_orange = 'b45d10'
+let dull_orange = '#b45d10'
 let bright_orange = '#f39745'
 let dull_purple = '#7f3f98'
 let bright_purple = '#bb83d1'
-let off_white = '#cccccc'
 let mid_grey = '#808080'
 let bright_red = '#d60010'
 let bright_green = '#6fdbb2'
 let bright_yellow = '#b1a400'
 let bright_blue = '#00b8ff'
+let light_grey = '#cccccc'
 let pure_white = '#ffffff'
 let pure_black = '#010101' " hacky workaround for black not working in some guis
 
 " editor interface colors
-exe 'highlight Cursor gui=NONE guifg=' . dark_grey 'guibg=' . off_white
-exe 'highlight Normal gui=NONE guifg=' . off_white 'guibg=' . dark_grey
-exe 'highlight Visual gui=NONE guifg=' . off_white 'guibg=' . mid_grey
-exe 'highlight VisualNOS gui=NONE guifg=' . off_white 'guibg=' . mid_grey
-exe 'highlight WildMenu gui=NONE guifg=' . dark_grey 'guibg=' . bright_orange
+exe 'highlight Cursor gui=NONE guifg=' . medium_grey 'guibg=' . dark_grey
+exe 'highlight Normal gui=NONE guifg=' . dark_grey 'guibg=' . medium_grey
+exe 'highlight Visual gui=NONE guifg=' . medium_grey 'guibg=' . light_grey
+exe 'highlight VisualNOS gui=NONE guifg=' . medium_grey 'guibg=' . light_grey
+exe 'highlight WildMenu gui=NONE guifg=' . dark_grey 'guibg=' . dull_orange
 exe 'highlight Title gui=NONE guifg=' . dark_grey 'guibg=' . mid_grey
-exe 'highlight StatusLine gui=NONE guifg=' . bright_orange 'guibg=' . pure_black
-exe 'highlight StatusLineNC gui=NONE guifg=' . mid_grey 'guibg=' . pure_black
+exe 'highlight StatusLine gui=NONE guifg=' . dull_orange 'guibg=' . dark_grey
+exe 'highlight StatusLineNC gui=NONE guifg=' . testMagenta .  'guibg=' . testMagenta
 exe 'highlight NonText gui=italic guifg=' . mid_grey
 exe 'highlight ErrorMsg gui=NONE guifg=' . dark_grey 'guibg=' . bright_yellow
 exe 'highlight LineNr gui=NONE guifg=' . mid_grey 'guibg=' . pure_black
@@ -52,7 +53,7 @@ exe 'highlight VertSplit gui=NONE guifg=' . mid_grey 'guibg=' . pure_black
 exe 'highlight Directory gui=bold guifg=' . bright_blue
 
 " editor contextual colors
-exe 'highlight CursorLine guibg=' . pure_black
+exe 'highlight CursorLine guibg=' . mid_grey
 exe 'highlight Search gui=NONE guifg=' . dark_grey 'guibg=' . bright_blue
 exe 'highlight IncSearch gui=NONE guifg=' . dark_grey 'guibg=' . bright_blue
 exe 'highlight MatchParen gui=bold guifg=' . dark_grey 'guibg=' . bright_blue
@@ -64,35 +65,35 @@ exe 'highlight DiffDelete gui=NONE guifg=' . off_white 'guibg=' . dull_red
 exe 'highlight DiffAdd gui=NONE guifg=' . off_white 'guibg=' . dull_green
 
 " syntax colors
-exe 'highlight Comment gui=italic guifg=' . mid_grey
-exe 'highlight Typedef gui=NONE guifg=' . bright_red
-exe 'highlight String gui=NONE guifg=' . bright_orange
-exe 'highlight PreCondit gui=NONE guifg=' . bright_red
-exe 'highlight Include gui=NONE guifg=' . bright_red
+exe 'highlight Comment gui=italic guifg=' . light_grey
+exe 'highlight Typedef gui=NONE guifg=' . dull_red
+exe 'highlight String gui=NONE guifg=' . dull_orange
+exe 'highlight PreCondit gui=NONE guifg=' . dull_red
+exe 'highlight Include gui=NONE guifg=' . dull_red
 exe 'highlight Debug gui=NONE guifg=' . bright_yellow
 exe 'highlight Conditional gui=NONE guifg=' . off_white
 exe 'highlight Special gui=NONE guifg=' . pure_white
 exe 'highlight SpecialChar gui=NONE guifg=' . pure_white
 exe 'highlight Delimiter gui=NONE guifg=' . pure_white
-exe 'highlight StorageClass gui=NONE guifg=' . off_white
-exe 'highlight Function gui=NONE guifg=' . off_white
-exe 'highlight Todo gui=NONE guifg=' . dark_grey 'guibg=' . bright_yellow
-exe 'highlight Label gui=NONE guifg=' . bright_red
-exe 'highlight Keyword gui=NONE guifg=' . bright_red
-exe 'highlight Type gui=NONE guifg=' . bright_red
-exe 'highlight Identifier gui=NONE guifg=' . off_white
-exe 'highlight Statement gui=NONE guifg=' . bright_red
-exe 'highlight Operator gui=NONE guifg=' . bright_red
-exe 'highlight Define gui=NONE guifg=' . bright_red
-exe 'highlight Character gui=NONE guifg=' . bright_purple
-exe 'highlight Float gui=NONE guifg=' . bright_purple
-exe 'highlight Number gui=NONE guifg=' . bright_purple
-exe 'highlight Boolean gui=NONE guifg=' . bright_purple
+exe 'highlight StorageClass gui=NONE guifg=' . dark_grey
+exe 'highlight Function gui=NONE guifg=' . dark_grey
+exe 'highlight Todo gui=NONE guifg=' . dark_grey 'guibg=' . dull_yellow
+exe 'highlight Label gui=NONE guifg=' . dull_red
+exe 'highlight Keyword gui=NONE guifg=' . dull_red
+exe 'highlight Type gui=NONE guifg=' . dull_red
+exe 'highlight Identifier gui=NONE guifg=' . dark_grey
+exe 'highlight Statement gui=NONE guifg=' . dull_red
+exe 'highlight Operator gui=NONE guifg=' . dull_red
+exe 'highlight Define gui=NONE guifg=' . dull_red
+exe 'highlight Character gui=NONE guifg=' . dull_purple
+exe 'highlight Float gui=NONE guifg=' . dull_purple
+exe 'highlight Number gui=NONE guifg=' . dull_purple
+exe 'highlight Boolean gui=NONE guifg=' . dull_purple
 
 " syntax vim
-exe 'highlight vimCommand gui=NONE guifg=' . bright_red 'guibg=NONE'
-exe 'highlight vimExecute gui=NONE guifg=' . bright_red 'guibg=NONE'
-exe 'highlight vimHighlight gui=NONE guifg=' . bright_red 'guibg=NONE'
+exe 'highlight vimCommand gui=NONE guifg=' . dull_red 'guibg=NONE'
+exe 'highlight vimExecute gui=NONE guifg=' . dull_red 'guibg=NONE'
+exe 'highlight vimHighlight gui=NONE guifg=' . dull_red 'guibg=NONE'
 
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . bright_orange 'guibg=NONE'
@@ -100,8 +101,8 @@ exe 'highlight gitcommitOverflow gui=NONE guifg=' . bright_yellow 'guibg=NONE'
 exe 'highlight gitcommitBlank gui=NONE guifg=' . dark_grey 'guibg=' . bright_yellow
 exe 'highlight gitcommitBranch gui=NONE guifg=' . dark_grey 'guibg=' . bright_orange
 exe 'highlight gitcommitHeader gui=NONE guifg=' . pure_white 'guibg=NONE'
-exe 'highlight gitrebaseCommit gui=NONE guifg=' . bright_blue 'guibg=NONE'
-exe 'highlight gitrebaseHash gui=NONE guifg=' . bright_blue 'guibg=NONE'
+exe 'highlight gitrebaseCommit gui=NONE guifg=' . dull_blue 'guibg=NONE'
+exe 'highlight gitrebaseHash gui=NONE guifg=' . dull_blue 'guibg=NONE'
 
 " syntax java
 exe 'highlight javaExternal gui=NONE guifg=' . bright_red
@@ -116,9 +117,6 @@ exe 'highlight javaCommentTitle gui=italic guifg=' . mid_grey
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . bright_red
 exe 'highlight xmlAttrib gui=NONE guifg=' . off_white
-
-" syntax html
-exe 'highlight htmlTagN gui=NONE guifg=' . bright_red
 
 " syntax javascript
 exe 'highlight javaScriptException gui=NONE guifg=' . bright_red

@@ -11,3 +11,7 @@ nnoremap <leader>H :tabmove -<CR>
 nnoremap <leader>L :tabmove +<CR>
 
 nnoremap <leader>s :set hlsearch!<CR>
+
+" escape exits terminal mode
+tnoremap <Esc> <C-\><C-n>
+

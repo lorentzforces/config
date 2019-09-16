@@ -15,9 +15,9 @@ else
 fi
 
 if [ "$color_prompt" = "yes" ]; then
-  export PS1=$'\\[\\033[36m\\]\\D{%m/%d/%Y} \\t > \\[\\033[91m\\]\\u@\\h > \\[\\033[35m\\]\\w >\\n \\[\\033[91m\\]:) \\[\\033[39m\\]'
+  export PS1=$'\\[\\033[96m\\]\\D{%m/%d/%Y} \\t > \\[\\033[95m\\]\\w >\\n \\[\\033[91m\\]:) \\[\\033[39m\\]'
 else
-  export PS1=$'\\D{%m/%d/%Y} \\t > \\u@\\h > \\w >\\n :) '
+  export PS1=$'\\D{%m/%d/%Y} \\t > \\w >\\n :) '
 fi
 
 unset color_prompt
@@ -38,6 +38,8 @@ fi
 
 export EDITOR=nvim
 
+export PATH=~/.fzf/bin:$PATH
+
 # to turn off any of the .bash_ext/ scripts, do not symlink them
 if [ -r ~/.bash_ext/nvm_init.sh ]; then
   source ~/.bash_ext/nvm_init.sh
@@ -52,3 +54,4 @@ if [ -r ~/.bash_ext/fzf.sh ]; then
   source ~/.bash_ext/fzf.sh
 fi
 
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
