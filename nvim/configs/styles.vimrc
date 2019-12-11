@@ -1,27 +1,27 @@
 function! StyleDefault()
-  augroup style_java
+  augroup user_style_java
     autocmd!
     autocmd FileType java call SetIndent(4, "tabs")
   augroup END
 
-  augroup style_javascript
+  augroup user_style_javascript
     autocmd!
     autocmd FileType javascript call SetIndent(2, "tabs")
     autocmd FileType json call SetIndent(2, "tabs")
   augroup END
 
-  augroup style_xml
+  augroup user_style_xml
     autocmd!
     autocmd FileType xml call SetIndent(2, "tabs")
     autocmd FileType xhtml call SetIndent(2, "tabs")
   augroup END
 
-  augroup style_html
+  augroup user_style_html
     autocmd!
     autocmd FileType html call SetIndent(2, "tabs")
   augroup END
 
-  augroup style_vim
+  augroup user_style_vim
     autocmd!
     autocmd FileType vim call SetIndent(2, "tabs")
   augroup END
@@ -31,24 +31,24 @@ endfunc
 command! StyleDefault call StyleDefault()
 
 function! StyleGoogle()
-  augroup style_java
+  augroup user_style_java
     autocmd!
     autocmd FileType call SetIndent(2, "spaces")
   augroup END
 
-  augroup style_javascript
+  augroup user_style_javascript
     autocmd!
     autocmd FileType javascript call SetIndent(2, "spaces")
     autocmd FileType json call SetIndent(2, "spaces")
   augroup END
 
-  augroup style_xml
+  augroup user_style_xml
     autocmd!
     autocmd FileType xml call SetIndent(2, "spaces")
     autocmd FileType xhtml call SetIndent(2, "spaces")
   augroup END
 
-  augroup style_html
+  augroup user_style_html
     autocmd!
     autocmd FileType html call SetIndent(2, "spaces")
   augroup END
@@ -56,4 +56,3 @@ function! StyleGoogle()
   bufdo doautocmd FileType
 endfunc
 command! StyleGoogle call StyleGoogle()
-
