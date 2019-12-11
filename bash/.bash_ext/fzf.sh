@@ -6,7 +6,7 @@
 # Standard options env var
 #
 export FZF_DEFAULT_OPTS='
-	--color fg:-1,bg:-1,fg+:7,bg+:8,hl:12,hl+:12,pointer:5
+	--color fg:-1,bg:-1,fg+:-1,bg+:7,hl:4,hl+:4,pointer:5,info:6,prompt:1
 '
 
 # env var that replaces "find" as the command fzf uses by default
@@ -80,4 +80,3 @@ function fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
   rg --files-with-matches --no-messages $1 | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 || rg --ignore-case --pretty --context 10 $1 {}"
 }
-

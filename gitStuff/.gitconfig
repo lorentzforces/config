@@ -11,10 +11,10 @@
   unstage = reset HEAD --
   dt = difftool
 
-  ls = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(13)%d\\ %Creset%s%C(9)\\ [%an]" --decorate --no-merges
-  ll = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(13)%d\\ %Creset%s%C(9)\\ [%an]" --decorate --numstat --no-merges
-  lsm = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(13)%d\\ %Creset%s%C(9)\\ [%an]" --decorate
-  llm = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(13)%d\\ %Creset%s%C(9)\\ [%an]" --decorate --numstat
+  ls = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --no-merges
+  ll = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --numstat --no-merges
+  lsm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate
+  llm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --numstat
 
 [core]
   editor = nvim
@@ -35,14 +35,13 @@
   ui = true
 
 [color "branch"]
-  current = 0 13
-  remote = 13
-  local = 13
+  current = 15 1
+  remote = 15
+  local = 1
 
 [color "status"]
-  nobranch = 0 13
-  branch = 0 13
+  nobranch = 15 1
+  branch = 15 1
   added = 2
   changed = 4
-  untracked = 1
-
+  untracked = 3

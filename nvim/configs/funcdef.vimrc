@@ -8,6 +8,8 @@ endfunction
 
 " simple helper functions to set indentation to a specific number of columns
 
+command! -nargs=+ Indent call SetIndent(<f-args>)
+
 function! SetIndent(columns, char)
   call SetIndentNum(a:columns)
   call SetIndentChar(a:char)

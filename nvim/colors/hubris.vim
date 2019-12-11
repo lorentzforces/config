@@ -26,7 +26,7 @@ let bright_green = '#6fdbb2'
 let bright_yellow = '#b1a400'
 let bright_blue = '#00b8ff'
 let pure_white = '#ffffff'
-let pure_black = '#010101' " hacky workaround for black not working in some guis
+let pure_black = '#010101' " hacky workaround for #000000 not working in some guis
 
 " editor interface colors
 exe 'highlight Cursor gui=NONE guifg=' . dark_grey 'guibg=' . off_white
@@ -35,8 +35,6 @@ exe 'highlight Visual gui=NONE guifg=' . off_white 'guibg=' . mid_grey
 exe 'highlight VisualNOS gui=NONE guifg=' . off_white 'guibg=' . mid_grey
 exe 'highlight WildMenu gui=NONE guifg=' . dark_grey 'guibg=' . bright_orange
 exe 'highlight Title gui=NONE guifg=' . dark_grey 'guibg=' . mid_grey
-exe 'highlight StatusLine gui=NONE guifg=' . bright_orange 'guibg=' . pure_black
-exe 'highlight StatusLineNC gui=NONE guifg=' . mid_grey 'guibg=' . pure_black
 exe 'highlight NonText gui=italic guifg=' . mid_grey
 exe 'highlight ErrorMsg gui=NONE guifg=' . dark_grey 'guibg=' . bright_yellow
 exe 'highlight LineNr gui=NONE guifg=' . mid_grey 'guibg=' . pure_black
@@ -56,6 +54,13 @@ exe 'highlight CursorLine guibg=' . pure_black
 exe 'highlight Search gui=NONE guifg=' . dark_grey 'guibg=' . bright_blue
 exe 'highlight IncSearch gui=NONE guifg=' . dark_grey 'guibg=' . bright_blue
 exe 'highlight MatchParen gui=bold guifg=' . dark_grey 'guibg=' . bright_blue
+
+" status line colors
+exe 'highlight StatusLine gui=NONE guifg=' . bright_orange 'guibg=' . pure_black
+exe 'highlight StatusLineNC gui=NONE guifg=' . mid_grey 'guibg=' . pure_black
+" user-defined highlight groups for status line
+exe 'highlight StatusLineFlag gui=NONE guifg=' . dull_red 'guibg=' . pure_black
+exe 'highlight StatusLineModified gui=NONE guifg=' . dull_green 'guibg=' . pure_black
 
 " diff colors
 exe 'highlight DiffChange gui=NONE guifg=' . off_white 'guibg=' . dull_blue
@@ -138,6 +143,7 @@ exe 'highlight typescriptParens gui=NONE guifg=' . pure_white
 
 " syntax python
 exe 'highlight pythonBuiltin gui=NONE guifg=' . bright_red
+exe 'highlight pythonConditional gui=NONE guifg=' . bright_red
 exe 'highlight pythonException gui=NONE guifg=' . bright_red
 exe 'highlight pythonExceptions gui=NONE guifg=' . bright_red
 
@@ -195,3 +201,4 @@ hi Underlined guifg=#F9F9FF guibg=#192224 gui=NONE
 "hi LocalVariable -- no settings --
 "hi CTagsClass -- no settings --
 "hi clear -- no settings --
+
