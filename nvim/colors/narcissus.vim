@@ -83,7 +83,12 @@ exe 'highlight MatchParen gui=bold guifg=' . slate_grey_fg 'guibg=' . bright_blu
 exe 'highlight DiffChange gui=NONE guifg=' . bright_white_15 'guibg=' . dull_blue_4
 exe 'highlight DiffText gui=NONE guifg=' . bright_white_15 'guibg=' . bright_blue_12
 exe 'highlight DiffDelete gui=NONE guifg=' . bright_white_15 'guibg=' . dull_red_1
+exe 'highlight diffRemoved gui=NONE guifg=' . bright_white_15 'guibg=' . dull_red_1
 exe 'highlight DiffAdd gui=NONE guifg=' . bright_white_15 'guibg=' . dull_green_2
+exe 'highlight diffAdded gui=NONE guifg=' . bright_white_15 'guibg=' . dull_green_2
+exe 'highlight diffFile gui=NONE guifg=' . dull_orange_5
+exe 'highlight diffLine gui=NONE guifg=' . bright_black_8
+exe 'highlight diffIndexLine gui=NONE guifg=' . bright_black_8
 
 " syntax colors
 exe 'highlight Underlined gui=underline guifg=' . slate_grey_fg
