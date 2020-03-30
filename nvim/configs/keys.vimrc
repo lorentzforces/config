@@ -5,6 +5,7 @@ nnoremap <leader>e :Ex<CR>
 nnoremap <leader>g :Rg<SPACE>
 nnoremap <leader>b :Buffers<CR>
 
+nnoremap <leader>c :tabnew<CR>
 nnoremap <leader>h :tabprevious<CR>
 nnoremap <leader>l :tabnext<CR>
 nnoremap <leader>H :tabmove -<CR>
