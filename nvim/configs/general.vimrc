@@ -60,3 +60,6 @@ augroup END
 
 " enable mouse interaction
 set mouse=a
+
+" leave some context lines when scrolling on edges of the window
+set scrolloff=3

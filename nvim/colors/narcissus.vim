@@ -156,7 +156,7 @@ exe 'highlight javaTypedef gui=NONE guifg=' . dull_red_1
 exe 'highlight javaBoolean gui=NONE guifg=' . dull_red_1
 exe 'highlight javaConditional gui=NONE guifg=' . dull_red_1
 exe 'highlight javaExceptions gui=NONE guifg=' . dull_red_1
-exe 'highlight javaCommentTitle gui=underline guifg=' . bright_white_15
+exe 'highlight javaCommentTitle gui=italic guifg=' . bright_white_15
 
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . dull_red_1

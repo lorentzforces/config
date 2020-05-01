@@ -20,6 +20,11 @@ export FZF_DEFAULT_COMMAND='
 	rg --files --hidden --follow --ignore-case --glob "!.git" --glob "!.DS_STORE" --glob "!node_modules"
 '
 
+# this should be the same as the above
+export FZF_CTRL_T_COMMAND='
+	rg --files --hidden --follow --ignore-case --glob "!.git" --glob "!.DS_STORE" --glob "!node_modules"
+'
+
 #
 # Functions
 #
