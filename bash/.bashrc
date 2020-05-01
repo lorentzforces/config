@@ -18,20 +18,8 @@ esac
 # don't put duplicate lines or lines starting with spaces in the history
 HISTCONTROL=ignoreboth
 
-# fancy color prompt
-if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-  color_prompt=yes
-else
-  color_prompt=no
-fi
-
-if [ "$color_prompt" = "yes" ]; then
-  export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
-else
-  export PS1=$'\\w >\\n :) '
-fi
-
-unset color_prompt
+# for now we assume that our terminal supports xterm color codes
+export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 
 # enable programmable completion features
 if ! shopt -oq posix; then
@@ -49,6 +37,10 @@ fi
 
 export EDITOR=nvim
 
+# store "host" terminal to use same terminfo in tmux
+export HOST_TERM=$TERM
+
+# TODO: consider putting self-managed stuff somewhere else (consistent)
 export PATH=~/.fzf/bin:$PATH
 
 # to turn off any of the .bash_ext/ scripts, do not symlink them
@@ -60,6 +52,14 @@ if [ -r ~/.bash_ext/fzf.sh ]; then
   source ~/.bash_ext/fzf.sh
 fi
 
+# local_env.sh should not be committed, it contains machine-specific
+# configuration (e.g. homebrew path info)
+if [ -r ~/.bash_ext/local_env.sh ]; then
+  source ~/.bash_ext/local_env.sh
+fi
+
 # PROFILING
 # set +x
 # exec 2>&3 3>&-
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
