@@ -11,10 +11,10 @@
   unstage = reset HEAD --
   dt = difftool
 
-  ls = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --no-merges
-  ll = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --numstat --no-merges
-  lsm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate
-  llm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --numstat
+  ls = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(9)%d\\ %Creset%s%C(13)\\ [%an]" --decorate --no-merges
+  ll = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(9)%d\\ %Creset%s%C(13)\\ [%an]" --decorate --numstat --no-merges
+  lsm = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(9)%d\\ %Creset%s%C(13)\\ [%an]" --decorate
+  llm = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(9)%d\\ %Creset%s%C(13)\\ [%an]" --decorate --numstat
 
 [core]
   editor = nvim

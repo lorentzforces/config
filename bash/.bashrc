@@ -19,7 +19,7 @@ esac
 HISTCONTROL=ignoreboth
 
 # for now we assume that our terminal supports xterm color codes
-export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
+export PS1=$'\\[\\033[91m\\]\\w ▸\\n \\[\\033[95m\\]:) \\[\\033[39m\\]'
 
 # enable programmable completion features
 if ! shopt -oq posix; then
@@ -50,6 +50,10 @@ fi
 
 if [ -r ~/.bash_ext/fzf.sh ]; then
   source ~/.bash_ext/fzf.sh
+fi
+
+if [ -r ~/.bash_ext/misc_commands.sh ]; then
+  source ~/.bash_ext/misc_commands.sh
 fi
 
 # local_env.sh should not be committed, it contains machine-specific
