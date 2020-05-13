@@ -96,7 +96,6 @@ exe 'highlight Title gui=underline guifg=' . bright_black_8
 exe 'highlight Comment gui=italic guifg=' . bright_white_15
 exe 'highlight Typedef gui=NONE guifg=' . dull_red_1
 exe 'highlight String gui=NONE guifg=' . dull_orange_5
-exe 'highlight PreCondit gui=NONE guifg=' . dull_red_1
 exe 'highlight Debug gui=NONE guifg=' . bright_yellow_11
 exe 'highlight Conditional gui=NONE guifg=' . dull_red_1
 exe 'highlight Special gui=NONE guifg=' . bright_black_8
@@ -161,6 +160,9 @@ exe 'highlight javaCommentTitle gui=italic guifg=' . bright_white_15
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . dull_red_1
 exe 'highlight xmlAttrib gui=NONE guifg=' . slate_grey_fg
+
+" syntax html
+exe 'highlight htmlTagN gui=NONE guifg=' . dull_red_1
 
 " syntax javascript
 exe 'highlight javaScriptException gui=NONE guifg=' . dull_red_1

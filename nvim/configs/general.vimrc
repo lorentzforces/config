@@ -1,6 +1,6 @@
 set termguicolors
 
-colorscheme narcissus
+colorscheme hubris
 
 " enable syntax highlighting
 syntax enable

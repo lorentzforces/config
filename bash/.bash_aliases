@@ -4,7 +4,7 @@ alias rg="rg -i -M300"
 
 # ls abbreviations
 alias la="ls -A"
-alias ll="ls -al"
+alias ll="ls -alh"
 
 alias g="git"
 alias ..="cd .."
@@ -18,6 +18,7 @@ alias fcd="fzf_cd_containing_dir"
 alias Files="fzf_cd_containing_dir"
 alias da="fzf_docker_start"
 alias ds="fzf_docker_stop"
+alias xtrun="run_with_xterminfo"
 
 # oh crap I wasn't expecting that much output
 alias lessify="fc -s | less -R"

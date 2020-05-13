@@ -6,7 +6,7 @@
 # Standard options env var
 #
 export FZF_DEFAULT_OPTS='
-	--color fg:-1,bg:-1,fg+:-1,bg+:7,hl:4,hl+:4,pointer:5,info:6,prompt:1
+	--color fg:-1,bg:-1,fg+:-1,bg+:8,hl:12,hl+:12,pointer:5,info:14,prompt:13
 '
 
 # env var that replaces "find" as the command fzf uses by default
@@ -32,7 +32,7 @@ export FZF_CTRL_T_COMMAND='
 # TODO: consolidate code styles - this is a mess in here right now
 
 # checkout git branch/tag
-fzf_git_checkout() {
+function fzf_git_checkout() {
   local tags branches target
   tags=$(
     git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
@@ -47,7 +47,7 @@ fzf_git_checkout() {
 }
 
 # git commit browser
-fzf_git_show() {
+function fzf_git_show() {
   git lsm --color=always "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
       --bind "ctrl-m:execute:
@@ -58,7 +58,7 @@ FZF-EOF"
 }
 
 # cd into directory containing selected file
-fzf_cd_containing_dir() {
+function fzf_cd_containing_dir() {
    local file
    local dir
    file=$(fzf-tmux -u20 +m -q "$1") && dir=$(dirname "$file")
