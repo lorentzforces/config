@@ -17,7 +17,8 @@ set statusline+=\ %=%c%V\ on\ %l/%L
 
 set cursorline
 
-" soft wrap long lines on word boundaries
+" soft wrap long lines on word boundaries, keep continuation lines
+" at the same indentation level
 set wrap linebreak
 set breakindent
 
@@ -42,7 +43,7 @@ set tabstop=4 shiftwidth=4 softtabstop=4
 " show tabs as ▸ followed by blank space
 set list
 set listchars=tab:▸\ ,
-" wrapping indicators without line numbers
+" wrapping indicators since we don't use line numbers
 set showbreak=↳
 
 " apply default code styles
@@ -63,3 +64,26 @@ set mouse=a
 
 " leave some context lines when scrolling on edges of the window
 set scrolloff=3
+
+" add additional TODO-style highlights
+" credit: user Ralf @
+" https://vi.stackexchange.com/questions/19040/add-keywords-to-a-highlight-group
+function! UpdateTodoKeywords(...)
+  let newKeywords = join(a:000, " ")
+  let synTodo =
+      \ map(
+      \   filter(
+      \     split(execute("syntax list"), '\n'),
+      \     { i,v -> match(v, '^\w*Todo\>') == 0}
+      \   ),
+      \   {i,v -> substitute(v, ' .*$', '', '')}
+      \ )
+  for synGrp in synTodo
+    execute "syntax keyword " . synGrp . " contained " . newKeywords
+  endfor
+endfunction
+
+augroup user_todo
+  autocmd!
+  autocmd Syntax * call UpdateTodoKeywords("NOTE", "IMPORTANT", "FIXME")
+augroup END

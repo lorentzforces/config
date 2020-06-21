@@ -8,25 +8,27 @@ endif
 set t_Co=256
 let g:colors_name = "hubris"
 
+" TODO: all these variables for colors are leaked,
+" maybe do something about that
 let testMagenta = '#ff00ff'
 
 let dark_grey = '#282828'
 let dull_red = '#771313'
-let dull_green = '#447152'
+let dull_green = '#448852'
 let dull_yellow = '#413c00'
 let dull_blue = '#43698d'
 let dull_orange = 'b45d10'
-let bright_orange = '#f39745'
 let dull_purple = '#7f3f98'
-let bright_purple = '#bb83d1'
 let off_white = '#cccccc'
 let mid_grey = '#808080'
 let bright_red = '#d60010'
 let bright_green = '#6fdbb2'
 let bright_yellow = '#b1a400'
 let bright_blue = '#00b8ff'
+let bright_orange = '#f39745'
+let bright_purple = '#bb83d1'
 let pure_white = '#ffffff'
-let pure_black = '#010101' " hacky workaround for #000000 not working in some guis
+let pure_black = '#010101' " hacky workaround for #000000 not working in some terminals
 
 " terminal colors
 let g:terminal_color_0 = dark_grey
@@ -37,7 +39,7 @@ let g:terminal_color_4 = dull_blue
 let g:terminal_color_5 = dull_orange
 let g:terminal_color_6 = dull_purple
 let g:terminal_color_7 = off_white
-let g:terminal_color_8 = mid_grey
+let g:terminal_color_8 = pure_black
 let g:terminal_color_9 = bright_red
 let g:terminal_color_10 = bright_green
 let g:terminal_color_11 = bright_yellow
@@ -89,7 +91,6 @@ exe 'highlight diffAdded gui=NONE guifg=' . off_white 'guibg=' . dull_green
 exe 'highlight diffFile gui=NONE guifg=' . bright_orange
 exe 'highlight diffLine gui=NONE guifg=' . pure_white
 exe 'highlight diffIndexLine gui=NONE guifg=' . pure_white
-
 
 " syntax colors
 exe 'highlight Underlined gui=underline guifg=' . off_white
@@ -157,6 +158,10 @@ exe 'highlight javaBoolean gui=NONE guifg=' . bright_red
 exe 'highlight javaConditional gui=NONE guifg=' . bright_red
 exe 'highlight javaExceptions gui=NONE guifg=' . bright_red
 exe 'highlight javaCommentTitle gui=italic guifg=' . mid_grey
+
+" syntax C/C++
+exe 'highlight cConditional gui=NONE guifg=' . bright_red
+exe 'highlight cppBoolean gui=NONE guifg=' . bright_red
 
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . bright_red
