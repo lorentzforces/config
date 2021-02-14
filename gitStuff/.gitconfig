@@ -2,7 +2,7 @@
   b = branch -v
   co = checkout
   cnb = checkout -b
-  st = status
+  st = status -sb
   rem = remote -v
   cm = commit
   cma = commit -a
