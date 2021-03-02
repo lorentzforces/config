@@ -26,6 +26,5 @@ vnoremap j gj
 vnoremap k gk
 
 " ability to insert blank lines without entering insert mode
-" shift-enter doesn't work in most terminals
-" nnoremap <S-CR> O<Esc>
-nnoremap <CR> o<Esc>
+nnoremap <C-j> o<Esc>k
+nnoremap <C-k> O<Esc>j
