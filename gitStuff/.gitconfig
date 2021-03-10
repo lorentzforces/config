@@ -1,3 +1,9 @@
+[core]
+  editor = nvim
+
+[color]
+  ui = true
+
 [alias]
   b = branch -v
   co = checkout
@@ -16,23 +22,19 @@
   lsm = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(9)%d\\ %Creset%s%C(13)\\ [%an]" --decorate
   llm = log --date=short --pretty=format:"%C(12)%h\\ %C(14)%ad%C(9)%d\\ %Creset%s%C(13)\\ [%an]" --decorate --numstat
 
-[core]
-  editor = nvim
-
-[diff]
-  tool = default-difftool
-
-[difftool "default-difftool"]
-  cmd = code --wait --new-window --diff $LOCAL $REMOTE
-
-[fetch]
-  prune = true
+# individual command configs
+#
+[advice]
+  detachedHead = false
 
 [checkout]
   defaultRemote = origin
 
-[color]
-  ui = true
+[fetch]
+  prune = true
+
+[pull]
+  ff = only
 
 [color "branch"]
   current = 15 1
@@ -46,5 +48,3 @@
   changed = 4
   untracked = 3
 
-[advice]
-  detachedHead = false
