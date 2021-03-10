@@ -45,3 +45,6 @@
   added = 2
   changed = 4
   untracked = 3
+
+[advice]
+  detachedHead = false

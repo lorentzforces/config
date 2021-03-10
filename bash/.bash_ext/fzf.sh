@@ -48,7 +48,7 @@ function fzf_git_checkout() {
 
 # git commit browser
 function fzf_git_show() {
-  git lsm --color=always "$@" |
+  git ls --color=always "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
       --bind "ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
