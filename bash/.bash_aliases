@@ -1,5 +1,5 @@
 # default options for common commands
-alias ls="ls --classify"
+alias ls="ls --classify --width=90"
 alias rg="rg -i -M300"
 
 # ls abbreviations
