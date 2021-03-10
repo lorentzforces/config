@@ -34,3 +34,6 @@ npx() {
   lazynvm
   npx $@
 }
+
+# initialize node on shell startup
+node --version

@@ -106,7 +106,7 @@ exe 'highlight Delimiter gui=NONE guifg=' . pure_white
 exe 'highlight StorageClass gui=NONE guifg=' . bright_red
 exe 'highlight Exception gui=NONE guifg=' . bright_red
 exe 'highlight Function gui=NONE guifg=' . off_white
-exe 'highlight Label gui=NONE guifg=' . bright_red
+exe 'highlight Label gui=NONE guifg=' . dull_purple
 exe 'highlight Keyword gui=NONE guifg=' . bright_red
 exe 'highlight Constant gui=NONE guifg=' .bright_red
 exe 'highlight Repeat gui=NONE guifg=' .bright_red
@@ -156,8 +156,12 @@ exe 'highlight javaScopeDecl gui=NONE guifg=' . bright_red
 exe 'highlight javaTypedef gui=NONE guifg=' . bright_red
 exe 'highlight javaBoolean gui=NONE guifg=' . bright_red
 exe 'highlight javaConditional gui=NONE guifg=' . bright_red
+exe 'highlight javaBranch gui=NONE guifg=' . bright_red
 exe 'highlight javaExceptions gui=NONE guifg=' . bright_red
 exe 'highlight javaCommentTitle gui=italic guifg=' . mid_grey
+
+" syntax Groovy
+exe 'highlight groovyJDKBuiltin gui=NONE guifg=' . bright_red
 
 " syntax C/C++
 exe 'highlight cConditional gui=NONE guifg=' . bright_red
@@ -184,7 +188,9 @@ exe 'highlight jsonBoolean gui=NONE guifg=' . bright_red
 
 " syntax typescript
 exe 'highlight typescriptBoolean gui=NONE guifg=' . bright_red
+exe 'highlight typescriptExport gui=NONE guifg=' . bright_red
 exe 'highlight typescriptParens gui=NONE guifg=' . pure_white
+exe 'highlight typescriptFuncComma gui=NONE guifg=' . off_white
 
 " syntax python
 exe 'highlight pythonBuiltin gui=NONE guifg=' . bright_red
@@ -195,7 +201,6 @@ exe 'highlight pythonExceptions gui=NONE guifg=' . bright_red
 " syntax sql
 exe 'highlight sqlKeyword gui=NONE guifg=' . bright_red
 exe 'highlight sqlSpecial gui=NONE guifg=' . bright_red
-
 
 " unknown usage, setting to magenta as a canary
 exe 'highlight FoldColumn gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
