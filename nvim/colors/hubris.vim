@@ -138,6 +138,7 @@ exe 'highlight vimOption gui=NONE guifg=' . bright_red 'guibg=NONE'
 " syntax shell
 exe 'highlight shQuote gui=NONE guifg=' . bright_orange 'guibg=NONE'
 exe 'highlight shDeref gui=NONE guifg=' . pure_white 'guibg=NONE'
+exe 'highlight shArithRegion gui=NONE guifg=' . off_white 'guibg=NONE'
 
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . bright_orange 'guibg=NONE'

@@ -9,6 +9,8 @@ alias ll="ls -alh"
 alias g="git"
 alias ..="cd .."
 alias ...="cd ../.."
+alias home="cd $CLEAN_HOME"
+alias hm="home"
 
 # aliases for custom-defined functions
 alias fco="fzf_git_checkout"
