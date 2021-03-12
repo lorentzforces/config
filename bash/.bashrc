@@ -30,6 +30,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# set a reasonable default for our custom home command
+# (override in local env script if needed)
+export CLEAN_HOME="~/mine"
+
 # aliases
 if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
@@ -65,5 +69,8 @@ fi
 # PROFILING
 # set +x
 # exec 2>&3 3>&-
+
+# anything below this point is probably automatically added by some program or another
+# and is more trouble to delete than just letting it be here
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
