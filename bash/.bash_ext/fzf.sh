@@ -5,8 +5,15 @@
 #
 # Standard options env var
 #
+
+# dark color scheme
+# export FZF_DEFAULT_OPTS='
+# 	--color fg:-1,bg:-1,fg+:-1,bg+:8,hl:12,hl+:12,pointer:5,info:14,prompt:13
+# '
+
+# light color scheme
 export FZF_DEFAULT_OPTS='
-	--color fg:-1,bg:-1,fg+:-1,bg+:8,hl:12,hl+:12,pointer:5,info:14,prompt:13
+	--color fg:-1,bg:-1,fg+:-1,bg+:7,hl:4,hl+:4,pointer:5,info:6,prompt:1
 '
 
 # env var that replaces "find" as the command fzf uses by default
