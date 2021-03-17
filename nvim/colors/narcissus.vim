@@ -108,7 +108,7 @@ exe 'highlight Delimiter gui=NONE guifg=' . bright_black
 exe 'highlight StorageClass gui=NONE guifg=' . dull_red
 exe 'highlight Exception gui=NONE guifg=' . dull_red
 exe 'highlight Function gui=NONE guifg=' . slate_grey
-exe 'highlight Label gui=NONE guifg=' . dull_red
+exe 'highlight Label gui=NONE guifg=' . dull_green
 exe 'highlight Keyword gui=NONE guifg=' . dull_red
 exe 'highlight Constant gui=NONE guifg=' . dull_red
 exe 'highlight Repeat gui=NONE guifg=' . dull_red
