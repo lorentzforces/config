@@ -17,13 +17,12 @@
   unstage = reset HEAD --
   dt = difftool
 
-  ls = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --no-merges
-  ll = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --numstat --no-merges
-  lsm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate
-  llm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad%C(1)%d\\ %Creset%s%C(5)\\ [%an]" --decorate --numstat
+  ls = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges
+  ll = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges
+  lsm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate
+  llm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat
 
 # individual command configs
-#
 [advice]
   detachedHead = false
 
