@@ -146,7 +146,7 @@ exe 'highlight shArithRegion gui=NONE guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight gitcommitSummary gui=underline guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight gitcommitOverflow gui=NONE guifg=' . dull_yellow 'guibg=NONE'
 exe 'highlight gitcommitBlank gui=NONE guifg=' . slate_grey 'guibg=' . bright_yellow
-exe 'highlight gitcommitBranch gui=NONE guifg=' . slate_grey 'guibg=' . dull_orange
+exe 'highlight gitcommitBranch gui=NONE guifg=' . bright_white 'guibg=' . dull_red
 exe 'highlight gitcommitHeader gui=NONE guifg=' . bright_white 'guibg=NONE'
 exe 'highlight gitrebaseCommit gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseHash gui=NONE guifg=' . dull_blue 'guibg=NONE'
