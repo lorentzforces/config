@@ -19,7 +19,7 @@ esac
 HISTCONTROL=ignoreboth
 
 # for now we assume that our terminal supports xterm color codes
-export PS1=$'\\[\\033[91m\\]\\w ▸\\n \\[\\033[95m\\]:) \\[\\033[39m\\]'
+export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 
 # enable programmable completion features
 if ! shopt -oq posix; then
