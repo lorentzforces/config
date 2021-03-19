@@ -14,7 +14,8 @@ nnoremap <leader>N :tabmove +<CR>
 nnoremap <leader>s :set hlsearch!<CR>
 
 " TODO: find a way to make this work with words that start with "b"
-nnoremap K :Rg \b<C-R><C-W>\b<CR>
+" disabling for now due to above issue
+" nnoremap K :Rg \b<C-R><C-W>\b<CR>
 
 " escape exits terminal mode
 tnoremap <Esc> <C-\><C-n>
@@ -26,5 +27,5 @@ vnoremap j gj
 vnoremap k gk
 
 " ability to insert blank lines without entering insert mode
-nnoremap <C-j> o<Esc>k
-nnoremap <C-k> O<Esc>j
+nnoremap <C-j> o<Esc>gk
+nnoremap <C-k> O<Esc>gj
