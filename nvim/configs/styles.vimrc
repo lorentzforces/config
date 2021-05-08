@@ -33,7 +33,7 @@ command! StyleDefault call StyleDefault()
 function! StyleGoogle()
   augroup user_style_java
     autocmd!
-    autocmd FileType call SetIndent(2, "spaces")
+    autocmd FileType java call SetIndent(2, "spaces")
   augroup END
 
   augroup user_style_javascript
@@ -56,3 +56,12 @@ function! StyleGoogle()
   bufdo doautocmd FileType
 endfunc
 command! StyleGoogle call StyleGoogle()
+
+function! StyleWork()
+  call StyleGoogle()
+  augroup user_style_java
+    autocmd!
+    autocmd FileType java call SetIndent(4, "spaces")
+  augroup END
+endfunc
+command! StyleWork call StyleWork()
