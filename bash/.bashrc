@@ -30,10 +30,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# set a reasonable default for our custom home command
-# (override in local env script if needed)
-export CLEAN_HOME="~/mine"
-
 # aliases
 if [ -f ~/.bash_aliases ]; then
   source ~/.bash_aliases
