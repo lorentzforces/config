@@ -103,7 +103,7 @@ exe 'highlight String gui=NONE guifg=' . dull_orange
 exe 'highlight Debug gui=NONE guifg=' . bright_yellow
 exe 'highlight Conditional gui=NONE guifg=' . dull_red
 exe 'highlight Special gui=NONE guifg=' . bright_black
-exe 'highlight SpecialChar gui=NONE guifg=' . bright_black
+exe 'highlight SpecialChar gui=NONE guifg=' . bright_white
 exe 'highlight Delimiter gui=NONE guifg=' . bright_black
 exe 'highlight StorageClass gui=NONE guifg=' . dull_red
 exe 'highlight Exception gui=NONE guifg=' . dull_red
@@ -143,7 +143,7 @@ exe 'highlight shDeref gui=NONE guifg=' . bright_black 'guibg=NONE'
 exe 'highlight shArithRegion gui=NONE guifg=' . slate_grey 'guibg=NONE'
 
 " syntax git
-exe 'highlight gitcommitSummary gui=underline guifg=' . slate_grey 'guibg=NONE'
+exe 'highlight gitcommitSummary gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight gitcommitOverflow gui=NONE guifg=' . dull_yellow 'guibg=NONE'
 exe 'highlight gitcommitBlank gui=NONE guifg=' . slate_grey 'guibg=' . bright_yellow
 exe 'highlight gitcommitBranch gui=NONE guifg=' . bright_white 'guibg=' . dull_red
@@ -157,6 +157,7 @@ exe 'highlight javaExternal gui=NONE guifg=' . dull_red
 exe 'highlight javaStorageClass gui=NONE guifg=' . dull_red
 exe 'highlight javaScopeDecl gui=NONE guifg=' . dull_red
 exe 'highlight javaTypedef gui=NONE guifg=' . dull_red
+exe 'highlight javaLabel gui=NONE guifg=' . dull_red
 exe 'highlight javaBoolean gui=NONE guifg=' . dull_red
 exe 'highlight javaBranch gui=NONE guifg=' . dull_red
 exe 'highlight javaConditional gui=NONE guifg=' . dull_red
@@ -191,9 +192,16 @@ exe 'highlight jsonBoolean gui=NONE guifg=' . dull_red
 
 " syntax typescript
 exe 'highlight typescriptBoolean gui=NONE guifg=' . dull_red
-exe 'highlight typescriptParens gui=NONE guifg=' . bright_black
+exe 'highlight typescriptImport gui=NONE guifg=' . dull_red
+exe 'highlight typescriptVariable gui=NONE guifg=' . dull_red
+exe 'highlight typescriptExport gui=NONE guifg=' . dull_red
+exe 'highlight typescriptDecorator gui=NONE guifg=' . dull_green
+exe 'highlight typescriptObjectLabel gui=NONE guifg=' . slate_grey
 exe 'highlight typescriptParens gui=NONE guifg=' . slate_grey
+exe 'highlight typescriptEndColons gui=NONE guifg=' . slate_grey
 exe 'highlight typescriptFuncComma gui=NONE guifg=' . slate_grey
+exe 'highlight typescriptCall gui=NONE guifg=' . slate_grey
+exe 'highlight typescriptParamImpl gui=NONE guifg=' . slate_grey
 
 " syntax python
 exe 'highlight pythonBuiltin gui=NONE guifg=' . dull_red
