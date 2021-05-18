@@ -29,7 +29,7 @@ nnoremap <leader>x :q<CR>
 
 " vim only lets you increase and decrease the size of the split, it doesn't
 " let you change in a specific direction
-nnoremap <leader><M-h> <C-w>>
+nnoremap <leader><M-h> <C-w><
 nnoremap <leader><M-l> <C-w>>
 
 nnoremap <leader><M-k> <C-w>+
