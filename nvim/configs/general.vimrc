@@ -62,6 +62,10 @@ augroup END
 " enable mouse interaction
 set mouse=a
 
+" reduce the update time
+" this controls the delay before nvim writes its swap file, so be careful
+set updatetime=100
+
 " leave some context lines when scrolling on edges of the window
 set scrolloff=3
 
