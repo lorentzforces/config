@@ -41,10 +41,13 @@ function package () {
   fi
 }
 
+# Configuration area
+# Add plugins in groups that make sense here
 (
 	set_group plugins
 	package https://github.com/junegunn/fzf.git &
 	package https://github.com/junegunn/fzf.vim.git &
+	package https://github.com/airblade/vim-gitgutter.git &
 	wait
 ) &
 
