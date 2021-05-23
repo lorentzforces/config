@@ -87,3 +87,6 @@ augroup user_todo
   autocmd!
   autocmd Syntax * call UpdateTodoKeywords("NOTE", "IMPORTANT", "FIXME")
 augroup END
+
+" plugin configuration: vim-gitgutter
+let g:gitgutter_map_keys = 0
