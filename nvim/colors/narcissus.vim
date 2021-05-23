@@ -8,8 +8,7 @@ endif
 set t_Co=256
 let g:colors_name = "narcissus"
 
-" TODO: all these variables for colors are leaked,
-" maybe do something about that
+" TODO: all these variables for colors are leaked, maybe do something about that
 let testMagenta = '#ff00ff'
 
 let middle_grey = '#999999' " background
@@ -75,6 +74,7 @@ exe 'highlight StatusLineModified gui=bold guifg=' . dull_green 'guibg=' . dull_
 exe 'highlight PMenu gui=NONE guifg=' . slate_grey 'guibg=' . dull_black
 exe 'highlight PMenuSel gui=NONE guifg=' . dull_red 'guibg=' . dull_black
 exe 'highlight PMenuSbar gui=NONE guibg=' . bright_white
+exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=' . middle_grey
 exe 'highlight netrwDir gui=NONE guifg=' . dull_blue
 
 " editor contextual colors
@@ -219,6 +219,12 @@ exe 'highlight SpellCap gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
 exe 'highlight SpellLocal gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
 exe 'highlight SpellBad gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
 exe 'highlight PMenuThumb gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
+
+" plugin-specific highlighting for vim-gitgutter
+exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green 'guibg=NONE'
+exe 'highlight GitGutterChange gui=bold guifg=' . dull_blue 'guibg=NONE'
+exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_blue 'guibg=NONE'
+exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red 'guibg=NONE'
 
 "hi clear -- no settings --
 "hi Ignore -- no settings --
