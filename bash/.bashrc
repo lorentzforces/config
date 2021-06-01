@@ -40,8 +40,8 @@ export EDITOR=nvim
 # store "host" terminal to use same terminfo in tmux
 export HOST_TERM=$TERM
 
-# TODO: consider putting self-managed stuff somewhere else (consistent)
-export PATH=~/.fzf/bin:$PATH
+# unmanaged binaries are found here
+export PATH=~/programs/bin:$PATH
 
 # to turn off any of the .bash_ext/ scripts, do not symlink them
 if [ -r ~/.bash_ext/mac_env.sh ]; then
