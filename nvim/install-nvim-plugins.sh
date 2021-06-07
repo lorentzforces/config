@@ -48,6 +48,7 @@ function package () {
 	package https://github.com/junegunn/fzf.git &
 	package https://github.com/junegunn/fzf.vim.git &
 	package https://github.com/airblade/vim-gitgutter.git &
+	package https://github.com/neoclide/coc.nvim.git &
 	wait
 ) &
 
