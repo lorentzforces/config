@@ -40,8 +40,9 @@ filetype on
 set noexpandtab
 set tabstop=4 shiftwidth=4 softtabstop=4
 
+" by default don't show leading whitespace (use :ShowIndents to toggle)
+set nolist
 " show tabs as ▸ followed by blank space
-set list
 set listchars=tab:▸\ ,
 " wrapping indicators since we don't use line numbers
 set showbreak=↳
@@ -99,4 +100,7 @@ set signcolumn=yes
 let g:gitgutter_map_keys = 0
 
 " plugin configuration: coc.vim
-let b:coc_suggest_disable = 1
+augroup disable_coc_suggestions
+  autocmd!
+  autocmd BufRead * let b:coc_suggest_disable = 1
+augroup END

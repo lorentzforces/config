@@ -229,6 +229,7 @@ exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red
 " plugin-specific highlighting for coc.vim
 exe 'highlight CocStrikeThrough gui=strikethrough guifg=' . slate_grey
 exe 'highlight CocWarningSign gui=NONE guifg=' . dull_yellow
+exe 'highlight CocInfoSign gui=NONE guifg=' . dull_yellow
 
 "hi clear -- no settings --
 "hi Ignore -- no settings --
