@@ -15,13 +15,13 @@ function! SetIndent(columns, char)
   call SetIndentChar(a:char)
 endfunction
 
-function! s:SetIndentNum(columns)
+function! SetIndentNum(columns)
   let &l:tabstop=a:columns
   let &l:shiftwidth=a:columns
   let &l:softtabstop=a:columns
 endfunction
 
-function! s:SetIndentChar(char) abort
+function! SetIndentChar(char) abort
   if a:char == "tabs"
     setlocal noexpandtab
   elseif a:char == "spaces"
@@ -30,3 +30,5 @@ function! s:SetIndentChar(char) abort
     echoerr "Must specify ""spaces"" or ""tabs"""
   endif
 endfunction
+
+command! ShowIndents set list!
