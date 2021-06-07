@@ -61,7 +61,7 @@ exe 'highlight CursorLineNR gui=NONE guifg=' . dull_red 'guibg=' . dull_black
 exe 'highlight WarningMsg gui=italic guifg=' . dull_yellow
 exe 'highlight ModeMsg gui=NONE guifg=' . bright_white 'guibg=' . bright_red
 exe 'highlight MoreMsg gui=NONE guifg=' . bright_black
-exe 'highlight VertSplit gui=NONE guifg=' . dull_black 'guibg=' . dull_black
+exe 'highlight VertSplit gui=NONE guifg=' . middle_grey 'guibg=' . middle_grey
 exe 'highlight Directory gui=bold guifg=' . bright_blue
 exe 'highlight SpecialKey gui=italic guifg=' . bright_black
 exe 'highlight TabLine gui=NONE guifg=' . bright_white 'guibg=' . dull_black
@@ -71,9 +71,10 @@ exe 'highlight StatusLine gui=NONE guifg=' . dull_red 'guibg=' . dull_black
 exe 'highlight StatusLineNC gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight StatusLineFlag gui=bold guifg=' . dull_purple 'guibg=' . dull_black
 exe 'highlight StatusLineModified gui=bold guifg=' . dull_green 'guibg=' . dull_black
-exe 'highlight PMenu gui=NONE guifg=' . slate_grey 'guibg=' . dull_black
-exe 'highlight PMenuSel gui=NONE guifg=' . dull_red 'guibg=' . dull_black
-exe 'highlight PMenuSbar gui=NONE guibg=' . bright_white
+exe 'highlight PMenu gui=NONE guifg=' . slate_grey 'guibg=' . dull_white
+exe 'highlight PmenuSel gui=NONE guifg=' . dull_red 'guibg=' . dull_white
+exe 'highlight PmenuSbar gui=NONE guibg=' . dull_white
+exe 'highlight PmenuThumb gui=NONE guibg=' . dull_black
 exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=' . middle_grey
 exe 'highlight netrwDir gui=NONE guifg=' . dull_blue
 
@@ -218,13 +219,16 @@ exe 'highlight FoldColumn gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
 exe 'highlight SpellCap gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
 exe 'highlight SpellLocal gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
 exe 'highlight SpellBad gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
-exe 'highlight PMenuThumb gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
 
 " plugin-specific highlighting for vim-gitgutter
-exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green 'guibg=NONE'
-exe 'highlight GitGutterChange gui=bold guifg=' . dull_blue 'guibg=NONE'
-exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_blue 'guibg=NONE'
-exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red 'guibg=NONE'
+exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green
+exe 'highlight GitGutterChange gui=bold guifg=' . dull_blue
+exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_blue
+exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red
+
+" plugin-specific highlighting for coc.vim
+exe 'highlight CocStrikeThrough gui=strikethrough guifg=' . slate_grey
+exe 'highlight CocWarningSign gui=NONE guifg=' . dull_yellow
 
 "hi clear -- no settings --
 "hi Ignore -- no settings --

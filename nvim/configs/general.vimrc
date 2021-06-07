@@ -64,7 +64,7 @@ set mouse=a
 
 " reduce the update time
 " this controls the delay before nvim writes its swap file, so be careful
-set updatetime=100
+set updatetime=300
 
 " leave some context lines when scrolling on edges of the window
 set scrolloff=3
@@ -92,5 +92,11 @@ augroup user_todo
   autocmd Syntax * call UpdateTodoKeywords("NOTE", "IMPORTANT", "FIXME")
 augroup END
 
+" show the sign column all the time so it doesn't jump in and out
+set signcolumn=yes
+
 " plugin configuration: vim-gitgutter
 let g:gitgutter_map_keys = 0
+
+" plugin configuration: coc.vim
+let b:coc_suggest_disable = 1
