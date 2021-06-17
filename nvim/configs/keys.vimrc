@@ -68,3 +68,4 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nmap <silent> <leader>a <Plug>(coc-codeaction)
+inoremap <silent><expr> <M-i> coc#refresh()
