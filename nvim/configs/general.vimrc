@@ -9,19 +9,20 @@ syntax enable
 set nonumber
 set norelativenumber
 
-" statusline
+" statusline customization
 set statusline=%f
 set statusline+=\ %#StatusLineFlag#%h%w%r%* " flags
 set statusline+=%#StatusLineModified#%m%* " modified flag
 set statusline+=\ %=%c%V\ on\ %l/%L
 
-set cursorline
+set nocursorline
 
 " soft wrap long lines on word boundaries, keep continuation lines
 " at the same indentation level
 set wrap linebreak
 set breakindent
 
+" splitting to the left just feels weird
 set splitright
 
 " search incrementally
@@ -73,7 +74,7 @@ set scrolloff=3
 " add additional TODO-style highlights
 " credit: user Ralf @
 " https://vi.stackexchange.com/questions/19040/add-keywords-to-a-highlight-group
-function! UpdateTodoKeywords(...)
+function! s:UpdateTodoKeywords(...)
   let newKeywords = join(a:000, " ")
   let synTodo =
       \ map(
@@ -90,7 +91,7 @@ endfunction
 
 augroup user_todo
   autocmd!
-  autocmd Syntax * call UpdateTodoKeywords("NOTE", "IMPORTANT", "FIXME")
+  autocmd Syntax * call <SID>UpdateTodoKeywords("NOTE", "IMPORTANT", "FIXME")
 augroup END
 
 " show the sign column all the time so it doesn't jump in and out
@@ -100,6 +101,7 @@ set signcolumn=yes
 let g:gitgutter_map_keys = 0
 
 " plugin configuration: coc.vim
+" having autocomplete suggestions on all the time is annoying and distracting
 augroup disable_coc_suggestions
   autocmd!
   autocmd BufRead * let b:coc_suggest_disable = 1
