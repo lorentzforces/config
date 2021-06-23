@@ -50,6 +50,9 @@ vnoremap k gk
 nnoremap <silent> <C-j> o<Esc>gk
 nnoremap <silent> <C-k> O<Esc>gj
 
+" easy line duplication
+nnoremap <silent> <leader>d :t.<CR>
+
 " plugin keybinds for coc.vim
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()

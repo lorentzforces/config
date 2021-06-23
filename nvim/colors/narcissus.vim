@@ -100,7 +100,6 @@ exe 'highlight Underlined gui=underline guifg=' . slate_grey
 exe 'highlight Title gui=underline guifg=' . bright_black
 exe 'highlight Comment gui=italic guifg=' . bright_white
 exe 'highlight Typedef gui=NONE guifg=' . dull_red
-exe 'highlight String gui=NONE guifg=' . dull_orange
 exe 'highlight Debug gui=NONE guifg=' . bright_yellow
 exe 'highlight Conditional gui=NONE guifg=' . dull_red
 exe 'highlight Special gui=NONE guifg=' . bright_black
@@ -117,15 +116,16 @@ exe 'highlight Type gui=NONE guifg=' . dull_red
 exe 'highlight Identifier gui=NONE guifg=' . slate_grey
 exe 'highlight Statement gui=NONE guifg=' . dull_red
 exe 'highlight Operator gui=NONE guifg=' . dull_red
+exe 'highlight String gui=NONE guifg=' . dull_orange
 exe 'highlight Character gui=NONE guifg=' . dull_purple
 exe 'highlight Float gui=NONE guifg=' . dull_purple
 exe 'highlight Number gui=NONE guifg=' . dull_purple
 exe 'highlight Boolean gui=NONE guifg=' . dull_purple
 exe 'highlight Macro gui=NONE guifg=' . dull_green
-exe 'highlight PreProc gui=NONE guifg=' . dull_green
-exe 'highlight PreCondit gui=NONE guifg=' . dull_green
-exe 'highlight Define gui=NONE guifg=' . dull_green
-exe 'highlight Include gui=NONE guifg=' . dull_green
+exe 'highlight PreProc gui=NONE guifg=' . dull_purple
+exe 'highlight PreCondit gui=NONE guifg=' . dull_purple
+exe 'highlight Define gui=NONE guifg=' . dull_purple
+exe 'highlight Include gui=NONE guifg=' . dull_purple
 exe 'highlight Tag gui=underline'
 exe 'highlight Todo gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 exe 'highlight Error gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
