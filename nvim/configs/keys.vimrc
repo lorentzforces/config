@@ -53,6 +53,9 @@ nnoremap <silent> <C-k> O<Esc>gj
 " easy line duplication
 nnoremap <silent> <leader>d :t.<CR>
 
+" fix the annoying issue with hyphen sending a space in Netrw
+nmap - <Plug>NetrwBrowseUpDir
+
 " plugin keybinds for coc.vim
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()

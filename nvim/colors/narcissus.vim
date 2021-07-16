@@ -115,13 +115,13 @@ exe 'highlight Repeat gui=NONE guifg=' . dull_red
 exe 'highlight Type gui=NONE guifg=' . dull_red
 exe 'highlight Identifier gui=NONE guifg=' . slate_grey
 exe 'highlight Statement gui=NONE guifg=' . dull_red
-exe 'highlight Operator gui=NONE guifg=' . dull_red
+exe 'highlight Operator gui=NONE guifg=' . slate_grey
 exe 'highlight String gui=NONE guifg=' . dull_orange
 exe 'highlight Character gui=NONE guifg=' . dull_purple
 exe 'highlight Float gui=NONE guifg=' . dull_purple
 exe 'highlight Number gui=NONE guifg=' . dull_purple
 exe 'highlight Boolean gui=NONE guifg=' . dull_purple
-exe 'highlight Macro gui=NONE guifg=' . dull_green
+exe 'highlight Macro gui=NONE guifg=' . dull_purple
 exe 'highlight PreProc gui=NONE guifg=' . dull_purple
 exe 'highlight PreCondit gui=NONE guifg=' . dull_purple
 exe 'highlight Define gui=NONE guifg=' . dull_purple
@@ -164,6 +164,7 @@ exe 'highlight javaBranch gui=NONE guifg=' . dull_red
 exe 'highlight javaConditional gui=NONE guifg=' . dull_red
 exe 'highlight javaExceptions gui=NONE guifg=' . dull_red
 exe 'highlight javaCommentTitle gui=italic guifg=' . bright_white
+exe 'highlight javaOperator gui=NONE guifg=' . dull_red
 
 " syntax Groovy
 exe 'highlight groovyJDKBuiltin gui=NONE guifg=' . dull_red
@@ -209,6 +210,9 @@ exe 'highlight pythonBuiltin gui=NONE guifg=' . dull_red
 exe 'highlight pythonInclude gui=NONE guifg=' . dull_red
 exe 'highlight pythonException gui=NONE guifg=' . dull_red
 exe 'highlight pythonExceptions gui=NONE guifg=' . dull_red
+
+" syntax rust
+exe 'highlight rustCommentLineDoc gui=italic guifg=' . bright_white
 
 " syntax sql
 exe 'highlight sqlKeyword gui=NONE guifg=' . dull_red
