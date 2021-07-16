@@ -97,6 +97,10 @@ augroup END
 " show the sign column all the time so it doesn't jump in and out
 set signcolumn=yes
 
+" plugin configuration: netrw
+" don't show stuff in the netrw view that we can't do anything about
+let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
+
 " plugin configuration: vim-gitgutter
 let g:gitgutter_map_keys = 0
 
