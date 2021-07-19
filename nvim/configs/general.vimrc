@@ -108,5 +108,5 @@ let g:gitgutter_map_keys = 0
 " having autocomplete suggestions on all the time is annoying and distracting
 augroup disable_coc_suggestions
   autocmd!
-  autocmd BufRead * let b:coc_suggest_disable = 1
+  autocmd BufEnter * let b:coc_suggest_disable = 1
 augroup END
