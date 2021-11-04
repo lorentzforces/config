@@ -36,4 +36,4 @@ npx() {
 }
 
 # initialize node on shell startup
-node --version
+node --version >/dev/null

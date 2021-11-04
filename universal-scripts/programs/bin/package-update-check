@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+FILE_PATH="$HOME/upgradable-packages.txt"
+
+if [ -f "$FILE_PATH" ]; then
+	rm $FILE_PATH
+fi
+
+if command -v apt &> /dev/null; then
+	echo -e "Fetching apt packages..."
+	sudo apt update
+	echo -e "### Upgradable packages from apt: ###\r" >> $FILE_PATH
+	apt list --upgradable >> $FILE_PATH
+	echo -e "\r\r" >> $FILE_PATH
+fi
+
+if command -v brew &> /dev/null; then
+	echo -e "Fetching homebrew packages..."
+	echo -e "### Upgradable packages from homebrew: ###\r" >> $FILE_PATH
+	brew upgrade --dry-run >> $FILE_PATH
+	echo -e "\r\r" >> $FILE_PATH
+fi
+
+if command -v brew &> /dev/null; then
+	echo -e "Fetching flatpak packages..."
+	echo -e "### Upgradable packages from flatpak: ###\r" >> $FILE_PATH
+	flatpak remote-ls --updates >> $FILE_PATH
+	echo -e "\r\r" >> $FILE_PATH
+fi

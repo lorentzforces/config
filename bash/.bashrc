@@ -4,12 +4,21 @@
 # set -x
 
 # to turn off any of the .bash_ext/ scripts, do not symlink them
+
 # set up nvm aliases even if in a non-interactive shell
 if [ -r ~/.bash_ext/nvm_init.sh ]; then
   source ~/.bash_ext/nvm_init.sh
 fi
 
-# exit if running non-interactively
+# machine-specific configuration (e.g. homebrew path info)
+if [ -r ~/.bash_ext/local-env.sh ]; then
+  source ~/.bash_ext/local-env.sh
+fi
+
+# unmanaged binaries are found here
+export PATH=~/programs/bin:$PATH
+
+# exit after setting PATH if running non-interactively
 case $- in
   *i*) ;;
     *) return;;
@@ -40,26 +49,12 @@ export EDITOR=nvim
 # store "host" terminal to use same terminfo in tmux
 export HOST_TERM=$TERM
 
-# unmanaged binaries are found here
-export PATH=~/programs/bin:$PATH
-
-# to turn off any of the .bash_ext/ scripts, do not symlink them
-if [ -r ~/.bash_ext/mac_env.sh ]; then
-  source ~/.bash_ext/mac_env.sh
-fi
-
 if [ -r ~/.bash_ext/fzf.sh ]; then
   source ~/.bash_ext/fzf.sh
 fi
 
 if [ -r ~/.bash_ext/misc_commands.sh ]; then
   source ~/.bash_ext/misc_commands.sh
-fi
-
-# local_env.sh should not be committed, it contains machine-specific
-# configuration (e.g. homebrew path info)
-if [ -r ~/.bash_ext/local_env.sh ]; then
-  source ~/.bash_ext/local_env.sh
 fi
 
 # PROFILING

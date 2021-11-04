@@ -59,7 +59,7 @@ exe 'highlight ErrorMsg gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
 exe 'highlight LineNr gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight CursorLineNR gui=NONE guifg=' . dull_red 'guibg=' . dull_black
 exe 'highlight WarningMsg gui=italic guifg=' . dull_yellow
-exe 'highlight ModeMsg gui=NONE guifg=' . bright_white 'guibg=' . bright_red
+exe 'highlight ModeMsg gui=NONE guifg=' . bright_white 'guibg=' . dull_red
 exe 'highlight MoreMsg gui=NONE guifg=' . bright_black
 exe 'highlight VertSplit gui=NONE guifg=' . middle_grey 'guibg=' . middle_grey
 exe 'highlight Directory gui=bold guifg=' . bright_blue
@@ -218,11 +218,9 @@ exe 'highlight rustCommentLineDoc gui=italic guifg=' . bright_white
 exe 'highlight sqlKeyword gui=NONE guifg=' . dull_red
 exe 'highlight sqlSpecial gui=NONE guifg=' . dull_red
 
-" unknown usage, setting to magenta as a canary
-exe 'highlight FoldColumn gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
-exe 'highlight SpellCap gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
-exe 'highlight SpellLocal gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
-exe 'highlight SpellBad gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
+" syntax lua
+exe 'highlight luaTable gui=NONE guifg=' . slate_grey
+exe 'highlight luaFunction gui=NONE guifg=' . dull_red
 
 " plugin-specific highlighting for vim-gitgutter
 exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green
@@ -234,6 +232,12 @@ exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red
 exe 'highlight CocStrikeThrough gui=strikethrough guifg=' . slate_grey
 exe 'highlight CocWarningSign gui=NONE guifg=' . dull_yellow
 exe 'highlight CocInfoSign gui=NONE guifg=' . dull_yellow
+
+" unknown usage, setting to magenta as a canary
+exe 'highlight FoldColumn gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
+exe 'highlight SpellCap gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
+exe 'highlight SpellLocal gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
+exe 'highlight SpellBad gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
 
 "hi clear -- no settings --
 "hi Ignore -- no settings --
