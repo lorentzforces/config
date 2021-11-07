@@ -76,7 +76,7 @@ exe 'highlight PmenuSel gui=NONE guifg=' . dull_red 'guibg=' . dull_white
 exe 'highlight PmenuSbar gui=NONE guibg=' . dull_white
 exe 'highlight PmenuThumb gui=NONE guibg=' . dull_black
 exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=' . middle_grey
-exe 'highlight netrwDir gui=NONE guifg=' . dull_blue
+exe 'highlight netrwDir gui=NONE guifg=' . dull_orange
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . dull_white
@@ -184,6 +184,8 @@ exe 'highlight htmlTagN gui=NONE guifg=' . dull_red
 exe 'highlight javaScriptException gui=NONE guifg=' . dull_red
 exe 'highlight javaScriptIdentifier gui=NONE guifg=' . dull_red
 exe 'highlight javaScriptConditional gui=NONE guifg=' . dull_red
+exe 'highlight javascriptFunction gui=NONE guifg=' . dull_red
+exe 'highlight javascriptOperator gui=NONE guifg=' . dull_red
 exe 'highlight javaScriptBoolean gui=NONE guifg=' . dull_red
 exe 'highlight javaScriptNumber gui=NONE guifg=' . dull_purple
 
