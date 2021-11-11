@@ -215,6 +215,7 @@ exe 'highlight pythonExceptions gui=NONE guifg=' . dull_red
 
 " syntax rust
 exe 'highlight rustCommentLineDoc gui=italic guifg=' . bright_white
+exe 'highlight rustLifetime gui=NONE guifg=' . dull_purple
 
 " syntax sql
 exe 'highlight sqlKeyword gui=NONE guifg=' . dull_red
