@@ -1,40 +1,26 @@
-#
-# FZF Configuration
-#
+### FZF Configuration ###
 
-#
+dark_color_scheme_opts='--color fg:-1,bg:-1,fg+:-1,bg+:8,hl:12,hl+:12,pointer:5,info:14,prompt:13'
+light_color_scheme_opts='--color fg:-1,bg:-1,fg+:-1,bg+:7,hl:4,hl+:4,pointer:5,info:6,prompt:1'
+
 # Standard options env var
-#
+export FZF_DEFAULT_OPTS="$light_color_scheme_opts"
 
-# dark color scheme
-# export FZF_DEFAULT_OPTS='
-# 	--color fg:-1,bg:-1,fg+:-1,bg+:8,hl:12,hl+:12,pointer:5,info:14,prompt:13
-# '
-
-# light color scheme
-export FZF_DEFAULT_OPTS='
-	--color fg:-1,bg:-1,fg+:-1,bg+:7,hl:4,hl+:4,pointer:5,info:6,prompt:1
-'
-
-# env var that replaces "find" as the command fzf uses by default
+# use ripgrep to search files
+# this will respect .gitignore settings, add --no-ignore to ignore .gitignore
+default_command='rg'
 # --files: List files that would be searched but do not search
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
-# --glob: file/directory name glob matching
-#         ignore .git and node_modules
-# this will respect .gitignore settings, add --no-ignore to ignore .gitignore
-export FZF_DEFAULT_COMMAND='
-	rg --files --hidden --follow --ignore-case --glob "!.git" --glob "!.DS_STORE" --glob "!node_modules"
-'
+default_command+=' --files --hidden --follow --ignore-case'
+# ignore .git, node_modules, and MacOS metadata
+default_command+=' --glob "!.git" --glob "!.DS_STORE" --glob "!node_modules"'
 
-# this should be the same as the above
-export FZF_CTRL_T_COMMAND='
-	rg --files --hidden --follow --ignore-case --glob "!.git" --glob "!.DS_STORE" --glob "!node_modules"
-'
+# env var that replaces "find" as the command fzf uses by default
+export FZF_DEFAULT_COMMAND="$default_command"
+export FZF_CTRL_T_COMMAND="$default_command"
 
-#
-# Functions
-#
+### Functions ###
 
 # TODO: consolidate code styles - this is a mess in here right now
 

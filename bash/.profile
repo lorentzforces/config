@@ -1,3 +1,1 @@
-if [ -r ~/.bashrc ]; then
-  source ~/.bashrc
-fi
+source ~/.bash_profile
