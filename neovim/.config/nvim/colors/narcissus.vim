@@ -67,10 +67,10 @@ exe 'highlight SpecialKey gui=italic guifg=' . bright_black
 exe 'highlight TabLine gui=NONE guifg=' . bright_white 'guibg=' . dull_black
 exe 'highlight TabLineSel gui=NONE guifg=' . dull_red 'guibg=' . middle_grey
 exe 'highlight TabLineFill gui=NONE guibg=' . dull_black
-exe 'highlight StatusLine gui=NONE guifg=' . dull_red 'guibg=' . dull_black
+exe 'highlight StatusLine gui=NONE guifg=' . dull_white 'guibg=' . dull_red
 exe 'highlight StatusLineNC gui=NONE guifg=' . dull_white 'guibg=' . dull_black
-exe 'highlight StatusLineFlag gui=bold guifg=' . dull_purple 'guibg=' . dull_black
-exe 'highlight StatusLineModified gui=bold guifg=' . dull_green 'guibg=' . dull_black
+exe 'highlight StatusLineFlag gui=bold guifg=' . dull_white 'guibg=' . dull_red
+exe 'highlight StatusLineModified gui=bold guifg=' . dull_white 'guibg=' . dull_red
 exe 'highlight PMenu gui=NONE guifg=' . slate_grey 'guibg=' . dull_white
 exe 'highlight PmenuSel gui=NONE guifg=' . dull_red 'guibg=' . dull_white
 exe 'highlight PmenuSbar gui=NONE guibg=' . dull_white
