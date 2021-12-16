@@ -422,7 +422,12 @@ globalkeys = gears.table.join(
     -- Prompt
 	awful.key(
 		{ modkey }, "space",
-		function () awful.util.spawn("dmenu_run -b") end,
+		function () awful.spawn(
+			"dmenu_run -b",
+			{
+				screen = awful.screen.focused
+			}
+		) end,
 		{ description = "application launcher [dmenu]", group = "launcher" }
 	),
 
@@ -615,8 +620,8 @@ awful.rules.rules = {
 	{
 		rule = { }, -- All clients will match this rule.
 		properties = {
-			border_width = beautiful.border_width,
-			border_color = beautiful.border_normal,
+			-- border_width = beautiful.border_width,
+			-- border_color = beautiful.border_normal,
 			focus = awful.client.focus.filter,
 			raise = true,
 			keys = clientkeys,
@@ -752,8 +757,8 @@ client.connect_signal(
 )
 
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+-- client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
 -- limit notification sizes
