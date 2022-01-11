@@ -53,7 +53,7 @@ alias xtrun="run_with_xterminfo"
 
 # some handy one-liners
 alias lessify="fc -s | less -R"
-alias printpath="echo $PATH | sed 's/:/\n/g' | cat"
+alias printpath='eval "echo $PATH | sed '\''s/:/\n/g'\'' | cat"'
 
 # enable programmable completion features
 if ! shopt -oq posix; then
