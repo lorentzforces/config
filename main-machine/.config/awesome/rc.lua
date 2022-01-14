@@ -763,5 +763,6 @@ naughty.config.defaults['icon_size'] = 100
 
 -- startup
 os.execute("source ~/.bashrc") --synchronous
+os.execute("redshift &")
 os.execute("flameshot &")
 os.execute("megasync &")
