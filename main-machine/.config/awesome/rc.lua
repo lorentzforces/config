@@ -17,7 +17,7 @@ local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 -- Load Debian menu entries
-local debian = require("debian.menu")
+-- local debian = require("debian.menu")
 local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- {{{ Error handling
@@ -90,18 +90,18 @@ myawesomemenu = {
 local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
 local menu_terminal = { "open terminal", terminal }
 
-if has_fdo then
-	mymainmenu = freedesktop.menu.build({
-		before = { menu_awesome },
-		after =  { menu_terminal }
-	})
-else
-	mymainmenu = awful.menu({ items = {
-		menu_awesome,
-		{ "Debian", debian.menu.Debian_menu.Debian },
-		menu_terminal,
-	} })
-end
+-- if has_fdo then
+-- 	mymainmenu = freedesktop.menu.build({
+-- 		before = { menu_awesome },
+-- 		after =  { menu_terminal }
+-- 	})
+-- else
+-- 	mymainmenu = awful.menu({ items = {
+-- 		menu_awesome,
+-- 		{ "Debian", debian.menu.Debian_menu.Debian },
+-- 		menu_terminal,
+-- 	} })
+-- end
 
 
 mylauncher = awful.widget.launcher({
