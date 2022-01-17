@@ -14,6 +14,14 @@ if command -v apt &> /dev/null; then
 	echo -e "\r\r" >> $FILE_PATH
 fi
 
+if command -v dnf &> /dev/null; then
+	echo -e "Fetching dnf packages..."
+	dnf check-update --refresh &> /dev/null
+	echo -e "### Upgradable packages from dnf: ###\r" >> $FILE_PATH
+	dnf list --updates >> $FILE_PATH
+	echo -e "\r\r" >> $FILE_PATH
+fi
+
 if command -v brew &> /dev/null; then
 	echo -e "Fetching homebrew packages..."
 	echo -e "### Upgradable packages from homebrew: ###\r" >> $FILE_PATH
