@@ -1,49 +1,51 @@
 [core]
-  editor = nvim
+	editor = nvim
+	pager = nvim -R
 
 [color]
-  ui = true
+	ui = true
+	pager = no
 
 [alias]
-  b = branch -v
-  co = checkout
-  cnb = checkout -b
-  st = status -sb
-  rem = remote -v
-  cm = commit
-  cma = commit -a
-  f = fetch
-  fa = fetch -a
-  unstage = reset HEAD --
-  dt = difftool
+	b = branch -v
+	co = checkout
+	cnb = checkout -b
+	st = status -sb
+	rem = remote -v
+	cm = commit
+	cma = commit -a
+	f = fetch
+	fa = fetch -a
+	unstage = reset HEAD --
+	dt = difftool
 
-  ls = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges
-  ll = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges
-  lsm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate
-  llm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat
+	ls = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges
+	ll = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges
+	lsm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate
+	llm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat
 
 # individual command configs
 [advice]
-  detachedHead = false
+	detachedHead = false
 
 [checkout]
-  defaultRemote = origin
+	defaultRemote = origin
 
 [fetch]
-  prune = true
+	prune = true
 
 [pull]
-  ff = only
+	ff = only
 
 [color "branch"]
-  current = 15 1
-  remote = 15
-  local = 1
+	current = 15 1
+	remote = 15
+	local = 1
 
 [color "status"]
-  nobranch = 15 1
-  branch = 15 1
-  added = 2
-  changed = 4
-  untracked = 3
+	nobranch = 15 1
+	branch = 15 1
+	added = 2
+	changed = 4
+	untracked = 3
 

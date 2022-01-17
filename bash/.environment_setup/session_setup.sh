@@ -15,6 +15,10 @@ export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 # store "host" terminal so we can use the same terminfo in tmux
 export HOST_TERM=$TERM
 
+# set up paging env vars
+export PAGER="nvim -R"
+export MANPAGER="nvim +Man!"
+
 # a lot of programs aren't a fan of Kitty's terminfo, so this lets us fake xterm capabilities when
 # we need to use them
 function run_with_xterminfo() {
@@ -51,8 +55,12 @@ alias da="fzf_docker_start"
 alias ds="fzf_docker_stop"
 alias xtrun="run_with_xterminfo"
 
+# paging
+alias page="nvim -R -"
+alias pageify="fc -s | nvim -R -"
+alias lessify="fc -s | less -R" # in case only less is available for some reason
+
 # some handy one-liners
-alias lessify="fc -s | less -R"
 alias printpath='eval "echo $PATH | sed '\''s/:/\n/g'\'' | cat"'
 
 # enable programmable completion features
