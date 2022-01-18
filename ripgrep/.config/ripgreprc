@@ -1,0 +1,6 @@
+-M300
+--ignore-case
+--hidden
+--follow
+--no-ignore-vcs
+-g "!{node_modules,.git,.DS_STORE}"
