@@ -4,7 +4,10 @@
 
 [color]
 	ui = true
-	pager = no
+	pager = false
+
+[pager]
+	branch = false
 
 [alias]
 	b = branch -v
