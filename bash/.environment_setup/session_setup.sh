@@ -19,6 +19,12 @@ export HOST_TERM=$TERM
 export PAGER="nvim -R"
 export MANPAGER="nvim +Man!"
 
+# point to ripgrep configuration
+export RIPGREP_CONFIG_FILE="$HOME/.config/ripgreprc"
+
+# point to ls_colors configuration
+eval "$(dircolors -b $HOME/.config/ls-colors.conf)"
+
 # a lot of programs aren't a fan of Kitty's terminfo, so this lets us fake xterm capabilities when
 # we need to use them
 function run_with_xterminfo() {
@@ -32,13 +38,9 @@ eval "$(fnm completions --shell bash)"
 
 ### aliases ###
 
-# default options for common commands
-alias ls="ls --classify --width=90"
-alias rg="rg -i -M300"
-
-# ls abbreviations
-alias la="ls -A"
-alias ll="ls -Alh"
+alias ls="ls --color=auto --classify --width=90"
+alias la="ls -A --color=auto"
+alias ll="ls -Alh --color=auto"
 
 alias g="git"
 alias ..="cd .."

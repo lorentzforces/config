@@ -8,30 +8,31 @@ fi
 
 if command -v apt &> /dev/null; then
 	echo -e "Fetching apt packages..."
-	sudo apt update
-	echo -e "### Upgradable packages from apt: ###\r" >> $FILE_PATH
+	sudo apt update &> /dev/null
+	echo -e "### Upgradable packages from apt: ###\n" >> $FILE_PATH
 	apt list --upgradable >> $FILE_PATH
-	echo -e "\r\r" >> $FILE_PATH
+	echo -e "\n\n" >> $FILE_PATH
 fi
 
 if command -v dnf &> /dev/null; then
 	echo -e "Fetching dnf packages..."
+	# we could do this in one line, but this way we don't get the progress updates in the output
 	dnf check-update --refresh &> /dev/null
-	echo -e "### Upgradable packages from dnf: ###\r" >> $FILE_PATH
+	echo -e "### Upgradable packages from dnf: ###\n" >> $FILE_PATH
 	dnf list --updates >> $FILE_PATH
-	echo -e "\r\r" >> $FILE_PATH
+	echo -e "\n\n" >> $FILE_PATH
 fi
 
 if command -v brew &> /dev/null; then
 	echo -e "Fetching homebrew packages..."
-	echo -e "### Upgradable packages from homebrew: ###\r" >> $FILE_PATH
+	echo -e "### Upgradable packages from homebrew: ###\n" >> $FILE_PATH
 	brew upgrade --dry-run >> $FILE_PATH
-	echo -e "\r\r" >> $FILE_PATH
+	echo -e "\n\n" >> $FILE_PATH
 fi
 
 if command -v brew &> /dev/null; then
 	echo -e "Fetching flatpak packages..."
-	echo -e "### Upgradable packages from flatpak: ###\r" >> $FILE_PATH
+	echo -e "### Upgradable packages from flatpak: ###\n" >> $FILE_PATH
 	flatpak remote-ls --updates >> $FILE_PATH
-	echo -e "\r\r" >> $FILE_PATH
+	echo -e "\n\n" >> $FILE_PATH
 fi
