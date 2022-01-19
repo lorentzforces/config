@@ -91,10 +91,10 @@ local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
 local menu_terminal = { "open terminal", terminal }
 
 -- if has_fdo then
--- 	mymainmenu = freedesktop.menu.build({
--- 		before = { menu_awesome },
--- 		after =  { menu_terminal }
--- 	})
+--	mymainmenu = freedesktop.menu.build({
+--		before = { menu_awesome },
+--		after =  { menu_terminal }
+--	})
 -- else
 -- 	mymainmenu = awful.menu({ items = {
 -- 		menu_awesome,
@@ -188,13 +188,13 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+local tag_names = { "●", "●", "●", "◯", "◯", "◯", }
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
 	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
 	-- Default to tile for horizontal screens, tilebottom for vertical ones.
-	local tag_names = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 	if (s.workarea.width >= s.workarea.height) then
 		awful.tag(tag_names, s, awful.layout.layouts[1])
 	else
@@ -529,59 +529,62 @@ clientkeys = gears.table.join(
 -- Bind all key numbers to tags.
 -- Be careful: we use keycodes to make it work on any keyboard layout.
 -- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
-	globalkeys = gears.table.join(globalkeys,
-		-- View tag only.
-		awful.key(
-			{ modkey }, "#" .. i + 9,
-			function ()
-				local screen = awful.screen.focused()
-				local tag = screen.tags[i]
-				if tag then
-					tag:view_only()
-				end
-			end,
-			{ description = "view tag #"..i, group = "tag" }
-		),
-		-- Toggle tag display.
-		awful.key(
-			{ modkey, "Control" }, "#" .. i + 9,
-			function ()
-				local screen = awful.screen.focused()
-				local tag = screen.tags[i]
-				if tag then
-					awful.tag.viewtoggle(tag)
-				end
-			end,
-			{ description = "toggle tag #" .. i, group = "tag" }
-		),
-		-- Move client to tag.
-		awful.key(
-			{ modkey, "Shift" }, "#" .. i + 9,
-			function ()
-				if client.focus then
-					local tag = client.focus.screen.tags[i]
+for i, tagname in ipairs(tag_names) do
+	-- don't bind more than 9 keys
+	if i < 10 then
+		globalkeys = gears.table.join(globalkeys,
+			-- View tag only.
+			awful.key(
+				{ modkey }, "#" .. i + 9,
+				function ()
+					local screen = awful.screen.focused()
+					local tag = screen.tags[i]
 					if tag then
-						client.focus:move_to_tag(tag)
+						tag:view_only()
 					end
-				end
-			end,
-			{ description = "move focused client to tag #"..i, group = "tag" }
-		),
-		-- Toggle tag on focused client.
-		awful.key(
-			{ modkey, "Control", "Shift" }, "#" .. i + 9,
-			function ()
-				if client.focus then
-					local tag = client.focus.screen.tags[i]
+				end,
+				{ description = "view tag #"..i, group = "tag" }
+			),
+			-- Toggle tag display.
+			awful.key(
+				{ modkey, "Control" }, "#" .. i + 9,
+				function ()
+					local screen = awful.screen.focused()
+					local tag = screen.tags[i]
 					if tag then
-						client.focus:toggle_tag(tag)
+						awful.tag.viewtoggle(tag)
 					end
-				end
-			end,
-			{ description = "toggle focused client on tag #" .. i, group = "tag" }
+				end,
+				{ description = "toggle tag #" .. i, group = "tag" }
+			),
+			-- Move client to tag.
+			awful.key(
+				{ modkey, "Shift" }, "#" .. i + 9,
+				function ()
+					if client.focus then
+						local tag = client.focus.screen.tags[i]
+						if tag then
+							client.focus:move_to_tag(tag)
+						end
+					end
+				end,
+				{ description = "move focused client to tag #"..i, group = "tag" }
+			),
+			-- Toggle tag on focused client.
+			awful.key(
+				{ modkey, "Control", "Shift" }, "#" .. i + 9,
+				function ()
+					if client.focus then
+						local tag = client.focus.screen.tags[i]
+						if tag then
+							client.focus:toggle_tag(tag)
+						end
+					end
+				end,
+				{ description = "toggle focused client on tag #" .. i, group = "tag" }
+			)
 		)
-	)
+	end
 end
 
 clientbuttons = gears.table.join(

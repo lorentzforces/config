@@ -1,7 +1,3 @@
----------------------------
--- Default awesome theme --
----------------------------
-
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -12,7 +8,6 @@ local themes_path = gfs.get_themes_dir()
 local theme = {}
 
 theme.font = "hack bold 9"
--- theme.font = "audiowide 9"
 
 theme.bg_normal = "#606060"
 theme.fg_normal = "#eeeeee"
@@ -46,7 +41,7 @@ theme.border_marked = "#91231c"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-theme.hotkeys_font = "hack 10"
+theme.hotkeys_font = "hack bold 10"
 theme.hotkeys_description_font = "hack 10"
 theme.hotkeys_modifiers_fg = "#fe9131"
 theme.hotkeys_label_bg = "#700000"
