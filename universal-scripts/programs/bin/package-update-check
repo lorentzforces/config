@@ -6,9 +6,10 @@ if [ -f "$FILE_PATH" ]; then
 	rm $FILE_PATH
 fi
 
-if command -v apt &> /dev/null; then
+# check for apt-get because just "apt" can also be a java executable
+if command -v apt-get &> /dev/null; then
 	echo -e "Fetching apt packages..."
-	sudo apt update &> /dev/null
+	sudo apt-get update &> /dev/null
 	echo -e "### Upgradable packages from apt: ###\n" >> $FILE_PATH
 	apt list --upgradable >> $FILE_PATH
 	echo -e "\n\n" >> $FILE_PATH
