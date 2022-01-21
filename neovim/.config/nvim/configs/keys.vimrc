@@ -2,6 +2,7 @@ let mapleader = "\<SPACE>"
 
 nnoremap <leader><leader> :Files<CR>
 nnoremap <leader>e :Ex<CR>
+nnoremap <leader>f :Lf<CR>
 nnoremap <leader>g :Rg<SPACE>
 nnoremap <leader>b :Buffers<CR>
 
@@ -36,6 +37,7 @@ nnoremap <leader><M-k> <C-w>+
 nnoremap <leader><M-j> <C-w>-
 
 nnoremap <silent> <leader>s :set hlsearch!<CR>
+nnoremap <silent> <leader>i :ShowIndents<CR>
 
 " ctrl-escape exits terminal mode
 tnoremap <C-Esc> <C-\><C-n>
