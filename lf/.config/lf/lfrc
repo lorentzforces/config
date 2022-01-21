@@ -53,6 +53,7 @@ map <enter> open
 
 # for a number of commands, we'll use "f" as a leader key
 map fe $$EDITOR "$f"
+map fE $$EDITOR "$PWD"
 map fn mkfile
 map fN mkdir
 map fi set hidden!
