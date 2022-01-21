@@ -55,6 +55,10 @@ StyleDefault
 " hide netrw banner
 let g:netrw_banner=0
 
+" replace netrw with lf.vim
+let g:lf_replace_netrw = 1
+let g:lf_map_keys = 0
+
 " trim trailing whitespace on save
 augroup user_trim_trailing_whitespace
   autocmd!

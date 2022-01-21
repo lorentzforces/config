@@ -1,0 +1,59 @@
+# Some basic notes about this configuration
+# For shell commands:
+#     $ shell          shell commannd
+#     % shell-pipe     shell command running with the ui
+#     ! shell-wait     shell command waiting for key press
+#     & shell-async    shell command running asynchronously
+
+set shell sh
+set shellopts '-eu'
+
+set ignorecase true
+set scrolloff 3
+
+set promptfmt "\033[0;31m%w ▸ \033[0m%F"
+
+### Commands
+cmd open ${{
+	case $(file --mime-type "$f" -bL) in
+		text/*|application/json) $EDITOR "$f";;
+		*) open "$f" ;;
+	esac
+}}
+
+cmd mkdir %{{
+	printf "directory name: "
+	read ans
+	mkdir $ans
+}}
+
+cmd mkfile %{{
+	printf "file name: "
+	read ans
+	touch $ans
+}}
+
+### Bindings
+
+# remove some defaults
+map m
+map f
+map "'"
+map '"'
+map d
+map c
+map e
+
+# commands
+map dd delete
+map p paste
+map y copy
+map x cut
+map <enter> open
+
+# for a number of commands, we'll use "f" as a leader key
+map fe $$EDITOR "$f"
+map fn mkfile
+map fN mkdir
+map fi set hidden!
+map fc rename

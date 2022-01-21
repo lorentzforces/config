@@ -47,7 +47,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-# aliases for custom-defined functions
+# aliases for fzf-related functions
 alias fco="fzf_git_checkout"
 alias fshow="fzf_git_show"
 alias Commits="fzf_git_show"
@@ -55,7 +55,6 @@ alias fcd="fzf_cd_containing_dir"
 alias Files="fzf_cd_containing_dir"
 alias da="fzf_docker_start"
 alias ds="fzf_docker_stop"
-alias xtrun="run_with_xterminfo"
 
 # paging
 alias page="nvim -R -"
@@ -72,4 +71,25 @@ if ! shopt -oq posix; then
 	elif [ -f /etc/bash_completion ]; then
 		source /etc/bash_completion
 	fi
+fi
+
+# lf alias with directory following (when lf exits, cd to the directory it was in)
+lfcd () {
+    tmp="$(mktemp)"
+    lf -last-dir-path="$tmp" "$@"
+    if [ -f "$tmp" ]; then
+        dir="$(cat "$tmp")"
+        rm -f "$tmp"
+        if [ -d "$dir" ]; then
+            if [ "$dir" != "$(pwd)" ]; then
+                cd "$dir"
+            fi
+        fi
+    fi
+}
+
+### per-machine configuration
+# we do this last so we can override anything per-machine
+if [ -r "$HOME/.environment_setup/local_session_setup.sh" ]; then
+	source "$HOME/.environment_setup/local_session_setup.sh"
 fi
