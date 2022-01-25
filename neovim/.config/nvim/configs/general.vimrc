@@ -107,10 +107,3 @@ let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\
 
 " plugin configuration: vim-gitgutter
 let g:gitgutter_map_keys = 0
-
-" plugin configuration: coc.vim
-" having autocomplete suggestions on all the time is annoying and distracting
-augroup disable_coc_suggestions
-  autocmd!
-  autocmd BufEnter * let b:coc_suggest_disable = 1
-augroup END
