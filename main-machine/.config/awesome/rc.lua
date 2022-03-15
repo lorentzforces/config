@@ -420,12 +420,12 @@ globalkeys = gears.table.join(
 	awful.key(
 		{ modkey }, "space",
 		function () awful.spawn(
-			"dmenu_run -b",
+			"rofi -show combi",
 			{
 				screen = awful.screen.focused
 			}
 		) end,
-		{ description = "application launcher [dmenu]", group = "launcher" }
+		{ description = "application launcher [rofi]", group = "launcher" }
 	),
 
 	awful.key(

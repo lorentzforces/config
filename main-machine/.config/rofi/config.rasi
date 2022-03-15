@@ -1,0 +1,12 @@
+configuration {
+	combi-modi: "window,run";
+	modi: "window,run,combi";
+	font: "Be Vietnam Pro 16";
+	terminal: "kitty";
+	combi-hide-mode-prefix: true;
+
+	combi {
+		display-name: "what? ";
+	}
+}
+@theme "~/.config/rofi/narcissus.rasi"
