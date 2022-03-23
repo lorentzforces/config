@@ -2,6 +2,9 @@
 	editor = nvim
 	pager = nvim -R
 
+[init]
+	defaultBranch = main
+
 [color]
 	ui = true
 	pager = false
