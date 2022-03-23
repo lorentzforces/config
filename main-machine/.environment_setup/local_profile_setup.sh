@@ -3,6 +3,3 @@ path_entries+=":/home/linuxbrew/.linuxbrew/sbin"
 path_entries+=":$HOME/.cargo/bin"
 
 export PATH="$path_entries:$PATH"
-
-export SDKMAN_DIR="$HOME/programs/sdkman"
-source "$SDKMAN_DIR/bin/sdkman-init.sh"
