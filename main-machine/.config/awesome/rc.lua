@@ -472,7 +472,7 @@ clientkeys = gears.table.join(
 		{ description = "toggle floating", group = "client" }
 	),
 	awful.key(
-		{ modkey, "Shift"   }, "c",
+		{ modkey, "Shift" }, "c",
 		function(c) c:kill() end,
 		{ description = "close", group = "client" }
 	),
@@ -484,7 +484,12 @@ clientkeys = gears.table.join(
 	awful.key(
 		{ modkey, }, "o",
 		function(c) c:move_to_screen() end,
-		{ description = "move to screen", group = "client" }
+		{ description = "move to next screen", group = "client" }
+	),
+	awful.key(
+		{ modkey, "Shift" }, "o",
+		function(c) c:move_to_screen(c.screen.index-1) end,
+		{ description = "move to previous screen", group = "client" }
 	),
 	awful.key(
 		{ modkey, }, "t",
