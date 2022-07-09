@@ -10,6 +10,7 @@ set shellopts '-eu'
 
 set ignorecase true
 set scrolloff 3
+set incsearch true
 
 set promptfmt "\033[0;31m%w ▸ \033[0m%F"
 
