@@ -199,7 +199,7 @@ exe 'highlight typescriptBoolean gui=NONE guifg=' . dull_red
 exe 'highlight typescriptImport gui=NONE guifg=' . dull_red
 exe 'highlight typescriptVariable gui=NONE guifg=' . dull_red
 exe 'highlight typescriptExport gui=NONE guifg=' . dull_red
-exe 'highlight typescriptDecorator gui=NONE guifg=' . dull_green
+exe 'highlight typescriptDecorator gui=NONE guifg=' . dull_purple
 exe 'highlight typescriptObjectLabel gui=NONE guifg=' . slate_grey
 exe 'highlight typescriptParens gui=NONE guifg=' . slate_grey
 exe 'highlight typescriptEndColons gui=NONE guifg=' . slate_grey
