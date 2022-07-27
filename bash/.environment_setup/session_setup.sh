@@ -43,6 +43,7 @@ alias la="ls -A --color=auto"
 alias ll="ls -Alh --color=auto"
 
 alias g="git"
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -62,7 +63,7 @@ alias pageify="fc -s | nvim -R -"
 alias lessify="fc -s | less -R" # in case only less is available for some reason
 
 # some handy one-liners
-alias printpath='eval "echo $PATH | sed '\''s/:/\n/g'\'' | cat"'
+alias printpath='printenv PATH | sed s/:/\\n/g'
 
 # enable programmable completion features
 if ! shopt -oq posix; then
