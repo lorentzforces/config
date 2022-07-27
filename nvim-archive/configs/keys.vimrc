@@ -1,7 +1,6 @@
 let mapleader = "\<SPACE>"
 
 nnoremap <leader><leader> :Files<CR>
-nnoremap <leader>e :Ex<CR>
 nnoremap <leader>f :Lf<CR>
 nnoremap <leader>g :Rg<SPACE>
 nnoremap <leader>b :Buffers<CR>

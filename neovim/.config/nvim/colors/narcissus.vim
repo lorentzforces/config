@@ -115,7 +115,7 @@ exe 'highlight Repeat gui=NONE guifg=' . dull_red
 exe 'highlight Type gui=NONE guifg=' . dull_red
 exe 'highlight Identifier gui=NONE guifg=' . slate_grey
 exe 'highlight Statement gui=NONE guifg=' . dull_red
-exe 'highlight Operator gui=NONE guifg=' . slate_grey
+exe 'highlight Operator gui=NONE guifg=' . dull_red
 exe 'highlight String gui=NONE guifg=' . dull_orange
 exe 'highlight Character gui=NONE guifg=' . dull_purple
 exe 'highlight Float gui=NONE guifg=' . dull_purple
@@ -132,16 +132,26 @@ exe 'highlight Error gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
 exe 'highlight Whitespace gui=italic guifg=' . bright_white
 exe 'highlight NonText gui=italic guifg=' . bright_white
 
+" treesitter highlight groups
+exe 'highlight TSType gui=NONE guifg=' . slate_grey
+exe 'highlight TSConstant gui=NONE guifg=' . slate_grey
+exe 'highlight TSPunctBracket gui=NONE guifg=' . slate_grey
+exe 'highlight TSPunctDelimiter gui=NONE guifg=' . slate_grey
+exe 'highlight TSConstBuiltin gui=NONE guifg=' . dull_purple
+exe 'highlight TSVariableBuiltin gui=NONE guifg=' . slate_grey
+exe 'highlight TSKeywordOperator gui=NONE guifg=' . dull_red
+
+" java treesitter
+" this
+exe 'highlight javaTSVariableBuiltin gui=NONE guifg=' . dull_red
+" new
+exe 'highlight javaTSFuncBuiltin gui=NONE guifg=' . dull_red
+
 " syntax vim
 exe 'highlight vimCommand gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight vimExecute gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight vimHighlight gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight vimOption gui=NONE guifg=' . dull_red 'guibg=NONE'
-
-" syntax shell
-exe 'highlight shQuote gui=NONE guifg=' . dull_orange 'guibg=NONE'
-exe 'highlight shDeref gui=NONE guifg=' . bright_black 'guibg=NONE'
-exe 'highlight shArithRegion gui=NONE guifg=' . slate_grey 'guibg=NONE'
 
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . dull_red 'guibg=NONE'
@@ -152,19 +162,6 @@ exe 'highlight gitcommitHeader gui=NONE guifg=' . bright_white 'guibg=NONE'
 exe 'highlight gitrebaseCommit gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseHash gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseSummary gui=NONE guifg=' . slate_grey 'guibg=NONE'
-
-" syntax java
-exe 'highlight javaExternal gui=NONE guifg=' . dull_red
-exe 'highlight javaStorageClass gui=NONE guifg=' . dull_red
-exe 'highlight javaScopeDecl gui=NONE guifg=' . dull_red
-exe 'highlight javaTypedef gui=NONE guifg=' . dull_red
-exe 'highlight javaLabel gui=NONE guifg=' . dull_red
-exe 'highlight javaBoolean gui=NONE guifg=' . dull_red
-exe 'highlight javaBranch gui=NONE guifg=' . dull_red
-exe 'highlight javaConditional gui=NONE guifg=' . dull_red
-exe 'highlight javaExceptions gui=NONE guifg=' . dull_red
-exe 'highlight javaCommentTitle gui=italic guifg=' . bright_white
-exe 'highlight javaOperator gui=NONE guifg=' . dull_red
 
 " syntax Groovy
 exe 'highlight groovyJDKBuiltin gui=NONE guifg=' . dull_red
@@ -189,11 +186,6 @@ exe 'highlight javascriptOperator gui=NONE guifg=' . dull_red
 exe 'highlight javaScriptBoolean gui=NONE guifg=' . dull_red
 exe 'highlight javaScriptNumber gui=NONE guifg=' . dull_purple
 
-" syntax json
-" TODO: do something about json errors (there are a lot of varieties)
-exe 'highlight jsonKeyword gui=NONE guifg=' . slate_grey
-exe 'highlight jsonBoolean gui=NONE guifg=' . dull_red
-
 " syntax typescript
 exe 'highlight typescriptBoolean gui=NONE guifg=' . dull_red
 exe 'highlight typescriptImport gui=NONE guifg=' . dull_red
@@ -213,28 +205,11 @@ exe 'highlight pythonInclude gui=NONE guifg=' . dull_red
 exe 'highlight pythonException gui=NONE guifg=' . dull_red
 exe 'highlight pythonExceptions gui=NONE guifg=' . dull_red
 
-" syntax rust
-exe 'highlight rustCommentLineDoc gui=italic guifg=' . bright_white
-exe 'highlight rustLifetime gui=NONE guifg=' . dull_purple
-
-" syntax sql
-exe 'highlight sqlKeyword gui=NONE guifg=' . dull_red
-exe 'highlight sqlSpecial gui=NONE guifg=' . dull_red
-
-" syntax lua
-exe 'highlight luaTable gui=NONE guifg=' . slate_grey
-exe 'highlight luaFunction gui=NONE guifg=' . dull_red
-
 " plugin-specific highlighting for vim-gitgutter
 exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green
 exe 'highlight GitGutterChange gui=bold guifg=' . dull_blue
 exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_blue
 exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red
-
-" plugin-specific highlighting for coc.vim
-exe 'highlight CocStrikeThrough gui=strikethrough guifg=' . slate_grey
-exe 'highlight CocWarningSign gui=NONE guifg=' . dull_yellow
-exe 'highlight CocInfoSign gui=NONE guifg=' . dull_yellow
 
 " unknown usage, setting to magenta as a canary
 exe 'highlight FoldColumn gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
