@@ -10,6 +10,7 @@ require('packer').startup(function(use)
 	use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
 	use('neovim/nvim-lspconfig')
+	use('tpope/vim-sleuth')
 end)
 
 options.number = false
@@ -163,10 +164,3 @@ lsp_config.jdtls.setup({
 lsp_config.rust_analyzer.setup({
 	on_attach = on_ls_attach
 })
-
--- TODO:
--- - find and implement a more consistent namespace/prefix for coding keymaps
--- - quick indentation configuration
--- - indentation configuration based on filetype
--- - quick indentation configuration change (e.g. work or google style)
-

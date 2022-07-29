@@ -1,6 +1,5 @@
 -- this is a collection of utilities that should be in the global namespace for convenience
 
-
 options = vim.opt
 g_vars = vim.g
 
