@@ -77,6 +77,7 @@ exe 'highlight PmenuSbar gui=NONE guibg=' . dull_white
 exe 'highlight PmenuThumb gui=NONE guibg=' . dull_black
 exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=' . middle_grey
 exe 'highlight netrwDir gui=NONE guifg=' . dull_orange
+exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . dull_white
@@ -131,6 +132,7 @@ exe 'highlight Todo gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 exe 'highlight Error gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
 exe 'highlight Whitespace gui=italic guifg=' . bright_white
 exe 'highlight NonText gui=italic guifg=' . bright_white
+exe 'highlight helpHeader gui=NONE guifg=' . dull_red
 
 " treesitter highlight groups
 exe 'highlight TSType gui=NONE guifg=' . slate_grey
@@ -146,6 +148,12 @@ exe 'highlight TSKeywordOperator gui=NONE guifg=' . dull_red
 exe 'highlight javaTSVariableBuiltin gui=NONE guifg=' . dull_red
 " new
 exe 'highlight javaTSFuncBuiltin gui=NONE guifg=' . dull_red
+
+" lua treesitter
+" object literal brackets
+exe 'highlight luaTSConstructor gui=NONE guifg=' . slate_grey
+" require
+exe 'highlight luaTSFuncBuiltin gui=NONE guifg=' . dull_red
 
 " syntax vim
 exe 'highlight vimCommand gui=NONE guifg=' . dull_red 'guibg=NONE'
