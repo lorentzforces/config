@@ -93,7 +93,7 @@ g_vars.gitgutter_map_keys = 0
 g_vars.lf_replace_netrw = 1
 g_vars.lf_map_keys = 0
 
-trailing_whitespace_group = augroup('user_trim_trailing_whitespace')
+local trailing_whitespace_group = augroup('user_trim_trailing_whitespace')
 autocommand(
 	'BufWritePre',
 	{
@@ -154,6 +154,16 @@ local on_ls_attach = function(client, bufnr)
 	map_normal('<leader>a', vim.lsp.buf.code_action, bufopts)
 
 end
+
+local auto_close_completion_group = augroup('auto_close_completion_group')
+autocommand(
+	'CompleteDone',
+	{
+		group = auto_close_completion_group,
+		pattern = '*',
+		command = 'pclose',
+	}
+)
 
 local lsp_config = require('lspconfig')
 
