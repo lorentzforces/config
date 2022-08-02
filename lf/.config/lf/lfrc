@@ -59,3 +59,5 @@ map fn mkfile
 map fN mkdir
 map fi set hidden!
 map fc rename
+
+map <esc> quit
