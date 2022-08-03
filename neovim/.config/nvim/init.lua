@@ -114,18 +114,19 @@ options.termguicolors = true
 vim.cmd([[
 	colorscheme narcissus
 ]])
--- syntax enable
 
 require('nvim-treesitter.configs').setup({
 	ensure_installed = {
 		'bash',
 		'comment',
+		'html',
 		'java',
 		'json',
 		'lua',
 		'query',
 		'rust',
 		'sql',
+		'typescript',
 		'vim',
 		'yaml',
 	},
@@ -139,6 +140,9 @@ require('nvim-treesitter.configs').setup({
 		disable = {},
 		updatetime = 25,
 		persist_queries = false,
+	},
+	indent = {
+		enable = false
 	}
 })
 
