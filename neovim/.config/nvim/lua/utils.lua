@@ -10,7 +10,9 @@ local get_mapper = function(mode, remap)
 	return function(lhs, rhs, opts)
 		opts = opts or {}
 		opts.noremap = not remap
-		opts.silent = opts.silent or true
+		if opts.silent == nil then
+			opts.silent = true
+		end
 		vim.keymap.set(mode, lhs, rhs, opts)
 	end
 end
