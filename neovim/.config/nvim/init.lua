@@ -40,7 +40,7 @@ g_vars.mapleader = ' '
 
 map_normal('<leader><leader>', ':Files<CR>')
 map_normal('<leader>f', ':Lf<CR>')
-map_normal('<leader>g', ':Rg<SPACE>')
+map_normal('<leader>g', ':Rg<SPACE>', {silent = false})
 map_normal('<leader>b', ':Buffers<CR>')
 
 map_normal('<C-j>', 'o<Esc>gk')
