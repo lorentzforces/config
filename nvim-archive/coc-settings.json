@@ -1,5 +1,0 @@
-{
-	"suggest.autoTrigger": "none",
-	"rust-analyzer.inlayHints.enable": false,
-	"rust-analyzer.callInfo.full": false
-}
