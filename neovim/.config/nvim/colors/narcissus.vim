@@ -155,6 +155,11 @@ exe 'highlight luaTSConstructor gui=NONE guifg=' . slate_grey
 " require
 exe 'highlight luaTSFuncBuiltin gui=NONE guifg=' . dull_red
 
+" python treesitter
+" print etc
+exe 'highlight pythonTSFuncBuiltin gui=NONE guifg=' . slate_grey
+exe 'highlight pythonTSConstructor gui=NONE guifg=' . slate_grey
+
 " syntax vim
 exe 'highlight vimCommand gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight vimExecute gui=NONE guifg=' . dull_red 'guibg=NONE'

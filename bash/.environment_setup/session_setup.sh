@@ -16,7 +16,7 @@ export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 export HOST_TERM=$TERM
 
 # set up paging env vars
-export PAGER="nvim -R"
+export PAGER="nvim -R -"
 export MANPAGER="nvim +Man!"
 
 # point to ripgrep configuration
@@ -58,7 +58,7 @@ alias da="fzf_docker_start"
 alias ds="fzf_docker_stop"
 
 # paging
-alias page="nvim -R -"
+alias page="nvim -R"
 alias pageify="fc -s | nvim -R -"
 alias lessify="fc -s | less -R" # in case only less is available for some reason
 

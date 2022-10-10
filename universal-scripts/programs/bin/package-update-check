@@ -31,7 +31,7 @@ if command -v brew &> /dev/null; then
 	echo -e "\n\n" >> $FILE_PATH
 fi
 
-if command -v brew &> /dev/null; then
+if command -v flatpak &> /dev/null; then
 	echo -e "Fetching flatpak packages..."
 	echo -e "### Upgradable packages from flatpak: ###\n" >> $FILE_PATH
 	flatpak remote-ls --updates >> $FILE_PATH
