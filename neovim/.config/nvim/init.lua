@@ -1,11 +1,11 @@
-require('utils')
+require('stupid-namespace.utils')
 
 require('packer').startup(function(use)
 	use('wbthomason/packer.nvim')
 	use({'junegunn/fzf.vim', requires = {{'junegunn/fzf'}} })
 	use('airblade/vim-gitgutter')
 	use('ptzz/lf.vim')
-		-- dependency of lf.vim, but needs to be loaded after
+	-- dependency of lf.vim, but needs to be loaded after for reasons
 	use({'voldikss/vim-floaterm', after = 'lf.vim'})
 	use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
@@ -33,6 +33,9 @@ options.expandtab = false
 options.tabstop = 4
 options.shiftwidth = 4
 options.softtabstop = 4
+
+g_vars.floaterm_wintype = 'split'
+g_vars.floaterm_position = 'aboveleft'
 
 options.mouse = 'a'
 
@@ -123,6 +126,7 @@ require('nvim-treesitter.configs').setup({
 		'java',
 		'json',
 		'lua',
+		'python',
 		'query',
 		'rust',
 		'sql',
@@ -156,7 +160,6 @@ local on_ls_attach = function(client, bufnr)
 	map_normal('gd', vim.lsp.buf.definition, bufopts)
 	map_insert('<M-i>', '<C-x><C-o>', bufopts)
 	map_normal('<leader>a', vim.lsp.buf.code_action, bufopts)
-
 end
 
 local auto_close_completion_group = augroup('auto_close_completion_group')
