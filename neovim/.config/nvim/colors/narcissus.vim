@@ -140,8 +140,9 @@ exe 'highlight TSConstant gui=NONE guifg=' . slate_grey
 exe 'highlight TSPunctBracket gui=NONE guifg=' . slate_grey
 exe 'highlight TSPunctDelimiter gui=NONE guifg=' . slate_grey
 exe 'highlight TSConstBuiltin gui=NONE guifg=' . dull_purple
-exe 'highlight TSVariableBuiltin gui=NONE guifg=' . slate_grey
+exe 'highlight TSVariableBuiltin gui=NONE guifg=' . dull_red
 exe 'highlight TSKeywordOperator gui=NONE guifg=' . dull_red
+exe 'highlight HtmlTSTag gui=NONE guifg=' . dull_red
 
 " java treesitter
 " this
