@@ -105,7 +105,7 @@ exe 'highlight Debug gui=NONE guifg=' . bright_yellow
 exe 'highlight Conditional gui=NONE guifg=' . dull_red
 exe 'highlight Special gui=NONE guifg=' . bright_black
 exe 'highlight SpecialChar gui=NONE guifg=' . bright_white
-exe 'highlight Delimiter gui=NONE guifg=' . bright_black
+exe 'highlight Delimiter gui=NONE guifg=' . slate_grey
 exe 'highlight StorageClass gui=NONE guifg=' . dull_red
 exe 'highlight Exception gui=NONE guifg=' . dull_red
 exe 'highlight Function gui=NONE guifg=' . slate_grey
@@ -134,38 +134,10 @@ exe 'highlight Whitespace gui=italic guifg=' . bright_white
 exe 'highlight NonText gui=italic guifg=' . bright_white
 exe 'highlight helpHeader gui=NONE guifg=' . dull_red
 
-" treesitter highlight groups
-exe 'highlight TSType gui=NONE guifg=' . slate_grey
-exe 'highlight TSConstant gui=NONE guifg=' . slate_grey
-exe 'highlight TSPunctBracket gui=NONE guifg=' . slate_grey
-exe 'highlight TSPunctDelimiter gui=NONE guifg=' . slate_grey
-exe 'highlight TSConstBuiltin gui=NONE guifg=' . dull_purple
-exe 'highlight TSVariableBuiltin gui=NONE guifg=' . dull_red
-exe 'highlight TSKeywordOperator gui=NONE guifg=' . dull_red
-exe 'highlight HtmlTSTag gui=NONE guifg=' . dull_red
-
-" java treesitter
-" this
-exe 'highlight javaTSVariableBuiltin gui=NONE guifg=' . dull_red
-" new
-exe 'highlight javaTSFuncBuiltin gui=NONE guifg=' . dull_red
-
-" lua treesitter
-" object literal brackets
-exe 'highlight luaTSConstructor gui=NONE guifg=' . slate_grey
-" require
-exe 'highlight luaTSFuncBuiltin gui=NONE guifg=' . dull_red
-
-" python treesitter
-" print etc
-exe 'highlight pythonTSFuncBuiltin gui=NONE guifg=' . slate_grey
-exe 'highlight pythonTSConstructor gui=NONE guifg=' . slate_grey
-
-" syntax vim
-exe 'highlight vimCommand gui=NONE guifg=' . dull_red 'guibg=NONE'
-exe 'highlight vimExecute gui=NONE guifg=' . dull_red 'guibg=NONE'
-exe 'highlight vimHighlight gui=NONE guifg=' . dull_red 'guibg=NONE'
-exe 'highlight vimOption gui=NONE guifg=' . dull_red 'guibg=NONE'
+" treesitter rust
+exe 'highlight @variable.builtin.rust gui=NONE guifg=' . dull_red
+exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
+exe 'highlight @type.rust gui=NONE guifg=' . slate_grey
 
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . dull_red 'guibg=NONE'
@@ -176,48 +148,6 @@ exe 'highlight gitcommitHeader gui=NONE guifg=' . bright_white 'guibg=NONE'
 exe 'highlight gitrebaseCommit gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseHash gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseSummary gui=NONE guifg=' . slate_grey 'guibg=NONE'
-
-" syntax Groovy
-exe 'highlight groovyJDKBuiltin gui=NONE guifg=' . dull_red
-
-" syntax C/C++
-exe 'highlight cConditional gui=NONE guifg=' . dull_red
-exe 'highlight cppBoolean gui=NONE guifg=' . dull_red
-
-" syntax xml
-exe 'highlight xmlTagName gui=NONE guifg=' . dull_red
-exe 'highlight xmlAttrib gui=NONE guifg=' . slate_grey
-
-" syntax html
-exe 'highlight htmlTagN gui=NONE guifg=' . dull_red
-
-" syntax javascript
-exe 'highlight javaScriptException gui=NONE guifg=' . dull_red
-exe 'highlight javaScriptIdentifier gui=NONE guifg=' . dull_red
-exe 'highlight javaScriptConditional gui=NONE guifg=' . dull_red
-exe 'highlight javascriptFunction gui=NONE guifg=' . dull_red
-exe 'highlight javascriptOperator gui=NONE guifg=' . dull_red
-exe 'highlight javaScriptBoolean gui=NONE guifg=' . dull_red
-exe 'highlight javaScriptNumber gui=NONE guifg=' . dull_purple
-
-" syntax typescript
-exe 'highlight typescriptBoolean gui=NONE guifg=' . dull_red
-exe 'highlight typescriptImport gui=NONE guifg=' . dull_red
-exe 'highlight typescriptVariable gui=NONE guifg=' . dull_red
-exe 'highlight typescriptExport gui=NONE guifg=' . dull_red
-exe 'highlight typescriptDecorator gui=NONE guifg=' . dull_purple
-exe 'highlight typescriptObjectLabel gui=NONE guifg=' . slate_grey
-exe 'highlight typescriptParens gui=NONE guifg=' . slate_grey
-exe 'highlight typescriptEndColons gui=NONE guifg=' . slate_grey
-exe 'highlight typescriptFuncComma gui=NONE guifg=' . slate_grey
-exe 'highlight typescriptCall gui=NONE guifg=' . slate_grey
-exe 'highlight typescriptParamImpl gui=NONE guifg=' . slate_grey
-
-" syntax python
-exe 'highlight pythonBuiltin gui=NONE guifg=' . dull_red
-exe 'highlight pythonInclude gui=NONE guifg=' . dull_red
-exe 'highlight pythonException gui=NONE guifg=' . dull_red
-exe 'highlight pythonExceptions gui=NONE guifg=' . dull_red
 
 " plugin-specific highlighting for vim-gitgutter
 exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green
