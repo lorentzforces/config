@@ -111,9 +111,9 @@ exe 'highlight Exception gui=NONE guifg=' . dull_red
 exe 'highlight Function gui=NONE guifg=' . slate_grey
 exe 'highlight Label gui=NONE guifg=' . dull_green
 exe 'highlight Keyword gui=NONE guifg=' . dull_red
-exe 'highlight Constant gui=NONE guifg=' . dull_red
+exe 'highlight Constant gui=NONE guifg=' . slate_grey
 exe 'highlight Repeat gui=NONE guifg=' . dull_red
-exe 'highlight Type gui=NONE guifg=' . dull_red
+exe 'highlight Type gui=NONE guifg=' . slate_grey
 exe 'highlight Identifier gui=NONE guifg=' . slate_grey
 exe 'highlight Statement gui=NONE guifg=' . dull_red
 exe 'highlight Operator gui=NONE guifg=' . dull_red
@@ -134,10 +134,19 @@ exe 'highlight Whitespace gui=italic guifg=' . bright_white
 exe 'highlight NonText gui=italic guifg=' . bright_white
 exe 'highlight helpHeader gui=NONE guifg=' . dull_red
 
+" treesitter
+" some common ones that really should just be the base group regardless of
+" language, but I can't highlight, for example, "@type.builtin" versus "type"
+" the following does not work (output of :hi shows the correct color, but the
+" actual text is not highlighted the specified color)
+" highlight link @type.builtin NONE
+" exe 'highlight @type.builtin gui=NONE guifg=' . dull_red
+exe 'highlight @constant.builtin.java gui=NONE guifg=' . dull_red
+exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
+
 " treesitter rust
 exe 'highlight @variable.builtin.rust gui=NONE guifg=' . dull_red
 exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
-exe 'highlight @type.rust gui=NONE guifg=' . slate_grey
 
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . dull_red 'guibg=NONE'
