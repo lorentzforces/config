@@ -1,16 +1,12 @@
 [core]
 	editor = nvim
-	pager = nvim -R
+	pager = less -F
 
 [init]
 	defaultBranch = main
 
 [color]
 	ui = true
-	pager = false
-
-[pager]
-	branch = false
 
 [alias]
 	b = branch -v
