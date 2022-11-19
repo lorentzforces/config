@@ -148,6 +148,9 @@ exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
 exe 'highlight @variable.builtin.rust gui=NONE guifg=' . dull_red
 exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
 
+" treesitter json
+exe 'highlight @label.json gui=NONE guifg=' . slate_grey
+
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight gitcommitOverflow gui=NONE guifg=' . dull_yellow 'guibg=NONE'
