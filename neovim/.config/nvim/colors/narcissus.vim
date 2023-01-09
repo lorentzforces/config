@@ -127,7 +127,8 @@ exe 'highlight PreProc gui=NONE guifg=' . dull_purple
 exe 'highlight PreCondit gui=NONE guifg=' . dull_purple
 exe 'highlight Define gui=NONE guifg=' . dull_purple
 exe 'highlight Include gui=NONE guifg=' . dull_purple
-exe 'highlight Tag gui=underline'
+" exe 'highlight Tag gui=underline'
+exe 'highlight Tag gui=NONE guifg=' . dull_red
 exe 'highlight Todo gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 exe 'highlight Error gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
 exe 'highlight Whitespace gui=italic guifg=' . bright_white
@@ -141,6 +142,10 @@ exe 'highlight helpHeader gui=NONE guifg=' . dull_red
 " actual text is not highlighted the specified color)
 " highlight link @type.builtin NONE
 " exe 'highlight @type.builtin gui=NONE guifg=' . dull_red
+
+exe 'highlight @constructor gui=NONE guifg=' . slate_grey
+
+" treesitter java
 exe 'highlight @constant.builtin.java gui=NONE guifg=' . dull_red
 exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
 
@@ -150,6 +155,9 @@ exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
 
 " treesitter json
 exe 'highlight @label.json gui=NONE guifg=' . slate_grey
+
+" treesitter html
+exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
 
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . dull_red 'guibg=NONE'
