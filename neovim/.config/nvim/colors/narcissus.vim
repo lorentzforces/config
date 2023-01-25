@@ -153,6 +153,10 @@ exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
 exe 'highlight @variable.builtin.rust gui=NONE guifg=' . dull_red
 exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
 
+" treesitter typescript
+" TODO: there is still no way to highlight annotations/decorators in typescript
+exe 'highlight @variable.builtin.typescript gui=NONE guifg=' . dull_red
+
 " treesitter json
 exe 'highlight @label.json gui=NONE guifg=' . slate_grey
 
