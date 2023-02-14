@@ -12,7 +12,7 @@
 	b = branch -v
 	co = checkout
 	cnb = checkout -b
-	st = status -sb
+	st = status -sb -uno
 	rem = remote -v
 	cm = commit
 	cma = commit -a
