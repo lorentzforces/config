@@ -84,6 +84,7 @@ map_normal(
 map_normal(
 	'<leader>i',
 	function()
+		-- TODO: iterate over windows and toggle this on all of them
 		options.list = not options.list:get()
 	end
 )
