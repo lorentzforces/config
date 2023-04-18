@@ -25,8 +25,8 @@ export RIPGREP_CONFIG_FILE="$HOME/.config/ripgreprc"
 # point to ls_colors configuration
 eval "$(dircolors -b $HOME/.config/ls-colors.conf)"
 
-# a lot of programs aren't a fan of Kitty's terminfo, so this lets us fake xterm capabilities when
-# we need to use them
+# a lot of programs aren't a fan of terminfo from terminals that aren't the "standard" selections,
+# so this lets us fake xterm capabilities when we need to use them
 function run_with_xterminfo() {
 	(TERM=xterm-256color; eval "$@")
 }
@@ -38,9 +38,9 @@ eval "$(fnm completions --shell bash)"
 
 ### aliases ###
 
-alias ls="ls --color=auto --classify --width=90"
-alias la="ls -A --color=auto"
-alias ll="ls -Alh --color=auto"
+alias ls="ls --color=auto --group-directories-first --classify --width=90"
+alias la="ls -A --group-directories-first --color=auto"
+alias ll="ls -Alh --group-directories-first --color=auto"
 
 alias g="git"
 
