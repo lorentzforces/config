@@ -756,7 +756,7 @@ client.connect_signal(
 naughty.config.defaults['icon_size'] = 100
 
 -- startup
-os.execute("source ~/.environment_setup/profile_setup.sh") --synchronous
+-- os.execute("source ~/.environment_setup/profile_setup.sh") --synchronous
 
 awful.spawn.once("redshift")
 awful.spawn.once("flameshot")
