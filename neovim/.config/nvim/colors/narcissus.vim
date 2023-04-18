@@ -147,6 +147,7 @@ exe 'highlight @attribute gui=NONE guifg=' . dull_purple
 exe 'highlight @constructor gui=NONE guifg=' . slate_grey
 exe 'highlight @type.qualifier gui=NONE guifg=' . dull_red
 exe 'highlight @variable.builtin gui=NONE guifg=' . dull_red
+exe 'highlight @function.builtin gui=NONE guifg=' . dull_red
 
 " treesitter java
 exe 'highlight @constant.builtin.java gui=NONE guifg=' . dull_red
