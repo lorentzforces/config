@@ -1,0 +1,5 @@
+# these are overrides to make font rendering on MacOS look less terrible
+import:
+  - ~/.config/alacritty/base-alacritty.yml
+font:
+  size: 15.0
