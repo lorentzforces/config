@@ -166,6 +166,13 @@ exe 'highlight @label.json gui=NONE guifg=' . slate_grey
 " treesitter html
 exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
 
+" syntax xml
+exe 'highlight xmlTagName gui=NONE guifg=' . dull_red 'guibg=NONE'
+exe 'highlight xmlProcessingDelim gui=NONE guifg=' . dull_purple 'guibg=NONE'
+
+" syntax shell
+exe 'highlight shQuote gui=NONE guifg=' . dull_orange 'guibg=NONE'
+
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight gitcommitOverflow gui=NONE guifg=' . dull_yellow 'guibg=NONE'

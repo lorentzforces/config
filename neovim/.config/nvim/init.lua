@@ -121,7 +121,9 @@ vim.cmd([[
 
 require('nvim-treesitter.configs').setup({
 	ensure_installed = {
-		'bash',
+		-- bash highlighting is variable, seems to be different between makefiles and plain
+		-- shell scripts
+		-- 'bash',
 		'comment',
 		'html',
 		'java',
