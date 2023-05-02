@@ -131,8 +131,8 @@ exe 'highlight Include gui=NONE guifg=' . dull_purple
 exe 'highlight Tag gui=NONE guifg=' . dull_red
 exe 'highlight Todo gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 exe 'highlight Error gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
-exe 'highlight Whitespace gui=italic guifg=' . bright_white
-exe 'highlight NonText gui=italic guifg=' . bright_white
+exe 'highlight Whitespace gui=italic guifg=' . dull_white
+exe 'highlight NonText gui=italic guifg=' . dull_white
 exe 'highlight helpHeader gui=NONE guifg=' . dull_red
 
 " treesitter
