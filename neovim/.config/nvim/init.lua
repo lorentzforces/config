@@ -9,8 +9,8 @@ require('packer').startup(function(use)
 	use({'voldikss/vim-floaterm', after = 'lf.vim'})
 	use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
-	use('neovim/nvim-lspconfig')
 	use('tpope/vim-sleuth')
+	use('neovim/nvim-lspconfig')
 	use('mfussenegger/nvim-jdtls')
 end)
 
@@ -90,6 +90,30 @@ util.map_normal(
 	end
 )
 
+vim.api.nvim_create_user_command(
+	'Tab',
+	function(opts)
+		local indent_size = tonumber(opts.fargs[1])
+		util.options.expandtab = false
+		util.options.tabstop = indent_size
+		util.options.softtabstop = indent_size
+		util.options.shiftwidth = indent_size
+	end,
+	{ nargs = 1 }
+)
+
+vim.api.nvim_create_user_command(
+	'Space',
+	function(opts)
+		local indent_size = tonumber(opts.fargs[1])
+		util.options.expandtab = true
+		util.options.tabstop = indent_size
+		util.options.softtabstop = indent_size
+		util.options.shiftwidth = indent_size
+	end,
+	{ nargs = 1 }
+)
+
 -- this controls the delay before nvim writes its swap file, so this may have consequences
 -- this impacts how quickly gitgutter decorations show up
 util.options.updatetime = 300 -- default is 4000 ms
@@ -153,7 +177,6 @@ require('nvim-treesitter.configs').setup({
 		enable = false
 	}
 })
-
 
 local auto_close_completion_group = util.augroup('auto_close_completion_group')
 util.autocommand(
