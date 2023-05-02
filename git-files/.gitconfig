@@ -30,6 +30,9 @@
 [advice]
 	detachedHead = false
 
+[branch]
+	sort = "-HEAD"
+
 [checkout]
 	defaultRemote = origin
 

@@ -22,63 +22,58 @@ export FZF_CTRL_T_COMMAND="$default_command"
 
 ### Functions ###
 
-# TODO: consolidate code styles - this is a mess in here right now
+function _fzf_git_branches() {
+	local tags branches target
 
-function fzf_git_checkout() {
-  local tags branches target
-  branches=$(
-    git --no-pager branch --all \
-      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
-    | sed '/^$/d') || return
-  tags=$(
-    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
-  target=$(
-    (echo "$branches"; echo "$tags") |
-    fzf --no-hscroll --no-multi -n 2 \
-        --ansi) || return
-  git checkout $(awk '{print $2}' <<<"$target" )
+	tags=$(
+		git tag \
+		| awk '{print "\x1b[31;1mtag\x1b[m\t" $1}'
+	) || return
+
+	branches=$(
+		git branch --all --color=always \
+		| grep -v HEAD \
+		| sed "s/.* //" \
+		| sed "s#remotes/##" \
+		| awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
+	) || return
+
+	target=$(
+		(printf "$branches"; printf "$tags") \
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2
+	) || return
+
+	echo $(echo "$target" | awk '{print $2}')
 }
 
 # git commit browser
-function fzf_git_show() {
-  git ls --color=always "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-                (grep -o '\<[a-f0-9]\+\>' | head -1 |
-                xargs -I % sh -c 'git show --color=never % | nvim -R -') << 'FZF-EOF'
-                {}
-FZF-EOF"
+function _fzf_git_show() {
+	git ls --color=always "$@" |
+	fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+		--bind "ctrl-m:execute: \
+			printf {} \
+			| ( \
+				grep -o '\<[a-f0-9]\+\>' \
+				| head -1 \
+				| xargs -I % sh -c 'git show --color=never % \
+				| nvim -R -'
+			)"
 }
 
 # cd into directory containing selected file
-function fzf_cd_containing_dir() {
-   local file
-   local dir
-   file=$(fzf-tmux -u20 +m -q "$1") && dir=$(dirname "$file")
-   [ -n "$dir" ] && cd "$dir"
-}
-
-# Select a docker container to start and attach to
-function fzf_docker_start() {
-  local cid
-  cid=$(docker ps -a | sed 1d | fzf-tmux -u20 -q "$1" | awk '{print $1}')
-  [ -n "$cid" ] && docker start "$cid"
-}
-
-# Select a running docker container to stop
-function fzf_docker_stop() {
-  local cid
-  cid=$(docker ps | sed 1d | fzf-tmux -u20 -q "$1" | awk '{print $1}')
-  [ -n "$cid" ] && docker stop "$cid"
+function _fzf_cd_containing_dir() {
+	local file, dir
+	file=$(fzf-tmux -u20 +m -q "$1") && dir=$(dirname "$file")
+	[ -n "$dir" ] && cd "$dir"
 }
 
 # search file contents
 # (experimental)
 function fif() {
-  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-  rg --files-with-matches --no-messages $1 | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 || rg --ignore-case --pretty --context 10 $1 {}"
+	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+
+	rg --files-with-matches --no-messages $1 \
+	| fzf --preview "highlight -O ansi -l {} 2> /dev/null | \
+		rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 \
+		|| rg --ignore-case --pretty --context 10 $1 {}"
 }
-
-
-
-
