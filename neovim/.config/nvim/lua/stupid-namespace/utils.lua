@@ -1,7 +1,4 @@
--- this is a collection of utilities that should be in the global namespace for convenience
-
-options = vim.opt
-g_vars = vim.g
+local module = {}
 
 -- the opts table is optional, but will default the following properties if not passed:
 -- - noremap: true
@@ -17,13 +14,36 @@ local get_mapper = function(mode, remap)
 	end
 end
 
-map_normal = get_mapper('n', false)
-map_visual = get_mapper('v', false)
-map_insert = get_mapper('i', false)
+local map_normal = get_mapper('n', false)
+local map_visual = get_mapper('v', false)
+local map_insert = get_mapper('i', false)
 
-augroup = function(name, opts)
+local augroup = function(name, opts)
 	opts = opts or {}
 	return vim.api.nvim_create_augroup(name, opts)
 end
 
-autocommand = vim.api.nvim_create_autocmd
+local autocommand = vim.api.nvim_create_autocmd
+
+local create_lsp_keybinds = function(client, bufnr)
+	local bufopts = {buffer = bufnr}
+
+	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+	map_normal('K', vim.lsp.buf.hover, bufopts)
+	map_normal('gD', vim.lsp.buf.declaration, bufopts)
+	map_normal('gd', vim.lsp.buf.definition, bufopts)
+	map_insert('<M-i>', '<C-x><C-o>', bufopts)
+	map_normal('<leader>a', vim.lsp.buf.code_action, bufopts)
+end
+
+module.options = vim.opt
+module.g_vars = vim.g
+module.map_normal = map_normal
+module.map_visual = map_visual
+module.map_insert = map_insert
+module.augroup = augroup
+module.autocommand = autocommand
+module.create_lsp_keybinds = create_lsp_keybinds
+
+return module

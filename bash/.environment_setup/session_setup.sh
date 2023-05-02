@@ -1,7 +1,13 @@
-### FZF setup ###
+# PS4='+ $(date "+%s.%N")\011 '
+# exec 3>&2 2>/tmp/bashstart.$$.log
+# set -x
+
 if [ -r ~/.environment_setup/fzf_config.sh ]; then
 	source ~/.environment_setup/fzf_config.sh
 fi
+
+# I keep hitting ctrl-d to page up and down a la vim, but this closes the terminal by default
+set -o ignoreeof
 
 # don't put duplicate lines or lines starting with spaces in the history
 HISTCONTROL=ignoreboth
@@ -116,3 +122,6 @@ fi
 if [ -r "$HOME/.environment_setup/local_session_setup.sh" ]; then
 	source "$HOME/.environment_setup/local_session_setup.sh"
 fi
+
+# set +x
+# exec 2>&3 3>&-
