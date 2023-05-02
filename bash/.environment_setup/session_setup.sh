@@ -22,6 +22,7 @@ export HOST_TERM=$TERM
 # set up paging env vars
 export PAGER="nvim -R -"
 export MANPAGER="nvim +Man!"
+export LESS="-R --tabs=4"
 
 # point to ripgrep configuration
 export RIPGREP_CONFIG_FILE="$HOME/.config/ripgreprc"

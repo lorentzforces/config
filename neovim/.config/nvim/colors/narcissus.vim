@@ -143,6 +143,7 @@ exe 'highlight helpHeader gui=NONE guifg=' . dull_red
 " highlight link @type.builtin NONE
 " exe 'highlight @type.builtin gui=NONE guifg=' . dull_red
 
+exe 'highlight @text.reference gui=underline'
 exe 'highlight @attribute gui=NONE guifg=' . dull_purple
 exe 'highlight @constructor gui=NONE guifg=' . slate_grey
 exe 'highlight @type.qualifier gui=NONE guifg=' . dull_red

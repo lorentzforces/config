@@ -1,6 +1,6 @@
 [core]
 	editor = nvim
-	pager = less -F
+	pager = less -F -x4
 
 [init]
 	defaultBranch = main
