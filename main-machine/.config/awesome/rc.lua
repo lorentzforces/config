@@ -43,7 +43,7 @@ end
 beautiful.init(os.getenv("HOME") .. "/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "kitty"
+terminal = "alacritty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " " .. editor
 
@@ -280,11 +280,11 @@ globalkeys = gears.table.join(
 		end,
 		{ description = "focus previous by index", group = "client" }
 	),
-	awful.key(
-		{ modkey, }, "w",
-		function () mymainmenu:show() end,
-		{ description = "show main menu", group = "awesome" }
-	),
+	--awful.key(
+	--	{ modkey, }, "w",
+	--	function () mymainmenu:show() end,
+	--	{ description = "show main menu", group = "awesome" }
+	--),
 
 	-- Layout manipulation
 	awful.key(
