@@ -1,6 +1,4 @@
-### FZF setup
-# there's a lot of fzf configuration, so that's extracted to another file
-# TODO: implement a similar search to the FZF-provided ctrl-t, but for git refs instead of files
+### FZF setup ###
 if [ -r ~/.environment_setup/fzf_config.sh ]; then
 	source ~/.environment_setup/fzf_config.sh
 fi
@@ -9,7 +7,7 @@ fi
 HISTCONTROL=ignoreboth
 
 # set the prompt
-# for now we assume that our terminal supports xterm color codes
+# we assume that our terminal supports xterm color codes
 export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 
 # store "host" terminal so we can use the same terminfo in tmux
@@ -36,6 +34,15 @@ alias xtrun="run_with_xterminfo"
 eval "$(fnm env)"
 eval "$(fnm completions --shell bash)"
 
+# expects 1 argument which is the prompt text
+function _confirm() {
+	read -p "$1 " -n 1 -r
+	printf "\n" # move to a new line
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		return 1
+	fi
+}
+
 ### aliases ###
 
 alias ls="ls --color=auto --group-directories-first --classify --width=90"
@@ -48,22 +55,52 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 
-# aliases for fzf-related functions
-alias fco="fzf_git_checkout"
-alias fshow="fzf_git_show"
-alias Commits="fzf_git_show"
-alias fcd="fzf_cd_containing_dir"
-alias Files="fzf_cd_containing_dir"
-alias da="fzf_docker_start"
-alias ds="fzf_docker_stop"
+function gco() {
+	local target
+	target=$(_fzf_git_branches)
 
-# paging
+	if [ -z "$target" ]; then
+		return
+	else
+		git checkout "$target"
+	fi
+}
+
+function delete-branch() {
+	local target
+	target=$(_fzf_git_branches)
+
+	if [ -z "$target" ]; then
+		return
+	else
+		_confirm "Are you sure you want to delete branch: $target? " || return
+		git branch -d "$target"
+	fi
+}
+
+alias fshow="_fzf_git_show"
+alias fcd="_fzf_cd_containing_dir"
+
 alias page="nvim -R"
 alias pageify="fc -s | nvim -R -"
-alias lessify="fc -s | less -R" # in case only less is available for some reason
+alias lessify="fc -s | less -R"
 
-# some handy one-liners
 alias printpath='printenv PATH | sed s/:/\\n/g'
+
+# lf alias with directory following (when lf exits, cd to the directory it was in)
+function fd() {
+	local tmp
+	tmp="$(mktemp)"
+	lf -last-dir-path="$tmp" "$@"
+	if [ -f "$tmp" ]; then
+		local dir
+		dir="$(cat "$tmp")"
+		rm -f "$tmp"
+		if [[ -d "$dir" && "$dir" != "$(pwd)" ]]; then
+			cd "$dir"
+		fi
+	fi
+}
 
 # enable programmable completion features
 if ! shopt -oq posix; then
@@ -73,21 +110,6 @@ if ! shopt -oq posix; then
 		source /etc/bash_completion
 	fi
 fi
-
-# lf alias with directory following (when lf exits, cd to the directory it was in)
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp"
-        if [ -d "$dir" ]; then
-            if [ "$dir" != "$(pwd)" ]; then
-                cd "$dir"
-            fi
-        fi
-    fi
-}
 
 ### per-machine configuration
 # we do this last so we can override anything per-machine
