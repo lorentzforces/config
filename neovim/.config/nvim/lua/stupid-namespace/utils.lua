@@ -37,6 +37,13 @@ local create_lsp_keybinds = function(client, bufnr)
 	map_normal('<leader>a', vim.lsp.buf.code_action, bufopts)
 end
 
+local operating_system
+if vim.loop.os_uname().sysname == "Darwin" then
+	operating_system = "MAC_OS"
+else
+	operating_system = "LINUX"
+end
+
 module.options = vim.opt
 module.g_vars = vim.g
 module.map_normal = map_normal
@@ -45,5 +52,6 @@ module.map_insert = map_insert
 module.augroup = augroup
 module.autocommand = autocommand
 module.create_lsp_keybinds = create_lsp_keybinds
+module.operating_system = operating_system
 
 return module
