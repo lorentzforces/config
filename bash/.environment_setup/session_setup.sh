@@ -25,7 +25,7 @@ export MANPAGER="nvim +Man!"
 export LESS="-R --tabs=4"
 
 # point to ripgrep configuration
-export RIPGREP_CONFIG_FILE="$HOME/.config/ripgreprc"
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 
 # point to ls_colors configuration
 eval "$(dircolors -b $HOME/.config/ls-colors.conf)"

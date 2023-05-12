@@ -3,4 +3,5 @@
 --hidden
 --follow
 --no-ignore-vcs
--g "!{node_modules,.git,.DS_STORE}"
+--glob
+!{node_modules,.git,.DS_STORE}
