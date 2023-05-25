@@ -152,6 +152,7 @@ require('nvim-treesitter.configs').setup({
 		'comment',
 		'html',
 		'java',
+		'javascript',
 		'json',
 		'lua',
 		'python',
