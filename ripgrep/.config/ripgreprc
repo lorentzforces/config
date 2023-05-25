@@ -2,6 +2,5 @@
 --ignore-case
 --hidden
 --follow
---no-ignore-vcs
 --glob
 !{node_modules,.git,.DS_STORE}
