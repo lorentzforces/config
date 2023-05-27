@@ -1,0 +1,5 @@
+session_name: 'default'
+start_directory: '${HOME}/mine'
+windows:
+  - panes:
+    - shell_command: 'fd'

@@ -12,22 +12,20 @@ set -o ignoreeof
 # don't put duplicate lines or lines starting with spaces in the history
 HISTCONTROL=ignoreboth
 
-# set the prompt
 # we assume that our terminal supports xterm color codes
 export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 
 # store "host" terminal so we can use the same terminfo in tmux
 export HOST_TERM=$TERM
 
-# set up paging env vars
 export PAGER="nvim -R -"
 export MANPAGER="nvim +Man!"
 export LESS="-R --tabs=4"
 
-# point to ripgrep configuration
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 
-# point to ls_colors configuration
+export TMUXP_CONFIGDIR="$HOME/.config/tmuxp"
+
 eval "$(dircolors -b $HOME/.config/ls-colors.conf)"
 
 # a lot of programs aren't a fan of terminfo from terminals that aren't the "standard" selections,
@@ -37,7 +35,6 @@ function run_with_xterminfo() {
 }
 alias xtrun="run_with_xterminfo"
 
-# set up the fast node manager
 eval "$(fnm env)"
 eval "$(fnm completions --shell bash)"
 
@@ -67,7 +64,7 @@ function gco() {
 	target=$(_fzf_git_branches)
 
 	if [ -z "$target" ]; then
-		return
+		return 1
 	else
 		git checkout "$target"
 	fi
@@ -78,7 +75,7 @@ function delete-branch() {
 	target=$(_fzf_git_branches)
 
 	if [ -z "$target" ]; then
-		return
+		return 1
 	else
 		_confirm "Are you sure you want to delete branch: $target? " || return
 		git branch -d "$target"
@@ -106,6 +103,32 @@ function fd() {
 		if [[ -d "$dir" && "$dir" != "$(pwd)" ]]; then
 			cd "$dir"
 		fi
+	fi
+}
+
+function fdev() {
+	local dev_dir
+	dev_dir=$(_fzf_directories_at "$HOME/mine/repos")
+
+	if [ -z "$dev_dir" ]; then
+		return 1
+	else
+		DEV_NAME="$dev_dir" tmuxp load --yes dev
+	fi
+}
+
+function fmux() {
+	local tmuxp_file
+	tmuxp_file=$(
+		tmuxp ls \
+		| rg -v "dev" \
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi
+	)
+
+	if [ -z "tmuxp_file" ]; then
+		return 1
+	else
+		tmuxp load --yes "$tmuxp_file"
 	fi
 }
 
