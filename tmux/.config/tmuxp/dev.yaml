@@ -1,5 +1,8 @@
+# this configuration expects two environment variables to be set:
+# - DEV_NAME
+# - DEV_DIR
 session_name: '${DEV_NAME} dev'
-start_directory: '${HOME}/mine/repos/${DEV_NAME}'
+start_directory: '${DEV_DIR}'
 windows:
   - window_name: 'files'
     panes:
