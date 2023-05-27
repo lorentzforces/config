@@ -28,7 +28,7 @@ function _fzf_git_branches() {
 	tags=$(
 		git tag \
 		| awk '{print "\x1b[31;1mtag\x1b[m\t" $1}'
-	) || return
+	) || return 1
 
 	branches=$(
 		git branch --all --color=always \
@@ -36,12 +36,12 @@ function _fzf_git_branches() {
 		| sed "s/.* //" \
 		| sed "s#remotes/##" \
 		| awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
-	) || return
+	) || return 1
 
 	target=$(
 		(printf "$branches"; printf "$tags") \
 		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2
-	) || return
+	) || return 1
 
 	echo $(echo "$target" | awk '{print $2}')
 }
@@ -65,6 +65,35 @@ function _fzf_cd_containing_dir() {
 	local file, dir
 	file=$(fzf-tmux -u20 +m -q "$1") && dir=$(dirname "$file")
 	[ -n "$dir" ] && cd "$dir"
+}
+
+# expects 1 argument: a path to a directory containing files we want to select
+function _fzf_files_at() {
+	local containing_dir
+	containing_dir="$1"
+
+	>&2 echo "finding in $containing_dir"
+
+	local candidates, target
+	candidates=$(find -L $containing_dir -mindepth 1 -maxdepth 1 -type f)
+	>&2 echo "$candidates"
+	target=$(echo "$candidates" | fzf-tmux -u20 -- --no-hscroll --ansi --no-multi) || return 1
+
+	echo "$target"
+}
+
+# expects 1 argument: a path to a directory containing directories we want to select
+function _fzf_directories_at() {
+	local containing_dir
+	containing_dir="$1"
+
+	local target
+	target=$(
+		find -L $containing_dir -mindepth 1 -maxdepth 1 -type d -exec basename {} \; \
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi
+	) || return 1
+
+	echo "$target"
 }
 
 # search file contents
