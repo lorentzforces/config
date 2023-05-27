@@ -113,7 +113,10 @@ function fdev() {
 	if [ -z "$dev_dir" ]; then
 		return 1
 	else
-		DEV_NAME="$dev_dir" tmuxp load --yes dev
+		local dev_name
+		dev_name=$(basename "$dev_dir")
+		>&2 echo "dev_dir: $dev_dir, dev_name: $dev_name"
+		DEV_DIR="$dev_dir" DEV_NAME="$dev_name" tmuxp load --yes dev
 	fi
 }
 
@@ -124,6 +127,7 @@ function fmux() {
 		| rg -v "dev" \
 		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi
 	)
+	# the "dev" config is special and should not be chooseable here
 
 	if [ -z "tmuxp_file" ]; then
 		return 1

@@ -67,21 +67,6 @@ function _fzf_cd_containing_dir() {
 	[ -n "$dir" ] && cd "$dir"
 }
 
-# expects 1 argument: a path to a directory containing files we want to select
-function _fzf_files_at() {
-	local containing_dir
-	containing_dir="$1"
-
-	>&2 echo "finding in $containing_dir"
-
-	local candidates, target
-	candidates=$(find -L $containing_dir -mindepth 1 -maxdepth 1 -type f)
-	>&2 echo "$candidates"
-	target=$(echo "$candidates" | fzf-tmux -u20 -- --no-hscroll --ansi --no-multi) || return 1
-
-	echo "$target"
-}
-
 # expects 1 argument: a path to a directory containing directories we want to select
 function _fzf_directories_at() {
 	local containing_dir
@@ -89,7 +74,7 @@ function _fzf_directories_at() {
 
 	local target
 	target=$(
-		find -L $containing_dir -mindepth 1 -maxdepth 1 -type d -exec basename {} \; \
+		find -L $containing_dir -mindepth 1 -maxdepth 1 -type d \
 		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi
 	) || return 1
 
