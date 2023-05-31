@@ -159,6 +159,7 @@ require('nvim-treesitter.configs').setup({
 		'query',
 		'rust',
 		'sql',
+		'starlark',
 		'typescript',
 		'vim',
 		'yaml',
