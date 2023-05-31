@@ -89,6 +89,8 @@ alias page="nvim -R"
 alias pageify="fc -s | nvim -R -"
 alias lessify="fc -s | less -R"
 
+alias restow="stow -R --no-folding"
+
 alias printpath='printenv PATH | sed s/:/\\n/g'
 
 # lf alias with directory following (when lf exits, cd to the directory it was in)
@@ -115,21 +117,31 @@ function fdev() {
 	else
 		local dev_name
 		dev_name=$(basename "$dev_dir")
-		>&2 echo "dev_dir: $dev_dir, dev_name: $dev_name"
 		DEV_DIR="$dev_dir" DEV_NAME="$dev_name" tmuxp load --yes dev
 	fi
+}
+
+function tmuxhere() {
+	local target_dir
+	if [ -n "$1" ]; then
+		target_dir="$1"
+	else
+		target_dir=$(pwd)
+	fi
+
+	local name=$(basename "$target_dir")
+	SESSION_NAME="$name" SESSION_PATH="$target_dir" tmuxp load --yes "generic-with-path"
 }
 
 function fmux() {
 	local tmuxp_file
 	tmuxp_file=$(
 		tmuxp ls \
-		| rg -v "dev" \
+		| rg -v "dev|generic-with-path" \
 		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi
 	)
-	# the "dev" config is special and should not be chooseable here
 
-	if [ -z "tmuxp_file" ]; then
+	if [ -z "$tmuxp_file" ]; then
 		return 1
 	else
 		tmuxp load --yes "$tmuxp_file"
