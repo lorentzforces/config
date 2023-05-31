@@ -1,0 +1,9 @@
+session_name: 'updates'
+start_directory: '${HOME}'
+windows:
+  - layout: 'even-horizontal'
+    options:
+      automatic-rename: 'on'
+    panes:
+    - 'blank'
+    - 'blank'
