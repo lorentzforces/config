@@ -1,0 +1,5 @@
+session_name: '${SESSION_NAME}'
+start_directory: '${SESSION_PATH}'
+windows:
+  - panes:
+    - shell_command: 'fd'
