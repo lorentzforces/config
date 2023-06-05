@@ -25,6 +25,7 @@ export LESS="-R --tabs=4"
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
 
 export TMUXP_CONFIGDIR="$HOME/.config/tmuxp"
+export GOPATH="$HOME/.go"
 
 eval "$(dircolors -b $HOME/.config/ls-colors.conf)"
 

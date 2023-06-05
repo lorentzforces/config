@@ -150,6 +150,7 @@ require('nvim-treesitter.configs').setup({
 		-- shell scripts
 		-- 'bash',
 		'comment',
+		'go',
 		'html',
 		'java',
 		'javascript',
@@ -193,5 +194,9 @@ util.autocommand(
 local lsp_config = require('lspconfig')
 
 lsp_config.rust_analyzer.setup({
+	on_attach = util.create_lsp_keybinds
+})
+
+lsp_config.gopls.setup({
 	on_attach = util.create_lsp_keybinds
 })
