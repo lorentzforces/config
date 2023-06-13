@@ -56,8 +56,8 @@ exe 'highlight VisualNOS gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight WildMenu gui=NONE guifg=' . dull_orange 'guibg=' . dull_black
 exe 'highlight NonText gui=italic guifg=' . dull_black
 exe 'highlight ErrorMsg gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
-exe 'highlight LineNr gui=NONE guifg=' . dull_white 'guibg=' . dull_black
-exe 'highlight CursorLineNR gui=NONE guifg=' . dull_red 'guibg=' . dull_black
+exe 'highlight LineNr gui=NONE guifg=' . dull_white 'guibg=' . middle_grey
+exe 'highlight CursorLineNr gui=NONE guifg=' . dull_red
 exe 'highlight WarningMsg gui=italic guifg=' . dull_yellow
 exe 'highlight ModeMsg gui=NONE guifg=' . bright_white 'guibg=' . dull_red
 exe 'highlight MoreMsg gui=NONE guifg=' . bright_black
@@ -157,9 +157,10 @@ exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
 " treesitter rust
 exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
 
-" treesitter go
+" treesitter golang
 exe 'highlight @type.builtin.go gui=NONE guifg=' . dull_red
 exe 'highlight @type.definition.go gui=NONE guifg=' . slate_grey
+exe 'highlight @constant.builtin.go gui=NONE guifg=' . dull_red
 
 " treesitter typescript
 " TODO: there is still no way to highlight annotations/decorators in typescript
