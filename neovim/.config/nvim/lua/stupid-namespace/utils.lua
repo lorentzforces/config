@@ -45,6 +45,7 @@ else
 end
 
 module.options = vim.opt
+module.local_options = vim.opt_local
 module.g_vars = vim.g
 module.map_normal = map_normal
 module.map_visual = map_visual
