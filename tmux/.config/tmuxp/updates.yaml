@@ -5,5 +5,7 @@ windows:
     options:
       automatic-rename: 'on'
     panes:
-    - 'blank'
-    - 'blank'
+      - shell_command:
+        - 'package-update-check && page ~/upgradable-packages.txt'
+        sleep_after: 1
+      - 'blank'
