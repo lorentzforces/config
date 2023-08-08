@@ -5,7 +5,7 @@ require('packer').startup(function(use)
 	use({'junegunn/fzf.vim', requires = {{'junegunn/fzf'}} })
 	use('airblade/vim-gitgutter')
 	use('ptzz/lf.vim')
-	-- dependency of lf.vim, but needs to be loaded after for reasons
+	-- dependency of lf.vim, but needs to be loaded after for Reasons™
 	use({'voldikss/vim-floaterm', after = 'lf.vim'})
 	use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
 	use('nvim-treesitter/playground')
