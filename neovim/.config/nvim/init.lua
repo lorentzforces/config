@@ -92,6 +92,33 @@ util.map_normal(
 	end
 )
 
+-- <leader>d is the prefix chosen for LSP diagnostic things
+util.map_normal(
+	'<leader>dv',
+	function()
+		vim.diagnostic.setloclist()
+	end
+)
+util.map_normal(
+	'<leader>dn',
+	function()
+		vim.diagnostic.goto_next()
+	end
+)
+util.map_normal(
+	'<leader>dp',
+	function()
+		vim.diagnostic.goto_prev()
+	end
+)
+
+util.g_vars.gitgutter_use_location_list = true
+util.g_vars.gitgutter_map_keys = 0
+-- <leader>v is the prefix chosen for version control things
+util.map_normal('<leader>vp', ':GitGutterPrevHunk<CR>')
+util.map_normal('<leader>vn', ':GitGutterNextHunk<CR>')
+util.map_normal('<leader>vv', ':GitGutterQuickFixCurrentFile | lopen<CR>')
+
 vim.api.nvim_create_user_command(
 	'Tab',
 	function(opts)
@@ -120,7 +147,6 @@ vim.api.nvim_create_user_command(
 -- this impacts how quickly gitgutter decorations show up
 util.options.updatetime = 300 -- default is 4000 ms
 
-util.g_vars.gitgutter_map_keys = 0
 util.g_vars.lf_replace_netrw = 1
 util.g_vars.lf_map_keys = 0
 

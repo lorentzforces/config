@@ -50,7 +50,7 @@ let g:terminal_color_15 = bright_white
 
 " editor interface colors
 exe 'highlight Cursor gui=NONE guifg=' . middle_grey 'guibg=' . slate_grey
-exe 'highlight Normal gui=NONE guifg=' . slate_grey 'guibg=' . middle_grey
+exe 'highlight Normal gui=NONE guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight Visual gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight VisualNOS gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight WildMenu gui=NONE guifg=' . dull_orange 'guibg=' . dull_black
@@ -62,7 +62,7 @@ exe 'highlight WarningMsg gui=italic guifg=' . dull_yellow
 exe 'highlight ModeMsg gui=NONE guifg=' . bright_white 'guibg=' . dull_red
 exe 'highlight MoreMsg gui=NONE guifg=' . bright_black
 exe 'highlight VertSplit gui=NONE guifg=' . middle_grey 'guibg=' . middle_grey
-exe 'highlight Directory gui=bold guifg=' . bright_blue
+exe 'highlight Directory gui=bold guifg=' . dull_red
 exe 'highlight SpecialKey gui=italic guifg=' . bright_black
 exe 'highlight TabLine gui=NONE guifg=' . bright_white 'guibg=' . dull_black
 exe 'highlight TabLineSel gui=NONE guifg=' . dull_red 'guibg=' . middle_grey
@@ -78,12 +78,21 @@ exe 'highlight PmenuThumb gui=NONE guibg=' . dull_black
 exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=' . middle_grey
 exe 'highlight netrwDir gui=NONE guifg=' . dull_orange
 exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
+exe 'highlight QuickFixLine gui=NONE guibg=' . dull_white
+exe 'highlight qfLineNr gui=NONE guifg=' . dull_green
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . dull_white
 exe 'highlight Search gui=NONE guifg=' . slate_grey 'guibg=' . bright_blue
 exe 'highlight IncSearch gui=NONE guifg=' . slate_grey 'guibg=' . bright_blue
 exe 'highlight MatchParen gui=bold guifg=' . slate_grey 'guibg=' . bright_blue
+
+" diagnostic colors
+exe 'highlight DiagnosticError gui=italic,bold,underline guifg=' . dull_yellow
+exe 'highlight DiagnosticWarn gui=italic guifg=' . dull_yellow
+exe 'highlight DiagnosticInfo gui=italic guifg=' . dull_white
+exe 'highlight DiagnosticHint gui=italic guifg=' . dull_white
+exe 'highlight DiagnosticOk gui=italic guifg=' . dull_white
 
 " diff colors
 exe 'highlight DiffChange gui=NONE guifg=' . bright_white 'guibg=' . dull_blue
@@ -193,7 +202,7 @@ exe 'highlight gitrebasePick gui=NONE guifg=' . dull_red 'guibg=NONE'
 " plugin-specific highlighting for vim-gitgutter
 exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green
 exe 'highlight GitGutterChange gui=bold guifg=' . dull_blue
-exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_blue
+exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_purple
 exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red
 
 " unknown usage, setting to magenta as a canary
