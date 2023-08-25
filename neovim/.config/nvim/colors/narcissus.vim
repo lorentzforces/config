@@ -181,6 +181,9 @@ exe 'highlight @label.json gui=NONE guifg=' . slate_grey
 " treesitter html
 exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
 
+" treesitter sql
+exe 'highlight @type.builtin.sql gui=NONE guifg=' . dull_red
+
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight xmlProcessingDelim gui=NONE guifg=' . dull_purple 'guibg=NONE'
