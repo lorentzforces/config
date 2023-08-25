@@ -73,10 +73,10 @@ util.map_normal('<leader>L', '<C-w>L')
 util.map_normal('<leader>x', ':q<CR>')
 
 -- sane movement with wrap turned on
-util.map_normal('j', 'gj')
-util.map_normal('k', 'gk')
-util.map_visual('j', 'gj')
-util.map_visual('k', 'gk')
+util.map_normal('j', 'v:count ? \'j\' : \'gj\'', {expr = true})
+util.map_normal('k', 'v:count ? \'k\' : \'gk\'', {expr = true})
+util.map_visual('j', 'v:count ? \'j\' : \'gj\'', {expr = true})
+util.map_visual('k', 'v:count ? \'k\' : \'gk\'', {expr = true})
 
 util.map_normal(
 	'<leader>s',
