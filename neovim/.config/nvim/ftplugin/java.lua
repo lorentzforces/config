@@ -38,7 +38,6 @@ local config = {
 					staticStarThreshold = 9999;
 				},
 			},
-			-- TODO: configure this per-machine
 			configuration = {
 				runtimes = machine_config.runtimes
 			},
