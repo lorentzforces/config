@@ -8,7 +8,6 @@ require('packer').startup(function(use)
 	-- dependency of lf.vim, but needs to be loaded after for Reasons™
 	use({'voldikss/vim-floaterm', after = 'lf.vim'})
 	use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
-	use('nvim-treesitter/playground')
 	use('tpope/vim-sleuth')
 	use('neovim/nvim-lspconfig')
 	use('mfussenegger/nvim-jdtls')
