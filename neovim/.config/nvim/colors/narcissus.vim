@@ -56,12 +56,12 @@ exe 'highlight VisualNOS gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight WildMenu gui=NONE guifg=' . dull_orange 'guibg=' . dull_black
 exe 'highlight NonText gui=italic guifg=' . dull_black
 exe 'highlight ErrorMsg gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
-exe 'highlight LineNr gui=NONE guifg=' . dull_white 'guibg=' . middle_grey
+exe 'highlight LineNr gui=NONE guifg=' . dull_white 'guibg=NONE'
 exe 'highlight CursorLineNr gui=NONE guifg=' . dull_red
 exe 'highlight WarningMsg gui=italic guifg=' . dull_yellow
 exe 'highlight ModeMsg gui=NONE guifg=' . bright_white 'guibg=' . dull_red
 exe 'highlight MoreMsg gui=NONE guifg=' . bright_black
-exe 'highlight VertSplit gui=NONE guifg=' . middle_grey 'guibg=' . middle_grey
+exe 'highlight VertSplit gui=NONE guifg=' . middle_grey 'guibg=NONE'
 exe 'highlight Directory gui=bold guifg=' . dull_red
 exe 'highlight SpecialKey gui=italic guifg=' . bright_black
 exe 'highlight TabLine gui=NONE guifg=' . bright_white 'guibg=' . dull_black
@@ -75,7 +75,7 @@ exe 'highlight PMenu gui=NONE guifg=' . slate_grey 'guibg=' . dull_white
 exe 'highlight PmenuSel gui=NONE guifg=' . dull_red 'guibg=' . dull_white
 exe 'highlight PmenuSbar gui=NONE guibg=' . dull_white
 exe 'highlight PmenuThumb gui=NONE guibg=' . dull_black
-exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=' . middle_grey
+exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight netrwDir gui=NONE guifg=' . dull_orange
 exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
 exe 'highlight QuickFixLine gui=NONE guibg=' . dull_white
