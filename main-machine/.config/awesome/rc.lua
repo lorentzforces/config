@@ -165,7 +165,7 @@ local tasklist_buttons = gears.table.join(
 local function set_wallpaper(s)
 	-- gears.wallpaper.set("#101010")
 	gears.wallpaper.maximized(
-		os.getenv("HOME") .. "/mine/media/wallpapers/jwst-jupiter-blue.png",
+		os.getenv("HOME") .. "/mine/media/wallpapers/hades-sunset.jpg",
 		s,
 		false
 	)
