@@ -1,0 +1,119 @@
+middle_grey: &middle_grey "#999999"
+slate_grey: &slate_grey "#303030"
+dull_black: &dull_black "#606060"
+bright_black: &bright_black "#010101"
+dull_red: &dull_red "#700000"
+bright_red: &bright_red "#c2000f"
+dull_green: &dull_green "#164f27"
+bright_green: &bright_green "#62ffc3"
+dull_yellow: &dull_yellow "#5b5500"
+bright_yellow: &bright_yellow "#f4e41f"
+dull_blue: &dull_blue "#43698d"
+bright_blue: &bright_blue "#60c0ff"
+dull_orange: &dull_orange "#a05614"
+bright_orange: &bright_orange "#fe9131"
+dull_purple: &dull_purple "#6a2071"
+bright_purple: &bright_purple "#b000f7"
+dull_white: &dull_white "#bbbbbb"
+bright_white: &bright_white "#eeeeee"
+test_magenta: &test_magenta "#FF00FF"
+
+k9s:
+  # General K9s styles
+  body:
+    fgColor: *slate_grey
+    bgColor: "default"
+    logoColor: *dull_red
+  # Command prompt styles
+  prompt:
+    fgColor: *slate_grey
+    bgColor: "default"
+    suggestColor: *dull_orange
+  # ClusterInfoView styles.
+  info:
+    fgColor: *slate_grey
+    sectionColor: *dull_red
+  # Dialog styles.
+  dialog:
+    fgColor: *slate_grey
+    bgColor: "default"
+    buttonFgColor: *dull_white
+    buttonBgColor: *dull_red
+    buttonFocusFgColor: *dull_white
+    buttonFocusBgColor: *dull_red
+    labelFgColor: *dull_red
+    fieldFgColor: *slate_grey
+  frame:
+    # Borders styles.
+    border:
+      fgColor: *dull_black
+      focusColor: *dull_red
+    menu:
+      fgColor: *slate_grey
+      keyColor: *dull_orange
+      # Used for favorite namespaces
+      numKeyColor: *dull_purple
+    # CrumbView attributes for history navigation.
+    crumbs:
+      fgColor: *dull_white
+      bgColor: *dull_black
+      activeColor: *dull_red
+    # Resource status and update styles
+    status:
+      newColor: *dull_green
+      completedColor: *bright_white
+      errorColor: *dull_yellow
+      modifyColor: *bright_green
+      addColor: *bright_green
+      highlightColor: *test_magenta
+      killColor: *dull_orange
+    # Border title styles.
+    title:
+      fgColor: *dull_white
+      bgColor: *dull_red
+      highlightColor: *dull_white
+      counterColor: *dull_white
+      filterColor: *test_magenta
+  views:
+    # Charts skins...
+    charts:
+      bgColor: "default"
+      defaultDialColors:
+        - *test_magenta
+        - *test_magenta
+      defaultChartColors:
+        - *test_magenta
+        - *test_magenta
+    # TableView attributes.
+    table:
+      fgColor: *slate_grey
+      bgColor: "default"
+      # Header row styles.
+      header:
+        fgColor: *slate_grey
+        bgColor: "default"
+        sorterColor: *dull_blue
+    # Xray view attributes.
+    xray:
+      fgColor: *slate_grey
+      bgColor: "default"
+      cursorColor: *test_magenta
+      graphicColor: *test_magenta
+      showIcons: false
+    # YAML info styles.
+    yaml:
+      keyColor: *test_magenta
+      colonColor: *test_magenta
+      valueColor: *bright_green
+    # Logs styles.
+    logs:
+      fgColor: *slate_grey
+      bgColor: default
+      indicator:
+        fgColor: *dull_white
+        bgColor: *dull_red
+    help:
+      fgColor: *bright_green
+      bgColor: "default"
+      indicator:
+        fgColor: *test_magenta

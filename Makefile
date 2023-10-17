@@ -10,8 +10,9 @@ ifeq ($(origin .RECIPEPREFIX), undefined)
 endif
 .RECIPEPREFIX = >
 
-MAIN_MACHINE_LIST := main-machine alacritty neovim tmux bash lf universal-scripts git-files ripgrep
-WORK_MACHINE_LIST := work-machine alacritty neovim tmux bash lf universal-scripts git-files ripgrep
+COMMON_LIST := alacritty neovim tmux bash lf universal-scripts git-files ripgrep
+MAIN_MACHINE_LIST := ${COMMON_LIST} main-machine
+WORK_MACHINE_LIST := ${COMMON_LIST} work-machine k9s
 
 setup-main: STOWLIST = ${MAIN_MACHINE_LIST}
 setup-main: setup-machine-stow
