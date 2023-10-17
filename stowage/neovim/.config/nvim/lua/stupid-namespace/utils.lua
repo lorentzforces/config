@@ -35,6 +35,7 @@ local create_lsp_keybinds = function(client, bufnr)
 	map_normal('gd', vim.lsp.buf.definition, bufopts)
 	map_insert('<M-i>', '<C-x><C-o>', bufopts)
 	map_normal('<leader>a', vim.lsp.buf.code_action, bufopts)
+	map_normal('<leader>F', vim.lsp.buf.references, bufopts)
 end
 
 local operating_system
