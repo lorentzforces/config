@@ -1,5 +1,3 @@
-path_entries="/home/linuxbrew/.linuxbrew/bin"
-path_entries+=":/home/linuxbrew/.linuxbrew/sbin"
-path_entries+=":$HOME/.cargo/bin"
-
-export PATH="$path_entries:$PATH"
+export PATH=$(ensure-path --first --from-env "/home/linuxbrew/.linuxbrew/sbin"
+export PATH=$(ensure-path --first --from-env "/home/linuxbrew/.linuxbrew/bin"
+export PATH=$(ensure-path --first --from-env "$HOME/.cargo/bin")

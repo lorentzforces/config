@@ -1,11 +1,11 @@
 # homebrew installs to a location that isn't on the PATH by default on apple silicon
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH=$(ensure-path --first --from-env "/opt/homebrew/bin")
 
 coreutils_prefix="$(brew --prefix coreutils)"
-export PATH="${coreutils_prefix}/libexec/gnubin:$PATH"
+export PATH=$(ensure-path --first --from-env "${coreutils_prefix}/libexec/gnubin")
 export MANPATH="${coreutils_prefix}/libexec/gnuman:$MANPATH"
 
-export PATH="/usr/local/bin:$PATH"
+export PATH=$(ensure-path --first --from-env "/usr/local/bin")
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
