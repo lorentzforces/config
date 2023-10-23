@@ -24,6 +24,7 @@ programs=(
 	"rg"
 	"brew"
 	"go"
+	"ensure-path"
 )
 # sdkman cannot be checked using this script - it performs its setup by defining its "command" as
 # a function called "sdk." Since functions are not available in subshells invoked as a script

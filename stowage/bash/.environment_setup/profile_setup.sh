@@ -5,7 +5,7 @@ export EDITOR=nvim
 
 ### PATH building ###
 # personal location for unpackaged programs
-export PATH="$HOME/programs/bin:$PATH"
+export PATH=$(ensure-path --first --from-env "$HOME/programs/bin")
 
 ### per-machine configuration
 # we do this last so we can override anything per-machine
