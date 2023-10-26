@@ -9,7 +9,7 @@ module.runtimes = {
 	},
 	{
 		name = 'JavaSE-1.8',
-		path = sdk_location .. '/8.0.362-amzn',
+		path = sdk_location .. '/8.0.392-amzn',
 	},
 }
 

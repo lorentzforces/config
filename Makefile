@@ -5,6 +5,10 @@ SHELL := bash
 MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
+# not supported in versions of make shipped on MacOS, and I want to be able to boostrap this config
+# as much as possible on a new Mac machine without having to monkey around with installing new
+# tools
+#
 # ifeq ($(origin .RECIPEPREFIX), undefined)
 #   $(error This Make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later)
 # endif
