@@ -165,6 +165,7 @@ exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
 
 " treesitter rust
 exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
+exe 'highlight @lsp.type.formatspecifier.rust gui=NONE guifg=' . bright_black
 
 " treesitter golang
 exe 'highlight @type.builtin.go gui=NONE guifg=' . dull_red
