@@ -13,8 +13,8 @@ require('packer').startup(function(use)
 	use('mfussenegger/nvim-jdtls')
 end)
 
-util.options.number = true
-util.options.relativenumber = true
+util.options.number = false
+util.options.relativenumber = false
 util.options.cursorline = true
 util.options.cursorlineopt = "number"
 util.options.scrolloff = 3
