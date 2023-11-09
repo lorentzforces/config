@@ -432,12 +432,17 @@ globalkeys = gears.table.join(
 		{ description = "lua execute prompt", group = "utility" }
 	),
 
-	awful.key(
-		{ }, "Print",
+
+	awful.key({ modkey, }, "p",
 		function () awful.spawn("flameshot gui") end,
 		{ description = "screenshot [flameshot]", group = "utility" }
 	)
 
+	-- awful.key(
+	-- 	{ }, "Print",
+	-- 	function () awful.spawn("flameshot gui") end,
+	-- 	{ description = "screenshot [flameshot]", group = "utility" }
+	-- )
     -- Menubar
     -- awful.key({ modkey }, "p", function() menubar.show() end,
     --          {description = "show the menubar", group = "launcher"})
