@@ -3,7 +3,7 @@ local util = require('stupid-namespace.utils')
 require('packer').startup(function(use)
 	use('wbthomason/packer.nvim')
 	use({'junegunn/fzf.vim', requires = {{'junegunn/fzf'}} })
-	use('airblade/vim-gitgutter')
+	use({'airblade/vim-gitgutter', branch = 'main'})
 	use('ptzz/lf.vim')
 	-- dependency of lf.vim, but needs to be loaded after for Reasons™
 	use({'voldikss/vim-floaterm', after = 'lf.vim'})
