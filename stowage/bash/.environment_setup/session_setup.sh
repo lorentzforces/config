@@ -12,6 +12,9 @@ set -o ignoreeof
 # don't put duplicate lines or lines starting with spaces in the history
 HISTCONTROL=ignoreboth
 
+# use timestamps with history
+HISTTIMEFORMAT="%F %T " # trailing space is important
+
 # we assume that our terminal supports xterm color codes
 export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 
