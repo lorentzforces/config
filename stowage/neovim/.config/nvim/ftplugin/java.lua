@@ -28,8 +28,11 @@ local config = {
 				favoriteStaticMembers = {
 					"org.hamcrest.MatcherAssert.assertThat",
 					"org.hamcrest.Matchers.*",
-					"org.hamcrest.CoreMatchers.*",
-					"org.mockito.Mockito.*"
+					"org.mockito.Mockito.*",
+				},
+				importOrder = {
+					"#",
+					"",
 				},
 			},
 			sources = {
