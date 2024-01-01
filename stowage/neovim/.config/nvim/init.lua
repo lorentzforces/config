@@ -1,17 +1,32 @@
 local util = require('stupid-namespace.utils')
 
-require('packer').startup(function(use)
-	use('wbthomason/packer.nvim')
-	use({'junegunn/fzf.vim', requires = {{'junegunn/fzf'}} })
-	use({'airblade/vim-gitgutter', branch = 'main'})
-	use('ptzz/lf.vim')
+-- bootstrap lazy.nvim for plugin management
+-- taken from lazy.nvim README
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		'git',
+		'clone',
+		'--filter=blob:none',
+		'https://github.com/folke/lazy.nvim.git',
+		'--branch=stable', -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+require('lazy').setup({
+	{'junegunn/fzf.vim', dependencies = {'junegunn/fzf',} },
+	{'airblade/vim-gitgutter', branch = 'main'},
+	'ptzz/lf.vim',
 	-- dependency of lf.vim, but needs to be loaded after for Reasons™
-	use({'voldikss/vim-floaterm', after = 'lf.vim'})
-	use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
-	use('tpope/vim-sleuth')
-	use('neovim/nvim-lspconfig')
-	use('mfussenegger/nvim-jdtls')
-end)
+	-- this previously used "after" in packer - research if it causes issues now
+	'voldikss/vim-floaterm',
+	{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+	'tpope/vim-sleuth',
+	'neovim/nvim-lspconfig',
+	'mfussenegger/nvim-jdtls',
+})
 
 util.options.number = false
 util.options.relativenumber = false
