@@ -3,7 +3,7 @@ export PATH=$(ensure-path --first --from-env "/opt/homebrew/bin")
 
 coreutils_prefix="$(brew --prefix coreutils)"
 export PATH=$(ensure-path --first --from-env "${coreutils_prefix}/libexec/gnubin")
-export MANPATH="${coreutils_prefix}/libexec/gnuman:$MANPATH"
+export MANPATH=$(echo $MANPATH | ensure-path --first "${coreutils_prefix}/libexec/gnuman")
 
 export PATH=$(ensure-path --first --from-env "/usr/local/bin")
 
