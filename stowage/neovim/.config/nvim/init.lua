@@ -23,7 +23,6 @@ require('lazy').setup({
 	-- this previously used "after" in packer - research if it causes issues now
 	'voldikss/vim-floaterm',
 	{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
-	'tpope/vim-sleuth',
 	'neovim/nvim-lspconfig',
 	'mfussenegger/nvim-jdtls',
 })
