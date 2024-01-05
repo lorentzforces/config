@@ -1,4 +1,4 @@
-local module = {}
+local M = {}
 
 -- the opts table is optional, but will default the following properties if not passed:
 -- - noremap: true
@@ -45,15 +45,15 @@ else
 	operating_system = "LINUX"
 end
 
-module.options = vim.opt
-module.local_options = vim.opt_local
-module.g_vars = vim.g
-module.map_normal = map_normal
-module.map_visual = map_visual
-module.map_insert = map_insert
-module.augroup = augroup
-module.autocommand = autocommand
-module.create_lsp_keybinds = create_lsp_keybinds
-module.operating_system = operating_system
+M.options = vim.opt
+M.local_options = vim.opt_local
+M.g_vars = vim.g
+M.map_normal = map_normal
+M.map_visual = map_visual
+M.map_insert = map_insert
+M.augroup = augroup
+M.autocommand = autocommand
+M.create_lsp_keybinds = create_lsp_keybinds
+M.operating_system = operating_system
 
-return module
+return M

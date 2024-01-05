@@ -18,10 +18,10 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
 	{'junegunn/fzf.vim', dependencies = {'junegunn/fzf',} },
 	{'airblade/vim-gitgutter', branch = 'main'},
-	'ptzz/lf.vim',
-	-- dependency of lf.vim, but needs to be loaded after for Reasons™
-	-- this previously used "after" in packer - research if it causes issues now
-	'voldikss/vim-floaterm',
+	-- Floaterm is technically a dependency of lf.vim, but needs to be loaded
+	-- after lf.vim for Reasons™. We declare lf.vim as a dependency to make sure
+	-- that it gets loaded first.
+	{'voldikss/vim-floaterm', dependencies = 'ptzz/lf.vim'},
 	{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
 	'neovim/nvim-lspconfig',
 	'mfussenegger/nvim-jdtls',
@@ -196,15 +196,18 @@ require('nvim-treesitter.configs').setup({
 		'java',
 		'javascript',
 		'json',
-		'lua',
 		'python',
-		'query',
 		'rust',
 		'sql',
 		'starlark',
 		'typescript',
-		'vim',
 		'yaml',
+		-- these are required due to this issue: https://github.com/nvim-treesitter/nvim-treesitter/issues/3970#issuecomment-1377128659
+		'c',
+		'lua',
+		'query',
+		'vim',
+		'vimdoc',
 	},
 	sync_install = false,
 	highlight = {
