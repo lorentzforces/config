@@ -25,12 +25,15 @@ programs=(
 	"brew"
 	"go"
 	"ensure-path"
+	"gopls"
+	"bash-language-server"
+	"dircolors"
 )
 # sdkman cannot be checked using this script - it performs its setup by defining its "command" as
 # a function called "sdk." Since functions are not available in subshells invoked as a script
 # (like this script), it is effectively invisible here.
 
-for prog in ${programs[@]}; do
+for prog in "${programs[@]}"; do
 	set +e
 	type -t "$prog" &>/dev/null
 	exitval=$?
