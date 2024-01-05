@@ -11,7 +11,6 @@ set -o ignoreeof
 
 # don't put duplicate lines or lines starting with spaces in the history
 HISTCONTROL=ignoreboth
-
 # use timestamps with history
 HISTTIMEFORMAT="%F %T " # trailing space is important
 
@@ -30,7 +29,7 @@ export TMUXP_CONFIGDIR="$HOME/.config/tmuxp"
 export GOPATH="$HOME/.go"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
-eval "$(dircolors -b $HOME/.config/ls-colors.conf)"
+eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
 
 # a lot of programs aren't a fan of terminfo from terminals that aren't the "standard" selections,
 # so this lets us fake xterm capabilities when we need to use them
@@ -107,7 +106,7 @@ function fd() {
 		dir="$(cat "$tmp")"
 		rm -f "$tmp"
 		if [[ -d "$dir" && "$dir" != "$(pwd)" ]]; then
-			cd "$dir"
+			cd "$dir" || return
 		fi
 	fi
 }
@@ -133,7 +132,8 @@ function tmuxhere() {
 		target_dir=$(pwd)
 	fi
 
-	local name=$(basename "$target_dir")
+	local name
+	name=$(basename "$target_dir")
 	SESSION_NAME="$name" SESSION_PATH="$target_dir" tmuxp load --yes "generic-with-path"
 }
 
