@@ -50,6 +50,8 @@ util.options.tabstop = 4
 util.options.shiftwidth = 4
 util.options.softtabstop = 4
 
+vim.api.nvim_command('filetype indent off')
+
 util.g_vars.floaterm_wintype = 'split'
 util.g_vars.floaterm_position = 'aboveleft'
 
