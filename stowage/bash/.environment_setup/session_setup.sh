@@ -2,8 +2,8 @@
 # exec 3>&2 2>/tmp/bashstart.$$.log
 # set -x
 
-if [ -r ~/.environment_setup/fzf_config.sh ]; then
-	source ~/.environment_setup/fzf_config.sh
+if [ -r "$HOME/.environment_setup/fzf_config.sh" ]; then
+	source "$HOME/.environment_setup/fzf_config.sh"
 fi
 
 # I keep hitting ctrl-d to page up and down a la vim, but this closes the terminal by default
@@ -155,9 +155,9 @@ function fmux() {
 # enable programmable completion features
 if ! shopt -oq posix; then
 	if [ -f /usr/share/bash-completion/bash_completion ]; then
-		source /usr/share/bash-completion/bash_completion
+		source "/usr/share/bash-completion/bash_completion"
 	elif [ -f /etc/bash_completion ]; then
-		source /etc/bash_completion
+		source "/etc/bash_completion"
 	fi
 fi
 
