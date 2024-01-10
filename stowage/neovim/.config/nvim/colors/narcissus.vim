@@ -107,7 +107,7 @@ exe 'highlight diffIndexLine gui=NONE guifg=' . bright_black
 
 " syntax colors
 exe 'highlight Underlined gui=underline guifg=' . slate_grey
-exe 'highlight Title gui=underline guifg=' . bright_black
+exe 'highlight Title gui=underline,bold guifg=' . bright_black
 exe 'highlight Comment gui=italic guifg=' . bright_white
 exe 'highlight Typedef gui=NONE guifg=' . dull_red
 exe 'highlight Debug gui=NONE guifg=' . bright_yellow
