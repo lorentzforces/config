@@ -206,6 +206,9 @@ exe 'highlight gitrebaseHash gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseSummary gui=NONE guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight gitrebasePick gui=NONE guifg=' . dull_red 'guibg=NONE'
 
+" syntax ssh
+exe 'highlight sshConfigMatch gui=NONE guifg=' . dull_red 'guibg=NONE'
+
 " plugin-specific highlighting for vim-gitgutter
 exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green
 exe 'highlight GitGutterChange gui=bold guifg=' . dull_blue
