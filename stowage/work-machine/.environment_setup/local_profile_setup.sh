@@ -3,7 +3,7 @@ export PATH=$(ensure-path "/opt/homebrew/bin")
 
 coreutils_prefix="$(brew --prefix coreutils)"
 export PATH=$(ensure-path "${coreutils_prefix}/libexec/gnubin")
-export MANPATH=$(echo "$MANPATH" | ensure-path --stdin "${coreutils_prefix}/libexec/gnuman")
+export MANPATH=$(echo -n "$MANPATH" | ensure-path --stdin "${coreutils_prefix}/libexec/gnuman")
 
 # turns out this was in an inconvenient spot in the PATH
 export PATH=$(ensure-path "/usr/local/bin")
