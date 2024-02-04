@@ -37,3 +37,8 @@ family = "MesloLGS Nerd Font Mono"
 
 [selection]
 save_to_clipboard = true
+
+[bell]
+animation = "EaseOutQuad"
+duration = 200
+color = "#700000"
