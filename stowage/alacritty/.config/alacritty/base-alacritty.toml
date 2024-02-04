@@ -1,0 +1,39 @@
+[colors.primary]
+background = "#999999"
+foreground = "#303030"
+
+[colors.cursor]
+cursor = "#303030"
+text = "#999999"
+
+[colors.normal]
+black = "#606060"
+blue = "#43698d"
+cyan = "#6a2071"
+green = "#164f27"
+magenta = "#a05614"
+red = "#700000"
+white = "#bbbbbb"
+yellow = "#5b5500"
+
+[colors.bright]
+black = "#010101"
+blue = "#60c0ff"
+cyan = "#b000f7"
+green = "#62ffc3"
+magenta = "#fe9131"
+red = "#c2000f"
+white = "#eeeeee"
+yellow = "#f4e41f"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "MesloLGS Nerd Font Mono"
+
+[selection]
+save_to_clipboard = true
