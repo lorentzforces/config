@@ -239,7 +239,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-	awful.button({ }, 3, function () mymainmenu:toggle() end),
+	-- awful.button({ }, 3, function () mymainmenu:toggle() end),
 	awful.button({ }, 4, awful.tag.viewnext),
 	awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -331,8 +331,8 @@ globalkeys = gears.table.join(
 	),
 	awful.key(
 		{ modkey, }, "i",
-		function () awful.spawn("firefox") end,
-		{ description = "open Firefox", group = "launcher" }
+		function () awful.spawn("vivaldi") end,
+		{ description = "open Vivaldi", group = "launcher" }
 	),
 
 	awful.key(
@@ -663,15 +663,12 @@ awful.rules.rules = {
 		properties = { floating = true }
 	},
 
-    -- Add titlebars to normal clients and dialogs
+    -- don't add titlebars to normal clients and dialogs
 	{
 		rule_any = { type = { "normal", "dialog" } },
 		properties = { titlebars_enabled = false }
 	},
 
-	-- Set Firefox to always map on the tag named "2" on screen 1.
-	-- { rule = { class = "Firefox" },
-	--   properties = { screen = 1, tag = "2" } },
 }
 -- }}}
 
