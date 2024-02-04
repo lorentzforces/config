@@ -1,0 +1,9 @@
+import = ["~/.config/alacritty/base-alacritty.toml"]
+
+[font]
+# bump up size to make font rendering on MacOS look less terrible
+size = 15.0
+
+[window]
+# Make left `Option` key behave as `Alt` (macOS only)
+option_as_alt = "OnlyLeft"
