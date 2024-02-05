@@ -1,6 +1,6 @@
 local module = {}
 
-local sdk_location = os.getenv('HOME') .. '/programs/sdkman/candidates/java'
+local sdk_location = os.getenv('HOME') .. '/mine/programs/sdkman/candidates/java'
 
 module.runtimes = {
 	{
