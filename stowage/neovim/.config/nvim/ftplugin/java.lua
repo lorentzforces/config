@@ -3,9 +3,9 @@ local machine_config = require('stupid-namespace.machine-specific-config')
 local jdtls = require('jdtls')
 
 local home = os.getenv('HOME')
-local jdtls_location = home .. '/programs/jdtls'
-local lombok_location = home .. '/programs/lombok/lombok.jar'
-local sdk_location = home .. '/programs/sdkman/candidates/java'
+local jdtls_location = home .. '/mine/programs/jdtls'
+local lombok_location = home .. '/mine/programs/lombok/lombok.jar'
+local sdk_location = home .. '/mine/programs/sdkman/candidates/java'
 
 -- significantly cribbed from the excellent setup at:
 --   https://sookocheff.com/post/vim/neovim-java-ide/

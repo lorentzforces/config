@@ -7,7 +7,7 @@ export EDITOR=nvim
 # personal location for unpackaged programs
 # we need to set this the old-fashioned way to bootstrap where we usually put the ensure-path
 # command
-export PATH="$HOME/programs/bin:$PATH"
+export PATH="$HOME/mine/programs/bin:$PATH"
 
 ### per-machine configuration
 # we do this last so we can override anything per-machine
