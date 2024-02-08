@@ -4,6 +4,10 @@ export PATH=$(ensure-path "/opt/homebrew/bin")
 coreutils_prefix="$(brew --prefix coreutils)"
 export PATH=$(ensure-path "${coreutils_prefix}/libexec/gnubin")
 export MANPATH=$(echo -n "$MANPATH" | ensure-path --stdin "${coreutils_prefix}/libexec/gnuman")
+# manpath expects an empty entry to denote the "default" manpath. This may be temporary, and
+# ensure-path may be updated to conditionally allow empty entries.
+# see the man entry for manpath
+export MANPATH="$MANPATH:"
 
 # turns out this was in an inconvenient spot in the PATH
 export PATH=$(ensure-path "/usr/local/bin")
