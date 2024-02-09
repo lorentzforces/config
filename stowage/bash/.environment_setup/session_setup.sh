@@ -31,13 +31,6 @@ export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
 eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
 
-# a lot of programs aren't a fan of terminfo from terminals that aren't the "standard" selections,
-# so this lets us fake xterm capabilities when we need to use them
-function run_with_xterminfo() {
-	(TERM=xterm-256color; eval "$@")
-}
-alias xtrun="run_with_xterminfo"
-
 eval "$(fnm env)"
 eval "$(fnm completions --shell bash)"
 
