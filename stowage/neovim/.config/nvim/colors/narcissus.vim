@@ -182,6 +182,9 @@ exe 'highlight @variable.builtin.typescript gui=NONE guifg=' . dull_red
 " treesitter json
 exe 'highlight @label.json gui=NONE guifg=' . slate_grey
 
+" treesitter lua
+exe 'highlight @constant.builtin.lua gui=NONE guifg=' . dull_red
+
 " treesitter html
 exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
 

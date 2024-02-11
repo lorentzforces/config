@@ -3,37 +3,45 @@
 FILE_PATH="$HOME/upgradable-packages.txt"
 
 if [ -f "$FILE_PATH" ]; then
-	rm $FILE_PATH
+	rm "$FILE_PATH"
 fi
 
 # check for apt-get because just "apt" can also be a java executable
 if command -v apt-get &> /dev/null; then
 	echo -e "Fetching apt packages..."
 	sudo apt-get update &> /dev/null
-	echo -e "### Upgradable packages from apt: ###\n" >> $FILE_PATH
-	apt list --upgradable >> $FILE_PATH
-	echo -e "\n\n" >> $FILE_PATH
+	{
+		echo -e "### Upgradable packages from apt: ###\n";
+		apt list --upgradable;
+		echo -e "\n\n";
+	} >> "$FILE_PATH"
 fi
 
 if command -v dnf &> /dev/null; then
 	echo -e "Fetching dnf packages..."
 	# we could do this in one line, but this way we don't get the progress updates in the output
 	dnf check-update --refresh &> /dev/null
-	echo -e "### Upgradable packages from dnf: ###\n" >> $FILE_PATH
-	dnf list --updates >> $FILE_PATH
-	echo -e "\n\n" >> $FILE_PATH
+	{
+		echo -e "### Upgradable packages from dnf: ###\n";
+		dnf list --updates;
+		echo -e "\n\n";
+	} >> "$FILE_PATH"
 fi
 
 if command -v brew &> /dev/null; then
 	echo -e "Fetching homebrew packages..."
-	echo -e "### Upgradable packages from homebrew: ###\n" >> $FILE_PATH
-	brew upgrade --dry-run >> $FILE_PATH
-	echo -e "\n\n" >> $FILE_PATH
+	{
+		echo -e "### Upgradable packages from homebrew: ###\n";
+		brew upgrade --dry-run;
+		echo -e "\n\n";
+	} >> "$FILE_PATH"
 fi
 
 if command -v flatpak &> /dev/null; then
 	echo -e "Fetching flatpak packages..."
-	echo -e "### Upgradable packages from flatpak: ###\n" >> $FILE_PATH
-	flatpak remote-ls --updates >> $FILE_PATH
-	echo -e "\n\n" >> $FILE_PATH
+	{
+		echo -e "### Upgradable packages from flatpak: ###\n";
+		flatpak remote-ls --updates;
+		echo -e "\n\n";
+	} >> "$FILE_PATH"
 fi
