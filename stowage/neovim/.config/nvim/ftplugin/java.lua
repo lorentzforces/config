@@ -22,6 +22,10 @@ end
 
 local config = {
 	on_attach = util.create_lsp_keybinds,
+	on_init = function(client, _)
+		-- jdtls semantic tokens seem inconsistent and bad
+		client.server_capabilities.semanticTokensProvider = nil
+	end,
 	settings = {
 		java = {
 			completion = {
