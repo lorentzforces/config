@@ -175,6 +175,9 @@ exe 'highlight @type.builtin.go gui=NONE guifg=' . dull_red
 exe 'highlight @type.definition.go gui=NONE guifg=' . slate_grey
 exe 'highlight @constant.builtin.go gui=NONE guifg=' . dull_red
 
+" treesitter javascript
+exe 'highlight @constant.builtin.javascript gui=NONE guifg=' . dull_red
+
 " treesitter typescript
 " TODO: there is still no way to highlight annotations/decorators in typescript
 exe 'highlight @variable.builtin.typescript gui=NONE guifg=' . dull_red
