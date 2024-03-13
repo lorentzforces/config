@@ -1,3 +1,23 @@
+[window]
+padding = { x = 3, y = 0 }
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12.0
+
+[font.normal]
+family = "MesloLGS Nerd Font Mono"
+
+[selection]
+save_to_clipboard = true
+
+[bell]
+animation = "EaseOutQuad"
+duration = 200
+color = "#700000"
+
 [colors.primary]
 background = "#999999"
 foreground = "#303030"
@@ -25,20 +45,3 @@ magenta = "#fe9131"
 red = "#c2000f"
 white = "#eeeeee"
 yellow = "#f4e41f"
-
-[env]
-TERM = "xterm-256color"
-
-[font]
-size = 12.0
-
-[font.normal]
-family = "MesloLGS Nerd Font Mono"
-
-[selection]
-save_to_clipboard = true
-
-[bell]
-animation = "EaseOutQuad"
-duration = 200
-color = "#700000"
