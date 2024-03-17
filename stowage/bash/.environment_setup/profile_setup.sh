@@ -14,3 +14,6 @@ export PATH="$HOME/mine/programs/bin:$PATH"
 if [ -r "$HOME/.environment_setup/local_profile_setup.sh" ]; then
 	source "$HOME/.environment_setup/local_profile_setup.sh"
 fi
+
+# move this to the front of PATH so our own programs take ultimate precedence
+export PATH=$(ensure-path "$HOME/mine/programs/bin")
