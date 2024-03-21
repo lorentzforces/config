@@ -45,15 +45,16 @@ function _confirm() {
 
 ### aliases ###
 
-alias ls="ls --color=auto --group-directories-first --classify --width=90"
-alias la="ls -A --group-directories-first --color=auto"
-alias ll="ls -Alh --group-directories-first --color=auto"
+alias ls='ls --color=auto --group-directories-first --classify --width=90'
+alias la='ls -A --group-directories-first --color=auto'
+alias ll='ls -Alh --group-directories-first --color=auto'
 
-alias g="git"
+alias g='git'
 
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias cdm='cd $HOME/mine'
 
 function gco() {
 	local target
@@ -78,14 +79,14 @@ function delete-branch() {
 	fi
 }
 
-alias fshow="_fzf_git_show"
-alias fcd="_fzf_cd_containing_dir"
+alias fshow='_fzf_git_show'
+alias fcd='_fzf_cd_containing_dir'
 
-alias page="nvim -R"
-alias pageify="fc -s | nvim -R -"
-alias lessify="fc -s | less -R"
+alias page='nvim -R'
+alias pageify='fc -s | nvim -R -'
+alias lessify='fc -s | less -R'
 
-alias restow="stow -R --no-folding"
+alias restow='stow -R --no-folding'
 
 alias printpath='printenv PATH | sed s/:/\\n/g'
 
