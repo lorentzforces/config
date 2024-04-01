@@ -102,9 +102,9 @@ k9s:
       showIcons: false
     # YAML info styles.
     yaml:
-      keyColor: *test_magenta
-      colonColor: *test_magenta
-      valueColor: *bright_green
+      keyColor: *dull_red
+      colonColor: *slate_grey
+      valueColor: *slate_grey
     # Logs styles.
     logs:
       fgColor: *slate_grey
