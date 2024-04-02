@@ -194,6 +194,13 @@ exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
 " treesitter sql
 exe 'highlight @type.builtin.sql gui=NONE guifg=' . dull_red
 
+" syntax asciidoc
+exe 'highlight asciidocListBullet gui=NONE guifg=' . dull_red
+exe 'highlight asciidocAttributeList gui=NONE guifg=' . dull_white
+exe 'highlight asciidocHLabel gui=NONE guifg=' . dull_orange
+exe 'highlight asciidocHLabel gui=NONE guifg=' . dull_orange
+exe 'highlight asciidocQuotedEmphasizedItalic gui=italic'
+
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . dull_red 'guibg=NONE'
 exe 'highlight xmlProcessingDelim gui=NONE guifg=' . dull_purple 'guibg=NONE'
