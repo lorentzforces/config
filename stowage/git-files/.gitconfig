@@ -19,7 +19,7 @@
 	f = fetch
 	fa = fetch -a
 	unstage = reset HEAD --
-	dt = difftool
+	wsdiff = diff --color-moved-ws=ignore-space-change
 
 	ls = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges
 	ll = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges
