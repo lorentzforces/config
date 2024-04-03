@@ -25,6 +25,7 @@ programs=(
 	"make"
 	"nvim"
 	"rg"
+	"shellcheck"
 	"stow"
 	"tmux"
 	"tmuxp"
