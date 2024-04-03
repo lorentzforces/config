@@ -161,5 +161,10 @@ if [ -r "$HOME/.environment_setup/local_session_setup.sh" ]; then
 	source "$HOME/.environment_setup/local_session_setup.sh"
 fi
 
+# a little bit of obscurity to keep specifics out of version control
+if [ -r "$HOME/.environment_setup/secret_setup.sh" ]; then
+	source "$HOME/.environment_setup/secret_setup.sh"
+fi
+
 # set +x
 # exec 2>&3 3>&-
