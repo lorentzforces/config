@@ -42,8 +42,8 @@ theme.border_marked = "#91231c"
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-theme.hotkeys_font = "hack bold 10"
-theme.hotkeys_description_font = "hack 10"
+theme.hotkeys_font = "MesloLGS Nerd Font Mono bold 10"
+theme.hotkeys_description_font = "MesloLGS Nerd Font Mono 10"
 theme.hotkeys_modifiers_fg = "#fe9131"
 theme.hotkeys_label_bg = "#700000"
 
