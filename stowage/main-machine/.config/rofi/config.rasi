@@ -1,8 +1,9 @@
 configuration {
-	combi-modi: "window,run";
-	modi: "window,run,combi";
+
+	combi-modes: "drun,window";
+	modes: "combi,run";
 	font: "Be Vietnam Pro 16";
-	terminal: "kitty";
+	terminal: "alacritty";
 	combi-hide-mode-prefix: true;
 
 	combi {

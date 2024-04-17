@@ -174,7 +174,7 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
-local tag_names = { "●", "●", "●", "◯", "◯", "◯", }
+local tag_names = { "●", "●", "●", "●", "●", "●", }
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
 	set_wallpaper(s)
