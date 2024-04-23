@@ -1,12 +1,15 @@
+# I previously moved this to a more prominent PATH location, but I forgot why, and now I want
+# homebrew to take precedence
+PATH=$(ensure-path "/usr/local/bin")
 # homebrew installs to a location that isn't on the PATH by default on apple silicon
-export PATH=$(ensure-path "/opt/homebrew/bin")
+PATH=$(ensure-path "/opt/homebrew/bin")
 
 coreutils_prefix="$(brew --prefix coreutils)"
-export PATH=$(ensure-path "${coreutils_prefix}/libexec/gnubin")
-export MANPATH=$(echo -n "$MANPATH" | ensure-path --stdin --keep-empty "${coreutils_prefix}/libexec/gnuman")
+PATH=$(ensure-path "${coreutils_prefix}/libexec/gnubin")
+MANPATH=$(echo -n "$MANPATH" | ensure-path --stdin --keep-empty "${coreutils_prefix}/libexec/gnuman")
 
-# turns out this was in an inconvenient spot in the PATH
-export PATH=$(ensure-path "/usr/local/bin")
+export PATH
+export MANPATH
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
