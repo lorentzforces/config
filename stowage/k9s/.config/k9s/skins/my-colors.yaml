@@ -73,7 +73,7 @@ k9s:
       bgColor: *dull_red
       highlightColor: *dull_white
       counterColor: *dull_white
-      filterColor: *test_magenta
+      filterColor: *bright_blue
   views:
     # Charts skins...
     charts:
