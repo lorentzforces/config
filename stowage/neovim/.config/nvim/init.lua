@@ -25,6 +25,7 @@ require('lazy').setup({
 	{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
 	'neovim/nvim-lspconfig',
 	'mfussenegger/nvim-jdtls',
+	'shortcuts/no-neck-pain.nvim'
 })
 
 util.options.number = false
@@ -86,6 +87,7 @@ util.map_normal('<leader>J', '<C-w>J')
 util.map_normal('<leader>K', '<C-w>K')
 util.map_normal('<leader>L', '<C-w>L')
 util.map_normal('<leader>x', ':q<CR>')
+util.map_normal('<leader>z', ':NoNeckPain<CR>')
 
 -- sane movement with wrap turned on
 util.map_normal('j', 'v:count ? \'j\' : \'gj\'', {expr = true})
@@ -187,11 +189,19 @@ vim.cmd([[
 	colorscheme narcissus
 ]])
 
+require('no-neck-pain').setup({
+	width = 126,
+	autocmds = {
+		enableOnVimEnter = true,
+		enableOnTabEnter = true,
+	},
+})
+
 require('nvim-treesitter.configs').setup({
 	ensure_installed = {
 		-- bash highlighting is variable, seems to be different between makefiles and plain
 		-- shell scripts
-		-- 'bash',
+		'bash',
 		'comment',
 		'go',
 		'html',

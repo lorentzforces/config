@@ -195,6 +195,9 @@ exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
 " treesitter sql
 exe 'highlight @type.builtin.sql gui=NONE guifg=' . dull_red
 
+" treesitter bash
+exe 'highlight @keyword.directive.bash gui=NONE guifg=' . dull_purple
+
 " syntax asciidoc
 exe 'highlight asciidocListBullet gui=NONE guifg=' . dull_red
 exe 'highlight asciidocAttributeList gui=NONE guifg=' . dull_white
