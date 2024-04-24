@@ -22,6 +22,7 @@ export HOST_TERM=$TERM
 
 export PAGER="nvim -R -"
 export MANPAGER="nvim +Man!"
+export MANWIDTH="120"
 export LESS="-R --tabs=4"
 
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"

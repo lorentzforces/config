@@ -190,6 +190,7 @@ vim.cmd([[
 ]])
 
 require('no-neck-pain').setup({
+	-- debug = true,
 	width = 126,
 	autocmds = {
 		enableOnVimEnter = true,
