@@ -3,4 +3,4 @@
 --hidden
 --follow
 --glob
-!{node_modules,.git,.DS_STORE}
+!{node_modules,.git,.DS_STORE,.yarn}
