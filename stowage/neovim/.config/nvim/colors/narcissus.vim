@@ -9,7 +9,7 @@ set t_Co=256
 let g:colors_name = "narcissus"
 
 " TODO: all these variables for colors are leaked, maybe do something about that
-let testMagenta = '#ff00ff'
+let TEST_MAGENTA = '#ff00ff'
 
 let middle_grey = '#999999' " background
 let slate_grey = '#303030' " foreground
@@ -50,7 +50,7 @@ let g:terminal_color_15 = bright_white
 
 " editor interface colors
 exe 'highlight Cursor gui=NONE guifg=' . middle_grey 'guibg=' . slate_grey
-exe 'highlight Normal gui=NONE guifg=' . slate_grey 'guibg=NONE'
+exe 'highlight Normal gui=NONE guifg=' . slate_grey 'guibg=' . middle_grey
 exe 'highlight Visual gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight VisualNOS gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight WildMenu gui=NONE guifg=' . dull_orange 'guibg=' . dull_black
@@ -62,6 +62,7 @@ exe 'highlight WarningMsg gui=italic guifg=' . dull_yellow
 exe 'highlight ModeMsg gui=NONE guifg=' . bright_white 'guibg=' . dull_red
 exe 'highlight MoreMsg gui=NONE guifg=' . bright_black
 exe 'highlight VertSplit gui=NONE guifg=' . middle_grey 'guibg=NONE'
+exe 'highlight WinSeparator gui=NONE guifg=background guibg=NONE'
 exe 'highlight Directory gui=bold guifg=' . dull_red
 exe 'highlight SpecialKey gui=italic guifg=' . bright_black
 exe 'highlight TabLine gui=NONE guifg=' . bright_white 'guibg=' . dull_black
@@ -85,6 +86,7 @@ exe 'highlight qfLineNr gui=NONE guifg=' . dull_green
 exe 'highlight CursorLine guibg=' . dull_white
 exe 'highlight Search gui=NONE guifg=' . slate_grey 'guibg=' . bright_blue
 exe 'highlight IncSearch gui=NONE guifg=' . slate_grey 'guibg=' . bright_blue
+exe 'highlight CurSearch gui=bold guifg=' . slate_grey 'guibg=' . bright_blue
 exe 'highlight MatchParen gui=bold guifg=' . slate_grey 'guibg=' . bright_blue
 
 " diagnostic colors
@@ -233,10 +235,10 @@ exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_purple
 exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red
 
 " unknown usage, setting to magenta as a canary
-exe 'highlight FoldColumn gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
-exe 'highlight SpellCap gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
-exe 'highlight SpellLocal gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
-exe 'highlight SpellBad gui=NONE guifg=' . testMagenta 'guibg=' . testMagenta
+exe 'highlight FoldColumn gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight SpellCap gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight SpellLocal gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight SpellBad gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
 
 "hi clear -- no settings --
 "hi Ignore -- no settings --
