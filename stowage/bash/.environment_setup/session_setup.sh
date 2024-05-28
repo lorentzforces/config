@@ -36,7 +36,7 @@ eval "$(fnm env)"
 eval "$(fnm completions --shell bash)"
 
 # fix path after fnm chucks new stuff on it
-PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}")
+PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
 export PATH
 
 # expects 1 argument which is the prompt text
