@@ -199,6 +199,7 @@ exe 'highlight @type.builtin.sql gui=NONE guifg=' . dull_red
 
 " treesitter bash
 exe 'highlight @keyword.directive.bash gui=NONE guifg=' . dull_purple
+exe 'highlight @variable.parameter.bash gui=NONE guifg=' . slate_grey
 
 " syntax asciidoc
 exe 'highlight asciidocListBullet gui=NONE guifg=' . dull_red
