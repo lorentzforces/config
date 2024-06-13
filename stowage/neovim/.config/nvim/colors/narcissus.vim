@@ -164,49 +164,6 @@ exe 'highlight @variable.builtin gui=NONE guifg=' . dull_red
 exe 'highlight @function.builtin gui=NONE guifg=' . dull_red
 exe 'highlight @comment.todo.comment gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 
-" treesitter java
-exe 'highlight @constant.builtin.java gui=NONE guifg=' . dull_red
-exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
-
-" treesitter rust
-exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
-exe 'highlight @type.builtin.rust gui=NONE guifg=' . dull_red
-exe 'highlight @lsp.type.formatspecifier.rust gui=NONE guifg=' . bright_black
-exe 'highlight @lsp.typemod.decorator.attribute.rust gui=NONE guifg=' . dull_purple
-exe 'highlight @lsp.typemod.attributeBracket.attribute.rust gui=NONE guifg=' . dull_purple
-
-" treesitter golang
-exe 'highlight @type.builtin.go gui=NONE guifg=' . dull_red
-exe 'highlight @type.definition.go gui=NONE guifg=' . slate_grey
-exe 'highlight @constant.builtin.go gui=NONE guifg=' . dull_red
-
-" treesitter javascript
-exe 'highlight @constant.builtin.javascript gui=NONE guifg=' . dull_red
-
-" treesitter typescript
-" TODO: there is still no way to highlight annotations/decorators in typescript
-exe 'highlight @variable.builtin.typescript gui=NONE guifg=' . dull_red
-
-" treesitter json
-exe 'highlight @label.json gui=NONE guifg=' . slate_grey
-
-" treesitter lua
-exe 'highlight @constant.builtin.lua gui=NONE guifg=' . dull_red
-
-" treesitter markdown
-exe 'highlight @markup.link.url.markdown_inline gui=NONE guifg=' . dull_purple
-exe 'highlight @markup.list.markdown gui=NONE guifg=' . dull_red
-
-" treesitter html
-exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
-
-" treesitter sql
-exe 'highlight @type.builtin.sql gui=NONE guifg=' . dull_red
-
-" treesitter bash
-exe 'highlight @keyword.directive.bash gui=NONE guifg=' . dull_purple
-exe 'highlight @variable.parameter.bash gui=NONE guifg=' . slate_grey
-
 " syntax asciidoc
 exe 'highlight asciidocListBullet gui=NONE guifg=' . dull_red
 exe 'highlight asciidocAttributeList gui=NONE guifg=' . dull_white
@@ -214,18 +171,12 @@ exe 'highlight asciidocHLabel gui=NONE guifg=' . dull_orange
 exe 'highlight asciidocHLabel gui=NONE guifg=' . dull_orange
 exe 'highlight asciidocQuotedEmphasizedItalic gui=italic'
 
+" treesitter bash
+exe 'highlight @keyword.directive.bash gui=NONE guifg=' . dull_purple
+exe 'highlight @variable.parameter.bash gui=NONE guifg=' . slate_grey
+
 " syntax dockerfile
 exe 'highlight dockerfileFrom gui=NONE guifg=' . dull_purple
-
-" syntax makefile
-exe 'highlight makeCommands gui=NONE guifg=' . slate_grey
-
-" syntax xml
-exe 'highlight xmlTagName gui=NONE guifg=' . dull_red 'guibg=NONE'
-exe 'highlight xmlProcessingDelim gui=NONE guifg=' . dull_purple 'guibg=NONE'
-
-" syntax shell
-exe 'highlight shQuote gui=NONE guifg=' . dull_orange 'guibg=NONE'
 
 " syntax git
 exe 'highlight gitcommitSummary gui=NONE guifg=' . dull_red 'guibg=NONE'
@@ -238,8 +189,57 @@ exe 'highlight gitrebaseHash gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseSummary gui=NONE guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight gitrebasePick gui=NONE guifg=' . dull_red 'guibg=NONE'
 
+" treesitter golang
+exe 'highlight @type.builtin.go gui=NONE guifg=' . dull_red
+exe 'highlight @type.definition.go gui=NONE guifg=' . slate_grey
+exe 'highlight @constant.builtin.go gui=NONE guifg=' . dull_red
+
+" treesitter html
+exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
+
+" treesitter java
+exe 'highlight @constant.builtin.java gui=NONE guifg=' . dull_red
+exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
+
+" treesitter javascript
+exe 'highlight @constant.builtin.javascript gui=NONE guifg=' . dull_red
+
+" treesitter json
+exe 'highlight @label.json gui=NONE guifg=' . slate_grey
+
+" treesitter lua
+exe 'highlight @constant.builtin.lua gui=NONE guifg=' . dull_red
+
+" syntax makefile
+exe 'highlight makeCommands gui=NONE guifg=' . slate_grey
+
+" treesitter markdown
+exe 'highlight @markup.link.url.markdown_inline gui=NONE guifg=' . dull_purple
+exe 'highlight @markup.list.markdown gui=NONE guifg=' . dull_red
+
+" treesitter rust
+exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
+exe 'highlight @type.builtin.rust gui=NONE guifg=' . dull_red
+exe 'highlight @lsp.type.formatspecifier.rust gui=NONE guifg=' . bright_black
+exe 'highlight @lsp.typemod.decorator.attribute.rust gui=NONE guifg=' . dull_purple
+exe 'highlight @lsp.typemod.attributeBracket.attribute.rust gui=NONE guifg=' . dull_purple
+
+" syntax shell
+exe 'highlight shQuote gui=NONE guifg=' . dull_orange 'guibg=NONE'
+
+" treesitter sql
+exe 'highlight @type.builtin.sql gui=NONE guifg=' . dull_red
+
 " syntax ssh
 exe 'highlight sshConfigMatch gui=NONE guifg=' . dull_red 'guibg=NONE'
+
+" treesitter typescript
+" TODO: there is still no way to highlight annotations/decorators in typescript
+exe 'highlight @variable.builtin.typescript gui=NONE guifg=' . dull_red
+
+" syntax xml
+exe 'highlight xmlTagName gui=NONE guifg=' . dull_red 'guibg=NONE'
+exe 'highlight xmlProcessingDelim gui=NONE guifg=' . dull_purple 'guibg=NONE'
 
 " plugin-specific highlighting for vim-gitgutter
 exe 'highlight GitGutterAdd gui=bold guifg=' . dull_green
