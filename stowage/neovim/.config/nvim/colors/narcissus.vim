@@ -81,10 +81,11 @@ exe 'highlight netrwDir gui=NONE guifg=' . dull_orange
 exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
 exe 'highlight QuickFixLine gui=NONE guibg=' . dull_white
 exe 'highlight qfLineNr gui=NONE guifg=' . dull_green
+exe 'highlight Question gui=bold guifg=' . dull_red
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . dull_white
-exe 'highlight Search gui=NONE guifg=' . slate_grey 'guibg=' . bright_blue
+exe 'highlight Search gui=NONE guifg=' . bright_white 'guibg=' . dull_blue
 exe 'highlight IncSearch gui=NONE guifg=' . slate_grey 'guibg=' . bright_blue
 exe 'highlight CurSearch gui=bold guifg=' . slate_grey 'guibg=' . bright_blue
 exe 'highlight MatchParen gui=bold guifg=' . slate_grey 'guibg=' . bright_blue
@@ -158,6 +159,7 @@ exe 'highlight @text.reference gui=underline'
 exe 'highlight @attribute gui=NONE guifg=' . dull_purple
 exe 'highlight @constructor gui=NONE guifg=' . slate_grey
 exe 'highlight @type.qualifier gui=NONE guifg=' . dull_red
+exe 'highlight @variable gui=NONE guifg=' . slate_grey
 exe 'highlight @variable.builtin gui=NONE guifg=' . dull_red
 exe 'highlight @function.builtin gui=NONE guifg=' . dull_red
 exe 'highlight @comment.todo.comment gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
@@ -191,6 +193,10 @@ exe 'highlight @label.json gui=NONE guifg=' . slate_grey
 " treesitter lua
 exe 'highlight @constant.builtin.lua gui=NONE guifg=' . dull_red
 
+" treesitter markdown
+exe 'highlight @markup.link.url.markdown_inline gui=NONE guifg=' . dull_purple
+exe 'highlight @markup.list.markdown gui=NONE guifg=' . dull_red
+
 " treesitter html
 exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
 
@@ -207,6 +213,12 @@ exe 'highlight asciidocAttributeList gui=NONE guifg=' . dull_white
 exe 'highlight asciidocHLabel gui=NONE guifg=' . dull_orange
 exe 'highlight asciidocHLabel gui=NONE guifg=' . dull_orange
 exe 'highlight asciidocQuotedEmphasizedItalic gui=italic'
+
+" syntax dockerfile
+exe 'highlight dockerfileFrom gui=NONE guifg=' . dull_purple
+
+" syntax makefile
+exe 'highlight makeCommands gui=NONE guifg=' . slate_grey
 
 " syntax xml
 exe 'highlight xmlTagName gui=NONE guifg=' . dull_red 'guibg=NONE'
@@ -235,22 +247,19 @@ exe 'highlight GitGutterChange gui=bold guifg=' . dull_blue
 exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_purple
 exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red
 
-" unknown usage, setting to magenta as a canary
+" unknown usage (in practice, obviously the groups exist), setting to magenta as a canary
 exe 'highlight FoldColumn gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
 exe 'highlight SpellCap gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
 exe 'highlight SpellLocal gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
 exe 'highlight SpellBad gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
-
-"hi clear -- no settings --
-"hi Ignore -- no settings --
-"hi EnumerationName -- no settings --
-"hi EnumerationValue -- no settings --
-"hi Union -- no settings --
-"hi Question -- no settings --
-"hi DefinedName -- no settings --
-"hi LocalVariable -- no settings --
-"hi CTagsImport -- no settings --
-"hi CTagsGlobalVariable -- no settings --
-"hi CTagsMember -- no settings --
-"hi CTagsGlobalConstant -- no settings --
-"hi CTagsClass -- no settings --
+exe 'highlight Ignore gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight EnumerationName gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight EnumerationValue gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight Union gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight DefinedName gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight LocalVariable gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight CTagsImport gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight CTagsGlobalVariable gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight CTagsMember gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight CTagsGlobalConstant gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
+exe 'highlight CTagsClass gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
