@@ -40,7 +40,8 @@ PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
 export PATH
 
 # expects 1 argument which is the prompt text
-function _confirm() {
+function _confirm()
+{
 	read -p "$1 " -n 1 -r
 	printf "\n" # move to a new line
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
@@ -61,7 +62,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cdm='cd $HOME/mine'
 
-function gco() {
+function gco()
+{
 	local target
 	target=$(_fzf_git_branches)
 
@@ -72,7 +74,8 @@ function gco() {
 	fi
 }
 
-function delete-branch() {
+function delete-branch()
+{
 	local target
 	target=$(_fzf_git_branches)
 
@@ -96,7 +99,8 @@ alias restow='stow -R --no-folding'
 alias printpath='printenv PATH | sed s/:/\\n/g'
 
 # lf alias with directory following (when lf exits, cd to the directory it was in)
-function fd() {
+function fd()
+{
 	local tmp
 	tmp="$(mktemp)"
 	lf -last-dir-path="$tmp" "$@"
@@ -105,12 +109,13 @@ function fd() {
 		dir="$(cat "$tmp")"
 		rm -f "$tmp"
 		if [[ -d "$dir" && "$dir" != "$(pwd)" ]]; then
-			cd "$dir" || return
+			cd "$dir" || { echo "cd to $dir failed" 1>&2; exit 1; }
 		fi
 	fi
 }
 
-function fdev() {
+function fdev()
+{
 	local dev_dir
 	dev_dir=$(_fzf_directories_at "$HOME/mine/repos")
 
@@ -123,7 +128,8 @@ function fdev() {
 	fi
 }
 
-function tmuxhere() {
+function tmuxhere()
+{
 	local target_dir
 	if [ -n "$1" ]; then
 		target_dir="$1"
@@ -136,7 +142,8 @@ function tmuxhere() {
 	SESSION_NAME="$name" SESSION_PATH="$target_dir" tmuxp load --yes "generic-with-path"
 }
 
-function fmux() {
+function fmux()
+{
 	local tmuxp_file
 	tmuxp_file=$(
 		tmuxp ls \

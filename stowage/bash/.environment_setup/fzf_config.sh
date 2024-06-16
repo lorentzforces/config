@@ -22,7 +22,8 @@ export FZF_CTRL_T_COMMAND="$default_command"
 
 ### Functions ###
 
-function _fzf_git_branches() {
+function _fzf_git_branches()
+{
 	local tags branches target
 
 	tags=$(
@@ -39,15 +40,16 @@ function _fzf_git_branches() {
 	) || return 1
 
 	target=$(
-		(printf "$branches"; printf "$tags") \
+		(echo -en "$branches"; echo -en "$tags") \
 		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2
 	) || return 1
 
-	echo $(echo "$target" | awk '{print $2}')
+	echo "$target" | awk '{print $2}'
 }
 
 # git commit browser
-function _fzf_git_show() {
+function _fzf_git_show()
+{
 	git ls --color=always "$@" |
 	fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
 		--bind "ctrl-m:execute: \
@@ -61,20 +63,22 @@ function _fzf_git_show() {
 }
 
 # cd into directory containing selected file
-function _fzf_cd_containing_dir() {
+function _fzf_cd_containing_dir()
+{
 	local file, dir
 	file=$(fzf-tmux -u20 +m -q "$1") && dir=$(dirname "$file")
-	[ -n "$dir" ] && cd "$dir"
+	[ -n "$dir" ] && cd "$dir" || exit
 }
 
 # expects 1 argument: a path to a directory containing directories we want to select
-function _fzf_directories_at() {
+function _fzf_directories_at()
+{
 	local containing_dir
 	containing_dir="$1"
 
 	local target
 	target=$(
-		find -L $containing_dir -mindepth 1 -maxdepth 1 -type d \
+		find -L "$containing_dir" -mindepth 1 -maxdepth 1 -type d \
 		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi
 	) || return 1
 
@@ -83,10 +87,11 @@ function _fzf_directories_at() {
 
 # search file contents
 # (experimental)
-function fif() {
+function fif()
+{
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 
-	rg --files-with-matches --no-messages $1 \
+	rg --files-with-matches --no-messages "$1" \
 	| fzf --preview "highlight -O ansi -l {} 2> /dev/null | \
 		rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $1 \
 		|| rg --ignore-case --pretty --context 10 $1 {}"
