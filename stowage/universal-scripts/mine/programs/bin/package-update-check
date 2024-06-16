@@ -33,22 +33,24 @@ fi
 if command -v zypper &> /dev/null; then
 	echo -e "Checking zypper dist-upgrade items...";
 
+	set +e
 	BASE_RESULTS=$(sudo zypper --non-interactive dist-upgrade --dry-run --details --auto-agree-with-licenses);
+	ZYPPER_EXIT_CODE=$?
+	set -e
 
-	IMPORTANT_PACKAGES=$( \
-		echo "$BASE_RESULTS" | \
-		rg "^openSUSE-release\s|^kernel\s|^nvidia-video-[[:alnum:]]+\s|^neovim\s" -A1 --no-context-separator \
-	);
-	PACKAGE_SUMMARY=$( \
-		echo "$BASE_RESULTS" | \
-		rg "packages to upgrade" --no-context-separator \
-	);
-
-	{
-		echo -e "### Packages upgraded in most recent dist-upgrade snapshot: ###\n"
-		echo -e "$PACKAGE_SUMMARY\n"
-		echo -e "$IMPORTANT_PACKAGES\n"
-	} >> "$FILE_PATH"
+	# if successful, filter and print friendly results
+	# if not successful, print error message
+	case "$ZYPPER_EXIT_CODE" in
+		0)
+			print_zypper_summary BASE_RESULTS
+			;;
+		*)
+			{
+				echo -e "### Tricky zypper output encountered\n"
+				echo -e "$BASE_RESULTS"
+			} >> "$FILE_PATH"
+			;;
+	esac
 fi
 
 if command -v brew &> /dev/null; then
@@ -67,7 +69,31 @@ if command -v flatpak &> /dev/null; then
 	echo -e "Fetching flatpak packages..."
 	{
 		echo -e "### Upgradable packages from flatpak: ###\n";
-		flatpak remote-ls --updates;
-		echo -e "\n\n";
+		FLATPAK_OUTPUT=$(flatpak remote-ls --updates);
+		if [[ -n $FLATPAK_OUTPUT ]]; then
+			echo -e "$FLATPAK_OUTPUT\n\n";
+		fi
 	} >> "$FILE_PATH"
 fi
+
+# parameter 1: output file path
+# parameter 2: output of zypper dist-upgrade dry run
+function print_zypper_summary()
+{
+	OUTPUT_FILE=$1
+	ZYPPER_OUTPUT=$2
+	IMPORTANT_PACKAGES=$( \
+		echo "$ZYPPER_OUTPUT" | \
+		rg "^openSUSE-release\s|^kernel\s|^nvidia-video-[[:alnum:]]+\s|^neovim\s" -A1 --no-context-separator \
+	);
+	PACKAGE_SUMMARY=$( \
+		echo "$ZYPPER_OUTPUT" | \
+		rg "packages to upgrade" --no-context-separator \
+	);
+
+	{
+		echo -e "### Packages upgraded in most recent dist-upgrade snapshot: ###\n"
+		echo -e "$PACKAGE_SUMMARY\n"
+		echo -e "$IMPORTANT_PACKAGES\n"
+	} >> "$OUTPUT_FILE"
+}
