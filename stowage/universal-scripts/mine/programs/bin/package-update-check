@@ -42,26 +42,36 @@ if command -v zypper &> /dev/null; then
 	# if not successful, print error message
 	case "$ZYPPER_EXIT_CODE" in
 		0)
-			print_zypper_summary BASE_RESULTS
+			print_zypper_summary "$FILE_PATH" "$BASE_RESULTS"
 			;;
 		*)
 			{
 				echo -e "### Tricky zypper output encountered\n"
-				echo -e "$BASE_RESULTS"
+				echo -e "$BASE_RESULTS\n"
 			} >> "$FILE_PATH"
 			;;
 	esac
 fi
+
+HOMEBREW_REMINDER=$(
+cat <<-'EOF'
+	To update homebrew itself, run "homebrew update"
+	To update homebrew-managed packages, run "homebrew upgrade"
+	EOF
+)
 
 if command -v brew &> /dev/null; then
 	echo -e "Fetching homebrew packages..."
 
 	# brew prints status information to stderr, which is noisy and annoying
 	BASE_RESULTS=$(brew upgrade --dry-run 2> /dev/null)
-	PACKAGE_LIST=$(echo "$BASE_RESULTS" | rg "\->" --no-context-separator)
+	PACKAGE_LIST=$(echo "$BASE_RESULTS" | rg "\->" --no-context-separator || true)
 	{
 		echo -e "### Upgradable packages from homebrew: ###\n";
-		echo -e "$PACKAGE_LIST\n"
+		if [[ -n $PACKAGE_LIST ]]; then
+			echo -e "$PACKAGE_LIST\n";
+		fi
+		echo -e "$HOMEBREW_REMINDER\n";
 	} >> "$FILE_PATH"
 fi
 
@@ -80,15 +90,19 @@ fi
 # parameter 2: output of zypper dist-upgrade dry run
 function print_zypper_summary()
 {
-	OUTPUT_FILE=$1
-	ZYPPER_OUTPUT=$2
+	local OUTPUT_FILE=$1
+	local ZYPPER_OUTPUT=$2
+	local IMPORTANT_PACKAGES
 	IMPORTANT_PACKAGES=$( \
 		echo "$ZYPPER_OUTPUT" | \
-		rg "^openSUSE-release\s|^kernel\s|^nvidia-video-[[:alnum:]]+\s|^neovim\s" -A1 --no-context-separator \
+		rg "^openSUSE-release\s|^kernel\s|^nvidia-video-[[:alnum:]]+\s|^neovim\s" -A1 \
+		--no-context-separator \
+		|| true \
 	);
+	local PACKAGE_SUMMARY
 	PACKAGE_SUMMARY=$( \
 		echo "$ZYPPER_OUTPUT" | \
-		rg "packages to upgrade" --no-context-separator \
+		rg "packages to upgrade" --no-context-separator || true \
 	);
 
 	{
