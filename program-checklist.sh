@@ -38,8 +38,8 @@ for prog in "${programs[@]}"; do
 	set +e
 	type -t "$prog" &>/dev/null
 	exitval=$?
+	set -e
 	if [[ $exitval != 0 ]]; then
 		echo "$prog"
 	fi
-	set -e
 done
