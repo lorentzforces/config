@@ -213,9 +213,13 @@ exe 'highlight @constant.builtin.lua gui=NONE guifg=' . dull_red
 " syntax makefile
 exe 'highlight makeCommands gui=NONE guifg=' . slate_grey
 
-" treesitter markdown
-exe 'highlight @markup.link.url.markdown_inline gui=NONE guifg=' . dull_purple
-exe 'highlight @markup.list.markdown gui=NONE guifg=' . dull_red
+" syntax markdown
+exe 'highlight markdownCode gui=NONE guifg=' . bright_black
+exe 'highlight markdownCodeDelimiter gui=bold guifg=' . bright_black
+
+" treesitter markdown (probably going to stop using, it's not great)
+" exe 'highlight @markup.link.url.markdown_inline gui=NONE guifg=' . dull_purple
+" exe 'highlight @markup.list.markdown gui=NONE guifg=' . dull_red
 
 " treesitter rust
 exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
