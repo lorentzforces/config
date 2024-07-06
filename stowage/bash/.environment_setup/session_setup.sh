@@ -39,16 +39,6 @@ eval "$(fnm completions --shell bash)"
 PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
 export PATH
 
-# expects 1 argument which is the prompt text
-function _confirm()
-{
-	read -p "$1 " -n 1 -r
-	printf "\n" # move to a new line
-	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-		return 1
-	fi
-}
-
 ### aliases ###
 
 alias ls='ls --color=auto --group-directories-first --classify --width=90'
@@ -65,30 +55,28 @@ alias cdm='cd $HOME/mine'
 function gco()
 {
 	local target
-	target=$(_fzf_git_branches)
+	target=$(fzf_git_branches)
 
 	if [ -z "$target" ]; then
 		return 1
-	else
-		git checkout "$target"
 	fi
+	git checkout "$target"
 }
 
 function delete-branch()
 {
 	local target
-	target=$(_fzf_git_branches)
+	target=$(fzf_git_branches)
 
 	if [ -z "$target" ]; then
 		return 1
-	else
-		_confirm "Are you sure you want to delete branch: $target? " || return
-		git branch -d "$target"
 	fi
+	confirm-prompt "Are you sure you want to delete branch: $target? " || return 1
+	git branch -d "$target"
 }
 
-alias fshow='_fzf_git_show'
-alias fcd='_fzf_cd_containing_dir'
+alias fcd='cd $(fzf_containing_dir)'
+alias fif='fzf_find_in_files'
 
 alias page='nvim -R'
 alias pageify='fc -s | nvim -R -'
@@ -117,7 +105,7 @@ function fd()
 function fdev()
 {
 	local dev_dir
-	dev_dir=$(_fzf_directories_at "$HOME/mine/repos")
+	dev_dir=$(fzf_directories_at "$HOME/mine/repos")
 
 	if [ -z "$dev_dir" ]; then
 		return 1
