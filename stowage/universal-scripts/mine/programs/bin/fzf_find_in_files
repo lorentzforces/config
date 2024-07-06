@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# use ripgrep + fzf to interactively view grep results
+
+if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; exit 1; fi
+SEARCH_STRING=${1:-}
+
+function main()
+{
+	rg --files-with-matches --no-messages "$SEARCH_STRING" \
+	| fzf --preview "highlight -O ansi -l {} 2> /dev/null | \
+		rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $SEARCH_STRING \
+		|| rg --ignore-case --pretty --context 10 $SEARCH_STRING {}"
+}
+main

@@ -34,12 +34,17 @@ programs=(
 # a function called "sdk." Since functions are not available in subshells invoked as a script
 # (like this script), it is effectively invisible here.
 
-for prog in "${programs[@]}"; do
-	set +e
-	type -t "$prog" &>/dev/null
-	exitval=$?
-	set -e
-	if [[ $exitval != 0 ]]; then
-		echo "$prog"
-	fi
-done
+function main() {
+	for prog in "${programs[@]}"; do
+		set +e
+		type -t "$prog" &>/dev/null
+		local exitval=$?
+		set -e
+		if [[ $exitval != 0 ]]; then
+			echo "$prog"
+		fi
+	done
+	echo "Program checklist checked."
+}
+
+main

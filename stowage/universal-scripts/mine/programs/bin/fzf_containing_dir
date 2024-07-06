@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# fuzzy-find for a file and print its containing directory
+
+function main() {
+	local file dir
+	file="$(fzf-tmux -u20 +m -q "")"
+	dir="$(dirname "$file")"
+	[ -n "$dir" ] && cd "$dir"
+	if [[ -n "$dir" ]]; then
+		echo "$dir"
+	else
+		return 1
+	fi
+}
+main

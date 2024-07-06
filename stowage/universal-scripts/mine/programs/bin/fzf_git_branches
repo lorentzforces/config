@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# use fzf to fuzzy-find a git branch (or tag) and output the selected git ref
+
+function main() {
+	local tags branches target
+
+	tags=$(
+		git tag \
+		| awk '{print "\x1b[31;1mtag\x1b[m\t" $1}'
+	) || return 1
+
+	branches=$(
+		git branch --all --color=always \
+		| grep -v HEAD \
+		| sed "s/.* //" \
+		| sed "s#remotes/##" \
+		| awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
+	) || return 1
+
+	target=$(
+		(echo -en "$branches"; echo -en "$tags") \
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2
+	) || return 1
+
+	echo "$target" | awk '{print $2}'
+}
+main
