@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# open a tmux session out of our well-defined session options
+
+main() {
+	local tmuxp_file
+	tmuxp_file=$(
+		tmuxp ls \
+		| rg -v "dev|generic-with-path" \
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi
+	)
+	if [ -z "$tmuxp_file" ]; then
+		>&2 echo "ERROR: fzf output was empty"
+		return 1
+	fi
+
+	tmuxp load --yes "$tmuxp_file"
+}
+main

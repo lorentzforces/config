@@ -4,11 +4,15 @@ IFS=$'\n\t'
 
 # use ripgrep + fzf to interactively view grep results
 
-if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; exit 1; fi
 SEARCH_STRING=${1:-}
 
 function main()
 {
+	if [[ -z $SEARCH_STRING ]]; then
+		>&2 echo "ERROR: Need a string to search for!"
+		return 1
+	fi
+
 	rg --files-with-matches --no-messages "$SEARCH_STRING" \
 	| fzf --preview "highlight -O ansi -l {} 2> /dev/null | \
 		rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 $SEARCH_STRING \
