@@ -21,7 +21,7 @@ function main() {
 	) || return 1
 
 	target=$(
-		(echo -en "$branches"; echo -en "$tags") \
+		(echo -e "$branches"; echo -e "$tags") \
 		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2
 	) || return 1
 

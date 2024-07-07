@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# delete a branch by fuzzy-finding for it
+
+main() {
+	local target
+	target=$(fzf_git_branches)
+
+	if [ -z "$target" ]; then
+		return 1
+	fi
+	confirm-prompt "Are you sure you want to delete branch: $target? " || return 1
+	git branch -d "$target"
+}
+main

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# open a tmux session based on the target directory
+
+TARGET_DIR=${1:-$(pwd)}
+
+main() {
+	local name
+	name=$(basename "$TARGET_DIR")
+	SESSION_NAME="$name" SESSION_PATH="$TARGET_DIR" tmuxp load --yes "generic-with-path"
+}
+main

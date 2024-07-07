@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# check out git branch or tag via fzf
+
+main() {
+	local target
+	target=$(fzf_git_branches)
+
+	if [ -z "$target" ]; then
+		return 1
+	fi
+	git checkout "$target"
+}
+main
