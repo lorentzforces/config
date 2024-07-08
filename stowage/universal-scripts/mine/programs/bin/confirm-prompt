@@ -2,8 +2,7 @@
 set -euo pipefail
 IFS=$'\n\t'
 
-# prompt for confirmation of an action - if Y or y are entered, returns 0
-# otherwise returns 1
+# prompt for confirmation of an action - if Y or y are entered, returns 0, otherwise returns 1
 
 PROMPT_TEXT=${1:-}
 
