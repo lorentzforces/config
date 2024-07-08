@@ -39,8 +39,6 @@ eval "$(fnm completions --shell bash)"
 PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
 export PATH
 
-### aliases ###
-
 alias ls='ls --color=auto --group-directories-first --classify --width=90'
 alias la='ls -A --group-directories-first --color=auto'
 alias ll='ls -Alh --group-directories-first --color=auto'

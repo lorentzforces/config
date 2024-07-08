@@ -5,6 +5,7 @@ IFS=$'\n\t'
 # git commit browser, like git log + fuzzy-finding
 
 ARGS=$*
+
 main() {
 	local CMD="git ls --color=always"
 	if [[ -n "$ARGS" ]]; then
