@@ -3,4 +3,9 @@
 export SDKMAN_DIR="$HOME/mine/programs/sdkman"
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-export KUBECONFIG=$(find ~/.kube/config* | tr '\n' ':' | sed s/:$//)
+if [[ -r "$HOME/mine/dev-env/setup-work-build-env.sh" ]]; then
+	source "$HOME/mine/dev-env/setup-work-build-env.sh"
+fi
+
+KUBECONFIG=$(find ~/.kube/config* | tr '\n' ':' | sed s/:$//)
+export KUBECONFIG
