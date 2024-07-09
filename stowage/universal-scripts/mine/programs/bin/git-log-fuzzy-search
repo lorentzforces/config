@@ -7,12 +7,19 @@ IFS=$'\n\t'
 ARGS=$*
 
 main() {
+	# using an empty array as a git argument causes issues
 	local CMD="git ls --color=always"
 	if [[ -n "$ARGS" ]]; then
 		CMD="git ls --color=always $ARGS"
 	fi
-	eval "$CMD" |
-	fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+
+	# Check if we're in a git repo and allow error to fail out if not.
+	# This prevents fzf from running if we're in a random dir, due to how commands are initialized
+	# when in a pipe.
+	1>/dev/null git rev-parse --is-inside-work-tree
+
+	eval "$CMD" | fzf --ansi --no-sort --reverse --tiebreak=index \
+		--bind=ctrl-s:toggle-sort \
 		--bind "ctrl-m:execute: \
 			printf {} \
 			| ( \

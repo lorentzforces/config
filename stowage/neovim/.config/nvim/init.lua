@@ -209,13 +209,16 @@ require('nvim-treesitter.configs').setup({
 		'java',
 		'javascript',
 		'json',
+		'markdown',
+		'markdown_inline', -- regular markdown TS is broken without this as well
 		'python',
 		'rust',
 		'sql',
 		'starlark',
 		'typescript',
 		'yaml',
-		-- these are required due to this issue: https://github.com/nvim-treesitter/nvim-treesitter/issues/3970#issuecomment-1377128659
+		-- the following are required due to this issue:
+		-- https://github.com/nvim-treesitter/nvim-treesitter/issues/3970#issuecomment-1377128659
 		'c',
 		'lua',
 		'query',
