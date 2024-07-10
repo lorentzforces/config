@@ -77,6 +77,7 @@ exe 'highlight PmenuSel gui=NONE guifg=' . dull_red 'guibg=' . dull_white
 exe 'highlight PmenuSbar gui=NONE guibg=' . dull_white
 exe 'highlight PmenuThumb gui=NONE guibg=' . dull_black
 exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=NONE'
+exe 'highlight FoldColumn gui=NONE guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight netrwDir gui=NONE guifg=' . dull_orange
 exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
 exe 'highlight QuickFixLine gui=NONE guibg=' . dull_white
@@ -252,7 +253,6 @@ exe 'highlight GitGutterChangeDelete gui=bold guifg=' . dull_purple
 exe 'highlight GitGutterDelete gui=bold guifg=' . dull_red
 
 " unknown usage (in practice, obviously the groups exist), setting to magenta as a canary
-exe 'highlight FoldColumn gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
 exe 'highlight SpellCap gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
 exe 'highlight SpellLocal gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
 exe 'highlight SpellBad gui=NONE guifg=' . TEST_MAGENTA 'guibg=' . TEST_MAGENTA
