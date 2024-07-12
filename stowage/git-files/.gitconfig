@@ -1,12 +1,13 @@
 [core]
 	editor = nvim
-	pager = less -F -x4
+	pager = nvim -R
 
 [init]
 	defaultBranch = main
 
 [color]
 	ui = true
+	pager = false
 
 [alias]
 	b = branch -v
@@ -42,6 +43,9 @@
 [mergetool]
 	hideResolved = true
 	keepBackup = false
+
+[pager]
+	branch = false
 
 [pull]
 	ff = only
