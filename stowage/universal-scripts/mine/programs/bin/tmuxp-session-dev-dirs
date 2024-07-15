@@ -13,7 +13,10 @@ main() {
 	fi
 
 	local dev_name
-	dev_name=$(basename "$dev_dir")
+	dev_name=$(
+		basename "$dev_dir" \
+		| sed "s/\./__/g"
+	)
 	DEV_DIR="$dev_dir" DEV_NAME="$dev_name" tmuxp load --yes dev
 }
 main

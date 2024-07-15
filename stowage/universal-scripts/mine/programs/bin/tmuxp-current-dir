@@ -8,7 +8,10 @@ TARGET_DIR=${1:-$(pwd)}
 
 main() {
 	local name
-	name=$(basename "$TARGET_DIR")
+	name=$(
+		basename "$TARGET_DIR" \
+		| sed "s/\./__/g"
+	)
 	SESSION_NAME="$name" SESSION_PATH="$TARGET_DIR" tmuxp load --yes "generic-with-path"
 }
 main
