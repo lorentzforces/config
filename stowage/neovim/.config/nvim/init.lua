@@ -253,7 +253,7 @@ util.autocommand(
 
 local lsp_config = require('lspconfig')
 
-lsp_config.rust_analyzer.setup({
+lsp_config.bashls.setup({
 	on_attach = util.create_lsp_keybinds
 })
 
@@ -261,6 +261,6 @@ lsp_config.gopls.setup({
 	on_attach = util.create_lsp_keybinds
 })
 
-lsp_config.bashls.setup({
+lsp_config.rust_analyzer.setup({
 	on_attach = util.create_lsp_keybinds
 })

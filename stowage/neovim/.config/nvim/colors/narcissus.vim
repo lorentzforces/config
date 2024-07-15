@@ -83,6 +83,7 @@ exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
 exe 'highlight QuickFixLine gui=NONE guibg=' . dull_white
 exe 'highlight qfLineNr gui=NONE guifg=' . dull_green
 exe 'highlight Question gui=bold guifg=' . dull_red
+exe 'highlight NormalFloat gui=bold guibg=' . dull_white
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . dull_white
@@ -113,6 +114,7 @@ exe 'highlight diffIndexLine gui=NONE guifg=' . bright_black
 exe 'highlight Underlined gui=underline guifg=' . slate_grey
 exe 'highlight Title gui=underline,bold guifg=' . bright_black
 exe 'highlight Comment gui=italic guifg=' . bright_white
+exe 'highlight Todo gui=italic guifg=' . bright_white
 exe 'highlight Typedef gui=NONE guifg=' . dull_red
 exe 'highlight Debug gui=NONE guifg=' . bright_yellow
 exe 'highlight Conditional gui=NONE guifg=' . dull_red
@@ -142,7 +144,6 @@ exe 'highlight Define gui=NONE guifg=' . dull_purple
 exe 'highlight Include gui=NONE guifg=' . dull_purple
 " exe 'highlight Tag gui=underline'
 exe 'highlight Tag gui=NONE guifg=' . dull_red
-exe 'highlight Todo gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 exe 'highlight Error gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
 exe 'highlight Whitespace gui=italic guifg=' . dull_white
 exe 'highlight NonText gui=italic guifg=' . dull_white
@@ -163,7 +164,9 @@ exe 'highlight @type.qualifier gui=NONE guifg=' . dull_red
 exe 'highlight @variable gui=NONE guifg=' . slate_grey
 exe 'highlight @variable.builtin gui=NONE guifg=' . dull_red
 exe 'highlight @function.builtin gui=NONE guifg=' . dull_red
-exe 'highlight @comment.todo.comment gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
+exe 'highlight @punctuation.delimiter.comment gui=NONE guifg=' . bright_white
+
+" exe 'highlight @comment.todo.comment gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 
 " syntax asciidoc
 exe 'highlight asciidocListBullet gui=NONE guifg=' . dull_red
