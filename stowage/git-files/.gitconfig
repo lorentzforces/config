@@ -22,10 +22,10 @@
 	unstage = reset HEAD --
 	wsdiff = diff --color-moved-ws=ignore-space-change
 
-	ls = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges
-	ll = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges
-	lsm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate
-	llm = log --date=short --pretty=format:"%C(4)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat
+	ls = log --date=short --pretty=format:"%C(7)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges --color=always
+	ll = log --date=short --pretty=format:"%C(7)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges --color=always
+	lsm = log --date=short --pretty=format:"%C(7)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --color=always
+	llm = log --date=short --pretty=format:"%C(7)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --color=always
 
 # individual command configs
 [advice]
@@ -46,6 +46,7 @@
 
 [pager]
 	branch = false
+	log = less
 
 [pull]
 	ff = only
