@@ -1,31 +1,40 @@
 local util = require('stupid-namespace.utils')
 
 -- bootstrap lazy.nvim for plugin management
--- taken from lazy.nvim README
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		'git',
-		'clone',
-		'--filter=blob:none',
-		'https://github.com/folke/lazy.nvim.git',
-		'--branch=stable', -- latest stable release
-		lazypath,
-	})
+-- taken from https://lazy.folke.io/installation
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-	{'junegunn/fzf.vim', dependencies = {'junegunn/fzf',} },
-	{'airblade/vim-gitgutter', branch = 'main'},
-	-- Floaterm is technically a dependency of lf.vim, but needs to be loaded
-	-- after lf.vim for Reasons™. We declare lf.vim as a dependency to make sure
-	-- that it gets loaded first.
-	{'voldikss/vim-floaterm', dependencies = 'ptzz/lf.vim'},
-	{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
-	'neovim/nvim-lspconfig',
-	'mfussenegger/nvim-jdtls',
-	'shortcuts/no-neck-pain.nvim'
+	spec = {
+		{'junegunn/fzf.vim', dependencies = {'junegunn/fzf',} },
+		{'airblade/vim-gitgutter', branch = 'main'},
+		-- Floaterm is technically a dependency of lf.vim, but needs to be loaded
+		-- after lf.vim for Reasons™. We declare lf.vim as a dependency to make sure
+		-- that it gets loaded first.
+		{'voldikss/vim-floaterm', dependencies = 'ptzz/lf.vim'},
+		{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+		'neovim/nvim-lspconfig',
+		'mfussenegger/nvim-jdtls',
+		'shortcuts/no-neck-pain.nvim',
+		'lorentzforces/rectify-buffers.nvim',
+	},
+	dev = {
+		path = '~/mine/repos',
+	},
 })
 
 util.options.number = false
