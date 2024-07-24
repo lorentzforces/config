@@ -11,17 +11,19 @@
 
 [alias]
 	b = branch -v
-	co = checkout
-	cnb = checkout -b
-	st = status -sb -uno
-	rem = remote -v
 	cm = commit
 	cma = commit -a
+	cnb = checkout -b
+	co = checkout
 	f = fetch
 	fa = fetch -a
+	nvim = mergetool --tool=nvimdiff1
+	rem = remote -v
+	st = status -sb -uno
 	unstage = reset HEAD --
 	wsdiff = diff --color-moved-ws=ignore-space-change
 
+	# git log aliases
 	ls = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges --color=always
 	ll = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges --color=always
 	lsm = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --color=always
