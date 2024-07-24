@@ -39,8 +39,14 @@
 [checkout]
 	defaultRemote = origin
 
+[diff]
+	tool = nvimdiff
+
 [fetch]
 	prune = true
+
+[merge]
+	tool = nvimdiff1 # 2-panel neovim diff
 
 [mergetool]
 	hideResolved = true
