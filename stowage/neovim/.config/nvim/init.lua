@@ -144,6 +144,7 @@ util.g_vars.gitgutter_map_keys = 0
 util.map_normal('<leader>vp', ':GitGutterPrevHunk<CR>')
 util.map_normal('<leader>vn', ':GitGutterNextHunk<CR>')
 util.map_normal('<leader>vv', ':GitGutterQuickFixCurrentFile | lopen<CR>')
+util.map_normal('<leader>vd', ':GitGutterDiffOrig<CR>')
 
 vim.api.nvim_create_user_command(
 	'Tab',
