@@ -30,21 +30,45 @@ programs=(
 	"tmux"
 	"tmuxp"
 )
-# sdkman cannot be checked using this script - it performs its setup by defining its "command" as
-# a function called "sdk." Since functions are not available in subshells invoked as a script
-# (like this script), it is effectively invisible here.
+
+files=(
+	"$HOME/mine"
+	"$HOME/mine/programs/bin"
+	"$HOME/mine/programs/sdkman/bin/sdkman-init.sh"
+)
 
 function main() {
+	local prog_output=""
 	for prog in "${programs[@]}"; do
 		set +e
 		type -t "$prog" &>/dev/null
 		local exitval=$?
 		set -e
 		if [[ $exitval != 0 ]]; then
-			echo "$prog"
+			prog_output="${prog_output}$prog\n"
 		fi
 	done
-	echo "Program checklist checked."
+
+	if [[ -z "$prog_output" ]]; then
+		printf "All expected programs found!\n"
+	else
+		printf "Programs not found:\n\n%b" "$prog_output"
+	fi
+
+	printf "\n"
+
+	local file_output=""
+	for file in "${files[@]}"; do
+		if ! [[ -r "$file" ]]; then
+			file_output="${file_output}${file}\n"
+		fi
+	done
+
+	if [[ -z "$file_output" ]]; then
+		printf "All expected files found!\n"
+	else
+		printf "Files not found:\n\n%b\n" "$file_output"
+	fi
 }
 
 main
