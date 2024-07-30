@@ -655,6 +655,18 @@ awful.rules.rules = {
 		properties = { floating = true }
 	},
 
+	-- attempt to fix steam notifications messing with window layouts when they disappear
+	{
+		rule = { class = "steam" },
+		except_any = {
+			name = {
+				"Steam",
+				"Friends List",
+			}
+		},
+		properties = { floating = true },
+	},
+
     -- don't add titlebars to normal clients and dialogs
 	{
 		rule_any = { type = { "normal", "dialog" } },
