@@ -1,4 +1,5 @@
 local util = require('stupid-namespace.utils')
+-- contains specific JDK paths per-machine
 local machine_config = require('stupid-namespace.machine-specific-config')
 local jdtls = require('jdtls')
 
@@ -61,7 +62,7 @@ local config = {
 		'--add-modules=ALL-SYSTEM',
 		'--add-opens', 'java.base/java.util=ALL-UNNAMED',
 		'--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-		'-javaagent:' .. lombok_location,
+		'-javaagent:' .. lombok_location, -- lombok versions are somewhat touchy
 		'-jar', vim.fn.glob(jdtls_location .. '/plugins/org.eclipse.equinox.launcher_*.jar'),
 		'-configuration', jdtls_config,
 		'-data', workspace_dir,
