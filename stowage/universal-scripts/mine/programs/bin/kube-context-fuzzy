@@ -7,8 +7,8 @@ IFS=$'\n\t'
 main() {
 	local target
 	target=$(
-		kubectl config get-contexts --not-headers \
-		| fzf-tmux -u20 -- -no-hscroll --ansi --no-multi \
+		kubectl config get-contexts --no-headers \
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi \
 		| awk '{print $2}'
 	) || return 1
 
