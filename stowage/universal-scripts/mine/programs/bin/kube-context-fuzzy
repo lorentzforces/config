@@ -9,7 +9,7 @@ main() {
 	target=$(
 		kubectl config get-contexts --no-headers \
 		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi \
-		| awk '{print $2}'
+		| awk '{print ($1 == "*" ? $2 : $1)}'
 	) || return 1
 
 	kubectl config use-context "$target"
