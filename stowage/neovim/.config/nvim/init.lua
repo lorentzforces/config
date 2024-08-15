@@ -263,6 +263,8 @@ util.autocommand(
 
 local lsp_config = require('lspconfig')
 
+-- jdtls (Eclipse-based Java LSP) is configured separately in a file type plugin file for Java
+
 lsp_config.bashls.setup({
 	on_attach = util.create_lsp_keybinds
 })
