@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# use fzf to fuzzy-find a kubernetes context
+
+main() {
+	local target
+	target=$(
+		kubectl config get-contexts --not-headers \
+		| fzf-tmux -u20 -- -no-hscroll --ansi --no-multi \
+		| awk '{print $2}'
+	) || return 1
+
+	kubectl config use-context "$target"
+}
+main
