@@ -2,6 +2,9 @@
 # exec 3>&2 2>/tmp/bashstart.$$.log
 # set -x
 
+# this should be safe to source from whatever profile script gets run - thanks to ensure-path,
+# even PATH-modifying operations should be idempotent
+
 if [ -r "$HOME/.environment_setup/fzf_config.sh" ]; then
 	source "$HOME/.environment_setup/fzf_config.sh"
 fi
@@ -59,6 +62,8 @@ alias fif='fzf_find_in_files'
 alias tmuxhere='tmuxp-current-dir'
 alias fdev='tmuxp-session-dev-dirs'
 alias fmux='tmuxp-defined-sessions'
+
+alias kctx='kube-context-fuzzy'
 
 alias page='nvim -R'
 alias pageify='fc -s | nvim -R -'
