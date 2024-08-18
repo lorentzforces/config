@@ -30,29 +30,6 @@ if command -v dnf &> /dev/null; then
 	} >> "$FILE_PATH"
 fi
 
-if command -v zypper &> /dev/null; then
-	echo -e "Checking zypper dist-upgrade items...";
-
-	set +e
-	BASE_RESULTS=$(sudo zypper --non-interactive dist-upgrade --dry-run --details --auto-agree-with-licenses);
-	ZYPPER_EXIT_CODE=$?
-	set -e
-
-	# if successful, filter and print friendly results
-	# if not successful, print error message
-	case "$ZYPPER_EXIT_CODE" in
-		0)
-			print_zypper_summary "$FILE_PATH" "$BASE_RESULTS"
-			;;
-		*)
-			{
-				echo -e "### Tricky zypper output encountered\n"
-				echo -e "$BASE_RESULTS\n"
-			} >> "$FILE_PATH"
-			;;
-	esac
-fi
-
 HOMEBREW_REMINDER=$(
 cat <<-'EOF'
 	To update homebrew itself, run "homebrew update"
