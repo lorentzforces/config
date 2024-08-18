@@ -70,6 +70,7 @@ alias pageify='fc -s | nvim -R -'
 alias lessify='fc -s | less -R'
 alias restow='stow -R --no-folding'
 alias printpath='printenv PATH | sed s/:/\\n/g'
+alias reporoot='cd $(git rev-parse --show-toplevel)'
 
 # lf alias with directory following (when lf exits, cd to the directory it was in)
 function fd()
