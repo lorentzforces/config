@@ -208,6 +208,10 @@ require('no-neck-pain').setup({
 	},
 })
 
+require('rectify-buffers').setup({
+	user_function = 'LspRestart'
+})
+
 require('nvim-treesitter.configs').setup({
 	ensure_installed = {
 		-- bash highlighting is variable, seems to be different between makefiles and plain
