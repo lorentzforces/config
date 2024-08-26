@@ -33,6 +33,8 @@ export TMUXP_CONFIGDIR="$HOME/.config/tmuxp"
 export GOPATH="$HOME/.go"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
+export CHCK_CHNG_REVS="origin/main:origin/master"
+
 eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
 
 eval "$(fnm env)"
