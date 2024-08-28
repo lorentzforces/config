@@ -4,6 +4,8 @@ IFS=$'\n\t'
 
 # use fzf to fuzzy-find a git branch (or tag) and output the selected git ref
 
+INIT_QUERY=${1:-}
+
 function main() {
 	local tags branches target
 
@@ -22,7 +24,7 @@ function main() {
 
 	target=$(
 		(echo -e "$branches"; echo -e "$tags") \
-		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2 -q "$INIT_QUERY"
 	) || return 1
 
 	echo "$target" | awk '{print $2}'

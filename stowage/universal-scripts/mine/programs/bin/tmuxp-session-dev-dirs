@@ -4,9 +4,11 @@ IFS=$'\n\t'
 
 # open a tmux session using tmuxp in one of our well-defined dev dirs
 
+INIT_QUERY=${1:-}
+
 main() {
 	local dev_dir
-	dev_dir=$(fzf_directories_at "$HOME/mine/repos")
+	dev_dir=$(fzf_directories_at "$HOME/mine/repos" "$INIT_QUERY")
 	if [ -z "$dev_dir" ]; then
 		>&2 echo "ERROR: fzf output was empty"
 		return 1
