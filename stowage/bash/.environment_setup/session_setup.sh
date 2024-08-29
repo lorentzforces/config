@@ -23,6 +23,8 @@ export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 # store "host" terminal so we can use the same terminfo in tmux
 export HOST_TERM=$TERM
 
+export GPG_TTY=$(tty)
+
 export PAGER="nvim -R -"
 export MANPAGER="nvim +Man!"
 export MANWIDTH="120"
