@@ -46,6 +46,7 @@
 	prune = true
 
 [merge]
+	# for when you forget again: the LOCAL side is the final state
 	tool = nvimdiff1 # 2-panel neovim diff
 
 [mergetool]
