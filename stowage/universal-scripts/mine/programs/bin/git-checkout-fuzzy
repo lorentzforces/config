@@ -4,9 +4,11 @@ IFS=$'\n\t'
 
 # check out git branch or tag via fzf
 
+INIT_QUERY=${1:-}
+
 main() {
 	local target
-	target=$(fzf_git_branches)
+	target=$(fzf_git_branches "$INIT_QUERY")
 
 	if [ -z "$target" ]; then
 		return 1
