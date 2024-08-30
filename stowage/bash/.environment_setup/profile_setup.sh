@@ -10,6 +10,8 @@ export EDITOR=nvim
 PATH="$HOME/mine/programs/bin:$PATH"
 export PATH
 
+PATH=$(ensure-path "$HOME/.go/bin")
+
 ### per-machine configuration
 # we do this last so we can override anything per-machine
 if [ -r "$HOME/.environment_setup/local_profile_setup.sh" ]; then
