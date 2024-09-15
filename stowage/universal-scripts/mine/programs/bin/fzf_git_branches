@@ -11,7 +11,7 @@ function main() {
 
 	tags=$(
 		git tag \
-		| awk '{print "\x1b[31;1mtag\x1b[m\t" $1}'
+		| awk '{print "\x1b[32;1mtag\x1b[m\t" $1}'
 	) || return 1
 
 	branches=$(
@@ -19,7 +19,7 @@ function main() {
 		| grep -v HEAD \
 		| sed "s/.* //" \
 		| sed "s#remotes/##" \
-		| awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}'
+		| awk '{print "\x1b[31;1mbranch\x1b[m\t" $1}'
 	) || return 1
 
 	target=$(
