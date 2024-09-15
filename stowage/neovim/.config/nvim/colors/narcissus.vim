@@ -87,10 +87,10 @@ exe 'highlight NormalFloat gui=bold guibg=' . dull_white
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . dull_white
-exe 'highlight Search gui=NONE guifg=' . bright_white 'guibg=' . dull_blue
-exe 'highlight IncSearch gui=NONE guifg=' . slate_grey 'guibg=' . bright_blue
-exe 'highlight CurSearch gui=bold guifg=' . slate_grey 'guibg=' . bright_blue
-exe 'highlight MatchParen gui=bold guifg=' . slate_grey 'guibg=' . bright_blue
+exe 'highlight Search gui=NONE guifg=' . bright_white 'guibg=' . dull_purple
+exe 'highlight IncSearch gui=NONE guifg=' . bright_white 'guibg=' . bright_purple
+exe 'highlight CurSearch gui=bold guifg=' . bright_white 'guibg=' . bright_purple
+exe 'highlight MatchParen gui=bold guifg=' . bright_white 'guibg=' . bright_purple
 
 " diagnostic colors
 exe 'highlight DiagnosticError gui=italic,bold,underline guifg=' . dull_yellow

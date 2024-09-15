@@ -1,7 +1,7 @@
 ### FZF Configuration ###
 
 dark_color_scheme_opts='--color fg:-1,bg:-1,fg+:-1,bg+:8,hl:12,hl+:12,pointer:5,info:14,prompt:13'
-light_color_scheme_opts='--color fg:-1,bg:-1,fg+:-1,bg+:7,hl:4,hl+:4,pointer:5,info:6,prompt:1'
+light_color_scheme_opts='--color fg:-1,bg:-1,fg+:-1,bg+:7,hl:6,hl+:6,pointer:5,info:6,prompt:1'
 
 # Standard options env var
 standard_opts="--tabstop=4"
