@@ -3,6 +3,10 @@
 # export editor because some programs that won't source .bashrc will read it
 export EDITOR=nvim
 
+# our own dir structure, referenced by other commands
+HOME_MINE="$HOME/mine"
+export HOME_MINE
+
 ### PATH building ###
 # personal location for unpackaged programs
 # we need to set this the old-fashioned way to bootstrap where we usually put the ensure-path
