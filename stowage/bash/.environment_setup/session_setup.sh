@@ -53,7 +53,7 @@ alias ll='ls -Alh --group-directories-first --color=auto'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias cdm='cd $HOME/mine'
+alias cdm='cd $HOME_MINE'
 
 alias g='git'
 alias gco='git-checkout-fuzzy'
