@@ -90,6 +90,7 @@ exe 'highlight CursorLine guibg=' . dull_white
 exe 'highlight Search gui=NONE guifg=' . bright_white 'guibg=' . dull_purple
 exe 'highlight IncSearch gui=NONE guifg=' . bright_white 'guibg=' . bright_purple
 exe 'highlight CurSearch gui=bold guifg=' . bright_white 'guibg=' . bright_purple
+exe 'highlight LspSignatureActiveParameter gui=NONE guifg=' . bright_white 'guibg=' . dull_purple
 exe 'highlight MatchParen gui=bold guifg=' . bright_white 'guibg=' . bright_purple
 
 " diagnostic colors
