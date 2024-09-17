@@ -35,8 +35,6 @@ local create_lsp_keybinds = function(client, bufnr)
 	map_normal('gd', vim.lsp.buf.definition, bufopts)
 	map_normal('gt', vim.lsp.buf.type_definition, bufopts)
 	map_insert('<M-i>', '<C-x><C-o>', bufopts)
-	-- TODO: investigate whether you can get function docs in insert mode (for example, viewing the
-	-- docs on a function while writing arguments)
 	map_insert('<M-h>', vim.lsp.buf.signature_help, bufopts)
 	map_normal('<leader>a', vim.lsp.buf.code_action, bufopts)
 	map_normal('<leader>F', vim.lsp.buf.references, bufopts)
