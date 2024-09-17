@@ -10,6 +10,9 @@ local sdk_location = home .. '/mine/programs/sdkman/candidates/java'
 
 -- significantly cribbed from the excellent setup at:
 --   https://sookocheff.com/post/vim/neovim-java-ide/
+-- manually enable signature help capability ref:
+--   https://github.com/mfussenegger/nvim-jdtls/issues/88
+
 local root_markers = {'.git', 'gradlew', 'mvnw'}
 local root_dir = require('jdtls.setup').find_root(root_markers)
 local workspace_dir = home .. '/.local/share/eclipse/' .. vim.fn.fnamemodify(root_dir, ':p:h:t')
@@ -26,6 +29,10 @@ local config = {
 	on_init = function(client, _)
 		-- jdtls semantic tokens seem inconsistent and bad
 		client.server_capabilities.semanticTokensProvider = nil
+
+		if client.config.settings then
+			client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
+		end
 	end,
 	settings = {
 		java = {
@@ -49,6 +56,7 @@ local config = {
 			configuration = {
 				runtimes = machine_config.runtimes
 			},
+			signatureHelp = { enabled = true },
 		},
 	},
 	cmd = {
