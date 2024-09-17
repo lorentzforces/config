@@ -29,13 +29,13 @@
 	llm = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --color=always
 
 	b = branch --format='\
-%(if)%(HEAD)%(then)%(color:white red)%(else)%(color:red)%(end)\
+ %(if)%(HEAD)%(then)%(color:white red)%(else)%(color:red)%(end)\
 %(refname:short)\
 %(color:default default) \
 \
 %(color:cyan)\
-%(if)%(upstream:track,nobracket)%(then)[%(upstream:track,nobracket)]\
-%(else)%(if)%(upstream:trackshort)%(then)[at parity]%(end)\
+%(if)%(upstream:track,nobracket)%(then)[ %(upstream:track,nobracket) ]\
+%(else)%(if)%(upstream:trackshort)%(then)[ at parity ]%(end)\
 %(end)\
 '
 
