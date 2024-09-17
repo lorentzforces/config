@@ -3,7 +3,7 @@
 # set -x
 
 # this should be safe to source from whatever profile script gets run - thanks to ensure-path,
-# even PATH-modifying operations should be idempotent
+# even PATH-modifying operations should be idempotent(ish)
 
 if [ -r "$HOME/.environment_setup/fzf_config.sh" ]; then
 	source "$HOME/.environment_setup/fzf_config.sh"
