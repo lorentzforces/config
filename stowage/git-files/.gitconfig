@@ -12,14 +12,12 @@
 [alias]
 	cm = commit
 	cma = commit -a
-	cnb = checkout -b
-	co = checkout
+	cnb = switch -c
 	f = fetch
 	fa = fetch -a
 	nvim = mergetool --tool=nvimdiff1
 	rem = remote -v
 	st = status -sb -uno
-	unstage = reset HEAD --
 	wsdiff = diff --color-moved-ws=ignore-space-change
 
 	# git log aliases
