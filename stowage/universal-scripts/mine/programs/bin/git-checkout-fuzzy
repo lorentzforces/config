@@ -13,6 +13,7 @@ main() {
 	if [ -z "$target" ]; then
 		return 1
 	fi
-	git switch "$target"
+	# use checkout instead of switch to allow unconditional head-detaching
+	git checkout "$target"
 }
 main

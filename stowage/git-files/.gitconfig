@@ -17,7 +17,7 @@
 	fa = fetch -a
 	nvim = mergetool --tool=nvimdiff1
 	rem = remote -v
-	st = status -sb -uno
+	st = status -sb --untracked-files=no
 	wsdiff = diff --color-moved-ws=ignore-space-change
 
 	# git log aliases
