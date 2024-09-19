@@ -26,7 +26,9 @@ mine
 
 - setup all (initial setup for all projects)
   - this could copy some reasonable defaults for the action scripts
+  - leave existing alone, add new entries
 - update all
+- update specific
 - get statuses
 
 Special: should probably add a make target to my config repo that creates the full directory skeleton I need
