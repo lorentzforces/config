@@ -32,3 +32,7 @@ clean-stow-work: clean-stow
 clean-stow:
 	stow --delete --target="${HOME}" --dir="./stowage" ${STOWLIST}
 .PHONY: clean-stow
+
+skel:
+	scripts/skel.sh
+.PHONY: skel
