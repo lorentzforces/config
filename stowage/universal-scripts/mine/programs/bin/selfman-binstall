@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# install a static binary into my custom programs structure
+
+PROG_ROOT="$HOME/mine/programs"
+
+TARGET_EXEC=${1:-}
+
+main() {
+	if [[ -z "$TARGET_EXEC" ]]; then
+		>&2 printf "ERROR: expected a single argument with a target executable file\n"
+		exit 1
+	fi
+
+	if [[ ! -x "$TARGET_EXEC" ]]; then
+		 >&2 printf "ERROR: %s is not an executable file\n" "$TARGET_EXEC"
+		exit 1
+	fi
+
+	local file_name
+	file_name=$(basename "$TARGET_EXEC")
+	local install_path="$PROG_ROOT/managed-bins/$file_name"
+
+	mkdir -p "$install_path"
+
+	local new_name="$install_path/$file_name"
+	local old_name="$new_name.old"
+
+	if [[ -e "$old_name" ]]; then
+		printf "# Removing %s...\n" "$old_name"
+		rm "$old_name"
+	fi
+
+	if [[ -e "$new_name" ]]; then
+		printf "# Saving existing file to %s...\n" "$old_name"
+		mv "$new_name" "$old_name"
+	fi
+
+	printf "# Copying executable to %s...\n" "$new_name"
+	cp "$TARGET_EXEC" "$new_name"
+
+	local link_location="$PROG_ROOT/bin/$file_name"
+
+	ln -sf "$new_name" "$link_location"
+	printf "# Created link at %s\n" "$link_location"
+}
+main

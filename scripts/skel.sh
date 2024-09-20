@@ -13,6 +13,7 @@ IFS=$'\n\t'
 paths=(
 	"mine/programs"
 	"mine/programs/bin"
+	"mine/programs/managed-bins"
 	"mine/info"
 	"mine/media"
 	"mine/repos"
