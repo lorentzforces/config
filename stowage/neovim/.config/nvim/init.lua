@@ -195,9 +195,7 @@ util.options.statusline =
 	..' %=%c%V on %l/%L'
 
 util.options.termguicolors = true
-vim.cmd([[
-	colorscheme narcissus
-]])
+vim.cmd('colorscheme narcissus')
 
 require('no-neck-pain').setup({
 	-- debug = true,
