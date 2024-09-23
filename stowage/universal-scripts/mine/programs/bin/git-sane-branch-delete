@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# open a tmux session based on the target directory
+
+BRANCH=${1:-$(pwd)}
+
+main() {
+	if [[ -z "$BRANCH" ]]; then
+		>&2 printf "ERROR: expected a single argument with a branch name\n"
+		exit 1
+	fi
+
+	set +e
+	git show-ref --silent "refs/heads/$BRANCH"
+	local invalid_branch=$?
+	set -e
+
+	if [[ $invalid_branch == 1 ]]; then
+		>&2 printf "ERROR: expected a valid branch name, but was given \"%s\"\n" "$BRANCH"
+		exit 1
+	fi
+
+	local branch_remote
+	branch_remote=$(git config "branch.$BRANCH.remote")
+
+	if [[ -z "$branch_remote" ]]; then
+		read -p "Delete local-only branch: $BRANCH? Type \"delete\" to delete: " -r
+		printf "\n"
+		if [[ "$REPLY" != "delete" ]]; then
+			printf "Aborting delete.\n"
+			exit 1
+		fi
+
+		git branch -D "$BRANCH"
+		exit 0
+	fi
+
+	local sym_ref
+	sym_ref=$(git symbolic-ref -q "$BRANCH")
+
+	local tracking_name
+	tracking_name="$(git for-each-ref --format='%(upstream:short)' "$sym_ref")"
+	printf "Branch \"%s\" is tracking remote ref %s.\n" "$BRANCH" "$tracking_name"
+
+	local track_status
+	track_status="$(git for-each-ref --format='%(upstream:track,nobracket)' "$sym_ref")"
+	if [[ "$track_status" == "gone" ]]; then
+		printf "Remote-tracking branch no longer exists.\n"
+		read -p "Delete remaining local branch $BRANCH? Type \"delete\" to delete: " -r
+		printf "\n"
+		if [[ "$REPLY" != "delete" ]]; then
+			printf "Aborting delete.\n"
+			exit 1
+		fi
+
+		git branch -D "$BRANCH"
+		exit 0
+	else
+		printf "Remote-tracking branch is still present.\n"
+		printf "Delete remote branch as well as the local branch?\n"
+		# TODO: determine how to choose action
+		# TODO: do the thing
+	fi
+}
+main
