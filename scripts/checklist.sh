@@ -24,6 +24,7 @@ programs=(
 	"lf"
 	"make"
 	"nvim"
+	"qalc"
 	"rg"
 	"shellcheck"
 	"stow"
@@ -31,6 +32,7 @@ programs=(
 	"tmuxp"
 )
 
+# TODO: after creating the skel script, some of this can be removed
 files=(
 	"$HOME/mine"
 	"$HOME/mine/programs/bin"
