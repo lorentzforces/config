@@ -26,6 +26,7 @@
 	lsm = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --color=always
 	llm = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --color=always
 
+# spaces in this alias definition are significant
 	b = branch --format='\
  %(if)%(HEAD)%(then)%(color:white red)%(else)%(color:red)%(end)\
  %(refname:short) \
