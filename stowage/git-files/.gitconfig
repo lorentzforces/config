@@ -28,7 +28,7 @@
 
 	b = branch --format='\
  %(if)%(HEAD)%(then)%(color:white red)%(else)%(color:red)%(end)\
-%(refname:short)\
+ %(refname:short) \
 %(color:default default) \
 \
 %(color:cyan)\
