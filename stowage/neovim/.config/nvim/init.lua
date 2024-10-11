@@ -29,6 +29,7 @@ require('lazy').setup({
 		{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
 		'neovim/nvim-lspconfig',
 		'mfussenegger/nvim-jdtls',
+		'towolf/vim-helm',
 		'shortcuts/no-neck-pain.nvim',
 		'lorentzforces/rectify-buffers.nvim',
 	},
