@@ -5,6 +5,9 @@
 [init]
 	defaultBranch = main
 
+[advice]
+	detachedHead = false
+
 [color]
 	ui = true
 	pager = false
@@ -39,8 +42,6 @@
 '
 
 # individual command configs
-[advice]
-	detachedHead = false
 
 [branch]
 	sort = "-HEAD"
@@ -68,6 +69,7 @@
 
 [pull]
 	ff = only
+	rebase = true
 
 [color "branch"]
 	current = 15 1
