@@ -56,6 +56,7 @@ alias ....='cd ../../..'
 alias cdm='cd $HOME_MINE'
 
 alias g='git'
+alias kc='kubectl'
 # TODO: change this script name from checkout->switch
 alias gco='git-checkout-fuzzy'
 alias fshow='git-log-fuzzy-search'
