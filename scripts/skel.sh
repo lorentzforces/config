@@ -21,7 +21,7 @@ paths=(
 
 function main() {
 	for skel_dir in "${paths[@]}"; do
-		mkdir -p "$skel_dir"
+		mkdir -p "$HOME/$skel_dir"
 	done
 }
 
