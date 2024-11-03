@@ -1,2 +1,1 @@
-[general]
 import = ["~/.config/alacritty/base-alacritty.toml"]
