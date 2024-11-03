@@ -6,7 +6,7 @@ MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
 COMMON_LIST := alacritty neovim tmux bash lf universal-scripts git-files ripgrep
-MAIN_MACHINE_LIST := ${COMMON_LIST} main-machine opensuse-tumbleweed
+MAIN_MACHINE_LIST := ${COMMON_LIST} main-machine opensuse-tumbleweed zsh
 WORK_MACHINE_LIST := ${COMMON_LIST} work-machine k9s
 
 setup-main: STOWLIST = ${MAIN_MACHINE_LIST}

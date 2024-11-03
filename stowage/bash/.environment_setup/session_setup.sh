@@ -5,6 +5,11 @@
 # this should be safe to source from whatever profile script gets run - thanks to ensure-path,
 # even PATH-modifying operations should be idempotent(ish)
 
+CURRENT_SHELL='BASH'
+if [[ -n "$ZSH_VERSION" ]]; then
+	CURRENT_SHELL='ZSH'
+fi
+
 if [ -r "$HOME/.environment_setup/fzf_config.sh" ]; then
 	source "$HOME/.environment_setup/fzf_config.sh"
 fi
@@ -40,7 +45,12 @@ export CHCK_CHNG_REVS="origin/main:origin/master"
 eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
 
 eval "$(fnm env)"
-eval "$(fnm completions --shell bash)"
+
+if [[ "$CURRENT_SHELL" = "ZSH" ]]; then
+	eval "$(fnm completions --shell zsh)"
+else
+	eval "$(fnm completions --shell bash)"
+fi
 
 # fix path after fnm chucks new stuff on it
 PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
@@ -95,12 +105,16 @@ function fd()
 }
 
 # enable programmable completion features
-if ! shopt -oq posix; then
+if [[ "$CURRENT_SHELL" = "BASH" ]]; then
+
+if [[ ! $(shopt -oq posix) ]]; then
 	if [ -f /usr/share/bash-completion/bash_completion ]; then
 		source "/usr/share/bash-completion/bash_completion"
 	elif [ -f /etc/bash_completion ]; then
 		source "/etc/bash_completion"
 	fi
+fi
+
 fi
 
 ### per-machine configuration
