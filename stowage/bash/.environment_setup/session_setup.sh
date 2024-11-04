@@ -53,13 +53,6 @@ export CHCK_CHNG_REVS="origin/main:origin/master"
 eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
 
 eval "$(fnm env)"
-
-if [[ "$CURRENT_SHELL" = "ZSH" ]]; then
-	eval "$(fnm completions --shell zsh)"
-else
-	eval "$(fnm completions --shell bash)"
-fi
-
 # fix path after fnm chucks new stuff on it
 PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
 export PATH
@@ -112,7 +105,24 @@ function fd()
 	fi
 }
 
+# completion init
+autoload -U compinit
+compinit
+
+# completion config heavily based on guide at https://thevaluable.dev/zsh-completion-guide-examples/
+
+zstyle ':completion:*' completer _extensions _complete _approximate _complete_help
+# TODO: caching doesn't seem to be working (or at least, is not creating this file)
+zstyle ':completion:*' cache-path "$HOME/.cache/zsh/completion-cache"
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' menu select
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+
+# individual completion config must be done after compinit runs
+eval "$(fnm completions --shell zsh)"
+
 ### per-machine configuration
+
 # we do this last so we can override anything per-machine
 if [ -r "$HOME/.environment_setup/local_session_setup.sh" ]; then
 	source "$HOME/.environment_setup/local_session_setup.sh"
