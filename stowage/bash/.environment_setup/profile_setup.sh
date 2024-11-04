@@ -1,5 +1,3 @@
-# if we're in tmux, this has already been loaded
-
 # export editor because some programs that won't source .bashrc will read it
 export EDITOR=nvim
 
