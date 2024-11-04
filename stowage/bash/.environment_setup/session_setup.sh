@@ -22,12 +22,12 @@ HISTCONTROL=ignoreboth
 # use timestamps with history
 HISTTIMEFORMAT="%F %T " # trailing space is important
 
-if [[ $"CURRENT_SHELL" = "BASH" ]]; then
+if [[ "$CURRENT_SHELL" = "BASH" ]]; then
 	# we assume that our terminal supports xterm color codes
-	export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
+	export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\][BASH] :) \\[\\033[39m\\]'
 else
 	NEWLINE=$'\n'
-	export PS1="%F{red}%~ ▸${NEWLINE} %F{magenta}:)%F{reset} "
+	export PS1="%F{red}%~ ▸${NEWLINE} %F{magenta}[ZSH] :)%F{reset} "
 fi
 
 # store "host" terminal so we can use the same terminfo in tmux
