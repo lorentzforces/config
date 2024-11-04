@@ -27,7 +27,7 @@ if [[ "$CURRENT_SHELL" = "BASH" ]]; then
 	export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\][BASH] :) \\[\\033[39m\\]'
 else
 	NEWLINE=$'\n'
-	export PS1="%F{red}%~ ▸${NEWLINE} %F{magenta}[ZSH] :)%F{reset} "
+	export PS1="%F{red}%~ [zsh] ▸${NEWLINE}%F{cyan}%B%(?.. !%?)%b%F{magenta} :)%F{reset} "
 fi
 
 # store "host" terminal so we can use the same terminfo in tmux
