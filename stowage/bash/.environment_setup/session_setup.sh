@@ -1,7 +1,3 @@
-# PS4='+ $(date "+%s.%N")\011 '
-# exec 3>&2 2>/tmp/bashstart.$$.log
-# set -x
-
 # this should be safe to source from whatever profile script gets run - thanks to ensure-path,
 # even PATH-modifying operations should be idempotent(ish)
 
@@ -15,12 +11,19 @@ if [ -r "$HOME/.environment_setup/fzf_config.sh" ]; then
 fi
 
 # I keep hitting ctrl-d to page up and down a la vim, but this closes the terminal by default
-set -o ignoreeof
+setopt ignore_eof
+setopt no_case_glob
 
-# don't put duplicate lines or lines starting with spaces in the history
-HISTCONTROL=ignoreboth
-# use timestamps with history
-HISTTIMEFORMAT="%F %T " # trailing space is important
+setopt hist_ignore_all_dups
+setopt hist_reduce_blanks
+setopt hist_ignore_space
+setopt extended_history
+setopt share_history
+setopt append_history
+HISTFILE="$HOME/.cache/zsh/history"
+mkdir -p "$(dirname "$HISTFILE")"
+HISTSIZE=1000
+SAVEHIST=1000
 
 if [[ "$CURRENT_SHELL" = "BASH" ]]; then
 	# we assume that our terminal supports xterm color codes
@@ -109,19 +112,6 @@ function fd()
 	fi
 }
 
-# enable programmable completion features
-if [[ "$CURRENT_SHELL" = "BASH" ]]; then
-
-if [[ ! $(shopt -oq posix) ]]; then
-	if [ -f /usr/share/bash-completion/bash_completion ]; then
-		source "/usr/share/bash-completion/bash_completion"
-	elif [ -f /etc/bash_completion ]; then
-		source "/etc/bash_completion"
-	fi
-fi
-
-fi
-
 ### per-machine configuration
 # we do this last so we can override anything per-machine
 if [ -r "$HOME/.environment_setup/local_session_setup.sh" ]; then
@@ -132,6 +122,3 @@ fi
 if [ -r "$HOME/.environment_setup/secret_setup.sh" ]; then
 	source "$HOME/.environment_setup/secret_setup.sh"
 fi
-
-# set +x
-# exec 2>&3 3>&-
