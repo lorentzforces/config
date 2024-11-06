@@ -1,8 +1,12 @@
 # this should be safe to source from whatever profile script gets run - thanks to ensure-path,
 # even PATH-modifying operations should be idempotent(ish)
 
-if [ -r "$HOME/.environment_setup/fzf_config.sh" ]; then
-	source "$HOME/.environment_setup/fzf_config.sh"
+fzf_config="$HOME/.environment_setup/fzf_config.sh"
+if [[ -r "$fzf_config" ]]; then
+	# shellcheck source=/dev/null
+	source "$fzf_config"
+else
+	>&2 printf "==SHELL== script not found: %s\n" "$fzf_config"
 fi
 
 # I keep hitting ctrl-d to page up and down a la vim, but this closes the terminal by default
@@ -53,7 +57,6 @@ alias cdm='cd $HOME_MINE'
 
 alias g='git'
 alias kc='kubectl'
-# TODO: change this script name from checkout->switch
 alias gco='git-checkout-fuzzy'
 alias fshow='git-log-fuzzy-search'
 alias delete-branch='git-delete-branch-fuzzy'
@@ -90,22 +93,25 @@ function fd()
 	fi
 }
 
+# TODO: verify what the hell this is supposed to be on macos
 # enable programmable completion features
-if ! shopt -oq posix; then
-	if [ -f /usr/share/bash-completion/bash_completion ]; then
-		source "/usr/share/bash-completion/bash_completion"
-	elif [ -f /etc/bash_completion ]; then
-		source "/etc/bash_completion"
-	fi
+if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+	# shellcheck source=/dev/null
+	source "/usr/share/bash-completion/bash_completion"
+elif [[ -f /etc/bash_completion ]]; then
+	# shellcheck source=/dev/null
+	source "/etc/bash_completion"
 fi
 
 ### per-machine configuration
 # we do this last so we can override anything per-machine
-if [ -r "$HOME/.environment_setup/local_session_setup.sh" ]; then
-	source "$HOME/.environment_setup/local_session_setup.sh"
+if [[ -r "$HOME/.environment_setup/interactive_shell_setup_local.sh" ]]; then
+	# shellcheck source=/dev/null
+	source "$HOME/.environment_setup/interactive_shell_setup_local.sh"
 fi
 
 # a little bit of obscurity to keep specifics out of version control
-if [ -r "$HOME/.environment_setup/secret_setup.sh" ]; then
+if [[ -r "$HOME/.environment_setup/secret_setup.sh" ]]; then
+	# shellcheck source=/dev/null
 	source "$HOME/.environment_setup/secret_setup.sh"
 fi

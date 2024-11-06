@@ -8,8 +8,11 @@
 export SDKMAN_DIR="$HOME/mine/programs/sdkman"
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-if [[ -r "$HOME/mine/dev-env/setup-work-build-env.sh" ]]; then
-	source "$HOME/mine/dev-env/setup-work-build-env.sh"
+work_build_setup="$HOME/mine/dev-env/setup-work-build-env.sh"
+if [[ -r "$work_build_setup" ]]; then
+	source "$work_build_setup"
+else
+	>&2 printf "==SHELL== work build env declaration not found at %s" "$work_build_setup"
 fi
 
 KUBECONFIG=$(find ~/.kube/config* | tr '\n' ':' | sed s/:$//)

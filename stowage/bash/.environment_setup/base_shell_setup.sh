@@ -16,8 +16,9 @@ PATH=$(ensure-path "$HOME/.go/bin")
 
 ### per-machine configuration
 # we do this last so we can override anything per-machine
-if [ -r "$HOME/.environment_setup/local_profile_setup.sh" ]; then
-	source "$HOME/.environment_setup/local_profile_setup.sh"
+if [ -r "$HOME/.environment_setup/base_shell_setup_local.sh" ]; then
+	# shellcheck source=/dev/null
+	source "$HOME/.environment_setup/base_shell_setup_local.sh"
 fi
 
 # move this to the front of PATH so our own programs take ultimate precedence
