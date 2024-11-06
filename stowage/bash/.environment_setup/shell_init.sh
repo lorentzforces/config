@@ -6,23 +6,21 @@ then
     shell_mode="INTERACTIVE"
 fi
 
-# TODO: change the name of this script
-env_setup="$HOME/.environment_setup/profile_setup.sh"
+env_setup="$HOME/.environment_setup/base_shell_setup.sh"
 if [[ -r "$env_setup" ]]; then
 	# shellcheck source=/dev/null
 	source "$env_setup"
 else
-	>&2 printf "==shell== script not found: \"%s\"" "$env_setup"
+	>&2 printf "==SHELL== script not found: %s\n" "$env_setup"
 fi
 
-# TODO: change the name of this script
-interactive_setup="$HOME/.environment_setup/session_setup.sh"
+interactive_setup="$HOME/.environment_setup/interactive_shell_setup.sh"
 if [[ "$shell_mode" = "INTERACTIVE" ]]; then
 	if [[ -r "$interactive_setup" ]]; then
 		# shellcheck source=/dev/null
 		source "$interactive_setup"
 	else
-		>&2 printf "==shell== script not found: \"%s\"" "$interactive_setup"
+		>&2 printf "==SHELL== script not found: %s\n" "$interactive_setup"
 	fi
 
 fi
