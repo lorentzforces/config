@@ -1,4 +1,3 @@
-# export editor because some programs that won't source .bashrc will read it
 export EDITOR=nvim
 
 # our own dir structure, referenced by other commands
