@@ -1,37 +1,20 @@
 # this should be safe to source from whatever profile script gets run - thanks to ensure-path,
 # even PATH-modifying operations should be idempotent(ish)
 
-CURRENT_SHELL='BASH'
-if [[ -n "$ZSH_VERSION" ]]; then
-	CURRENT_SHELL='ZSH'
-fi
-
 if [ -r "$HOME/.environment_setup/fzf_config.sh" ]; then
 	source "$HOME/.environment_setup/fzf_config.sh"
 fi
 
 # I keep hitting ctrl-d to page up and down a la vim, but this closes the terminal by default
-setopt ignore_eof
-setopt no_case_glob
+set -o ignoreeof
 
-setopt hist_ignore_all_dups
-setopt hist_reduce_blanks
-setopt hist_ignore_space
-setopt extended_history
-setopt share_history
-setopt append_history
-HISTFILE="$HOME/.cache/zsh/history"
-mkdir -p "$(dirname "$HISTFILE")"
-HISTSIZE=1000
-SAVEHIST=1000
+# don't put duplicate lines or lines starting with spaces in the history
+HISTCONTROL=ignoreboth
+# use timestamps with history
+HISTTIMEFORMAT="%F %T " # trailing space is important
 
-if [[ "$CURRENT_SHELL" = "BASH" ]]; then
-	# we assume that our terminal supports xterm color codes
-	export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\][BASH] :) \\[\\033[39m\\]'
-else
-	NEWLINE=$'\n'
-	export PS1="%F{red}%~ [zsh] ▸${NEWLINE}%F{cyan}%B%(?.. !%?)%b%F{magenta} :)%F{reset} "
-fi
+# we assume that our terminal supports xterm color codes
+export PS1=$'\\[\\033[31m\\]\\w ▸\\n \\[\\033[35m\\]:) \\[\\033[39m\\]'
 
 # store "host" terminal so we can use the same terminfo in tmux
 export HOST_TERM=$TERM
@@ -53,6 +36,8 @@ export CHCK_CHNG_REVS="origin/main:origin/master"
 eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
 
 eval "$(fnm env)"
+eval "$(fnm completions --shell bash)"
+
 # fix path after fnm chucks new stuff on it
 PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
 export PATH
@@ -105,24 +90,16 @@ function fd()
 	fi
 }
 
-# completion init
-autoload -U compinit
-compinit
-
-# completion config heavily based on guide at https://thevaluable.dev/zsh-completion-guide-examples/
-
-zstyle ':completion:*' completer _extensions _complete _approximate _complete_help
-# TODO: caching doesn't seem to be working (or at least, is not creating this file)
-zstyle ':completion:*' cache-path "$HOME/.cache/zsh/completion-cache"
-zstyle ':completion:*' use-cache on
-zstyle ':completion:*' menu select
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# individual completion config must be done after compinit runs
-eval "$(fnm completions --shell zsh)"
+# enable programmable completion features
+if ! shopt -oq posix; then
+	if [ -f /usr/share/bash-completion/bash_completion ]; then
+		source "/usr/share/bash-completion/bash_completion"
+	elif [ -f /etc/bash_completion ]; then
+		source "/etc/bash_completion"
+	fi
+fi
 
 ### per-machine configuration
-
 # we do this last so we can override anything per-machine
 if [ -r "$HOME/.environment_setup/local_session_setup.sh" ]; then
 	source "$HOME/.environment_setup/local_session_setup.sh"
