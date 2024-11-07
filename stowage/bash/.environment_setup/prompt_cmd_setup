@@ -2,6 +2,7 @@ function __prompt_cmd() {
 	local prev_status="$?"
 
 	# I have some colors swapped from their typical representations in my typical color scheme
+	# (red is not one of them)
 	local red='\[\033[31m\]'
 	# terminal: purple/5, me: orange
 	local purple='\[\033[35m\]'
