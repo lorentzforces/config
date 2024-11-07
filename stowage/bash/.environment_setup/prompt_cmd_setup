@@ -18,7 +18,7 @@ function __prompt_cmd() {
 	if [[ $prev_status -ne 0 ]]; then
 		PS1+="$bold"
 		PS1+="$cyan"
-		PS1+=" !$prev_status "
+		PS1+=" !$prev_status"
 	fi
 
 	PS1+="$reset"
