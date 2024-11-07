@@ -1,0 +1,28 @@
+function __prompt_cmd() {
+	local prev_status="$?"
+
+	# I have some colors swapped from their typical representations in my typical color scheme
+	local red='\[\033[31m\]'
+	# terminal: purple/5, me: orange
+	local purple='\[\033[35m\]'
+	# terminal: cyan/6, me: purple
+	local cyan='\[\033[36m\]'
+	local bold='\[\033[1m\]'
+	local reset='\[\033(B\[\033[m\]'
+
+	PS1=""
+	PS1+="$red"
+	PS1+="\w ▸\n"
+
+	if [[ $prev_status -ne 0 ]]; then
+		PS1+="$bold"
+		PS1+="$cyan"
+		PS1+=" !$prev_status "
+	fi
+
+	PS1+="$reset"
+	PS1+="$purple"
+	PS1+=" :) "
+
+	PS1+="$reset"
+}
