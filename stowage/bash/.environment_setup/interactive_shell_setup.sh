@@ -17,9 +17,9 @@ HISTCONTROL=ignoreboth
 # use timestamps with history
 HISTTIMEFORMAT="%F %T " # trailing space is important
 
-# we assume that our terminal supports xterm color codes
-PS1=$("$HOME/.environment_setup/prompt.sh")
-export PS1
+# shellcheck source=/dev/null
+source "$HOME/.environment_setup/prompt_cmd_setup"
+export PROMPT_COMMAND="__prompt_cmd${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
 
 # store "host" terminal so we can use the same terminfo in tmux
 export HOST_TERM=$TERM
