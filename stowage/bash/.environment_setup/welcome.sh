@@ -18,7 +18,7 @@ if [[ -z "$tmux_running"  ]]; then
 else
 	tmux_client_count=$(tmux list-clients | wc -l)
 	tmux_session_count=$(tmux list-sessions | wc -l)
-	tmux_window_count=$(tmux list-windows | wc -l)
+	tmux_window_count=$(tmux list-windows -a | wc -l)
 	printf "%s/%s/%s (sessions/windows/clients)\n" \
 		"$tmux_session_count" \
 		"$tmux_window_count" \
