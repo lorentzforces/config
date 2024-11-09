@@ -32,13 +32,6 @@ programs=(
 	"tmuxp"
 )
 
-# TODO: after creating the skel script, some of this can be removed
-files=(
-	"$HOME/mine"
-	"$HOME/mine/programs/bin"
-	"$HOME/mine/programs/sdkman/bin/sdkman-init.sh"
-)
-
 function main() {
 	local prog_output=""
 	for prog in "${programs[@]}"; do
@@ -58,19 +51,6 @@ function main() {
 	fi
 
 	printf "\n"
-
-	local file_output=""
-	for file in "${files[@]}"; do
-		if ! [[ -r "$file" ]]; then
-			file_output="${file_output}${file}\n"
-		fi
-	done
-
-	if [[ -z "$file_output" ]]; then
-		printf "All expected files found!\n"
-	else
-		printf "Files not found:\n\n%b\n" "$file_output"
-	fi
 }
 
 main
