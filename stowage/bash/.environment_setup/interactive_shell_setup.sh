@@ -19,7 +19,7 @@ HISTTIMEFORMAT="%F %T " # trailing space is important
 
 # shellcheck source=/dev/null
 source "$HOME/.environment_setup/prompt_cmd_setup"
-export PROMPT_COMMAND="__prompt_cmd${PROMPT_COMMAND:+; $PROMPT_COMMAND}"
+export PROMPT_COMMAND="__prompt_cmd"
 
 # store "host" terminal so we can use the same terminfo in tmux
 export HOST_TERM=$TERM
