@@ -83,7 +83,7 @@ exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
 exe 'highlight QuickFixLine gui=NONE guibg=' . dull_white
 exe 'highlight qfLineNr gui=NONE guifg=' . dull_green
 exe 'highlight Question gui=bold guifg=' . dull_red
-exe 'highlight NormalFloat gui=bold guibg=' . dull_white
+exe 'highlight NormalFloat gui=NONE guibg=' . dull_white
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . dull_white
