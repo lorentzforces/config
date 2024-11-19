@@ -1,6 +1,8 @@
 [core]
 	editor = nvim
 	pager = nvim -R
+	untrackedCache = true
+	fsmonitor = true
 
 [init]
 	defaultBranch = main
@@ -20,7 +22,7 @@
 	fa = fetch -a
 	nvim = mergetool --tool=nvimdiff1
 	rem = remote -v
-	st = status -sb --untracked-files=no
+	st = status -sb
 	wsdiff = diff --color-moved-ws=ignore-space-change
 
 	# git log aliases
