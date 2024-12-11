@@ -19,7 +19,7 @@ local workspace_dir = home .. '/.local/share/eclipse/' .. vim.fn.fnamemodify(roo
 
 local jdtls_config
 if util.operating_system == "MAC_OS" then
-	jdtls_config = jdtls_location .. '/config_mac'
+	jdtls_config = jdtls_location .. '/config_mac_arm'
 else
 	jdtls_config = jdtls_location .. '/config_linux'
 end
@@ -71,6 +71,7 @@ local config = {
 		'--add-opens', 'java.base/java.util=ALL-UNNAMED',
 		'--add-opens', 'java.base/java.lang=ALL-UNNAMED',
 		'-javaagent:' .. lombok_location, -- lombok versions are somewhat touchy
+		-- the underscore indicates this is the master launcher plugin (only one)
 		'-jar', vim.fn.glob(jdtls_location .. '/plugins/org.eclipse.equinox.launcher_*.jar'),
 		'-configuration', jdtls_config,
 		'-data', workspace_dir,
