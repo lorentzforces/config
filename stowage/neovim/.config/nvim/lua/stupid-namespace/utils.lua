@@ -48,6 +48,13 @@ else
 	operating_system = "LINUX"
 end
 
+local set_indents = function(use_tabs, size)
+	vim.opt.expandtab = not(use_tabs)
+	vim.opt.tabstop = size
+	vim.opt.softtabstop = size
+	vim.opt.shiftwidth = size
+end
+
 M.options = vim.opt
 M.local_options = vim.opt_local
 M.g_vars = vim.g
@@ -58,5 +65,6 @@ M.augroup = augroup
 M.autocommand = autocommand
 M.create_lsp_keybinds = create_lsp_keybinds
 M.operating_system = operating_system
+M.set_indents = set_indents
 
 return M
