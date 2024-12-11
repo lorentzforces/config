@@ -151,10 +151,7 @@ vim.api.nvim_create_user_command(
 	'Tab',
 	function(opts)
 		local indent_size = tonumber(opts.fargs[1])
-		util.options.expandtab = false
-		util.options.tabstop = indent_size
-		util.options.softtabstop = indent_size
-		util.options.shiftwidth = indent_size
+		util.set_indents(true, indent_size)
 	end,
 	{ nargs = 1 }
 )
@@ -163,10 +160,7 @@ vim.api.nvim_create_user_command(
 	'Space',
 	function(opts)
 		local indent_size = tonumber(opts.fargs[1])
-		util.options.expandtab = true
-		util.options.tabstop = indent_size
-		util.options.softtabstop = indent_size
-		util.options.shiftwidth = indent_size
+		util.set_indents(false, indent_size)
 	end,
 	{ nargs = 1 }
 )
