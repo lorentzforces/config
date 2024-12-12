@@ -14,18 +14,18 @@ local get_mapper = function(mode, remap)
 	end
 end
 
-local map_normal = get_mapper('n', false)
-local map_visual = get_mapper('v', false)
-local map_insert = get_mapper('i', false)
+M.map_normal = get_mapper('n', false)
+M.map_visual = get_mapper('v', false)
+M.map_insert = get_mapper('i', false)
 
-local augroup = function(name, opts)
+M.augroup = function(name, opts)
 	opts = opts or {}
 	return vim.api.nvim_create_augroup(name, opts)
 end
 
-local autocommand = vim.api.nvim_create_autocmd
+M.autocommand = vim.api.nvim_create_autocmd
 
-local create_lsp_keybinds = function(client, bufnr)
+M.create_lsp_keybinds = function(client, bufnr)
 	local bufopts = {buffer = bufnr}
 
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -41,15 +41,24 @@ local create_lsp_keybinds = function(client, bufnr)
 	map_normal('<leader>F', vim.lsp.buf.references, bufopts)
 end
 
-local operating_system
+M.operating_system = "LINUX"
 if vim.loop.os_uname().sysname == "Darwin" then
-	operating_system = "MAC_OS"
-else
-	operating_system = "LINUX"
+	M.operating_system = "MAC_OS"
 end
 
-local set_indents = function(use_tabs, size)
-	vim.opt_local.expandtab = not(use_tabs)
+M.INDENT_TABS = "tabs"
+M.INDENT_SPACES = "spaces"
+M.set_indents = function(indent_type, size)
+	local expandtab = false
+	if indent_type == M.INDENT_TABS then
+		expandtab = false
+	elseif indent_type == M.INDENT_SPACES then
+		expandtab = true
+	else
+		error(string.format("set_indents got an unexpected indent type: %s", indent_type))
+	end
+
+	vim.opt_local.expandtab = expandtab
 	vim.opt_local.tabstop = size
 	vim.opt_local.softtabstop = size
 	vim.opt_local.shiftwidth = size
@@ -58,13 +67,5 @@ end
 M.options = vim.opt
 M.local_options = vim.opt_local
 M.g_vars = vim.g
-M.map_normal = map_normal
-M.map_visual = map_visual
-M.map_insert = map_insert
-M.augroup = augroup
-M.autocommand = autocommand
-M.create_lsp_keybinds = create_lsp_keybinds
-M.operating_system = operating_system
-M.set_indents = set_indents
 
 return M
