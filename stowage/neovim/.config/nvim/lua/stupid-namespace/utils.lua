@@ -49,10 +49,10 @@ else
 end
 
 local set_indents = function(use_tabs, size)
-	vim.opt.expandtab = not(use_tabs)
-	vim.opt.tabstop = size
-	vim.opt.softtabstop = size
-	vim.opt.shiftwidth = size
+	vim.opt_local.expandtab = not(use_tabs)
+	vim.opt_local.tabstop = size
+	vim.opt_local.softtabstop = size
+	vim.opt_local.shiftwidth = size
 end
 
 M.options = vim.opt
