@@ -16,32 +16,60 @@ save_to_clipboard = true
 [bell]
 animation = "EaseOutQuad"
 duration = 200
-color = "#700000"
+color = "#90000c"
 
 [colors.primary]
-background = "#999999"
-foreground = "#303030"
+background = "#2a2020"
+foreground = "#aaaaaa"
 
 [colors.cursor]
-cursor = "#303030"
-text = "#999999"
+cursor = "#aaaaaa"
+text = "#2a2020"
 
 [colors.normal]
 black = "#606060"
-blue = "#43698d"
-cyan = "#6a2071"
-green = "#164f27"
-magenta = "#a05614"
-red = "#700000"
-white = "#bbbbbb"
-yellow = "#5b5500"
+blue = "#49a0ff"
+cyan = "#9737bc"
+green = "#1f5a31"
+magenta = "#b05d13"
+red = "#90000c"
+white = "#aaaaaa"
+yellow = "#9c7f0c"
 
 [colors.bright]
-black = "#010101"
-blue = "#60c0ff"
-cyan = "#b000f7"
-green = "#62ffc3"
-magenta = "#fe9131"
-red = "#c2000f"
+black = "#101010"
+blue = "#93b8e0"
+cyan = "#a57db5"
+green = "#78d0af"
+magenta = "#c0814b"
+red = "#b4676d"
 white = "#eeeeee"
-yellow = "#f4e41f"
+yellow = "#c8af4a"
+
+# [colors.primary]
+# background = "#999999"
+# foreground = "#303030"
+#
+# [colors.cursor]
+# cursor = "#303030"
+# text = "#999999"
+#
+# [colors.normal]
+# black = "#606060"
+# blue = "#43698d"
+# cyan = "#6a2071"
+# green = "#164f27"
+# magenta = "#a05614"
+# red = "#700000"
+# white = "#bbbbbb"
+# yellow = "#5b5500"
+#
+# [colors.bright]
+# black = "#010101"
+# blue = "#60c0ff"
+# cyan = "#b000f7"
+# green = "#62ffc3"
+# magenta = "#fe9131"
+# red = "#c2000f"
+# white = "#eeeeee"
+# yellow = "#f4e41f"
