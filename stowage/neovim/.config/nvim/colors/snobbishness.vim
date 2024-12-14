@@ -64,7 +64,7 @@ exe 'highlight MoreMsg gui=NONE guifg=' . bright_black
 exe 'highlight VertSplit gui=NONE guifg=' . reddish_dark 'guibg=NONE'
 exe 'highlight WinSeparator gui=NONE guifg=background guibg=NONE'
 exe 'highlight Directory gui=bold guifg=' . dull_red
-exe 'highlight SpecialKey gui=italic guifg=' . bright_black
+exe 'highlight SpecialKey gui=italic guifg=' . bright_white
 exe 'highlight TabLine gui=NONE guifg=' . bright_white 'guibg=' . bright_black
 exe 'highlight TabLineSel gui=NONE guifg=' . dull_red 'guibg=' . reddish_dark
 exe 'highlight TabLineFill gui=NONE guibg=' . bright_black
@@ -119,7 +119,7 @@ exe 'highlight Todo gui=italic guifg=' . bright_white
 exe 'highlight Typedef gui=NONE guifg=' . dull_red
 exe 'highlight Debug gui=NONE guifg=' . bright_yellow
 exe 'highlight Conditional gui=NONE guifg=' . dull_red
-exe 'highlight Special gui=NONE guifg=' . dull_black
+exe 'highlight Special gui=NONE guifg=' . bright_white
 exe 'highlight SpecialChar gui=NONE guifg=' . bright_white
 exe 'highlight Delimiter gui=NONE guifg=' . neutral_grey
 exe 'highlight StorageClass gui=NONE guifg=' . dull_red
@@ -193,6 +193,7 @@ exe 'highlight gitrebaseCommit gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseHash gui=NONE guifg=' . dull_blue 'guibg=NONE'
 exe 'highlight gitrebaseSummary gui=NONE guifg=' . neutral_grey 'guibg=NONE'
 exe 'highlight gitrebasePick gui=NONE guifg=' . dull_red 'guibg=NONE'
+exe 'highlight gitignoreNegation gui=NONE guifg=' . dull_red 'guibg=NONE'
 
 " treesitter golang
 exe 'highlight @type.builtin.go gui=NONE guifg=' . dull_red
