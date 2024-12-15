@@ -166,6 +166,7 @@ exe 'highlight @variable.builtin gui=NONE guifg=' . dull_red
 exe 'highlight @function.builtin gui=NONE guifg=' . dull_red
 exe 'highlight @punctuation.delimiter.comment gui=NONE guifg=' . bright_red
 exe 'highlight @comment.note.comment gui=italic guifg=' . bright_red
+exe 'highlight @string.special.url.comment gui=underline guifg=' . bright_red
 
 " exe 'highlight @comment.todo.comment gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 
