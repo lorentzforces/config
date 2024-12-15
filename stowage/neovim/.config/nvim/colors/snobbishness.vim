@@ -72,7 +72,7 @@ exe 'highlight StatusLine gui=NONE guifg=' . dull_white 'guibg=' . dull_red
 exe 'highlight StatusLineNC gui=NONE guifg=' . dull_white 'guibg=' . bright_black
 exe 'highlight StatusLineFlag gui=bold guifg=' . dull_white 'guibg=' . dull_red
 exe 'highlight StatusLineModified gui=bold guifg=' . dull_white 'guibg=' . dull_red
-exe 'highlight PMenu gui=NONE guifg=' . neutral_grey 'guibg=' . dull_white
+exe 'highlight PMenu gui=NONE guifg=' . neutral_grey 'guibg=' . bright_black
 exe 'highlight PmenuSel gui=NONE guifg=' . dull_red 'guibg=' . dull_white
 exe 'highlight PmenuSbar gui=NONE guibg=' . dull_white
 exe 'highlight PmenuThumb gui=NONE guibg=' . dull_black
@@ -83,7 +83,7 @@ exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
 exe 'highlight QuickFixLine gui=NONE guibg=' . dull_white
 exe 'highlight qfLineNr gui=NONE guifg=' . dull_green
 exe 'highlight Question gui=bold guifg=' . dull_red
-exe 'highlight NormalFloat gui=NONE guibg=' . dull_white
+exe 'highlight NormalFloat gui=NONE guibg=' . bright_black
 
 " editor contextual colors
 exe 'highlight CursorLine guibg=' . dull_white
