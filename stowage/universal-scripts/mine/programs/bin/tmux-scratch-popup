@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Handles a toggle-able popup window / scratch space.
+# Popup windows are all under a special tmux session called "popup," where each scratch space has
+# a window corresponding to its name.
+
+SCRATCH_NAME=${1:-}
+
+main() {
+	>&2 echo "not implemented atm"
+
+	# TODO: if the popup session does not exist, create it
+	# TODO: if the desired scratch window doesn't exist, create it
+	# TODO: if the desired scratch window is the current one and it is a popup, toggle the popup off
+	#       and take no further action
+	# TODO: if the desired scratch window ISN'T the current one and it IS a popup, toggle the popup off
+	# TODO: open the desired scratch window in the popup
+	#
+	# configuration: each scratch window has a name and a command it runs when first created
+	# TODO: figure out how to store this config
+}
+main
