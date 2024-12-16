@@ -5,7 +5,7 @@ light_color_scheme_opts='--color fg:-1,bg:-1,fg+:-1,bg+:7,hl:6,hl+:6,pointer:5,i
 
 # Standard options env var
 standard_opts="--tabstop=4"
-export FZF_DEFAULT_OPTS="$dark_color_scheme_opts $standard_opts"
+export FZF_DEFAULT_OPTS="$light_color_scheme_opts $standard_opts"
 
 # use ripgrep to search files
 # this will respect .gitignore settings, add --no-ignore to ignore .gitignore
