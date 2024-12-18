@@ -54,7 +54,7 @@ exe 'highlight Normal gui=NONE guifg=' . neutral_grey 'guibg=' . reddish_dark
 exe 'highlight Visual gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight VisualNOS gui=NONE guifg=' . dull_white 'guibg=' . dull_black
 exe 'highlight WildMenu gui=NONE guifg=' . dull_orange 'guibg=' . dull_black
-exe 'highlight NonText gui=italic guifg=' . bright_red
+exe 'highlight NonText gui=italic guifg=' . dull_black
 exe 'highlight ErrorMsg gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
 exe 'highlight LineNr gui=NONE guifg=' . dull_white 'guibg=NONE'
 exe 'highlight CursorLineNr gui=NONE guifg=' . dull_red
@@ -146,7 +146,7 @@ exe 'highlight Include gui=NONE guifg=' . dull_purple
 " exe 'highlight Tag gui=underline'
 exe 'highlight Tag gui=NONE guifg=' . dull_red
 exe 'highlight Error gui=NONE guifg=' . dull_white 'guibg=' . dull_yellow
-exe 'highlight Whitespace gui=italic guifg=' . bright_red
+exe 'highlight Whitespace gui=italic guifg=' . dull_black
 exe 'highlight helpHeader gui=NONE guifg=' . dull_red
 
 " treesitter
