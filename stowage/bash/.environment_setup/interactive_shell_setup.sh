@@ -42,18 +42,18 @@ export CHCK_CHNG_REVS="origin/main:origin/master"
 eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
 
 eval "$(fnm env)"
-eval "$(fnm completions --shell bash)"
-
 # fix path after fnm chucks new stuff on it
 PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
 export PATH
 
 ### enable programmable completion features
 
-# TODO: verify that this works on OpenSUSE
-if [[ -f /usr/share/bash-completion/bash_completion ]]; then
+# We avoid shellcheck sourcing all across these since not all of these files will exist on all
+# installations.
+# This path is correct for OpenSUSE.
+if [[ -f /usr/share/bash-completion/completions/git ]]; then
 	# shellcheck source=/dev/null
-	source "/usr/share/bash-completion/bash_completion"
+	source "/usr/share/bash-completion/completions/git"
 fi
 
 if type brew &>/dev/null; then
