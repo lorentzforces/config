@@ -98,6 +98,7 @@ exe 'highlight DiagnosticError gui=italic,bold,underline guifg=' . dull_yellow
 exe 'highlight DiagnosticWarn gui=italic guifg=' . dull_yellow
 exe 'highlight DiagnosticInfo gui=italic guifg=' . dull_white
 exe 'highlight DiagnosticHint gui=italic guifg=' . dull_white
+exe 'highlight DiagnosticFloatingHint gui=italic guifg=' . slate_grey
 exe 'highlight DiagnosticOk gui=italic guifg=' . dull_white
 
 " diff colors
@@ -132,7 +133,7 @@ exe 'highlight Repeat gui=NONE guifg=' . dull_red
 exe 'highlight Type gui=NONE guifg=' . slate_grey
 exe 'highlight Identifier gui=NONE guifg=' . slate_grey
 exe 'highlight Statement gui=NONE guifg=' . dull_red
-exe 'highlight Operator gui=NONE guifg=' . dull_red
+exe 'highlight Operator gui=bold guifg=' . dull_red
 exe 'highlight String gui=NONE guifg=' . dull_orange
 exe 'highlight Character gui=NONE guifg=' . dull_purple
 exe 'highlight Float gui=NONE guifg=' . dull_purple
@@ -230,6 +231,9 @@ exe 'highlight @markup.list.markdown gui=bold guifg=' . dull_red
 " treesitter rust
 exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
 exe 'highlight @type.builtin.rust gui=NONE guifg=' . dull_red
+exe 'highlight @lsp.type.selfTypeKeyword.rust gui=NONE guifg=' . dull_red
+exe 'highlight @function.macro.rust gui=NONE guifg=' . dull_purple
+exe 'highlight @lsp.type.macro.rust gui=NONE guifg=' . dull_purple
 exe 'highlight @lsp.type.formatspecifier.rust gui=NONE guifg=' . bright_black
 exe 'highlight @lsp.typemod.decorator.attribute.rust gui=NONE guifg=' . dull_purple
 exe 'highlight @lsp.typemod.attributeBracket.attribute.rust gui=NONE guifg=' . dull_purple
