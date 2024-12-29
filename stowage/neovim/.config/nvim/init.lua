@@ -261,16 +261,23 @@ util.autocommand(
 
 local lsp_config = require('lspconfig')
 
--- jdtls (Eclipse-based Java LSP) is configured separately in a file type plugin file for Java
+-- jdtls (Eclipse-based Java LSP) is configured separately in a ftplugin file for Java
 
 lsp_config.bashls.setup({
-	on_attach = util.create_lsp_keybinds
+	on_attach = util.create_lsp_keybinds,
 })
 
 lsp_config.gopls.setup({
-	on_attach = util.create_lsp_keybinds
+	on_attach = util.create_lsp_keybinds,
+	settings = {
+		gopls = {
+			analyses = {
+				simplifyrange = false,
+			},
+		},
+	},
 })
 
 lsp_config.rust_analyzer.setup({
-	on_attach = util.create_lsp_keybinds
+	on_attach = util.create_lsp_keybinds,
 })
