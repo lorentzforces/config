@@ -38,6 +38,11 @@ require('lazy').setup({
 	},
 })
 
+-- fixed by: https://github.com/neovim/neovim/pull/31676
+-- TODO: remove with upgrade to neovim 0.10.4 or later
+-- neovim 0.10.3 will throw an error when running :Inspect without this
+vim.hl = vim.highlight
+
 util.options.number = false
 util.options.relativenumber = false
 util.options.cursorline = true
