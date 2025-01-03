@@ -127,7 +127,7 @@ exe 'highlight StorageClass gui=NONE guifg=' . dull_red
 exe 'highlight Exception gui=NONE guifg=' . dull_red
 exe 'highlight Function gui=NONE guifg=' . slate_grey
 exe 'highlight Label gui=NONE guifg=' . dull_green
-exe 'highlight Keyword gui=NONE guifg=' . dull_red
+exe 'highlight Keyword gui=bold guifg=' . dull_red
 exe 'highlight Constant gui=NONE guifg=' . slate_grey
 exe 'highlight Repeat gui=NONE guifg=' . dull_red
 exe 'highlight Type gui=NONE guifg=' . slate_grey
@@ -205,8 +205,10 @@ exe 'highlight @constant.builtin.go gui=NONE guifg=' . dull_red
 exe 'highlight @tag.attribute gui=NONE guifg=' . slate_grey
 
 " treesitter java
+" "this" and "var" are more like keywords in java than variables...
 exe 'highlight @constant.builtin.java gui=NONE guifg=' . dull_red
-exe 'highlight @type.builtin.java gui=NONE guifg=' . dull_red
+exe 'highlight @type.builtin.java gui=bold guifg=' . dull_red
+exe 'highlight @variable.builtin.java gui=bold guifg=' . dull_red
 
 " treesitter javascript
 exe 'highlight @constant.builtin.javascript gui=NONE guifg=' . dull_red
