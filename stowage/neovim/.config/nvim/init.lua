@@ -198,6 +198,14 @@ util.options.statusline =
 util.options.termguicolors = true
 vim.cmd('colorscheme narcissus')
 
+-- filetype registration
+vim.filetype.add({
+	pattern = {
+		-- kubeconfig files are very naming-convention
+		['.*kube/config.*'] = 'yaml',
+	},
+})
+
 require('no-neck-pain').setup({
 	-- debug = true,
 	width = 126,
