@@ -11,7 +11,7 @@ let g:colors_name = "narcissus"
 " TODO: all these variables for colors are leaked, maybe do something about that
 let TEST_MAGENTA = '#ff00ff'
 
-let middle_grey = '#999999' " background
+let middle_grey = '#888888' " background
 let slate_grey = '#303030' " foreground
 let dull_black = '#606060'
 let bright_black = '#010101' " hacky workaround for #000000 not working in some guis
