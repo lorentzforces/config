@@ -4,8 +4,8 @@ local sdk_location = os.getenv('HOME') .. '/mine/programs/sdkman/candidates/java
 
 module.runtimes = {
 	{
-		name = 'JavaSE-21',
-		path = sdk_location .. '/21.0.1-tem',
+		name = 'JavaSE-23',
+		path = sdk_location .. '/23.0.1-tem',
 	},
 }
 
