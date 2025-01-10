@@ -47,7 +47,7 @@ color = "#90000c"
 # yellow = "#c8af4a"
 
 [colors.primary]
-background = "#999999"
+background = "#888888"
 foreground = "#303030"
 
 [colors.cursor]
