@@ -1,3 +1,4 @@
+-- TODO: vendor in https://github.com/deficient/deficient for battery widget and other good stuff
 -- TODO: refactor this majorly into functions, remove cruft, etc etc
 
 -- If LuaRocks is installed, make sure that packages installed through it are
@@ -12,10 +13,6 @@ local beautiful = require("beautiful") -- Theme handling library
 local naughty = require("naughty") -- Notification library
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
-
--- Load Debian menu entries
--- local debian = require("debian.menu")
-local has_fdo, freedesktop = pcall(require, "freedesktop")
 
 -- Handle runtime errors after startup
 do
@@ -75,20 +72,6 @@ myawesomemenu = {
 
 local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
 local menu_terminal = { "open terminal", terminal }
-
--- if has_fdo then
---	mymainmenu = freedesktop.menu.build({
---		before = { menu_awesome },
---		after =  { menu_terminal }
---	})
--- else
--- 	mymainmenu = awful.menu({ items = {
--- 		menu_awesome,
--- 		{ "Debian", debian.menu.Debian_menu.Debian },
--- 		menu_terminal,
--- 	} })
--- end
-
 
 mylauncher = awful.widget.launcher({
 	image = beautiful.awesome_icon,
