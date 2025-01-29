@@ -8,7 +8,7 @@ MAKEFLAGS += --no-builtin-rules
 COMMON_LIST := alacritty neovim tmux bash lf universal-scripts git-files ripgrep
 MAIN_MACHINE_LIST := ${COMMON_LIST} main-machine rofi redshift awesomewm opensuse-tumbleweed
 WORK_MACHINE_LIST := ${COMMON_LIST} work-machine k9s
-LAPTOP_MACHINE_LIST := ${COMMON_LIST} laptop-machine rofi redshift sway opensuse-tumbleweed
+LAPTOP_MACHINE_LIST := ${COMMON_LIST} laptop-machine rofi redshift opensuse-tumbleweed
 
 setup-main: STOWLIST = ${MAIN_MACHINE_LIST}
 setup-main: setup-machine-stow
