@@ -20,17 +20,17 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 	spec = {
-		{'junegunn/fzf.vim', dependencies = {'junegunn/fzf',} },
-		{'airblade/vim-gitgutter', branch = 'main'},
+	{ 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf', } },
+		{ 'airblade/vim-gitgutter', branch = 'main' },
 		-- Floaterm is technically a dependency of lf.vim, but needs to be loaded
 		-- after lf.vim for Reasons™. We declare lf.vim as a dependency to make sure
 		-- that it gets loaded first.
-		{'voldikss/vim-floaterm', dependencies = 'ptzz/lf.vim'},
-		{'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+		{ 'voldikss/vim-floaterm', dependencies = 'ptzz/lf.vim' },
+		{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 		'neovim/nvim-lspconfig',
 		'mfussenegger/nvim-jdtls',
 		'towolf/vim-helm',
-		'shortcuts/no-neck-pain.nvim',
+		{ 'shortcuts/no-neck-pain.nvim', version = "*" },
 		'lorentzforces/rectify-buffers.nvim',
 	},
 	dev = {
@@ -119,8 +119,14 @@ util.map_normal(
 util.map_normal(
 	'<leader>i',
 	function()
-		-- TODO: iterate over windows and toggle this on all of them
-		util.options.list = not util.options.list:get()
+		for _, win in pairs(vim.api.nvim_list_wins()) do
+			vim.api.nvim_win_call(
+				win,
+				function()
+					util.options.list = not util.options.list:get()
+				end
+			)
+		end
 	end
 )
 
