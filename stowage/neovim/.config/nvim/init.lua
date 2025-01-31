@@ -52,7 +52,7 @@ util.options.wrap = true
 util.options.linebreak = true
 util.options.breakindent = true
 util.options.list = true -- use the show hidden keybind to toggle
-util.options.listchars = { tab = '▸ ', trail = '·'}
+util.options.listchars = { tab = '▸ ', trail = '·' }
 util.options.showbreak = '↳'
 util.options.signcolumn = 'yes' -- provide a space and gutter at all times
 
@@ -209,10 +209,6 @@ vim.filetype.add({
 require('no-neck-pain').setup({
 	-- debug = true,
 	width = 126,
-	autocmds = {
-		enableOnVimEnter = true,
-		enableOnTabEnter = true,
-	},
 })
 
 require('rectify-buffers').setup({
