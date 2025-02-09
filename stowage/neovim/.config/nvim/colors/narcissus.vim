@@ -172,7 +172,7 @@ exe 'highlight @string.special.url.comment gui=underline guifg=' . bright_white
 " exe 'highlight @comment.todo.comment gui=NONE guifg=' . bright_yellow 'guibg=' . bright_black
 
 " syntax asciidoc
-exe 'highlight asciidocListBullet gui=NONE guifg=' . dull_red
+exe 'highlight asciidocListBullet gui=bold guifg=' . dull_red
 exe 'highlight asciidocAttributeList gui=NONE guifg=' . dull_white
 exe 'highlight asciidocHLabel gui=NONE guifg=' . dull_orange
 exe 'highlight asciidocHLabel gui=NONE guifg=' . dull_orange
