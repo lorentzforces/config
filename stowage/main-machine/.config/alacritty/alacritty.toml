@@ -1,2 +1,11 @@
 [general]
 import = ["~/.config/alacritty/base-alacritty.toml"]
+
+[font]
+size = 10.0
+
+[window]
+opacity = 1
+
+[colors]
+transparent_background_colors = true
