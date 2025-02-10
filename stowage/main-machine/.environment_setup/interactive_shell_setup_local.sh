@@ -4,3 +4,5 @@ alias open="xdg-open"
 # are not passed into subshells. In other words, this needs to be done at each session startup.
 export SDKMAN_DIR="$HOME/mine/programs/sdkman"
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
