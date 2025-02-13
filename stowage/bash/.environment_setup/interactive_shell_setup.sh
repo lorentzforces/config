@@ -98,6 +98,7 @@ alias fdev='tmuxp-session-dev-dirs'
 alias fmux='tmuxp-defined-sessions'
 
 alias kctx='kube-context-fuzzy'
+alias awsp='export AWS_PROFILE=$(aws-profile-fuzzy) && echo "AWS Profile: $AWS_PROFILE"'
 
 alias page='nvim -R'
 alias pageify='fc -s | nvim -R -'
