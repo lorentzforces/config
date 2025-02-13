@@ -22,7 +22,7 @@ if [[ "$shell_mode" = "INTERACTIVE" ]]; then
 		>&2 printf "==SHELL== script not found: %s\n" "$interactive_setup"
 	fi
 
-	welcome_script="$HOME/.environment_setup/welcome.sh"
+	welcome_script="$HOME/mine/programs/bin/top-line-status"
 	if [[ -r "$welcome_script" ]]; then
 		$welcome_script
 	else

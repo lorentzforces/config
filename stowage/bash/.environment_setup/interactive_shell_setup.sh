@@ -80,6 +80,8 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cdm='cd $HOME_MINE'
 
+alias topline='top-line-status'
+
 alias g='git'
 __git_complete g __git_main
 alias kc='kubectl'

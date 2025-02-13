@@ -4,6 +4,10 @@ import = ["~/.config/alacritty/base-alacritty.toml"]
 [font]
 # bump up size to make font rendering on MacOS look less terrible
 size = 16
+offset = { x = 0, y = 3  }
+
+[font.normal]
+family = "SeriousShanns Nerd Font Mono"
 
 [window]
 # Make left `Option` key behave as `Alt` (macOS only)
