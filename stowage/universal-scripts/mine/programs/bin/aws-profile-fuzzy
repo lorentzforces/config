@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# use fzf to fuzzy-find an AWS profile
+
+INIT_QUERY=${1:-}
+
+main() {
+	local target
+	target=$(
+		aws configure list-profiles \
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY" \
+		| awk '{print ($1 == "*" ? $2 : $1)}'
+	) || return 1
+
+	echo "$target"
+}
+main
