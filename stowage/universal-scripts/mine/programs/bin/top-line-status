@@ -1,0 +1,108 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Show a high-level summary of the terminal environment
+
+AWS_PROFILE=${AWS_PROFILE:-}
+
+main() {
+	date_string=$(date "+%a %b %d, %Y :: %R")
+	indent "$(printf "%s\n" "$date_string")"
+
+	local tmux_line
+	tmux_line=$(tmux_status)
+	if [[ -z "$tmux_line" ]]; then
+		indent "$(printf "%s\n" "no tmux sessions running")"
+	else
+		indent "$(printf "tmux: %s\n" "$tmux_line")"
+	fi
+
+	local aws_line
+	aws_line=$(aws_status)
+	if [[ -n "$aws_line" ]]; then
+		indent "$(printf "%s\n" "$aws_line")"
+	fi
+
+	local k8s_info
+	k8s_info=$(kubernetes_status)
+	if [[ -n "$k8s_info" ]]; then
+		indent "$(printf "%s\n" "$k8s_info")"
+	fi
+
+	printf "\n"
+}
+
+tmux_status() {
+	set +e
+	local tmux_running
+	2>/dev/null tmux has-session && tmux_running="running"
+	set -e
+
+	if [[ -z "$tmux_running"  ]]; then
+		return 0
+	fi
+
+	tmux_client_count=$(tmux list-clients | wc -l)
+	tmux_session_count=$(tmux list-sessions | wc -l)
+	tmux_window_count=$(tmux list-windows -a | wc -l)
+	printf "%s/%s/%s (sessions/windows/clients)" \
+		"$tmux_session_count" \
+		"$tmux_window_count" \
+		"$tmux_client_count"
+}
+
+aws_status() {
+	local aws_present
+	aws_present=$(present_check "aws")
+	if [[ -z "$aws_present" ]]; then
+		return 0
+	fi
+
+	local curr_profile
+	curr_profile=${AWS_PROFILE:-"[NONE]"}
+
+	printf "AWS profile: %s" "$curr_profile"
+}
+
+kubernetes_status() {
+	local kubectl_present
+	kubectl_present=$(present_check "kubectl")
+	if [[ -z "$kubectl_present" ]]; then
+		return 0
+	fi
+
+	local k8s_json
+	k8s_json=$(kubectl config view --minify --output "jsonpath={..context}")
+
+	local cluster namespace user
+	cluster=$(echo "$k8s_json" | jq -r ".cluster")
+	user=$(echo "$k8s_json" | jq -r ".user")
+	namespace=$(echo "$k8s_json" | jq -r ".namespace")
+
+	printf "kubernetes: [%s] %s@%s\n" "$namespace" "$user" "$cluster"
+}
+
+present_check() {
+	local exec_name
+	exec_name=${1:-}
+	if [[ -z "$exec_name" ]]; then
+		>&2 printf "Empty exec name for present_check"
+		return 1
+	fi
+
+	local present
+	set +e
+	2>/dev/null 1>/dev/null type "$exec_name" && present="present"
+	set -e
+	echo -n "$present"
+}
+
+indent() {
+	local input
+	input=${1:-}
+	echo "$input" | sed "s/^/  /"
+	# echo "${input//^/  }"
+}
+
+main
