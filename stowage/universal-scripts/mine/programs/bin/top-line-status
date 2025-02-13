@@ -7,7 +7,7 @@ IFS=$'\n\t'
 AWS_PROFILE=${AWS_PROFILE:-}
 
 main() {
-	date_string=$(date "+%a %b %d, %Y :: %R")
+	date_string=$(date "+%a %b %d, %Y :: %R  (%:z)")
 	indent "$(printf "%s\n" "$date_string")"
 
 	local tmux_line
@@ -35,7 +35,7 @@ main() {
 
 tmux_status() {
 	set +e
-	local tmux_running
+	local tmux_running=""
 	2>/dev/null tmux has-session && tmux_running="running"
 	set -e
 
@@ -83,6 +83,8 @@ kubernetes_status() {
 	printf "kubernetes: [%s] %s@%s\n" "$namespace" "$user" "$cluster"
 }
 
+# accepts one argument of an executable name, then checks for it on the PATH
+# prints "present" if present, empty string otherwise
 present_check() {
 	local exec_name
 	exec_name=${1:-}
@@ -91,7 +93,7 @@ present_check() {
 		return 1
 	fi
 
-	local present
+	local present=""
 	set +e
 	2>/dev/null 1>/dev/null type "$exec_name" && present="present"
 	set -e
@@ -101,8 +103,7 @@ present_check() {
 indent() {
 	local input
 	input=${1:-}
-	echo "$input" | sed "s/^/  /"
-	# echo "${input//^/  }"
+ 	echo "$input" | sed "s/^/  /"
 }
 
 main
