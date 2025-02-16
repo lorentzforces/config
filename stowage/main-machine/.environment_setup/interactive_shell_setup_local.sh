@@ -5,4 +5,5 @@ alias open="xdg-open"
 export SDKMAN_DIR="$HOME/mine/programs/sdkman"
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
+# Make tools aware of ssh-agent running
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
