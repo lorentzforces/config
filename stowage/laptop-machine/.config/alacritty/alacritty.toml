@@ -2,4 +2,11 @@
 import = ["~/.config/alacritty/base-alacritty.toml"]
 
 [font]
-size = 10
+size = 13
+offset = { x = 0, y = 3 }
+
+[font.normal]
+family = "SeriousShanns Nerd Font Mono"
+
+[colors]
+transparent_background_colors = true
