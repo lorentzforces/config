@@ -3,7 +3,7 @@ import = ["~/.config/alacritty/base-alacritty.toml"]
 
 [font]
 # bump up size to make font rendering on MacOS look less terrible
-size = 16
+size = 16.5
 offset = { x = 0, y = 3  }
 
 [font.normal]
