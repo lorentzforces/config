@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Delete the shader cache for Monster Hunter Wilds
+
+INSTALL_LOCATION="$HOME/.steam/steam/steamapps/common/MonsterHunterWilds"
+
+main() {
+	local cache_location="$INSTALL_LOCATION/shader.cache2"
+	local cache_creation_time
+	cache_creation_time=$(stat -c "%w" "$cache_location")
+	>&2 printf "Current shader cache creation time: %s\n" "$cache_creation_time"
+
+	rm "$cache_location"
+	>&2 printf "Deleted Monster Hunter Wilds shader cache.\n"
+}
+main
