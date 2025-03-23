@@ -2,7 +2,11 @@
 import = ["~/.config/alacritty/base-alacritty.toml"]
 
 [font]
-size = 10.0
+size = 11.0
+glyph_offset = { x = 0, y = -2 } # for SeriousShanns
+
+[font.normal]
+family = "SeriousShanns Nerd Font Mono"
 
 [window]
 opacity = 1
