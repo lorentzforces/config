@@ -8,9 +8,17 @@ INSTALL_LOCATION="$HOME/.steam/steam/steamapps/common/MonsterHunterWilds"
 
 main() {
 	local cache_location="$INSTALL_LOCATION/shader.cache2"
-	local cache_creation_time
-	cache_creation_time=$(stat -c "%w" "$cache_location")
-	>&2 printf "Current shader cache creation time: %s\n" "$cache_creation_time"
+	local cache_creation_epoch current_epoch interval
+	cache_creation_epoch=$(stat -c "%W" "$cache_location")
+	current_epoch=$(date "+%s")
+	interval=$((current_epoch - cache_creation_epoch))
+
+	local human_readable_interval
+	human_readable_interval=$(human-time-duration "$interval")
+
+	printf "Current shader cache file was created %s ago.\n" "$human_readable_interval"
+
+	confirm-prompt "Delete Monster Hunter Wilds shader cache?" || return 1
 
 	rm "$cache_location"
 	>&2 printf "Deleted Monster Hunter Wilds shader cache.\n"
