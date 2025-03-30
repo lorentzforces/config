@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# convenience script to invoke "xdg-open" with a known name
+
+xdg-open "$1"
