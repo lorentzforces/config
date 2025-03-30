@@ -103,7 +103,7 @@ present_check() {
 indent() {
 	local input
 	input=${1:-}
- 	echo "$input" | sed "s/^/  /"
+	echo "$input" | sed "s/^/  /"
 }
 
 main

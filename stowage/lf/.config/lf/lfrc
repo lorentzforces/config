@@ -19,7 +19,7 @@ set promptfmt "\033[0;31m%w ▸ \033[0m%F"
 cmd open ${{
 	case $(file --mime-type "$f" -bL) in
 		text/*|application/json) $EDITOR "$f";;
-		*) open "$f" ;;
+		*) custom-open "$f" ;;
 	esac
 }}
 
