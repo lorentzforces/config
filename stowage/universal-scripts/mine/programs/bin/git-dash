@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# show a bunch of probably-relevant git information (like a DASHboard)
+
+main() {
+	# very custom alias
+	git b
+	echo ""
+	git status -s
+}
+main

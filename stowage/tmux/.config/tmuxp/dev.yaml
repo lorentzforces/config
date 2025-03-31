@@ -6,7 +6,7 @@ start_directory: '${DEV_DIR}'
 windows:
   - window_name: 'files'
     panes:
-      - shell_command: 'g st'
+      - shell_command: 'git-dash'
   - window_name: 'edit'
     panes:
       - shell_command: '$EDITOR'
