@@ -86,6 +86,7 @@ alias g='git'
 __git_complete g __git_main
 alias kc='kubectl'
 alias gco='git-checkout-fuzzy'
+alias gdash='git-dash'
 alias fshow='git-log-fuzzy-search'
 __git_complete fshow _git_log
 alias delete-branch='git-delete-branch-fuzzy'
