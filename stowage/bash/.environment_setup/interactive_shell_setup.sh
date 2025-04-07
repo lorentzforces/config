@@ -97,6 +97,7 @@ alias fif='fzf_find_in_files'
 alias tmuxhere='tmuxp-current-dir'
 alias fdev='tmuxp-session-dev-dirs'
 alias fmux='tmuxp-defined-sessions'
+alias cdt='cd $(tmux display-message -p "#{session_path}")'
 
 alias kctx='kube-context-fuzzy'
 alias awsp='export AWS_PROFILE=$(aws-profile-fuzzy) && echo "AWS Profile: $AWS_PROFILE"'
