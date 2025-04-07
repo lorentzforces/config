@@ -72,8 +72,9 @@ fi
 ### aliases
 
 alias ls='ls --color=auto --group-directories-first --classify --width=90'
-alias la='ls -A --group-directories-first --color=auto'
-alias ll='ls -Alh --group-directories-first --color=auto'
+# following inherit options from the above "ls" alias
+alias la='ls -A'
+alias ll='ls -Alh'
 
 alias ..='cd ..'
 alias ...='cd ../..'
