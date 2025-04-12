@@ -4,10 +4,20 @@ IFS=$'\n\t'
 
 # show a bunch of probably-relevant git information (like a DASHboard)
 
+green=$(tput setaf 2)
+reset=$(tput sgr0)
+
 main() {
 	# very custom alias
 	git b
 	echo ""
-	git status -s
+
+	local status_text
+	status_text=$(git -c "color.status=always" status -s)
+	if [[ -z "$status_text" ]]; then
+		echo "${green} No changes!${reset}"
+	else
+		echo "$status_text"
+	fi
 }
 main
