@@ -1,0 +1,5 @@
+name: selfman
+base-type: git
+remote-repo: 'https://github.com/lorentzforces/selfman.git'
+build-action: script
+build-cmd: 'make build'
