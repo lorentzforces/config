@@ -1,5 +1,5 @@
 name: 'ensure-path'
 base-type: git
-remote-repo: 'git@github.com:lorentzforces/ensure-path.git'
+remote-repo: 'https://github.com/lorentzforces/ensure-path.git'
 build-action: script
 build-cmd: 'make build'
