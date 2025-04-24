@@ -100,9 +100,6 @@ alias fdev='tmuxp-session-dev-dirs'
 alias fmux='tmuxp-defined-sessions'
 alias cdt='cd $(tmux display-message -p "#{session_path}")'
 
-alias kctx='kube-context-fuzzy'
-alias awsp='export AWS_PROFILE=$(aws-profile-fuzzy) && echo "AWS Profile: $AWS_PROFILE"'
-
 alias page='nvim -R'
 alias pageify='fc -s | nvim -R -'
 alias lessify='fc -s | less -R'
@@ -111,8 +108,7 @@ alias printpath='printenv PATH | sed s/:/\\n/g'
 alias reporoot='cd $(repo-root-dir)'
 
 # lf alias with directory following (when lf exits, cd to the directory it was in)
-function fd()
-{
+function fd() {
 	local tmp
 	tmp="$(mktemp --tmpdir 'lf_fd.XXXXX')"
 	lf -last-dir-path="$tmp" "$@"
@@ -124,6 +120,17 @@ function fd()
 			cd "$dir" || { echo "cd to $dir failed" 1>&2; exit 1; }
 		fi
 	fi
+}
+
+function kctx() {
+	KUBECONFIG=$(switcher-context-fuzzy "$1")
+	export KUBECONFIG
+}
+
+function awsp() {
+	AWS_PROFILE=$(aws-profile-fuzzy "$1")
+	export AWS_PROFILE
+	>&2 echo "AWS Profile: $AWS_PROFILE"
 }
 
 ### per-machine configuration
