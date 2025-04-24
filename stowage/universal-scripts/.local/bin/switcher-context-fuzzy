@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# use fzf as the pager to select a kube context via switcher
+# output is the path to a kubeconfig file to set in the KUBECONFIG env var
+# NOTE: this is basically what the "switch" function does that switcher ships, but using fzf as
+# the fuzzy finder since their search is a straight "string includes" search
+
+INIT_QUERY=${1:-}
+
+main() {
+	local selected_konfig
+	selected_konfig=$(
+		switcher list-contexts \
+		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY" \
+	) || return 1
+
+	>&2 echo "selected context ${selected_konfig}"
+
+	local target_string
+	target_string=$(switcher set-context "$selected_konfig")
+
+	parse_target_string "$target_string"
+}
+
+# parameter 1: target string as output by "switcher set-context"
+parse_target_string() {
+	local target=$1
+	# remove prefix
+	target=${target#"__ "}
+	local kubeconfig_path
+	kubeconfig_path="${target%%,*}"
+	echo "$kubeconfig_path"
+}
+
+main

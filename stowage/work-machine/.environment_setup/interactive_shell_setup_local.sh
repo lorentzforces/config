@@ -12,6 +12,3 @@ if [[ -r "$work_build_setup" ]]; then
 else
 	>&2 printf "==SHELL== work build env declaration not found at %s" "$work_build_setup"
 fi
-
-KUBECONFIG=$(find ~/.kube/config* | tr '\n' ':' | sed s/:$//)
-export KUBECONFIG
