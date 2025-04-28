@@ -23,9 +23,5 @@ if [[ "$shell_mode" = "INTERACTIVE" ]]; then
 	fi
 
 	welcome_script="$HOME/.local/bin/top-line-status"
-	if [[ -r "$welcome_script" ]]; then
-		$welcome_script
-	else
-		>&2 printf "==SHELL== script not found: %s\n" "$welcome_script"
-	fi
+	if-present "$welcome_script"
 fi
