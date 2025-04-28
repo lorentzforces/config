@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Basic redirection script to check if the first argument is a command, and simply/silently
+# execute it if it's present. If it's not, print a warning (but continue gracefully).
+
+CMD=${1:-}
+
+main() {
+	if [[ -z "$CMD" ]]; then
+		>&2 echo "expected at least one argument to if-present"
+		exit 1
+	fi
+
+	set +e
+	type -t "$CMD" &>/dev/null
+	local exitval=$?
+	set -e
+	if [[ $exitval != 0 ]]; then
+		>&2 echo "$CMD not found, continuing"
+		exit 0
+	fi
+
+	IFS=$' ' exec "$@"
+}
+IFS=$' ' main "$@"
