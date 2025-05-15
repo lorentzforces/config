@@ -42,7 +42,7 @@ if command -v brew &> /dev/null; then
 
 	# brew prints status information to stderr, which is noisy and annoying
 	BASE_RESULTS=$(brew upgrade --dry-run 2> /dev/null)
-	PACKAGE_LIST=$(echo "$BASE_RESULTS" | rg "\->" --no-context-separator || true)
+	PACKAGE_LIST=$(echo "$BASE_RESULTS" | rg "\->" -M 0 --no-context-separator || true)
 	{
 		echo -e "### Upgradable packages from homebrew: ###\n";
 		if [[ -n $PACKAGE_LIST ]]; then
