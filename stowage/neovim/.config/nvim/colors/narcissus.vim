@@ -229,6 +229,8 @@ exe 'highlight markdownCodeDelimiter gui=bold guifg=' . bright_black
 " treesitter markdown (causing issues)
 exe 'highlight @markup.link.url.markdown_inline gui=NONE guifg=' . dull_purple
 exe 'highlight @markup.list.markdown gui=bold guifg=' . dull_red
+exe 'highlight @punctuation.special.markdown gui=bold guifg=' . bright_black
+exe 'highlight @markup.quote.markdown gui=NONE guifg=' . bright_white
 
 " treesitter rust
 exe 'highlight @constant.builtin.rust gui=NONE guifg=' . dull_red
