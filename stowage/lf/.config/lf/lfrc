@@ -24,13 +24,13 @@ cmd open ${{
 }}
 
 cmd mkdir %{{
-	printf "directory name: "
+	printf " directory name: "
 	read ans
 	mkdir $ans
 }}
 
 cmd mkfile %{{
-	printf "file name: "
+	printf " file name: "
 	read ans
 	touch $ans
 }}
