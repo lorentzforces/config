@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# add a list of windows to the current session - if a window with a specified name already exists,
+# it will not be added again
+
+main() {
+	for window_name in "$@"; do
+		tmux new-window -dS -n "$window_name"
+	done
+}
+IFS=$' ' main "$@"

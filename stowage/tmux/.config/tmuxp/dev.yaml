@@ -10,9 +10,3 @@ windows:
   - window_name: 'edit'
     panes:
       - shell_command: '$EDITOR'
-  - window_name: 'build'
-    panes:
-      - 'blank'
-  - window_name: 'run'
-    panes:
-      - 'blank'
