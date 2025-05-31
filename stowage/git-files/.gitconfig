@@ -22,7 +22,7 @@
 	fa = fetch -a
 	nvim = mergetool --tool=nvimdiff1
 	rem = remote -v
-	st = status -sb
+	# st = status -sb
 	stache = stash
 	wsdiff = diff --color-moved-ws=ignore-space-change
 
