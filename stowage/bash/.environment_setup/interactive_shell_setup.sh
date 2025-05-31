@@ -99,6 +99,7 @@ alias tmuxhere='tmuxp-current-dir'
 alias fdev='tmuxp-session-dev-dirs'
 alias fmux='tmuxp-defined-sessions'
 alias cdt='cd $(tmux display-message -p "#{session_path}")'
+alias tmux-build-windows='tmux-add-windows build run'
 
 alias page='nvim -R'
 alias pageify='fc -s | nvim -R -'
