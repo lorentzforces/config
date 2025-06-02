@@ -10,4 +10,4 @@ main() {
 		tmux new-window -dS -n "$window_name"
 	done
 }
-IFS=$' ' main "$@"
+IFS=$' \n\t' main "$@"
