@@ -1,39 +1,39 @@
 [core]
-	editor = nvim
-	pager = nvim -R
-	untrackedCache = true
-	fsmonitor = true
+editor = nvim
+pager = nvim -R
+untrackedCache = true
+fsmonitor = true
 
 [init]
-	defaultBranch = main
+defaultBranch = main
 
 [advice]
-	detachedHead = false
+detachedHead = false
 
 [color]
-	ui = true
-	pager = false
+ui = true
+pager = false
 
 [alias]
-	cm = commit
-	cma = commit -a
-	cnb = switch -c
-	f = fetch
-	fa = fetch -a
-	nvim = mergetool --tool=nvimdiff1
-	rem = remote -v
-	# st = status -sb
-	stache = stash
-	wsdiff = diff --color-moved-ws=ignore-space-change
+cm = commit
+cma = commit -a
+cnb = switch -c
+f = fetch
+fa = fetch -a
+nvim = mergetool --tool=nvimdiff1
+rem = remote -v
+# st = status -sb
+stache = stash
+wsdiff = diff --color-moved-ws=ignore-space-change
 
-	# git log aliases
-	ls = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges --color=always
-	ll = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges --color=always
-	lsm = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --color=always
-	llm = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --color=always
+# git log aliases
+ls = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --no-merges --color=always
+ll = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --no-merges --color=always
+lsm = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --color=always
+llm = log --date=short --pretty=format:"%C(1)%h\\ %C(6)%ad\\ %Creset%s%C(5)\\ [%an]%C(1)%d" --decorate --numstat --color=always
 
 # spaces in this alias definition are significant
-	b = branch --format='\
+b = branch --format='\
  %(if)%(HEAD)%(then)%(color:white red)%(else)%(color:red)%(end)\
  %(refname:short) \
 %(color:default default) \
@@ -47,41 +47,41 @@
 # individual command configs
 
 [branch]
-	sort = "-HEAD"
+sort = "-HEAD"
 
 [checkout]
-	defaultRemote = origin
+defaultRemote = origin
 
 [diff]
-	tool = nvimdiff
+tool = nvimdiff
 
 [fetch]
-	prune = true
+prune = true
 
 [merge]
-	# for when you forget again: the LOCAL side is the final state
-	tool = nvimdiff1 # 2-panel neovim diff
+# for when you forget again: the LOCAL side is the final state
+tool = nvimdiff1 # 2-panel neovim diff
 
 [mergetool]
-	hideResolved = true
-	keepBackup = false
+hideResolved = true
+keepBackup = false
 
 [pager]
-	branch = false
-	log = less
+branch = false
+log = less
 
 [pull]
-	ff = only
-	rebase = true
+ff = only
+rebase = true
 
 [color "branch"]
-	current = 15 1
-	remote = 15
-	local = 1
+current = 15 1
+remote = 15
+local = 1
 
 [color "status"]
-	nobranch = 15 1
-	branch = 15 1
-	added = 2
-	changed = 4
-	untracked = 3
+nobranch = 15 1
+branch = 15 1
+added = 2
+changed = 4
+untracked = 3
