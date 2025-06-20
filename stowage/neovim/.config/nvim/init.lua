@@ -35,6 +35,17 @@ require('lazy').setup({
 		'mfussenegger/nvim-jdtls',
 		'towolf/vim-helm',
 		{ 'shortcuts/no-neck-pain.nvim', version = "*" },
+		{
+			'ovk/endec.nvim',
+			event = 'VeryLazy',
+			opts = {
+				keymaps = {
+					defaults = false, -- keybinds don't seem to be created anyway?
+					encode_base64_inplace = "<leader>qe",
+					decode_base64_inplace = "<leader>qd",
+				},
+			},
+		},
 		'lorentzforces/rectify-buffers.nvim',
 	},
 	dev = {
