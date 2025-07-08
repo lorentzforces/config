@@ -129,11 +129,12 @@ util.map_normal(
 util.map_normal(
 	'<leader>i',
 	function()
+		local current_setting = util.options.list:get()
 		for _, win in pairs(vim.api.nvim_list_wins()) do
 			vim.api.nvim_win_call(
 				win,
 				function()
-					util.options.list = not util.options.list:get()
+					util.options.list = not current_setting
 				end
 			)
 		end
