@@ -19,7 +19,7 @@ cm = commit
 cma = commit -a
 cnb = switch -c
 f = fetch
-fa = fetch -a
+fa = fetch --all
 nvim = mergetool --tool=nvimdiff1
 rem = remote -v
 # st = status -sb
