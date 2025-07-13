@@ -1,6 +1,6 @@
 name: selfman
 flavor: git
-base-type: git
+version: origin/make-jdtls-work
 remote-repo: 'https://github.com/lorentzforces/selfman.git'
 build-action: script
 build-cmd: 'make build'

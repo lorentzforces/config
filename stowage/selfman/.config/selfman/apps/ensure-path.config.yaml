@@ -1,6 +1,6 @@
 name: 'ensure-path'
 flavor: git
-base-type: git
+version: origin/main
 remote-repo: 'https://github.com/lorentzforces/ensure-path.git'
 build-action: script
 build-cmd: 'make build'
