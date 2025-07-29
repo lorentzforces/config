@@ -11,7 +11,7 @@ main() {
 	tmuxp_file=$(
 		tmuxp ls \
 		| rg -v "dev|generic-with-path" \
-		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY"
+		| fzf --no-hscroll --ansi --no-multi -q "$INIT_QUERY"
 	)
 	if [ -z "$tmuxp_file" ]; then
 		>&2 echo "ERROR: fzf output was empty"

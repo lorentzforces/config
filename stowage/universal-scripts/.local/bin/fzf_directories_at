@@ -16,7 +16,7 @@ function main() {
 	local target
 	target=$(
 		find -L "$containing_dir" -mindepth 1 -maxdepth 1 -type d \
-		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY"
+		| fzf --no-hscroll --ansi --no-multi -q "$INIT_QUERY"
 	) || return 1
 
 	echo "$target"
