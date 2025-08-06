@@ -98,8 +98,10 @@ exe 'highlight DiagnosticError gui=italic,bold,underline guifg=' . dull_yellow
 exe 'highlight DiagnosticWarn gui=italic guifg=' . dull_yellow
 exe 'highlight DiagnosticInfo gui=italic guifg=' . dull_white
 exe 'highlight DiagnosticHint gui=italic guifg=' . dull_white
-exe 'highlight DiagnosticFloatingHint gui=italic guifg=' . slate_grey
 exe 'highlight DiagnosticOk gui=italic guifg=' . dull_white
+" dull white is the same color as the floating window, so set text to be a contrasting color
+exe 'highlight DiagnosticFloatingInfo gui=italic guifg=' . slate_grey
+exe 'highlight DiagnosticFloatingHint gui=italic guifg=' . slate_grey
 
 " diff colors
 exe 'highlight DiffChange gui=NONE guifg=' . bright_white 'guibg=' . dull_blue
