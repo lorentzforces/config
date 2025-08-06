@@ -10,7 +10,7 @@ IFS=$'\n\t'
 
 TMP_BOOTSTRAP_DIR="/tmp/selfman-bootstrap"
 
-function main() {
+main() {
 	git clone "https://github.com/lorentzforces/selfman.git" "$TMP_BOOTSTRAP_DIR"
 	pushd "$TMP_BOOTSTRAP_DIR"
 

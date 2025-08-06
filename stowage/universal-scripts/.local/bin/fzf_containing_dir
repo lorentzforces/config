@@ -4,7 +4,7 @@ IFS=$'\n\t'
 
 # fuzzy-find for a file and print its containing directory
 
-function main() {
+main() {
 	local file dir
 	file="$(fzf-tmux -u20 +m -q "")"
 	dir="$(dirname "$file")"

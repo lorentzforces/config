@@ -6,7 +6,7 @@ IFS=$'\n\t'
 
 SEARCH_STRING=${1:-}
 
-function main()
+main()
 {
 	if [[ -z $SEARCH_STRING ]]; then
 		>&2 echo "ERROR: Need a string to search for!"

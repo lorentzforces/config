@@ -6,7 +6,7 @@ IFS=$'\n\t'
 
 INIT_QUERY=${1:-}
 
-function main() {
+main() {
 	local tags branches target
 
 	tags=$(
