@@ -27,12 +27,13 @@ programs=(
 	"qalc"
 	"rg"
 	"shellcheck"
+	"selfman"
 	"stow"
 	"tmux"
 	"tmuxp"
 )
 
-function main() {
+main() {
 	local prog_output=""
 	for prog in "${programs[@]}"; do
 		set +e

@@ -19,7 +19,7 @@ paths=(
 	"mine/repos"
 )
 
-function main() {
+main() {
 	for skel_dir in "${paths[@]}"; do
 		mkdir -p "$HOME/$skel_dir"
 	done

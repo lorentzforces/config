@@ -6,7 +6,7 @@ IFS=$'\n\t'
 
 PROMPT_TEXT=${1:-}
 
-function main() {
+main() {
 	read -p "$PROMPT_TEXT " -n 1 -r
 	printf "\n" # move to a new line
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then

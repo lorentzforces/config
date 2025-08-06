@@ -1,4 +1,7 @@
-function __prompt_cmd() {
+#!/usr/bin/env bash
+# shebang here is just for easy filetype detection; this script is always sourced
+
+__prompt_cmd() {
 	local prev_status="$?"
 
 	# I have some colors swapped from their typical representations in my typical color scheme

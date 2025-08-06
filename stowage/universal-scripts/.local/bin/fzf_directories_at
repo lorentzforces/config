@@ -7,7 +7,7 @@ IFS=$'\n\t'
 BASE_PATH=${1:-}
 INIT_QUERY=${2:-}
 
-function main() {
+main() {
 	local containing_dir="$BASE_PATH"
 	if [[ -z $containing_dir ]]; then
 		containing_dir=$(pwd)

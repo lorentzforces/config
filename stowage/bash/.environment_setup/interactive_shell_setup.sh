@@ -74,7 +74,7 @@ fi
 alias ls='ls --color=auto --group-directories-first --classify --width=90'
 # following inherit options from the above "ls" alias
 alias la='ls -A'
-alias ll='ls -Alh'
+alias ll='ls -Aoh --time-style=long-iso'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -108,7 +108,7 @@ alias printpath='printenv PATH | sed s/:/\\n/g'
 alias reporoot='cd $(repo-root-dir)'
 
 # lf alias with directory following (when lf exits, cd to the directory it was in)
-function fd() {
+fd() {
 	local tmp
 	tmp="$(mktemp --tmpdir 'lf_fd.XXXXX')"
 	lf -last-dir-path="$tmp" "$@"
@@ -122,12 +122,12 @@ function fd() {
 	fi
 }
 
-function kctx() {
+kctx() {
 	KUBECONFIG=$(switcher-context-fuzzy "$1")
 	export KUBECONFIG
 }
 
-function awsp() {
+awsp() {
 	AWS_PROFILE=$(aws-profile-fuzzy "$1")
 	export AWS_PROFILE
 	>&2 echo "AWS Profile: $AWS_PROFILE"
