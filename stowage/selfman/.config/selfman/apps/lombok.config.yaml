@@ -1,0 +1,6 @@
+name: lombok.jar
+flavor: web-fetch
+web-url: https://projectlombok.org/downloads/lombok-%VERSION%.jar
+version: 1.18.30
+build-action: none
+build-target: lombok-%VERSION%.jar
