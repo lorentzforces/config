@@ -4,8 +4,9 @@ local machine_config = require('stupid-namespace.machine-specific-config')
 local jdtls = require('jdtls')
 
 local home = os.getenv('HOME')
-local jdtls_location = home .. '/mine/programs/jdtls'
-local lombok_location = home .. '/mine/programs/lombok/lombok.jar'
+-- TODO: change this to a version-less path once selfman supports library apps
+local jdtls_location = home .. '/.local/share/selfman/sources/jdtls/1.43.0'
+local lombok_location = home .. '/.local/bin/lombok.jar'
 local sdk_location = home .. '/mine/programs/sdkman/candidates/java'
 
 -- significantly cribbed from the excellent setup at:
