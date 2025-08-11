@@ -10,7 +10,7 @@ main() {
 	local target
 	target=$(
 		kubectl config get-contexts --no-headers \
-		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY" \
+		| fzf-tmux -h20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY" \
 		| awk '{print ($1 == "*" ? $2 : $1)}'
 	) || return 1
 
