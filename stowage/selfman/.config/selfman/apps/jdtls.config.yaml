@@ -6,5 +6,6 @@ build-action: script
 build-target: bin/jdtls
 build-cmd: tar -xzf jdt-language-server-%VERSION%-%TIMESTAMP_VERSION%.tar.gz
 keep-bin-with-source: true
+link-source-as-lib: true
 misc-vars:
   TIMESTAMP_VERSION: '202412191447'
