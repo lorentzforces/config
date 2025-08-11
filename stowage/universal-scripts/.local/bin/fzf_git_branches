@@ -24,7 +24,7 @@ main() {
 
 	target=$(
 		(echo -e "$branches"; echo -e "$tags") \
-		| fzf-tmux -u20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2 -q "$INIT_QUERY"
+		| fzf-tmux -h20 -- --no-hscroll --ansi --no-multi -d "\t" -n 2 -q "$INIT_QUERY"
 	) || return 1
 
 	echo "$target" | awk '{print $2}'
