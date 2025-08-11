@@ -6,7 +6,7 @@ IFS=$'\n\t'
 
 main() {
 	local file dir
-	file="$(fzf-tmux -u20 +m -q "")"
+	file="$(fzf-tmux -h20 +m -q "")"
 	dir="$(dirname "$file")"
 	[ -n "$dir" ] && cd "$dir"
 	if [[ -n "$dir" ]]; then
