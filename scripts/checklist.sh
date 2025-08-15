@@ -10,6 +10,7 @@ IFS=$'\n\t'
 # not installed.
 
 programs=(
+	"awk"
 	"bash"
 	"bash-language-server"
 	"brew"
