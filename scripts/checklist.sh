@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-set -euo pipefail
+set -uo pipefail
 IFS=$'\n\t'
 
 # This script checks for a number of executables used throughout my environment setup for various
@@ -37,11 +36,7 @@ programs=(
 main() {
 	local prog_output=""
 	for prog in "${programs[@]}"; do
-		set +e
-		type -t "$prog" &>/dev/null
-		local exitval=$?
-		set -e
-		if [[ $exitval != 0 ]]; then
+		if ! type -t "$prog" &>/dev/null ; then
 			prog_output="${prog_output}$prog\n"
 		fi
 	done
@@ -53,6 +48,13 @@ main() {
 	fi
 
 	printf "\n"
+
+	# miscellaneous warnings
+
+	# check for a 3.x.x version of bash like is shipped on MacOS
+	if [[ "$BASH_VERSION" == "3."* ]]; then
+		printf "Warning: bash version \"%s\" appears old\n" "$BASH_VERSION"
+	fi
 }
 
 main
