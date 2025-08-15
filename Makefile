@@ -35,7 +35,7 @@ clean-stow-work: clean-stow
 .PHONY: clean-stow-work
 
 clean-stow-laptop: STOWLIST = ${LAPTOP_MACHINE_LIST}
-clean-stow-laptop: clean-laptop
+clean-stow-laptop: clean-stow
 .PHONY: clean-stow-laptop
 
 clean-stow:
