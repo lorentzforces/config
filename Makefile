@@ -6,9 +6,9 @@ MAKEFLAGS += --warn-undefined-variables
 MAKEFLAGS += --no-builtin-rules
 
 COMMON_LIST := alacritty neovim tmux bash lf universal-scripts git-files ripgrep selfman
-MAIN_MACHINE_LIST := ${COMMON_LIST} main-machine rofi redshift awesomewm ssh-agent-systemd opensuse-tumbleweed
+MAIN_MACHINE_LIST := ${COMMON_LIST} main-machine rofi redshift awesomewm ssh-agent-systemd
 WORK_MACHINE_LIST := ${COMMON_LIST} work-machine k9s
-LAPTOP_MACHINE_LIST := ${COMMON_LIST} laptop-machine rofi redshift ssh-agent-systemd opensuse-tumbleweed
+LAPTOP_MACHINE_LIST := ${COMMON_LIST} laptop-machine rofi redshift ssh-agent-systemd
 
 setup-main: STOWLIST = ${MAIN_MACHINE_LIST}
 setup-main: setup-machine-stow activate-ssh-agent
