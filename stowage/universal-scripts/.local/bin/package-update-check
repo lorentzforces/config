@@ -12,8 +12,8 @@ IFS=$'\n\t'
 UPDATE_LIST_OUTPUT_FILE=${UPDATE_LIST_OUTPUT_FILE:-}
 
 main() {
-	local -a require_sudo
-	local -a check_commands
+	local -a require_sudo=()
+	local -a check_commands=()
 	get_check_command_list check_commands require_sudo
 
 	# All of homebrew basically assumes that you will only ever use it as a single user on the

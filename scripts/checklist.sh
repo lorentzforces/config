@@ -56,6 +56,13 @@ main() {
 	if [[ "$BASH_VERSION" == "3."* ]]; then
 		printf "Warning: bash version \"%s\" appears old\n" "$BASH_VERSION"
 	fi
+
+	# check for `date` flavor
+	local date_flavor
+	date_flavor=$(date --version &>/dev/null && echo "GNU" || echo "BSD")
+	if [[ "$date_flavor" == "BSD" ]]; then
+		echo "Warning: 'date' flavor appears to be BSD"
+	fi
 }
 
 main
