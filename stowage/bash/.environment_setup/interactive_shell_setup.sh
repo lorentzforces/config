@@ -38,6 +38,7 @@ export GOPATH="$HOME/.go"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
 export CHCK_CHNG_REVS="origin/main:origin/master"
+export UPDATE_LIST_OUTPUT_FILE="$HOME_MINE/updatable-packages.txt"
 
 eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
 
