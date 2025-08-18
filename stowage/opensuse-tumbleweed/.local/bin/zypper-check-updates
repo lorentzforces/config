@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
-
-# convenience one-liner to do a zypper dup dry-run
-
-printf "This script requires sudo privileges to fetch updated repo information.\n\n"
-sudo zypper --non-interactive dist-upgrade --dry-run --details --auto-agree-with-licenses
