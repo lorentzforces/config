@@ -24,6 +24,7 @@ programs=(
 	"lf"
 	"make"
 	"nvim"
+	"parallel"
 	"qalc"
 	"rg"
 	"shellcheck"
