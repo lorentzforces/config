@@ -39,6 +39,7 @@ M.create_lsp_keybinds = function(client, bufnr)
 	M.map_insert('<M-h>', vim.lsp.buf.signature_help, bufopts)
 	M.map_normal('<leader>a', vim.lsp.buf.code_action, bufopts)
 	M.map_normal('<leader>F', vim.lsp.buf.references, bufopts)
+	M.map_normal('<leader>Q', vim.lsp.buf.workspace_symbol, bufopts)
 end
 
 M.operating_system = "LINUX"
