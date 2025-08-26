@@ -15,16 +15,17 @@ __prompt_cmd() {
 	local reset='\[\033(B\[\033[m\]'
 
 	PS1=""
+	PS1+="$bold"
 	PS1+="$red"
 	PS1+="\w ▸\n"
 
 	if [[ $prev_status -ne 0 ]]; then
-		PS1+="$bold"
 		PS1+="$cyan"
 		PS1+=" !$prev_status"
 	fi
 
 	PS1+="$reset"
+	PS1+="$bold"
 	PS1+="$purple"
 	PS1+=" :) "
 
