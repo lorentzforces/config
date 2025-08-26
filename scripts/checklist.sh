@@ -34,21 +34,42 @@ programs=(
 	"tmuxp"
 )
 
+package_managers=(
+	"apt"
+	"brew"
+	"dnf"
+	"flatpak"
+	"zypper"
+)
+
 main() {
-	local prog_output=""
+	declare -a not_found=()
 	for prog in "${programs[@]}"; do
 		if ! type -t "$prog" &>/dev/null ; then
-			prog_output="${prog_output}$prog\n"
+			not_found+=("$prog")
 		fi
 	done
 
-	if [[ -z "$prog_output" ]]; then
-		printf "All expected programs found!\n"
+	if (( ${#not_found[@]} == 0 )); then
+		echo "All expected programs found!"
 	else
-		printf "Programs not found:\n\n%b" "$prog_output"
+		echo "Programs not found:"
+		echo ""
+		IFS=$'\t' echo "${not_found[*]}" | column -c 80
 	fi
 
-	printf "\n"
+	echo ""
+
+	declare -a found_pkg_mans=()
+	for pkg_man in "${package_managers[@]}"; do
+		if type -t "$pkg_man" &>/dev/null ; then
+			found_pkg_mans+=("$pkg_man")
+		fi
+	done
+
+	if (( ${#found_pkg_mans[@]} > 0 )); then
+		IFS=$' '; echo "Package managers found: ${found_pkg_mans[*]}"; IFS=$'\n\t'
+	fi
 
 	# miscellaneous warnings
 
