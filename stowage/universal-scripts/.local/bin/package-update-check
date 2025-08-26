@@ -5,9 +5,6 @@ IFS=$'\n\t'
 # Figures out what package managers live on the system, then executes their "get upgradable
 # packages" flow in parallel.
 
-# TODO: consider allowing an environment variable to direct the output of this script
-#       (e.g. to a known file location instead of stdout)
-
 # file path to export output to instead of printing to stdout
 UPDATE_LIST_OUTPUT_FILE=${UPDATE_LIST_OUTPUT_FILE:-}
 
@@ -92,7 +89,6 @@ get_brew_updates() {
 	# brew is VERY spammy to stderr
 	section_header "HOMEBREW PACKAGES"
 	brew outdated --verbose
-
 	echo ""
 	echo "Homebrew reminder:"
 	echo "  To update homebrew itself, run \"homebrew update\""
@@ -103,7 +99,7 @@ export -f get_brew_updates
 
 get_flatpak_updates() {
 	section_header "FLATPAK PACKAGES"
-	flatpak remote-ls --updates --columns=name,version,download-size \
+	{ flatpak remote-ls --updates --columns=name,version,download-size || return 1 ; } \
 		| column --table --separator $'\t' --output-width 100
 	echo ""
 }
