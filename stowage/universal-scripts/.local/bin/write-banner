@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# very basic banner-making script using figlet
+
+TEXT=${1:-}
+
+red=$(tput setaf 1)
+bold=$(tput bold)
+reset=$(tput sgr0)
+
+main() {
+
+	local banner
+	# pass the text through echo first to interpret backslash sequences
+	banner=$(echo -en "$TEXT" | figlet -f banner | sed 's/#/█/g')
+
+	echo -e "$red$bold$banner$reset"
+}
+main
