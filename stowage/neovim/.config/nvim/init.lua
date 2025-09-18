@@ -285,15 +285,14 @@ util.autocommand(
 	}
 )
 
-local lsp_config = require('lspconfig')
-
 -- jdtls (Eclipse-based Java LSP) is configured separately in a ftplugin file for Java
 
-lsp_config.bashls.setup({
+vim.lsp.config('bashls', {
 	on_attach = util.create_lsp_keybinds,
 })
+vim.lsp.enable('bashls')
 
-lsp_config.gopls.setup({
+vim.lsp.config('gopls', {
 	on_attach = util.create_lsp_keybinds,
 	settings = {
 		gopls = {
@@ -303,7 +302,9 @@ lsp_config.gopls.setup({
 		},
 	},
 })
+vim.lsp.enable('gopls')
 
-lsp_config.rust_analyzer.setup({
+vim.lsp.config('rust_analyzer', {
 	on_attach = util.create_lsp_keybinds,
 })
+vim.lsp.enable('rust_analyzer')
