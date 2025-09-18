@@ -170,6 +170,18 @@ util.map_normal('<leader>vv', ':GitGutterQuickFixCurrentFile | lopen<CR>')
 util.map_normal('<leader>vd', ':GitGutterDiffOrig<CR>')
 util.map_normal('<M-v>', ':GitGutterPreviewHunk<CR>')
 
+-- attempt #1 at clearing floating stuff that doesn't want to die
+util.map_normal(
+	'<M-l>',
+	function()
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			if vim.api.nvim_win_get_config(win).relative == "win" then
+				vim.api.nvim_win_close(win, false)
+			end
+		end
+	end
+)
+
 vim.api.nvim_create_user_command(
 	'Tab',
 	function(opts)
