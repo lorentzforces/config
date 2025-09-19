@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-IFS=$'\n\t'
+IFS=$' \n\t'
 
 # Basic redirection script to check if the first argument is a command, and simply/silently
 # execute it if it's present. If it's not, print a warning (but continue gracefully).
@@ -22,6 +22,6 @@ main() {
 		exit 0
 	fi
 
-	IFS=$' \n\t' exec "$@"
+	exec "$@"
 }
-IFS=$' \n\t' main "$@"
+main "$@"
