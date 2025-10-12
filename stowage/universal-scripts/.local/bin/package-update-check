@@ -9,9 +9,10 @@ IFS=$'\n\t'
 UPDATE_LIST_OUTPUT_FILE=${UPDATE_LIST_OUTPUT_FILE:-}
 
 main() {
+	local -a package_managers=()
 	local -a require_sudo=()
 	local -a check_commands=()
-	get_check_command_list check_commands require_sudo
+	get_check_command_list "package_managers" "check_commands" "require_sudo"
 
 	# All of homebrew basically assumes that you will only ever use it as a single user on the
 	# system, which is hard to square with some system package managers which require running as
@@ -21,6 +22,12 @@ main() {
 	if (( EUID == 0)); then
 		>&2 echo "This script cannot be run overall as root, try again as a non-root user"
 		exit 1
+	fi
+
+	if (( ${#check_commands[@]} > 0 )); then
+		IFS=$' '
+		>&2 printf "Fetching updates in these systems: %s\n" "${package_managers[*]}"
+		IFS=$'\n\t'
 	fi
 
 	if (( ${#require_sudo[@]} > 0 )); then
@@ -41,27 +48,34 @@ main() {
 	fi
 }
 
-# arg 1: array name to populate with check commands
-# arg 2: array name to populate with commands which require root access
+# arg 1: array name to populate with detected package manager names
+# arg 2: array name to populate with check commands
+# arg 3: array name to populate with commands which require root access
 get_check_command_list() {
-	declare -n output_commands=$1
-	declare -n output_require_sudo=$2
+	declare -n detected_package_managers=$1
+	declare -n output_commands=$2
+	declare -n output_require_sudo=$3
 
 	if type -t apt-get > /dev/null ; then
-		output_require_sudo+=("apt-get")
+		detected_package_managers+=('apt')
+		output_require_sudo+=('apt-get')
 		output_commands+=('get_apt_updates')
 	fi
 	if type -t dnf > /dev/null ; then
+		detected_package_managers+=('dnf')
 		output_commands+=('get_dnf_updates')
 	fi
 	if type -t brew > /dev/null ; then
+		detected_package_managers+=('brew')
 		output_commands+=('get_brew_updates')
 	fi
 	if type -t flatpak > /dev/null ; then
+		detected_package_managers+=('flatpak')
 		output_commands+=('get_flatpak_updates')
 	fi
 	if type -t zypper > /dev/null ; then
-		output_require_sudo+=("zypper")
+		detected_package_managers+=('zypper')
+		output_require_sudo+=('zypper')
 		output_commands+=('get_zypper_updates')
 		# output_commands+=('get_zypper_updates_test')
 	fi
@@ -91,8 +105,8 @@ get_brew_updates() {
 	brew outdated --verbose
 	echo ""
 	echo "Homebrew reminder:"
-	echo "  To update homebrew itself, run \"homebrew update\""
-	echo "  To update homebrew-managed packages, run \"homebrew upgrade\""
+	echo "  To update homebrew itself, run \"brew update\""
+	echo "  To update homebrew-managed packages, run \"brew upgrade\""
 	echo ""
 }
 export -f get_brew_updates
