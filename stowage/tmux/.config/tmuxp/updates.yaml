@@ -6,6 +6,6 @@ windows:
       automatic-rename: 'on'
     panes:
       - shell_command:
-        - 'package-update-check && page ~/mine/upgradable-packages.txt'
+        - 'package-update-check && page ~/mine/updatable-packages.txt'
         sleep_after: 1
       - 'blank'
