@@ -1,6 +1,6 @@
 # entry point for shell setup
 
-env_setup="$HOME/.environment_setup/base_shell_setup.sh"
+env_setup="$HOME/.environment_setup/base_shell_setup.src.sh"
 if [[ -r "$env_setup" ]]; then
 	# shellcheck source=/dev/null
 	source "$env_setup"
@@ -14,7 +14,7 @@ if [[ $- == *i* ]]; then
 fi
 
 if [[ "$shell_mode" = "INTERACTIVE" ]]; then
-	interactive_setup="$HOME/.environment_setup/interactive_shell_setup.sh"
+	interactive_setup="$HOME/.environment_setup/interactive_shell_setup.src.sh"
 	if [[ -r "$interactive_setup" ]]; then
 		# shellcheck source=/dev/null
 		source "$interactive_setup"
