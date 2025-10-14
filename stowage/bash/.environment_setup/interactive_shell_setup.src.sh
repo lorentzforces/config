@@ -1,7 +1,7 @@
 # this should be safe to source from whatever profile script gets run - thanks to ensure-path,
 # even PATH-modifying operations should be idempotent(ish)
 
-fzf_config="$HOME/.environment_setup/fzf_config.sh"
+fzf_config="$HOME/.environment_setup/fzf_config.src.sh"
 if [[ -r "$fzf_config" ]]; then
 	# shellcheck source=/dev/null
 	source "$fzf_config"
@@ -18,7 +18,7 @@ HISTCONTROL=ignoreboth
 HISTTIMEFORMAT="%F %T " # trailing space is important
 
 # shellcheck source=/dev/null
-source "$HOME/.environment_setup/prompt_cmd_setup"
+source "$HOME/.environment_setup/prompt_cmd_setup.src.sh"
 export PROMPT_COMMAND="__prompt_cmd"
 
 # store "host" terminal so we can use the same terminfo in tmux
@@ -138,11 +138,11 @@ awsp() {
 # we do this last so we can override anything per-machine
 if [[ -r "$HOME/.environment_setup/interactive_shell_setup_local.sh" ]]; then
 	# shellcheck source=/dev/null
-	source "$HOME/.environment_setup/interactive_shell_setup_local.sh"
+	source "$HOME/.environment_setup/interactive_shell_setup_local.src.sh"
 fi
 
 # a little bit of obscurity to keep specifics out of version control
-if [[ -r "$HOME/.environment_setup/secret_setup.sh" ]]; then
+if [[ -r "$HOME/.environment_setup/secret_setup.src.sh" ]]; then
 	# shellcheck source=/dev/null
-	source "$HOME/.environment_setup/secret_setup.sh"
+	source "$HOME/.environment_setup/secret_setup.src.sh"
 fi
