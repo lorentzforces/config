@@ -5,7 +5,7 @@ export SDKMAN_DIR="$HOME/mine/programs/sdkman"
 # shellcheck source=/dev/null
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-work_build_setup="$HOME/mine/dev-env/setup-work-build-env.sh"
+work_build_setup="$HOME/mine/dev-env/setup-work-build-env.src.sh"
 if [[ -r "$work_build_setup" ]]; then
 	# shellcheck source=/dev/null
 	source "$work_build_setup"

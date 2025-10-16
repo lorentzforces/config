@@ -8,6 +8,9 @@ coreutils_prefix="$(brew --prefix coreutils)"
 PATH=$(ensure-path "${coreutils_prefix}/libexec/gnubin")
 MANPATH=$(echo -n "$MANPATH" | ensure-path --stdin --keep-empty "${coreutils_prefix}/libexec/gnuman")
 
+# org-specific scripts which aren't in this version control
+PATH=$(ensure-path "$HOME/mine/dev-env/bin")
+
 export PATH
 export MANPATH
 
