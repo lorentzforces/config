@@ -3,6 +3,7 @@ editor = nvim
 pager = nvim -R
 untrackedCache = true
 fsmonitor = true
+autocrlf = input
 
 [init]
 defaultBranch = main
