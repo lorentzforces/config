@@ -16,7 +16,7 @@ main() {
 
 	make build
 
-	./selfman install selfman
+	./selfman make-it-so selfman
 
 	set +e
 	type -t "selfman" &>/dev/null
