@@ -1,6 +1,10 @@
 # this should be safe to source from whatever profile script gets run - thanks to ensure-path,
 # even PATH-modifying operations should be idempotent(ish)
 
+# NOTE: RE: #shellcheck source=/dev/null
+# We avoid shellcheck sourcing across a lot of script locations since not all of these files will
+# exist on all installations, and a lot of the paths are parametrized anyway.
+
 fzf_config="$HOME/.environment_setup/fzf_config.src.sh"
 if [[ -r "$fzf_config" ]]; then
 	# shellcheck source=/dev/null
@@ -40,28 +44,28 @@ export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export CHCK_CHNG_REVS="origin/main:origin/master"
 export UPDATE_LIST_OUTPUT_FILE="$HOME_MINE/updatable-packages.txt"
 
-eval "$(dircolors -b "$HOME"/.config/ls-colors.conf)"
+eval "$(dircolors --bourne-shell "$HOME"/.config/ls-colors.conf)"
 
 eval "$(fnm env)"
 # fix path after fnm chucks new stuff on it
-PATH=$(ensure-path -d "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
+PATH=$(ensure-path --delete "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
 export PATH
 
 ### enable programmable completion features
 
-# We avoid shellcheck sourcing all across these since not all of these files will exist on all
-# installations.
 # This path is correct for OpenSUSE.
-if [[ -f /usr/share/bash-completion/completions/git ]]; then
+DEFAULT_GIT_COMPLETION_PATH="/usr/share/bash-completion/completions/git"
+if [[ -r "$DEFAULT_GIT_COMPLETION_PATH" ]]; then
 	# shellcheck source=/dev/null
-	source "/usr/share/bash-completion/completions/git"
+	source "$DEFAULT_GIT_COMPLETION_PATH"
 fi
 
 if type brew &>/dev/null; then
 	HOMEBREW_PREFIX="$(brew --prefix)"
-	if [[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ]]; then
+BREW_BASH_COMPLETION_PATH="${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+	if [[ -r "$BREW_BASH_COMPLETION_PATH" ]]; then
 		# shellcheck source=/dev/null
-		source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+		source "$BREW_BASH_COMPLETION_PATH"
 	else
 		for COMPLETION in "${HOMEBREW_PREFIX}/etc/bash_completion.d/"*; do
 			# shellcheck source=/dev/null
@@ -136,13 +140,15 @@ awsp() {
 
 ### per-machine configuration
 # we do this last so we can override anything per-machine
-if [[ -r "$HOME/.environment_setup/interactive_shell_setup_local.src.sh" ]]; then
+local_interactive_src_file="$HOME/.environment_setup/interactive_shell_setup_local.src.sh"
+if [[ -r "$local_interactive_src_file" ]]; then
 	# shellcheck source=/dev/null
-	source "$HOME/.environment_setup/interactive_shell_setup_local.src.sh"
+	source "$local_interactive_src_file"
 fi
 
 # a little bit of obscurity to keep specifics out of version control
-if [[ -r "$HOME/.environment_setup/secret_setup.src.sh" ]]; then
+secret_setup_src_file="$HOME/.environment_setup/secret_setup.src.sh"
+if [[ -r "$secret_setup_src_file" ]]; then
 	# shellcheck source=/dev/null
-	source "$HOME/.environment_setup/secret_setup.src.sh"
+	source "$secret_setup_src_file"
 fi
