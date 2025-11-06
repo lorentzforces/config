@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -u
 IFS=$'\n\t'
 
 # Create my entire directory structure (or verify it's there).
@@ -12,8 +12,6 @@ IFS=$'\n\t'
 
 paths=(
 	"mine/programs"
-	"mine/programs/bin"
-	"mine/programs/managed-bins"
 	"mine/info"
 	"mine/media"
 	"mine/repos"
