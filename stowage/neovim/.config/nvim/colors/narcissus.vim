@@ -95,6 +95,7 @@ exe 'highlight MatchParen gui=bold guifg=' . bright_white 'guibg=' . bright_purp
 
 " diagnostic colors
 exe 'highlight DiagnosticError gui=italic,bold,underline guifg=' . dull_yellow
+exe 'highlight DiagnosticUnderlineError gui=italic,bold,underline guifg=' . dull_yellow
 exe 'highlight DiagnosticWarn gui=italic guifg=' . dull_yellow
 exe 'highlight DiagnosticInfo gui=italic guifg=' . dull_white
 exe 'highlight DiagnosticHint gui=italic guifg=' . dull_white
