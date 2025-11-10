@@ -4,7 +4,7 @@ This readme isn't for you. It's just a landing page with notes for me.
 
 ## TODOS
 
-- make the golang installer work on MacOS
+- make a function in neovim config to make it simpler to set a window-scoped property across all windows
 - make all the setup scripts idempotent
 - add setup scripts to machine make goals for easy take-in after initial setup
 - add a usage target to the makefile

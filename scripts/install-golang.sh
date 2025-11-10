@@ -31,11 +31,10 @@ check_not_macos() {
 	if [[ $(uname -s) == "Darwin" ]]; then
 		read -r -d '' ERROR_MSG <<-EOF
 		Manual installation from tarball is not recommended on MacOS.
-		Instead:
-		  - Download a Go ${GO_VERSION} .pkg file from https://go.dev/dl/
-		  - Install following instructions from https://go.dev/doc/install
+		Instead consider installing from homebrew:
 		EOF
 		print_error "$ERROR_MSG"
+		print_shell_cmd "brew install go"
 		exit 1
 	fi
 }
@@ -104,6 +103,11 @@ print_info() {
 print_error() {
 	local msg=$1
 	>&2 echo "${YELLOW}${BOLD}${msg}${RESET}"
+}
+
+print_shell_cmd() {
+	local cmd=$1
+	>&2 echo "    ${BOLD}${cmd}${RESET}"
 }
 
 main
