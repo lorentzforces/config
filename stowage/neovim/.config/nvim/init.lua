@@ -200,6 +200,32 @@ vim.api.nvim_create_user_command(
 	{ nargs = 1 }
 )
 
+-- experiment with relativenumber config
+
+local toggle_numbers = function()
+	local current_val = util.options.number:get()
+	for _, win in pairs(vim.api.nvim_list_wins()) do
+		vim.api.nvim_win_call(
+			win,
+			function()
+				util.options.number = not current_val
+				util.options.relativenumber = not current_val
+			end
+		)
+	end
+end
+
+util.map_normal(
+	'<leader>N',
+	toggle_numbers
+)
+
+vim.api.nvim_create_user_command(
+	'Numbie',
+	toggle_numbers,
+	{}
+)
+
 -- this controls the delay before nvim writes its swap file, so this may have consequences
 -- this impacts how quickly gitgutter decorations show up
 util.options.updatetime = 300 -- default is 4000 ms
