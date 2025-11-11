@@ -328,8 +328,6 @@ util.autocommand(
 vim.lsp.config('bashls', {
 	on_attach = util.create_lsp_keybinds,
 })
-vim.lsp.enable('bashls')
-
 vim.lsp.config('gopls', {
 	on_attach = util.create_lsp_keybinds,
 	settings = {
@@ -340,9 +338,7 @@ vim.lsp.config('gopls', {
 		},
 	},
 })
-vim.lsp.enable('gopls')
-
 vim.lsp.config('rust_analyzer', {
 	on_attach = util.create_lsp_keybinds,
 })
-vim.lsp.enable('rust_analyzer')
+vim.lsp.enable({'bashls', 'gopls', 'rust_analyzer'})
