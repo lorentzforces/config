@@ -80,6 +80,9 @@ kubernetes_status() {
 	local cluster namespace
 	cluster=$(echo "$k8s_json" | jq -r ".cluster")
 	namespace=$(echo "$k8s_json" | jq -r ".namespace")
+	if [[ "$namespace" == "null" ]]; then
+		namespace="no namespace"
+	fi
 
 	if [[ "$cluster" = "docker-desktop" ]]; then
 		printf "kubernetes: [%s] %s\n" "$namespace" "$cluster"
