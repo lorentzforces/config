@@ -53,8 +53,10 @@ require('lazy').setup({
 	},
 })
 
-util.options.number = false
-util.options.relativenumber = false
+-- currently experimenting with having numbers again
+util.options.number = true
+util.options.relativenumber = true
+
 util.options.cursorline = true
 util.options.cursorlineopt = "number"
 util.options.scrolloff = 3
