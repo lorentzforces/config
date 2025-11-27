@@ -254,6 +254,9 @@ exe 'highlight @type.builtin.sql gui=NONE guifg=' . dull_red
 " syntax ssh
 exe 'highlight sshConfigMatch gui=NONE guifg=' . dull_red 'guibg=NONE'
 
+" syntax toml
+exe 'highlight tomlTable gui=NONE guifg=' . dull_red
+
 " treesitter typescript
 " TODO: there is still no way to highlight annotations/decorators in typescript
 exe 'highlight @variable.builtin.typescript gui=NONE guifg=' . dull_red

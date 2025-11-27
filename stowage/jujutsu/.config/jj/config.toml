@@ -1,0 +1,8 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+[ui]
+# color = "never"
+pager = ":builtin"
+
+[template-aliases]
+'format_short_signature(signature)' = 'signature.name()'
