@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -u
+
+# quick one-liner to view jrnl entries tagged with @timsheet since the last time I (was supposed to)
+# enter a timesheet
+# TODO: could improve this to default to this week, with the ability to override it with another
+# time frame
+
+jrnl '@timesheet' -from 'last saturday'
