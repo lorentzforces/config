@@ -4,5 +4,16 @@
 # color = "never"
 pager = ":builtin"
 
+[aliases]
+ls = [
+	"log",
+	"-r",
+	"""\
+		@ | trunk() \
+		| ancestors((remote_bookmarks() | tags()).., 2) \
+		| ancestors(tracked_remote_bookmarks(), 2) \
+	""",
+]
+
 [template-aliases]
 'format_short_signature(signature)' = 'signature.name()'
