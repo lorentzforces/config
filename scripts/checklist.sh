@@ -1,4 +1,4 @@
-set -uo pipefail
+set -u
 IFS=$'\n\t'
 
 # This script checks for a number of executables used throughout my environment setup for various
@@ -21,6 +21,7 @@ programs=(
 	"go"
 	"gopls"
 	"jdtls"
+	"jj"
 	"lf"
 	"make"
 	"nvim"
