@@ -4,6 +4,7 @@ This readme isn't for you. It's just a landing page with notes for me.
 
 ## TODOS
 
+- create a jujutsu version of "fshow" using fzf
 - make a function in neovim config to make it simpler to set a window-scoped property across all windows
 - make all the setup scripts idempotent
 - add setup scripts to machine make goals for easy take-in after initial setup
