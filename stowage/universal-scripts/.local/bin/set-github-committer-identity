@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -u
+
+# Set the user name and email for public-facing Github things using my Github anonymized email
+
+NAME="Lorentz"
+EMAIL="25649139+lorentzforces@users.noreply.github.com"
+
+CYAN=$(tput setaf 6) # (cyan/6, purple for me)
+RESET=$(tput sgr0)
+
+main() {
+	if &>/dev/null git rev-parse --show-toplevel; then
+		git config set --local user.name "$NAME"
+		git config set --local user.email "$EMAIL"
+		>&2 echo "${CYAN}Set git committer identity.${RESET}"
+	fi
+	if &>/dev/null jj root; then
+		jj config set --repo user.name "$NAME"
+		jj config set --repo user.email "$EMAIL"
+		>&2 echo "${CYAN}Set jujutsu committer identity.${RESET}"
+	fi
+}
+main
