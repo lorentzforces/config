@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # add a list of windows to the current session - if a window with a specified name already exists,
 # it will not be added again

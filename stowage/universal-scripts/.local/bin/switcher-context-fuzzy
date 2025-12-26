@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # use fzf as the pager to select a kube context via switcher
 # output is the path to a kubeconfig file to set in the KUBECONFIG env var
@@ -16,7 +15,7 @@ main() {
 		| fzf-tmux -h20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY" \
 	) || return 1
 
-	>&2 echo "selected context ${selected_konfig}"
+	_ltz_print_progress "selected context ${selected_konfig}"
 
 	local target_string
 	target_string=$(switcher set-context "$selected_konfig")

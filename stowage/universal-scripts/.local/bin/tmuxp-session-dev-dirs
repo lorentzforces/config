@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # open a tmux session using tmuxp in one of our well-defined dev dirs
 
@@ -9,8 +8,8 @@ INIT_QUERY=${1:-}
 main() {
 	local dev_dir
 	dev_dir=$(fzf_directories_at "$HOME/mine/repos" "$INIT_QUERY")
-	if [ -z "$dev_dir" ]; then
-		>&2 echo "ERROR: fzf output was empty"
+	if [[ -z "$dev_dir" ]]; then
+		_ltz_print_error "fzf output was empty"
 		return 1
 	fi
 

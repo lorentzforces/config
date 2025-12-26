@@ -95,6 +95,8 @@ YELLOW=$(tput setaf 3)
 BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
+# not using shared scripts because this is part of environment bootstrapping
+
 print_info() {
 	local msg=$1
 	>&2 echo "${CYAN}${msg}${RESET}"

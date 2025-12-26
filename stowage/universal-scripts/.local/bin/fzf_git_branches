@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # use fzf to fuzzy-find a git branch (or tag) and output the selected git ref
 

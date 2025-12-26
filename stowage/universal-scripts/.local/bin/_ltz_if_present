@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$' \n\t'
+set -u
 
 # Basic redirection script to check if the first argument is a command, and simply/silently
 # execute it if it's present. If it's not, print a warning (but continue gracefully).
@@ -9,7 +8,7 @@ CMD=${1:-}
 
 main() {
 	if [[ -z "$CMD" ]]; then
-		>&2 echo "expected at least one argument to if-present"
+		_ltz_print_error "expected at least one argument to _ltz_if_present"
 		exit 1
 	fi
 
@@ -18,7 +17,7 @@ main() {
 	local exitval=$?
 	set -e
 	if [[ $exitval != 0 ]]; then
-		>&2 echo "$CMD not found, continuing"
+		_ltz_print_error "$CMD not found, continuing"
 		exit 0
 	fi
 

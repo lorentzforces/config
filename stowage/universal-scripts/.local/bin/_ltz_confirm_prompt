@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # prompt for confirmation of an action - if Y or y are entered, returns 0, otherwise returns 1
+# TODO: consider clearing stdin before read is invoked to avoid buffered keystrokes
 
 PROMPT_TEXT=${1:-}
 
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
+
 main() {
-	read -p "$PROMPT_TEXT " -n 1 -r
+	local prompt_output="${BOLD}${PROMPT_TEXT}${RESET} "
+	read -p "$prompt_output" -n 1 -r
 	printf "\n" # move to a new line
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 		return 1
