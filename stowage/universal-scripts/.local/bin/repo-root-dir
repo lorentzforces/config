@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # respond with the root dir of the git repo the current working directory is within
+# if not within a git repo, responds with the current working directory
 
 main() {
 	local root_dir
-	set +e
 	root_dir=$(2>/dev/null git rev-parse --show-toplevel)
 	local git_exit_status="$?"
-	set -e
 	if [[ $git_exit_status != 0 ]]; then
 		root_dir=$(pwd)
 	fi

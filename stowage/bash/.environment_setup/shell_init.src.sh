@@ -23,5 +23,5 @@ if [[ "$shell_mode" = "INTERACTIVE" ]]; then
 	fi
 
 	welcome_script="$HOME/.local/bin/top-line-status"
-	if-present "$welcome_script"
+	_ltz_if_present "$welcome_script"
 fi

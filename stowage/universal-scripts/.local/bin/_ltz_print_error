@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -u
+
+# print informational progress message in my standard format
+
+MSG=${1:-}
+
+YELLOW=${ tput setaf 3; }
+BOLD=${ tput bold; }
+RESET=${ tput sgr0; }
+
+main() {
+	>&2 echo -e "${BOLD}${YELLOW}❌  ${MSG}${RESET}"
+}
+main

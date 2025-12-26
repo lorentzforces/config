@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # open a tmux session out of our well-defined session options
 
@@ -14,7 +13,7 @@ main() {
 		| fzf --no-hscroll --ansi --no-multi -q "$INIT_QUERY"
 	)
 	if [ -z "$tmuxp_file" ]; then
-		>&2 echo "ERROR: fzf output was empty"
+		_ltz_print_error "fzf output was empty"
 		return 1
 	fi
 

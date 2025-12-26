@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # show a bunch of probably-relevant git information (like a DASHboard)
 
-green=$(tput setaf 2)
-reset=$(tput sgr0)
+GREEN=$(tput setaf 2)
+RESET=$(tput sgr0)
 
 main() {
 	# very custom alias
@@ -15,7 +14,7 @@ main() {
 	local status_text
 	status_text=$(git -c "color.status=always" status -s)
 	if [[ -z "$status_text" ]]; then
-		echo "${green} No changes!${reset}"
+		echo "${GREEN} No changes!${RESET}"
 	else
 		echo "$status_text"
 	fi

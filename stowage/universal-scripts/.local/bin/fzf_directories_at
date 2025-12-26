@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # fuzzy-search across all directories at the specified path (like project selection)
 

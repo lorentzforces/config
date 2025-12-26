@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -u
+
+# print informational progress message in my standard format
+
+MSG=${1:-}
+
+CYAN=${ tput setaf 6; } # (cyan/6, purple for me)
+RESET=${ tput sgr0; }
+
+main() {
+	>&2 echo -e "${CYAN}🖍️  ${MSG}${RESET}"
+}
+main

@@ -18,7 +18,7 @@ main() {
 
 	printf "Current shader cache file was created %s ago.\n" "$human_readable_interval"
 
-	confirm-prompt "Delete Monster Hunter Wilds shader cache?" || return 1
+	_ltz_confirm_prompt "Delete Monster Hunter Wilds shader cache?" || return 1
 
 	rm "$cache_location"
 	>&2 printf "Deleted Monster Hunter Wilds shader cache.\n"

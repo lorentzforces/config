@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # git commit browser, like git log + fuzzy-finding
 
@@ -16,7 +15,7 @@ main() {
 	# Check if we're in a git repo and allow error to fail out if not.
 	# This prevents fzf from running if we're in a random dir, due to how commands are initialized
 	# when in a pipe.
-	1>/dev/null git rev-parse --is-inside-work-tree
+	1>/dev/null git rev-parse --is-inside-work-tree || return 1
 
 	eval "$CMD" | fzf --ansi --no-sort --reverse --tiebreak=index \
 		--bind=ctrl-s:toggle-sort \

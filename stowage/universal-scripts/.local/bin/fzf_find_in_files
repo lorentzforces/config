@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # use ripgrep + fzf to interactively view grep results
 
@@ -9,7 +8,7 @@ SEARCH_STRING=${1:-}
 main()
 {
 	if [[ -z $SEARCH_STRING ]]; then
-		>&2 echo "ERROR: Need a string to search for!"
+		_ltz_print_error "Need a string to search for!"
 		return 1
 	fi
 

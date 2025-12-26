@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # invoke the local platform's "open with app" command
 
 TARGET=${1:-}
 
 main() {
-	# always prefer the xdg option if it exists
 	local xdg_present open_present is_macos=""
 	xdg_present=$(present_check "xdg-open")
 	open_present=$(present_check "open")
@@ -15,32 +13,29 @@ main() {
 		is_macos="yup it's MacOS"
 	fi
 
-
+	# always prefer the xdg option if it exists
 	if [[ -n "$xdg_present" ]]; then
 		xdg-open "$TARGET"
 	elif [[ -n "$open_present" && -n "$is_macos" ]]; then
 		open "$TARGET"
 	else
-		>&2 printf "invoked custom open command but could not determine which open command to delegate to\n"
+		_ltz_print_error "invoked custom open command but could not determine which open command to delegate to"
 		exit 1
 	fi
 }
 
 # accepts one argument of an executable name, then checks for it on the PATH
-# prints "present" if present, empty string otherwise
+# prints "present" if present, nothing otherwise
 present_check() {
-	local exec_name
-	exec_name=${1:-}
+	local exec_name=${1:-}
 	if [[ -z "$exec_name" ]]; then
-		>&2 printf "Empty exec name for present_check"
+		_ltz_print_error "Empty exec name for present_check"
 		return 1
 	fi
 
-	local present=""
-	set +e
-	2>/dev/null 1>/dev/null type "$exec_name" && present="present"
-	set -e
-	echo -n "$present"
+	if &>/dev/null type "$exec_name"; then
+		echo -n "present"
+	fi
 }
 
 main
