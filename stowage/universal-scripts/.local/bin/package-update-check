@@ -8,9 +8,7 @@ IFS=$'\n\t'
 # file path to export output to instead of printing to stdout
 UPDATE_LIST_OUTPUT_FILE=${UPDATE_LIST_OUTPUT_FILE:-}
 
-CYAN=${ tput setaf 6; } # (cyan/6, purple for me)
 BOLD=${ tput bold; }
-RESET=${ tput sgr0; }
 
 main() {
 	local -a package_managers=()
