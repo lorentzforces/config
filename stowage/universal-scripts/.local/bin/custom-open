@@ -7,8 +7,12 @@ TARGET=${1:-}
 
 main() {
 	local xdg_present open_present is_macos=""
-	xdg_present=$(present_check "xdg-open")
-	open_present=$(present_check "open")
+	if &>/dev/null type xdg-open; then
+		xdg_present="present"
+	fi
+	if &>/dev/null type open; then
+		open_present="present"
+	fi
 	if [[ $(uname -s) == "Darwin" ]]; then
 		is_macos="yup it's MacOS"
 	fi
@@ -19,23 +23,12 @@ main() {
 	elif [[ -n "$open_present" && -n "$is_macos" ]]; then
 		open "$TARGET"
 	else
-		_ltz_print_error "invoked custom open command but could not determine which open command to delegate to"
+		read -r -d '' ERROR_MSG <<-EOF
+		Invoked custom open command but could not determine which open command to
+		delegate to.
+		EOF
+		_ltz_print_error "$ERROR_MSG"
 		exit 1
 	fi
 }
-
-# accepts one argument of an executable name, then checks for it on the PATH
-# prints "present" if present, nothing otherwise
-present_check() {
-	local exec_name=${1:-}
-	if [[ -z "$exec_name" ]]; then
-		_ltz_print_error "Empty exec name for present_check"
-		return 1
-	fi
-
-	if &>/dev/null type "$exec_name"; then
-		echo -n "present"
-	fi
-}
-
 main

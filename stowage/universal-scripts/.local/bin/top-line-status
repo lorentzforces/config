@@ -55,9 +55,7 @@ tmux_status() {
 }
 
 aws_status() {
-	local aws_present
-	aws_present=$(present_check "aws")
-	if [[ -z "$aws_present" ]]; then
+	if ! &>/dev/null type aws; then
 		return 0
 	fi
 
@@ -68,9 +66,7 @@ aws_status() {
 }
 
 kubernetes_status() {
-	local kubectl_present
-	kubectl_present=$(present_check "kubectl")
-	if [[ -z "$kubectl_present" ]]; then
+	if ! &>/dev/null type kubectl; then
 		return 0
 	fi
 
@@ -90,21 +86,6 @@ kubernetes_status() {
 		printf "kubernetes: ${BOLD}${RED}[%s] %s${RESET}\n" "$namespace" "$cluster"
 	fi
 
-}
-
-# accepts one argument of an executable name, then checks for it on the PATH
-# prints "present" if present, empty string otherwise
-present_check() {
-	local exec_name
-	exec_name=${1:-}
-	if [[ -z "$exec_name" ]]; then
-		>&2 echo "Empty exec name for present_check"
-		return 1
-	fi
-
-	local present=""
-	2>/dev/null 1>/dev/null type "$exec_name" && present="present"
-	echo -n "$present"
 }
 
 INDENT_STRING="  "

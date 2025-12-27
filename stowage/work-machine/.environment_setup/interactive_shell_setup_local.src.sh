@@ -10,5 +10,5 @@ if [[ -r "$work_build_setup" ]]; then
 	# shellcheck source=/dev/null
 	source "$work_build_setup"
 else
-	>&2 printf "==SHELL== work setup script not found at %s" "$work_build_setup"
+	_ltz_print_error "==SHELL== work setup script not found at ${work_build_setup}"
 fi

@@ -5,7 +5,7 @@ if [[ -r "$env_setup" ]]; then
 	# shellcheck source=/dev/null
 	source "$env_setup"
 else
-	>&2 printf "==SHELL== script not found: %s\n" "$env_setup"
+	_ltz_print_error "[SHELL] script not found: ${env_setup}"
 fi
 
 shell_mode="NONINTERACTIVE"
@@ -19,7 +19,7 @@ if [[ "$shell_mode" = "INTERACTIVE" ]]; then
 		# shellcheck source=/dev/null
 		source "$interactive_setup"
 	else
-		>&2 printf "==SHELL== script not found: %s\n" "$interactive_setup"
+		_ltz_print_error "[SHELL] script not found: ${interactive_setup}"
 	fi
 
 	welcome_script="$HOME/.local/bin/top-line-status"

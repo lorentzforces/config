@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
-IFS=$'\n\t'
+set -u
 
 # Delete the shader cache for Monster Hunter Wilds
 
@@ -8,6 +7,12 @@ INSTALL_LOCATION="$HOME/.steam/steam/steamapps/common/MonsterHunterWilds"
 
 main() {
 	local cache_location="$INSTALL_LOCATION/shader.cache2"
+
+	if [[ ! -e "$cache_location" ]]; then
+		_ltz_print_progress "No Monster Hunter Wilds shader cache file found"
+		return 0
+	fi
+
 	local cache_creation_epoch current_epoch interval
 	cache_creation_epoch=$(stat -c "%W" "$cache_location")
 	current_epoch=$(date "+%s")
@@ -16,11 +21,17 @@ main() {
 	local human_readable_interval
 	human_readable_interval=$(human-time-duration "$interval")
 
-	printf "Current shader cache file was created %s ago.\n" "$human_readable_interval"
+	_ltz_print_progress "Reading cache file at: ${cache_location}"
 
-	_ltz_confirm_prompt "Delete Monster Hunter Wilds shader cache?" || return 1
+	read -r -d '' CONFIRM_MSG <<-EOF
+	Current shader cache file was created ${human_readable_interval} ago.
+	Delete Monster Hunter Wilds shader cache?
+	EOF
+	_ltz_confirm_prompt "$CONFIRM_MSG" || return 1
 
-	rm "$cache_location"
-	>&2 printf "Deleted Monster Hunter Wilds shader cache.\n"
+	rm "$cache_location" \
+		|| { _ltz_print_error "Could not remove cache file."; return 1; }
+
+	_ltz_print_progress "Deleted Monster Hunter Wilds shader cache."
 }
 main
