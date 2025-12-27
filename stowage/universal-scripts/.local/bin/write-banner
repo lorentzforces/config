@@ -5,9 +5,9 @@ set -u
 
 TEXT=${1:-}
 
-RED=$(tput setaf 1)
-BOLD=$(tput bold)
-RESET=$(tput sgr0)
+RED=${ tput setaf 1; }
+BOLD=${ tput bold; }
+RESET=${ tput sgr0; }
 
 main() {
 	local banner

@@ -6,9 +6,9 @@ IFS=$'\n\t'
 
 AWS_PROFILE=${AWS_PROFILE:-}
 
-RED=$(tput setaf 1)
-BOLD=$(tput bold)
-RESET=$(tput sgr0)
+RED=${ tput setaf 1; }
+BOLD=${ tput bold; }
+RESET=${ tput sgr0; }
 
 main() {
 	date_string=$(date "+%a %b %d, %Y :: %R  (%:z)")
