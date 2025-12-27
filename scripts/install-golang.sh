@@ -90,10 +90,10 @@ clean_old_install() {
 	sudo rm -rf "$GO_TEMP_SAVE_PATH"
 }
 
-CYAN=$(tput setaf 6) # (cyan/6, purple for me)
-YELLOW=$(tput setaf 3)
-BOLD=$(tput bold)
-RESET=$(tput sgr0)
+CYAN=${ tput setaf 6; } # (cyan/6, purple for me)
+YELLOW=${ tput setaf 3; }
+BOLD=${ tput bold; }
+RESET=${ tput sgr0; }
 
 # not using shared scripts because this is part of environment bootstrapping
 

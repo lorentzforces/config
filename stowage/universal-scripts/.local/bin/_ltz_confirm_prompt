@@ -6,8 +6,8 @@ set -u
 
 PROMPT_TEXT=${1:-}
 
-BOLD=$(tput bold)
-RESET=$(tput sgr0)
+BOLD=${ tput bold; }
+RESET=${ tput sgr0; }
 
 main() {
 	local prompt_output="${BOLD}${PROMPT_TEXT}${RESET} "
