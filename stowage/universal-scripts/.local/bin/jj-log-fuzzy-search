@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -u
+
+# jujutsu commit browser, like git log + fuzzy-finding
+
+main() {
+	if ! &>/dev/null jj root; then
+		_ltz_print_error "Not inside a jujutsu repository."
+		return 1
+	fi
+
+	jj log --no-graph --no-pager --color always \
+		--template 'personal_log_oneline(self)' \
+		--revisions '::@' \
+		| fzf --ansi --no-sort --reverse --tiebreak=index \
+		--bind=ctrl-s:toggle-sort \
+		--bind 'enter:execute: \
+			jj show --git {+1} \
+			| nvim -R -c "set filetype=git" -
+		'
+}
+main

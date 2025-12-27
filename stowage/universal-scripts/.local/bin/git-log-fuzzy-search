@@ -19,7 +19,7 @@ main() {
 
 	eval "$CMD" | fzf --ansi --no-sort --reverse --tiebreak=index \
 		--bind=ctrl-s:toggle-sort \
-		--bind "ctrl-m:execute: \
+		--bind "enter:execute: \
 			printf {} \
 			| ( \
 				grep -o '\<[a-f0-9]\+\>' \
