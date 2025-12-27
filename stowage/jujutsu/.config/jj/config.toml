@@ -4,10 +4,22 @@
 # color = "never"
 pager = ":builtin"
 
+[colors]
+author = "magenta"
+bookmark = "red"
+bookmarks = "red"
+change_id = "red"
+"working_copy author" = "magenta"
+"working_copy change_id" = "bright red"
+"working_copy description placeholder" = "bright black"
+"working_copy timestamp" = "cyan"
+
 [aliases]
 ls = [
 	"log",
-	"-r",
+	"--template",
+	"personal_log_compact",
+	"--revisions",
 	"""\
 		@ | trunk() \
 		| ancestors((remote_bookmarks() | tags()).., 2) \
@@ -18,48 +30,85 @@ ls = [
 [template-aliases]
 'format_short_signature(signature)' = 'signature.name()'
 
+'personal_log_compact' = 'personal_log_compact(self)'
+'personal_log_compact(commit)' = '''
+if(commit.root(),
+	format_root_commit(commit),
+	label(
+		separate(" ",
+			if(commit.current_working_copy(), "working_copy"),
+			if(commit.immutable(), "immutable", "mutable"),
+			if(commit.conflict(), "conflicted"),
+		),
+		concat(
+			separate(" ",
+				format_short_change_id(commit.change_id()),
+				commit.bookmarks(),
+				commit.tags(),
+				commit.working_copies(),
+				format_timestamp(commit_timestamp(commit)),
+				commit.author().name(),
+				format_short_commit_id(commit.commit_id()),
+				if(config("ui.show-cryptographic-signatures").as_boolean(),
+					format_short_cryptographic_signature(commit.signature())
+				),
+			),
+			"\n",
+			separate(" ",
+				if(commit.empty(), empty_commit_marker),
+				if(commit.description(),
+					commit.description().first_line(),
+					label(if(commit.empty(), "empty"), description_placeholder),
+				),
+			) ++ "\n",
+		),
+	)
+)
+'''
+
+'personal_log_oneline' = 'personal_log_oneline(self)'
 'personal_log_oneline(commit)' = '''
 if(commit.root(),
-  format_root_commit(commit),
-  label(
-    separate(" ",
-      if(commit.current_working_copy(), "working_copy"),
-      if(commit.immutable(), "immutable", "mutable"),
-      if(commit.conflict(), "conflicted"),
-    ),
-    separate(" ",
-      format_short_change_id(commit.change_id()),
-      commit.author().name(),
-      abbreviate_relative_timestamp(commit_timestamp(commit).ago().remove_suffix(" ago").remove_suffix("s")),
-      commit.tags(),
-      commit.working_copies(),
-      if(commit.empty(), empty_commit_marker),
-      if(commit.description(),
-        commit.description().first_line(),
-        label(if(commit.empty(), "empty"), description_placeholder),
-      ),
-    ) ++ "\n",
-  )
+	format_root_commit(commit),
+	label(
+		separate(" ",
+			if(commit.current_working_copy(), "working_copy"),
+			if(commit.immutable(), "immutable", "mutable"),
+			if(commit.conflict(), "conflicted"),
+		),
+		separate(" ",
+			format_short_change_id(commit.change_id()),
+			abbreviate_relative_timestamp(commit_timestamp(commit).ago().remove_suffix(" ago").remove_suffix("s")),
+			commit.tags(),
+			commit.working_copies(),
+			if(commit.empty(), empty_commit_marker),
+			if(commit.description(),
+				commit.description().first_line(),
+				label(if(commit.empty(), "empty"), description_placeholder),
+			),
+			commit.author().name(),
+		) ++ "\n",
+	)
 )
 '''
 
 "abbreviate_timestamp_suffix(s, suffix, abbr)" = '''
 if(
-    s.ends_with(suffix),
-    s.remove_suffix(suffix) ++ label("timestamp", abbr)
+	s.ends_with(suffix),
+	s.remove_suffix(suffix) ++ label("timestamp", abbr)
 )
 '''
 
 "abbreviate_relative_timestamp(s)" = '''
 coalesce(
-    abbreviate_timestamp_suffix(s, " millisecond", "ms"),
-    abbreviate_timestamp_suffix(s, " second", "s"),
-    abbreviate_timestamp_suffix(s, " minute", "m"),
-    abbreviate_timestamp_suffix(s, " hour", "h"),
-    abbreviate_timestamp_suffix(s, " day", "d"),
-    abbreviate_timestamp_suffix(s, " week", "w"),
-    abbreviate_timestamp_suffix(s, " month", "mo"),
-    abbreviate_timestamp_suffix(s, " year", "y"),
-    s
+	abbreviate_timestamp_suffix(s, " millisecond", "ms"),
+	abbreviate_timestamp_suffix(s, " second", "s"),
+	abbreviate_timestamp_suffix(s, " minute", "m"),
+	abbreviate_timestamp_suffix(s, " hour", "h"),
+	abbreviate_timestamp_suffix(s, " day", "d"),
+	abbreviate_timestamp_suffix(s, " week", "w"),
+	abbreviate_timestamp_suffix(s, " month", "mo"),
+	abbreviate_timestamp_suffix(s, " year", "y"),
+	s
 )
 '''
