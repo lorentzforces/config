@@ -10,7 +10,7 @@ if [[ -r "$fzf_config" ]]; then
 	# shellcheck source=/dev/null
 	source "$fzf_config"
 else
-	>&2 printf "==SHELL== script not found: %s\n" "$fzf_config"
+	_ltz_print_error "[SHELL] script not found: ${fzf_config}"
 fi
 
 # I keep hitting ctrl-d to page up and down a la vim, but this closes the terminal by default
@@ -122,7 +122,7 @@ fd() {
 		dir="$(cat "$tmp")"
 		rm -f "$tmp"
 		if [[ -d "$dir" && "$dir" != "$(pwd)" ]]; then
-			cd "$dir" || { echo "cd to $dir failed" 1>&2; exit 1; }
+			cd "$dir" || { _ltz_print_error "cd to $dir failed" exit 1; }
 		fi
 	fi
 }
@@ -135,7 +135,7 @@ kctx() {
 awsp() {
 	AWS_PROFILE=$(aws-profile-fuzzy "$1")
 	export AWS_PROFILE
-	>&2 echo "AWS Profile: $AWS_PROFILE"
+	_ltz_print_progress "AWS Profile: $AWS_PROFILE"
 }
 
 ### per-machine configuration
