@@ -97,6 +97,8 @@ alias fshow='git-log-fuzzy-search'
 __git_complete fshow _git_log
 alias delete-branch='git-delete-branch-fuzzy'
 
+alias jshow='jj-log-fuzzy-search'
+
 alias fcd='cd $(fzf_containing_dir)'
 alias fif='fzf_find_in_files'
 
