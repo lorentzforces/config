@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+IFS=$'\n\t'
+
+# Takes a file or a directory path and recursively translates all asciidoc or markdown documents
+# to HTML. If a directory, generates a table of contents. Outputs the name of the index file or
+# the individually-given file, translated into HTML, in a temp directory. This allows the user
+# to load that file path as a URL in a web browser.
+
+main() {
+	>&2 echo "not yet implemented!"
+}
+main
