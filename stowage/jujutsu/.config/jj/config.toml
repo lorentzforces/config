@@ -11,6 +11,8 @@ bookmarks = "red"
 change_id = "red"
 "working_copy author" = "magenta"
 "working_copy change_id" = "bright red"
+"working_copy bookmark" = "red"
+"working_copy bookmarks" = "red"
 "working_copy description placeholder" = "bright black"
 "working_copy timestamp" = "cyan"
 
