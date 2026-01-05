@@ -104,7 +104,7 @@ alias fif='fzf_find_in_files'
 
 alias tmux-default='tmuxp load --yes $HOME/.config/tmuxp/default.yaml'
 alias tmuxhere='tmuxp-current-dir'
-alias cdt='cd $(tmux display-message -p "#{session_path}")'
+alias cdt='cd ${ print-session-base-dir; }'
 alias tmux-build-windows='tmux-add-windows build run'
 
 alias page='nvim -R'

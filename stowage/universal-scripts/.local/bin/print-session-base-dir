@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -u
+
+# fuzzy-search across all directories at the specified path (like project selection)
+
+TMUX=${TMUX:-}
+HOME_MINE=${HOME_MINE:-}
+
+main() {
+	local tmux_base_path=""
+
+	if [[ -n "$TMUX" ]]; then
+		tmux_base_path=${ 2>/dev/null tmux display-message -p '#{session_path}'; }
+	fi
+
+	if [[ -n "$tmux_base_path" ]]; then
+		echo "$tmux_base_path"
+		return 0
+	fi
+
+	if [[ -n "$HOME_MINE" ]]; then
+		echo "$HOME_MINE"
+		return 0
+	fi
+
+	echo "$HOME"
+}
+main
