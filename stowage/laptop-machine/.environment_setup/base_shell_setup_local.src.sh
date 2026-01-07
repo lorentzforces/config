@@ -1,4 +1,4 @@
-export PATH=$(ensure-path "/home/linuxbrew/.linuxbrew/sbin")
-export PATH=$(ensure-path "/home/linuxbrew/.linuxbrew/bin")
-export PATH=$(ensure-path "$HOME/.cargo/bin")
-export PATH=$(ensure-path "/usr/local/go/bin")
+PATH=${ ensure-path "/home/linuxbrew/.linuxbrew/sbin"; }
+PATH=${ ensure-path "/home/linuxbrew/.linuxbrew/bin"; }
+PATH=${ ensure-path "$HOME/.cargo/bin"; }
+export PATH=${ ensure-path "/usr/local/go/bin"; }

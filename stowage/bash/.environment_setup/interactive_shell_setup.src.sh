@@ -28,7 +28,7 @@ export PROMPT_COMMAND="__prompt_cmd"
 # store "host" terminal so we can use the same terminfo in tmux
 export HOST_TERM=$TERM
 
-GPG_TTY=$(tty)
+GPG_TTY=${ tty; }
 export GPG_TTY
 
 export PAGER="nvim -R -"
@@ -48,7 +48,7 @@ eval "$(dircolors --bourne-shell "$HOME"/.config/ls-colors.conf)"
 
 eval "$(fnm env)"
 # fix path after fnm chucks new stuff on it
-PATH=$(ensure-path --delete "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin")
+PATH=${ ensure-path --delete "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin"; }
 export PATH
 
 ### enable programmable completion features
@@ -119,23 +119,23 @@ fd() {
 	local tmp
 	tmp="$(mktemp --tmpdir 'lf_fd.XXXXX')"
 	lf -last-dir-path="$tmp" "$@"
-	if [ -f "$tmp" ]; then
+	if [[ -f "$tmp" ]]; then
 		local dir
 		dir="$(cat "$tmp")"
 		rm -f "$tmp"
 		if [[ -d "$dir" && "$dir" != "$(pwd)" ]]; then
-			cd "$dir" || { _ltz_print_error "cd to $dir failed" exit 1; }
+			cd "$dir" || { _ltz_print_error "cd to $dir failed"; exit 1; }
 		fi
 	fi
 }
 
 kctx() {
-	KUBECONFIG=$(switcher-context-fuzzy "$1")
+	KUBECONFIG=${ switcher-context-fuzzy "$1"; }
 	export KUBECONFIG
 }
 
 awsp() {
-	AWS_PROFILE=$(aws-profile-fuzzy "$1")
+	AWS_PROFILE=${ aws-profile-fuzzy "$1"; }
 	export AWS_PROFILE
 	_ltz_print_progress "AWS Profile: $AWS_PROFILE"
 }
