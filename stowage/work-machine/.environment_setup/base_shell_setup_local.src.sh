@@ -1,15 +1,15 @@
 # I previously moved this to a more prominent PATH location, but I forgot why, and now I want
 # homebrew to take precedence
-PATH=$(ensure-path "/usr/local/bin")
+PATH=${ ensure-path "/usr/local/bin"; }
 # homebrew installs to a location that isn't on the PATH by default on apple silicon
-PATH=$(ensure-path "/opt/homebrew/bin")
+PATH=${ ensure-path "/opt/homebrew/bin"; }
 
-coreutils_prefix="$(brew --prefix coreutils)"
-PATH=$(ensure-path "${coreutils_prefix}/libexec/gnubin")
-MANPATH=$(echo -n "$MANPATH" | ensure-path --stdin --keep-empty "${coreutils_prefix}/libexec/gnuman")
+coreutils_prefix=${ brew --prefix coreutils; }
+PATH=${ ensure-path "${coreutils_prefix}/libexec/gnubin"; }
+MANPATH=${ echo -n "$MANPATH" | ensure-path --stdin --keep-empty "${coreutils_prefix}/libexec/gnuman"; }
 
 # org-specific scripts which aren't in this version control
-PATH=$(ensure-path "$HOME/mine/dev-env/bin")
+PATH=${ ensure-path "$HOME/mine/dev-env/bin"; }
 
 export PATH
 export MANPATH

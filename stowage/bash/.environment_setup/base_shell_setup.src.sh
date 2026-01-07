@@ -11,16 +11,16 @@ export HOME_MINE
 PATH="$HOME/.local/bin:$PATH"
 export PATH
 
-PATH=$(ensure-path "$HOME/.go/bin")
+PATH=${ ensure-path "$HOME/.go/bin"; }
 
 ### per-machine configuration
 # we do this last so we can override anything per-machine
-if [ -r "$HOME/.environment_setup/base_shell_setup_local.src.sh" ]; then
+if [[ -r "$HOME/.environment_setup/base_shell_setup_local.src.sh" ]]; then
 	# shellcheck source=/dev/null
 	source "$HOME/.environment_setup/base_shell_setup_local.src.sh"
 fi
 
-PATH=$(ensure-path "$HOME_MINE/programs/bin")
+PATH=${ ensure-path "$HOME_MINE/programs/bin"; }
 # move this to the front of PATH so our own programs take ultimate precedence
-PATH=$(ensure-path "$HOME/.local/bin")
+PATH=${ ensure-path "$HOME/.local/bin"; }
 export PATH
