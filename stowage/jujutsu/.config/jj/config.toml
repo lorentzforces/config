@@ -24,8 +24,8 @@ ls = [
 	"--revisions",
 	"""\
 		@ | trunk() \
-		| ancestors((remote_bookmarks() | tags()).., 2) \
-		| ancestors(tracked_remote_bookmarks(), 2) \
+		| ancestors((remote_bookmarks() | tags()).., 3) \
+		| ancestors(tracked_remote_bookmarks(), 3) \
 	""",
 ]
 
