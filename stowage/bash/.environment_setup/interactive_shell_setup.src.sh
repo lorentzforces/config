@@ -37,7 +37,6 @@ export MANWIDTH="120"
 export LESS="-R --tabs=4"
 
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgreprc"
-export TMUXP_CONFIGDIR="$HOME/.config/tmuxp"
 export GOPATH="$HOME/.go"
 export K9S_CONFIG_DIR="$HOME/.config/k9s"
 
