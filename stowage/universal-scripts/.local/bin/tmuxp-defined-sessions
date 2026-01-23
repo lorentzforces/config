@@ -8,7 +8,8 @@ INIT_QUERY=${1:-}
 main() {
 	local tmuxp_file
 	tmuxp_file=$(
-		tmuxp ls \
+		tmuxp ls --json \
+		| jq --raw-output '.workspaces[].name' \
 		| rg -v "dev|generic-with-path" \
 		| fzf --no-hscroll --ansi --no-multi -q "$INIT_QUERY"
 	)
