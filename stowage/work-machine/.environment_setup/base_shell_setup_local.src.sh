@@ -7,14 +7,14 @@ PATH=${ ensure-path "/opt/homebrew/bin"; }
 coreutils_prefix=${ brew --prefix coreutils; }
 PATH=${ ensure-path "${coreutils_prefix}/libexec/gnubin"; }
 MANPATH=${ echo -n "$MANPATH" | ensure-path --stdin --keep-empty "${coreutils_prefix}/libexec/gnuman"; }
-
-# org-specific scripts which aren't in this version control
-PATH=${ ensure-path "$HOME/mine/dev-env/bin"; }
+make_prefix=${ brew --prefix make; }
+PATH=${ ensure-path "${make_prefix}/libexec/gnubin";  }
+MANPATH=${ echo -n "$MANPATH" | ensure-path --stdin --keep-empty "${make_prefix}/libexec/gnuman"; }
 
 export PATH
 export MANPATH
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export HELM_LOCAL_VALUES="$HOME/mine/dev-env/helm-tag-values-override.yaml"
+export HELM_LOCAL_VALUES="$HOME/.config/phaedon/helm-tag-values-override.yaml"
 export K9SCONFIG="$HOME/.config/k9s"
