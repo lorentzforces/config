@@ -1,0 +1,9 @@
+session_name: 'config-work'
+start_directory: '${HOME}/config-work'
+windows:
+  - window_name: 'files'
+    panes:
+      - 'blank'
+  - window_name: 'edit'
+    panes:
+      - shell_command: '$EDITOR'
