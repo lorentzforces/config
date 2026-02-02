@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -u
+
+TARGET_DIR="$HOME/mine"
+SESSION_NAME="updates"
+UPDATE_WIN_NAME="update-info"
+CHECK_UPDATES_CMD="package-update-check && page ~/mine/updatable-packages.txt"
+
+main() {
+	local existing_sessions
+	existing_sessions="$(tmux list-sessions -F "#{session_name}")"
+
+	local session_exists=""
+	while IFS="" read -r line; do
+		if [[ "$line" == "$SESSION_NAME" ]]; then
+			session_exists="$SESSION_NAME"
+		fi
+	done <<< "$existing_sessions"
+
+	if [[ -z "$session_exists" ]]; then
+		tmux new-session -dA -s "$SESSION_NAME" -n "$UPDATE_WIN_NAME" -c "$TARGET_DIR" \
+			|| {
+				_ltz_print_error "Unable to create new tmux session \"${SESSION_NAME}\""
+				return 1
+			}
+		tmux send-keys -t "${SESSION_NAME}:${UPDATE_WIN_NAME}" "$CHECK_UPDATES_CMD" Enter
+		tmux new-window -dS -t "$SESSION_NAME" -c "$TARGET_DIR" \
+			|| {
+				_ltz_print_error "Unable to create new tmux window for update session shell"
+				return 1
+			}
+	fi
+
+	tmux switch-client -t "$SESSION_NAME"
+}
+main

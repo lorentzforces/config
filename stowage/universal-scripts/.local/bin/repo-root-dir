@@ -9,7 +9,7 @@ main() {
 	root_dir=$(2>/dev/null git rev-parse --show-toplevel)
 	local git_exit_status="$?"
 	if [[ $git_exit_status != 0 ]]; then
-		root_dir=$(pwd)
+		root_dir=${ pwd; }
 	fi
 	echo "$root_dir"
 }

@@ -33,7 +33,6 @@ programs=(
 	"selfman"
 	"stow"
 	"tmux"
-	"tmuxp"
 )
 
 package_managers=(
