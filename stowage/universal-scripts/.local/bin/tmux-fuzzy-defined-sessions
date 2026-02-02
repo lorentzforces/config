@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+set -u
+
+# open a tmux session out of our well-defined session options
+
+INIT_QUERY=${1:-}
+
+DEFINED_SESSIONS=(
+	"updates"
+	"config"
+	"config-work"
+)
+
+main() {
+	local session_name
+	session_name=$(
+		IFS=$'\n'; echo "${DEFINED_SESSIONS[*]}" \
+		| fzf --no-hscroll --ansi --no-multi -q "$INIT_QUERY"
+	)
+
+	case "$session_name" in
+		"config")
+			tmux-engage-editor-session "$HOME/config"
+			;;
+		"config-work")
+			tmux-engage-editor-session "$HOME/config-work"
+			;;
+		"updates")
+			tmux-engage-updates-session
+			;;
+		*)
+			_ltz_print_error "Received session name \"$session_name\" was not configured as a defined tmux session."
+			return 1
+			;;
+	esac
+}
+main

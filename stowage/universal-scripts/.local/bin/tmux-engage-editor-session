@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -u
+
+# Open a tmux session at target path with file exploration and edit windows.
+
+TARGET_DIR=${1:-}
+SESSION_NAME=${2:-}
+EDITOR=${EDITOR:-}
+
+FILES_WIN_NAME="files"
+EDIT_WIN_NAME="edit"
+
+main() {
+	if [[ -z "$TARGET_DIR" ]]; then
+		_ltz_print_error "No target dir given to create tmux edit session."
+	fi
+	if [[ -z "$EDITOR" ]]; then
+		EDITOR="ls"
+	fi
+
+	local session_name="${SESSION_NAME}"
+	if [[ -z "$session_name" ]]; then
+		session_name=$(basename "$TARGET_DIR")
+	fi
+
+	local existing_sessions
+	existing_sessions="$(tmux list-sessions -F "#{session_name}")"
+
+	local session_exists=""
+	while IFS="" read -r line; do
+		if [[ "$line" == "$session_name" ]]; then
+			session_exists="$session_name"
+			break
+		fi
+	done <<< "$existing_sessions"
+
+	if [[ -z "$session_exists" ]]; then
+		tmux new-session -dA -s "$session_name" -n "$FILES_WIN_NAME" -c "$TARGET_DIR" \
+			|| {
+				_ltz_print_error "Unable to create new tmux session \"${session_name}\""
+				return 1
+			}
+		tmux new-window -dS -t "$session_name" -n "$EDIT_WIN_NAME" -c "$TARGET_DIR" \
+			|| {
+				_ltz_print_error "Unable to create new tmux window \"${EDIT_WIN_NAME}\""
+				return 1
+			}
+		tmux send-keys -t "${session_name}:${EDIT_WIN_NAME}" "$EDITOR" Enter
+	fi
+
+	tmux switch-client -t "$session_name"
+}
+main

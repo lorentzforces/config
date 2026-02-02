@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -u
 
-# open a tmux session using tmuxp in one of our well-defined dev dirs
+# open a tmux session in one of our well-defined dev dirs
 
 INIT_QUERY=${1:-}
 
@@ -14,10 +14,11 @@ main() {
 	fi
 
 	local dev_name
-	dev_name=$(
-		basename "$dev_dir" \
-		| sed "s/\./__/g"
-	)
-	DEV_DIR="$dev_dir" DEV_NAME="$dev_name" tmuxp load --yes dev
+	dev_name=${ basename "$dev_dir" | sed "s/\./__/g"; }
+	dev_name+=" dev"
+
+	_ltz_print_progress "dev name: ${dev_name}"
+
+	tmux-engage-editor-session "$dev_dir" "$dev_name"
 }
 main

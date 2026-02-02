@@ -7,11 +7,11 @@ INIT_QUERY=${1:-}
 
 main() {
 	local target
-	target=$(
+	target=${
 		aws configure list-profiles \
 		| fzf-tmux -h20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY" \
-		| awk '{print ($1 == "*" ? $2 : $1)}'
-	) || return 1
+		| awk '{print ($1 == "*" ? $2 : $1)}' \
+	; } || return 1
 
 	echo "$target"
 }

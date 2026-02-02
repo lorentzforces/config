@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -u
+
+TARGET_DIR=${1:-}
+SESSION_NAME=${2:-}
+TMUX=${TMUX:-}
+
+main() {
+	if [[ -z "$TARGET_DIR" ]]; then
+		_ltz_print_error "No target dir given to create tmux basic session."
+	fi
+
+	local session_name="${SESSION_NAME}"
+	if [[ -z "$session_name" ]]; then
+		session_name=$(basename "$TARGET_DIR")
+	fi
+
+	local existing_sessions
+	existing_sessions="$(tmux list-sessions -F "#{session_name}")"
+
+	local session_exists=""
+	while IFS="" read -r line; do
+		if [[ "$line" == "$session_name" ]]; then
+			session_exists="$session_name"
+			break
+		fi
+	done <<< "$existing_sessions"
+
+	if [[ -z "$session_exists" ]]; then
+		tmux new-session -dA -s "$session_name" -c "$TARGET_DIR" \
+			|| {
+				_ltz_print_error "Unable to create new tmux session \"${session_name}\""
+				return 1
+			}
+	fi
+
+	if [[ -n "$TMUX" ]]; then
+		tmux switch-client -t "$session_name"
+	else
+		# if tmux was not already running, earlier commands will have started the server
+		tmux attach
+	fi
+}
+main

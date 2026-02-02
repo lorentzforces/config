@@ -101,8 +101,8 @@ alias jshow='jj-log-fuzzy-search'
 alias fcd='cd $(fzf_containing_dir)'
 alias fif='fzf_find_in_files'
 
-alias tmux-default='tmuxp load --yes $HOME/.config/tmuxp/default.yaml'
-alias tmuxhere='tmuxp-current-dir'
+alias tmd='tmux-engage-basic-session "$HOME/mine" "default"'
+alias tmuxhere='tmux-engage-editor-session "$PWD"'
 alias cdt='cd ${ print-session-base-dir; }'
 alias tmux-build-windows='tmux-add-windows build run'
 
