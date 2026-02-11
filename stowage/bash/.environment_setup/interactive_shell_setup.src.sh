@@ -120,7 +120,7 @@ fd() {
 	lf -last-dir-path="$tmp" "$@"
 	if [[ -f "$tmp" ]]; then
 		local dir
-		dir="$(cat "$tmp")"
+		dir="${ cat "$tmp"; }"
 		rm -f "$tmp"
 		if [[ -d "$dir" && "$dir" != "$(pwd)" ]]; then
 			cd "$dir" || { _ltz_print_error "cd to $dir failed"; exit 1; }

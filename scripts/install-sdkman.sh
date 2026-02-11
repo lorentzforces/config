@@ -4,5 +4,4 @@ IFS=$'\n\t'
 
 # One-liner
 
-SDKMAN_DIR="$HOME/mine/programs/sdkman" \
-	curl -s "https://get.sdkman.io?rcupdate=false" | bash
+curl -s "https://get.sdkman.io?rcupdate=false" | SDKMAN_DIR="$HOME/.local/share/sdkman" bash

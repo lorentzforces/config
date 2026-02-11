@@ -6,7 +6,7 @@ local jdtls = require('jdtls')
 local home = os.getenv('HOME')
 local jdtls_location = home .. '/.local/lib/jdtls'
 local lombok_location = home .. '/.local/bin/lombok.jar'
-local sdk_location = home .. '/mine/programs/sdkman/candidates/java'
+local sdk_location = home .. '/.local/share/sdkman/candidates/java'
 
 -- significantly cribbed from the excellent setup at:
 --   https://sookocheff.com/post/vim/neovim-java-ide/
