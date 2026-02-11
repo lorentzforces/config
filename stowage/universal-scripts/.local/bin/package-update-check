@@ -129,14 +129,52 @@ export -f get_flatpak_updates
 get_zypper_updates() {
 	section_header "ZYPPER PACKAGES"
 	sudo zypper refresh > /dev/null
-	# TODO: consider filtering & re-formatting the output of zypper list-updates:
-	#   - remove header lines and progress updates
-	#   - do not print arch
-	#   - scrunch versions to make them take up less space
-	#   - reorder everything to make it more scannable
-	#   - pull out some notable packages of interest (like kernel, tumbleweed release, nvidia
-	#     drivers, etc) to display separately
-	zypper list-updates
+
+	local notable_awk_script all_entries_awk_script zypper_output
+	notable_awk_script=$(cat << 'EOF'
+BEGIN {
+	notables["openSUSE-release"]
+	notables["kernel-default"]
+	notables["nvidia-common-G06"]
+}
+/^v/ {
+	gsub(/ /, "", $3)
+	gsub(/ /, "", $4)
+	gsub(/ /, "", $5)
+
+	if ($3 in notables) {
+		notables[$3] = sprintf("%s -> %s", $4, $5)
+	}
+}
+END {
+	printf "openSUSE tumbleweed snapshot: %s\n", notables["openSUSE-release"]
+	if (notables["kernel-default"] != "") {
+		printf "kernel: %s\n", notables["kernel-default"]
+	}
+	if (notables["nvidia-common-G06"] != "") {
+		printf "nvidia driver: %s\n", notables["nvidia-common-G06"]
+	}
+}
+EOF
+	)
+
+	# TODO: do this first, then use the output of this script as the input to the notables-finding script
+	local all_entries_awk_script
+	all_entries_awk_script=$(cat << 'EOF'
+/^v/ {
+	gsub(/ /, "", $2)
+	gsub(/ /, "", $3)
+	gsub(/ /, "", $4)
+	gsub(/ /, "", $5)
+	printf("%s %s->%s %s\n", $3, $4, $5, $2)
+}
+
+EOF
+	)
+	zypper_output=${ zypper list-updates; }
+	awk -F '|' "$notable_awk_script" <<< "$zypper_output"
+	echo ""
+	awk -F '|' "$all_entries_awk_script" <<< "$zypper_output" | column -t
 	echo ""
 }
 export -f get_zypper_updates
