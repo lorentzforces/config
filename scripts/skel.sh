@@ -11,7 +11,6 @@ IFS=$'\n\t'
 # All paths are relative to $HOME.
 
 paths=(
-	"mine/programs"
 	"mine/info"
 	"mine/media"
 	"mine/repos"

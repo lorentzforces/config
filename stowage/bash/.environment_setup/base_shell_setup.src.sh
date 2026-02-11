@@ -20,7 +20,6 @@ if [[ -r "$HOME/.environment_setup/base_shell_setup_local.src.sh" ]]; then
 	source "$HOME/.environment_setup/base_shell_setup_local.src.sh"
 fi
 
-PATH=${ ensure-path "$HOME_MINE/programs/bin"; }
 # move this to the front of PATH so our own programs take ultimate precedence
 PATH=${ ensure-path "$HOME/.local/bin"; }
 export PATH
