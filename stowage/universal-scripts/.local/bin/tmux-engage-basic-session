@@ -34,11 +34,10 @@ main() {
 			}
 	fi
 
-	if [[ -n "$TMUX" ]]; then
-		tmux switch-client -t "$session_name"
-	else
+	if [[ -z "$TMUX" ]]; then
 		# if tmux was not already running, earlier commands will have started the server
 		tmux attach
 	fi
+	tmux switch-client -t "$session_name"
 }
 main
