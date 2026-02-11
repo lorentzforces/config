@@ -83,14 +83,22 @@ vim.api.nvim_command('filetype indent off')
 util.g_vars.floaterm_wintype = 'split'
 util.g_vars.floaterm_position = 'aboveleft'
 
+-- I currently use the ":Rg" command, but this uses ripgrep for the regular :grep command as well
+util.options.grepprg = 'rg --vimgrep'
+util.options.grepformat = '%f:%l:%c:%m'
+
 util.options.mouse = 'a'
 
 util.g_vars.mapleader = ' '
 
-util.map_normal('<leader><leader>', ':Files<CR>')
 util.map_normal('<leader>f', ':Lf<CR>')
-util.map_normal('<leader>g', ':Rg<SPACE>', {silent = false})
+
+-- aliases for functions from fzf-vim
 util.map_normal('<leader>b', ':Buffers<CR>')
+util.map_normal('<leader><leader>', ':Files<CR>')
+
+-- reminder: use alt-a to select all in fzf (which will populate the quickfix list)
+util.map_normal('<leader>g', ':Rg<SPACE>', {silent = false})
 
 util.map_normal('<C-j>', 'o<Esc>gk')
 util.map_normal('<C-k>', 'O<Esc>gj')
