@@ -6,10 +6,10 @@ export SDKMAN_DIR="$HOME/.local/share/sdkman"
 source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # Some things will not be added to public-facing version control.
-work_build_setup="$HOME/.environment_setup/work-interactive-shell-setup.src.sh"
-if [[ -r "$work_build_setup" ]]; then
+private_work_shell_setup="$HOME/.environment_setup/work-interactive-shell-setup.src.sh"
+if [[ -r "$private_work_shell_setup" ]]; then
 	# shellcheck source=/dev/null
-	source "$work_build_setup"
+	source "$private_work_shell_setup"
 else
-	_ltz_print_error "==SHELL== work setup script not found at ${work_build_setup}"
+	_ltz_print_error "==SHELL== work setup script not found at ${private_work_shell_setup}"
 fi
