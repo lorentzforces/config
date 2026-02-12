@@ -12,3 +12,9 @@ family = "SeriousShanns Nerd Font Mono"
 [window]
 # Make left `Option` key behave as `Alt` (macOS only)
 option_as_alt = "OnlyLeft"
+
+# on MacOS, cmd+N creates a new tab by default
+[keyboard]
+bindings = [
+	{ key = "N", mods = "Command", action = "SpawnNewInstance" },
+]
