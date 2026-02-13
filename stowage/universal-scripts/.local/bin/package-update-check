@@ -43,9 +43,9 @@ main() {
 		fi
 	fi
 
-	output=$(parallel ::: "${check_commands[@]}")
-	output+=$'\n\n\n'
-	output+="This information generated at: $(date)"
+	output="This information generated at: $(date)"
+	output+=$'\n'
+	output+=$(parallel ::: "${check_commands[@]}")
 
 	if [[ -n "$UPDATE_LIST_OUTPUT_FILE" ]]; then
 		echo "$output" > "$UPDATE_LIST_OUTPUT_FILE"
@@ -133,9 +133,9 @@ get_zypper_updates() {
 	local notable_awk_script all_entries_awk_script zypper_output
 	notable_awk_script=$(cat << 'EOF'
 BEGIN {
-	notables["openSUSE-release"]
-	notables["kernel-default"]
-	notables["nvidia-common-G06"]
+	notables["openSUSE-release"] = "openSUSE tumbleweed snapshot"
+	notables["kernel-default"] = "kernel"
+	notables["nvidia-common-G06"] = "nvidia driver"
 }
 /^v/ {
 	gsub(/ /, "", $3)
@@ -143,22 +143,18 @@ BEGIN {
 	gsub(/ /, "", $5)
 
 	if ($3 in notables) {
-		notables[$3] = sprintf("%s -> %s", $4, $5)
+		found_notables[notables[$3]] = sprintf("%s -> %s", $4, $5)
 	}
 }
 END {
-	printf "openSUSE tumbleweed snapshot: %s\n", notables["openSUSE-release"]
-	if (notables["kernel-default"] != "") {
-		printf "kernel: %s\n", notables["kernel-default"]
-	}
-	if (notables["nvidia-common-G06"] != "") {
-		printf "nvidia driver: %s\n", notables["nvidia-common-G06"]
+	print("NOTABLE UPDATES")
+	for (name in found_notables) {
+		printf("%s: %s\n", name, found_notables[name])
 	}
 }
 EOF
 	)
 
-	# TODO: do this first, then use the output of this script as the input to the notables-finding script
 	local all_entries_awk_script
 	all_entries_awk_script=$(cat << 'EOF'
 /^v/ {
@@ -166,7 +162,10 @@ EOF
 	gsub(/ /, "", $3)
 	gsub(/ /, "", $4)
 	gsub(/ /, "", $5)
-	printf("%s %s->%s %s\n", $3, $4, $5, $2)
+	# printf("%s %s->%s %s\n", $3, $4, $5, $2)
+	print($3)
+	printf("    %s  [%s]\n", $4, $2)
+	printf(" -> %s\n", $5)
 }
 
 EOF
@@ -174,7 +173,7 @@ EOF
 	zypper_output=${ zypper list-updates; }
 	awk -F '|' "$notable_awk_script" <<< "$zypper_output"
 	echo ""
-	awk -F '|' "$all_entries_awk_script" <<< "$zypper_output" | column -t
+	awk -F '|' "$all_entries_awk_script" <<< "$zypper_output"
 	echo ""
 }
 export -f get_zypper_updates
