@@ -6,7 +6,7 @@ set -u
 TARGET=${1:-}
 
 main() {
-	local xdg_present open_present is_macos=""
+	local xdg_present="" open_present="" is_macos=""
 	if &>/dev/null type xdg-open; then
 		xdg_present="present"
 	fi
