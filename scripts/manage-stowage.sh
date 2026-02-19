@@ -1,15 +1,22 @@
 #!/usr/bin/env bash
 set -u
 
+# not using shared scripts because this is part of environment bootstrapping
+CYAN=${ tput setaf 6; } # (cyan/6, purple for me)
+YELLOW=${ tput setaf 3; }
+BLACK=${ tput setaf 8; }
+BOLD=${ tput bold; }
+RESET=${ tput sgr0; }
+
 main() {
-	# this wouldn't normally be good practice, but the alternative is obnoxious and this is where
+	# This wouldn't normally be good practice, but the alternative is obnoxious and this is where
 	# I'm going to be pretty much every time anyway.
 	if [[ ! -d './stowage/universal-scripts' ]]; then
 		print_error "Expected current directory to be the root of the config repo, but it looks like it isn't."
 		return 1
 	fi
 
-	local operation_clean="" operation_clean_restow=""
+	local operation_clean=""
 	while true && (($# > 0)); do
 		case $1 in
 		-h | --help)
@@ -18,10 +25,6 @@ main() {
 			;;
 		--clean)
 			operation_clean="yes"
-			shift
-			;;
-		--clean-and-restow)
-			operation_clean_restow="yes"
 			shift
 			;;
 		--)
@@ -52,23 +55,28 @@ main() {
 	)
 
 	# determine which machine we're operating on
-	local hostname hostname_hash friendly_machine_label
-	hostname=${ hostname; }
-	hostname_hash=${ sha256 -s "$hostname"; }
-	case "$hostname_hash" in
-	"3dd0e6c2a0d2220fd59f07ee2f84d7cdf1ff27c2a9245808338d24d0a6363b89")
-		friendly_machine_label="work"
-		stowage_targets+=("k9s")
+	local machine_label
+	if ! machine_label=${ 2>/dev/null cat "$HOME/.ltz_machine_label"; }; then
+		print_error "Machine label file at $HOME/.ltz_machine_label does not exist."
+		return 1
+	fi
+	case "$machine_label" in
+	"main-desktop")
+		stowage_targets+=("main-machine" "ssh-agent-systemd")
+		;;
+	"main-laptop")
+		stowage_targets+=("laptop-machine" "ssh-agent-systemd")
+		;;
+	"work-mac")
+		stowage_targets+=("work-machine" "k9s")
 		;;
 	*)
-		print_error "Could not determine identity of this machine via hostname."
-		echo "hostname: ${hostname}"
-		echo "hostname hash: ${hostname_hash}"
+		print_error "Machine label \"${machine_label}\" does not correspond to a known configuration."
 		return 1
 		;;
 	esac
 
-	print_info "Performing setup steps for machine: ${friendly_machine_label}"
+	print_info "Performing setup steps for machine: ${machine_label}"
 
 	# if clean operation, do that
 	if [[ -n "$operation_clean_restow" ]]; then
@@ -79,8 +87,6 @@ main() {
 	else
 		do_stow "${stowage_targets[@]}"
 	fi
-	# else, restow
-	# if restowing and the machine has the ssh-agent file present, activate the ssh-agent service via systemctl
 }
 
 do_clean() {
@@ -94,6 +100,7 @@ do_clean() {
 }
 
 do_stow() {
+	>&2 echo
 	print_info "Stowing the following collections:"
 	local old_ifs="$IFS"
 	IFS=$'\n'
@@ -107,17 +114,12 @@ do_stow() {
 			return 1
 		fi
 
+		>&2 echo
 		print_info "Enabling ssh-agent service via systemctl..."
-		systemctl user enable ssh-agent.service
-		systemctl user start ssh-agent
+		systemctl --user enable ssh-agent.service
+		systemctl --user start ssh-agent
 	fi
 }
-
-# not using shared scripts because this is part of environment bootstrapping
-CYAN=${ tput setaf 6; } # (cyan/6, purple for me)
-YELLOW=${ tput setaf 3; }
-BOLD=${ tput bold; }
-RESET=${ tput sgr0; }
 
 print_info() {
 	local msg=$1
@@ -134,26 +136,32 @@ print_help() {
 	msg=$(cat <<EOF
 Personal stow files management
 
-${BOLD}USAGE:${RESET} scripts/manage-stowage.sh [OPTIONS]
+${BOLD}${BLACK}USAGE:${RESET} scripts/manage-stowage.sh [OPTIONS]
 
 When invoked this tool (by default) will do a re-stow operation, cleaning up dangling symlinks and
 creating new ones where necessary. Note that this script ASSUMES that it is being run with the
 working directory being the root of my personal config repo so it can properly tell 'stow' where
 its files are.
 
-${BOLD}OPTIONS${RESET}
+Some related setup steps are also done:
+- enable the ssh-agent systemd unit when relevant
+
+${BOLD}${BLACK}OPTIONS${RESET}
 
 -h or --help
 Print this help message.
 
---clean-and-restow
-Do a clean and restow operation, which basically is the --clean option followed by the standard
-behavior. This is probably what you should reach for first in a "why is this file still here"
-situation.
-
 --clean
 Do a clean operation, deleting all symlinks to stow-managed files via 'stow --delete'. Will ONLY
 remove links, this operation does not re-stow anything.
+
+${BOLD}${BLACK}NOTES${RESET}
+
+There are situations where dangling symlinks will not be cleared up. Since stow only operates on
+the packages it is passed as arguments, if you remove a package from a list then run a re-stow or
+delete operation, it will not be removed. (That package isn't on the list being operated on!)
+The solution in that case is to do a clean/delete operation WITH that package listed, then remove
+it from the list and re-stow to add files back.
 EOF
 	)
 	echo "$msg"
