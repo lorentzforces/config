@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -u
-IFS=$'\n\t'
 
 # This script checks for a number of executables used throughout my environment setup for various
 # tasks. This is defined outside the Makefile to make it a much simpler task to check these upon
@@ -69,7 +68,7 @@ main() {
 	done
 
 	if (( ${#found_pkg_mans[@]} > 0 )); then
-		IFS=$' '; echo "Package managers found: ${found_pkg_mans[*]}"; IFS=$'\n\t'
+		IFS=$' ' echo "Package managers found: ${found_pkg_mans[*]}"
 	fi
 
 	# miscellaneous warnings
@@ -79,10 +78,8 @@ main() {
 		printf "Warning: bash version \"%s\" appears old\n" "$BASH_VERSION"
 	fi
 
-	# check for `date` flavor
-	local date_flavor
-	date_flavor=$(date --version &>/dev/null && echo "GNU" || echo "BSD")
-	if [[ "$date_flavor" == "BSD" ]]; then
+	# check for `date` flavor: BSD/MacOS version does not have the '--version' flag
+	if ! &>/dev/null date --version; then
 		echo "Warning: 'date' flavor appears to be BSD"
 	fi
 }
