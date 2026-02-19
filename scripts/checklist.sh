@@ -73,14 +73,24 @@ main() {
 
 	# miscellaneous warnings
 
+	# check that our personal machine label file exists
+	local machine_label_path="$HOME/.ltz_machine_label"
+	if [[ ! -r "$machine_label_path" ]]; then
+		echo
+		echo "Warning: no machine label file found at \"${machine_label_path}\"."
+	fi
+
 	# check for a 3.x.x version of bash like is shipped on MacOS
 	if [[ "$BASH_VERSION" == "3."* ]]; then
-		printf "Warning: bash version \"%s\" appears old\n" "$BASH_VERSION"
+		echo
+		echo "Warning: bash version \"${BASH_VERSION}\" appears old"
 	fi
 
 	# check for `date` flavor: BSD/MacOS version does not have the '--version' flag
 	if ! &>/dev/null date --version; then
+		echo
 		echo "Warning: 'date' flavor appears to be BSD"
+		echo "  current 'date' path: $(type -p date)"
 	fi
 }
 
