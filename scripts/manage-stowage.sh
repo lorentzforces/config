@@ -79,10 +79,7 @@ main() {
 	print_info "Performing setup steps for machine: ${machine_label}"
 
 	# if clean operation, do that
-	if [[ -n "$operation_clean_restow" ]]; then
-		do_clean "${stowage_targets[@]}"
-		do_stow "${stowage_targets[@]}"
-	elif [[ -n "$operation_clean" ]]; then
+	if [[ -n "$operation_clean" ]]; then
 		do_clean "${stowage_targets[@]}"
 	else
 		do_stow "${stowage_targets[@]}"
