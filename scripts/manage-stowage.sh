@@ -54,6 +54,12 @@ main() {
 		"universal-scripts"
 	)
 
+	local tumbleweed_targets=(
+		"ssh-agent-systemd"
+		"niri"
+		"waybar"
+	)
+
 	# determine which machine we're operating on
 	local machine_label
 	if ! machine_label=${ 2>/dev/null cat "$HOME/.ltz_machine_label"; }; then
@@ -62,7 +68,8 @@ main() {
 	fi
 	case "$machine_label" in
 	"main-desktop")
-		stowage_targets+=("main-machine" "ssh-agent-systemd")
+		stowage_targets+=(${tumbleweed_targets[@]})
+		stowage_targets+=("main-machine")
 		;;
 	"main-laptop")
 		stowage_targets+=("laptop-machine" "ssh-agent-systemd")
