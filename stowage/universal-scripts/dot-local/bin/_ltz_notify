@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+set -u
+
+# Display a notification using the system's notification provider. Right now this supports two:
+# - notify-send (Linux)
+# - osascript (MacOS via applescript invocation)
+#
+# Regular parameter is the notification text. --title and --subtitle options are available, and
+# will be best-effort formatted for systems which do not have special treatment for such things.
+
+main() {
+	local title="" subtitle="" text=""
+	while true && (($# > 0)); do
+		case $1 in
+		--title)
+			title="$2"
+			shift 2
+			;;
+		--subtitle)
+			subtitle="$2"
+			shift 2
+			;;
+		--)
+			shift
+			break
+			;;
+		-?*)
+			_ltz_print_error "Uknown option: \"${1}\""
+			return 1
+			;;
+		*)
+			break
+			;;
+		esac
+	done
+
+	if [[ -z "$1" ]]; then
+		_ltz_print_error "Called _ltz_notify with no text."
+		return 1
+	fi
+	text="$1"
+
+	if &>/dev/null type notify-send; then
+		notify-send "${ format_flat_notification_text "${text}" "${title}" "${subtitle}" ; }"
+	elif &>/dev/null type osascript; then
+		osascript -e "${ format_osascript_cmd "${text}" "${title}" "${subtitle}" ; }"
+	else
+		_ltz_print_info "Called notify but no notification provider found. Notification text:"
+		_ltz_print_info "  ${ format_flat_notification_text "${text}" "${title}" "${subtitle}" ; }"
+	fi
+}
+
+format_osascript_cmd() {
+	local text=${1:-}
+	local title=${2:-}
+	local subtitle=${3:-}
+
+	local osascript_cmd="display notification \"${text}\""
+	if [[ -n "${title}${subtitle}" ]]; then
+		osascript_cmd+=" with"
+	fi
+	if [[ -n "$title" ]]; then
+		osascript_cmd+=" title \"${title}\""
+	fi
+	if [[ -n "$subtitle" ]]; then
+		osascript_cmd+=" subtitle \"${subtitle}\""
+	fi
+
+	echo -n "$osascript_cmd"
+}
+
+format_flat_notification_text() {
+	local text=${1:-}
+	local title=${2:-}
+	local subtitle=${3:-}
+
+	local msg=""
+	if [[ -n "$title" ]]; then
+		msg+="$title"
+	fi
+	if [[ -n "$subtitle" ]]; then
+		msg+=" (${subtitle})"
+	fi
+	if [[ -n "$title$subtitle" ]]; then
+		msg+=": "
+	fi
+	msg+="$text"
+
+	echo -n "$msg"
+}
+
+main "$@"
