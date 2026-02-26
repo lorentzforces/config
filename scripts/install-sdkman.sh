@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -u
 IFS=$'\n\t'
 
 # One-liner
