@@ -100,7 +100,7 @@ do_clean() {
 	print_info "${ echo "$*" | column -c 80; }"
 	IFS="$old_ifs"
 
-	stow --delete --target="$HOME" --dir="./stowage" "$@"
+	stow --delete --dotfiles --target="$HOME" --dir="./stowage" "$@"
 }
 
 do_stow() {
@@ -110,7 +110,7 @@ do_stow() {
 	IFS=$'\n'
 	print_info "${ echo "$*" | column -c 80; }"
 	IFS="$old_ifs"
-	stow --restow --no-folding --target="$HOME" --dir="./stowage" "$@"
+	stow --restow --no-folding --dotfiles --target="$HOME" --dir="./stowage" "$@"
 
 	if [[ -r "$HOME/.config/systemd/user/ssh-agent.service" ]]; then
 		if ! &>/dev/null type systemctl; then
