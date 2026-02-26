@@ -1,7 +1,7 @@
 /* this file adapted from the openSUSE tumbleweed default config found at /etc/xdg/waybar/ */
 * {
 	border: none;
-	border-radius: 0;
+	background: transparent;
 	font-family: "Source Sans Pro", "FontAwesome 6 Free";
 	font-size: 15px;
 	font-weight: bold;
@@ -11,12 +11,13 @@
 	color: rgba(187, 187, 187, 1);
 }
 
-#window {
-	font-weight: bold;
-	background-color: rgba(112, 0, 0, 1);
+box {
+	/* border: 5px solid magenta; */
+	border-radius: 10px;
 }
 
 window#waybar {
+	border-radius: 10px;
 	background-color: rgba(112, 0, 0, 1);
 }
 
@@ -25,6 +26,7 @@ window#waybar.solo {
 }
 
 #workspaces {
+	margin-left: 10px;
 	margin-right: 5px;
 }
 
@@ -34,6 +36,7 @@ window#waybar.solo {
 }
 
 #workspaces button {
+	border-radius: 0;
 	padding: 0 7px;
 }
 #workspaces button.active {
@@ -73,7 +76,7 @@ window#waybar.solo {
 }
 
 #battery.warning {
-   color: rgba(255, 210, 4, 1);
+	color: rgba(255, 210, 4, 1);
 }
 
 #battery.critical {

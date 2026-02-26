@@ -56,8 +56,7 @@ main() {
 
 	local tumbleweed_targets=(
 		"ssh-agent-systemd"
-		"niri"
-		"waybar"
+		"niri-desktop"
 	)
 
 	# determine which machine we're operating on
@@ -122,6 +121,23 @@ do_stow() {
 		print_info "Enabling ssh-agent service via systemctl..."
 		systemctl --user enable ssh-agent.service
 		systemctl --user start ssh-agent
+	fi
+	if [[ -r "$HOME/.config/systemd/user/swaybg.service" ]]; then
+		if ! &>/dev/null type systemctl; then
+			print_error "This system has a swaybg service file configured, but does not have systemctl available."
+			return 1
+		fi
+
+		>&2 echo
+		print_info "Enabling swaybg service via systemctl..."
+		systemctl --user daemon-reload
+		systemctl --user add-wants niri.service swaybg.service
+
+		if [[ -r "$HOME/.config/wallpaper-image" ]]; then
+			print_error "swaybg config expects a wallpaper file at HOME/.config/wallpaper-image, but none was found."
+			print_error "  Link or copy an image to that location then run:"
+			print_error "  ${RESET}${BLACK}systemctl --user reload-or-restart swaybg.service"
+		fi
 	fi
 }
 
