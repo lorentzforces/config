@@ -288,6 +288,10 @@ layout {
 
 overview {
 	zoom 0.3
+	workspace-shadow {
+		on
+		softness 20
+	}
 }
 
 // Add lines like this to spawn processes at startup.
