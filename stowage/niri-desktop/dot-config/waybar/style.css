@@ -18,7 +18,11 @@ box {
 
 window#waybar {
 	border-radius: 10px;
-	background-color: rgba(112, 0, 0, 1);
+	/*
+	 * 0.99 opacity fixes GTK3 bug which reports the window as fully opaque even if it has rounded
+	 * corners, otherwise there are black pixels in the corners.
+	 */
+	background-color: rgba(112, 0, 0, 0.99);
 }
 
 window#waybar.solo {
@@ -72,7 +76,7 @@ window#waybar.solo {
 }
 
 #clock {
-	margin: 0px 6px 0px 10px;
+	margin-right: 15px;
 }
 
 #battery.warning {
