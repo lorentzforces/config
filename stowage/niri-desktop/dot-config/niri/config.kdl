@@ -3,6 +3,11 @@
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
+// hint electron > v28 apps to use wayland support
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
