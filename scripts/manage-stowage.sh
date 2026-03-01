@@ -2,11 +2,11 @@
 set -u
 
 # not using shared scripts because this is part of environment bootstrapping
-CYAN=${ tput setaf 6; } # (cyan/6, purple for me)
-YELLOW=${ tput setaf 3; }
-BLACK=${ tput setaf 8; }
-BOLD=${ tput bold; }
-RESET=${ tput sgr0; }
+CYAN=$(tput setaf 6) # (cyan/6, purple for me)
+YELLOW=$(tput setaf 3)
+BLACK=$(tput setaf 8)
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
 
 main() {
 	# This wouldn't normally be good practice, but the alternative is obnoxious and this is where
@@ -61,13 +61,13 @@ main() {
 
 	# determine which machine we're operating on
 	local machine_label
-	if ! machine_label=${ 2>/dev/null cat "$HOME/.ltz_machine_label"; }; then
+	if ! machine_label=$(2>/dev/null cat "$HOME/.ltz_machine_label"); then
 		print_error "Machine label file at $HOME/.ltz_machine_label does not exist."
 		return 1
 	fi
 	case "$machine_label" in
 	"main-desktop")
-		stowage_targets+=(${tumbleweed_targets[@]})
+		stowage_targets+=("${tumbleweed_targets[@]}")
 		stowage_targets+=("main-machine")
 		;;
 	"main-laptop")
@@ -96,7 +96,7 @@ do_clean() {
 	print_info "WARNING: cleaning the following stow collections:"
 	local old_ifs="$IFS"
 	IFS=$'\n'
-	print_info "${ echo "$*" | column -c 80; }"
+	print_info "$(echo "$*" | column -c 80)"
 	IFS="$old_ifs"
 
 	stow --delete --dotfiles --target="$HOME" --dir="./stowage" "$@"
@@ -107,7 +107,7 @@ do_stow() {
 	print_info "Stowing the following collections:"
 	local old_ifs="$IFS"
 	IFS=$'\n'
-	print_info "${ echo "$*" | column -c 80; }"
+	print_info "$(echo "$*" | column -c 80)"
 	IFS="$old_ifs"
 	stow --restow --no-folding --dotfiles --target="$HOME" --dir="./stowage" "$@"
 
