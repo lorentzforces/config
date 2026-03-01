@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+set -u
+
+# Launch fuzzel to choose a power-off option from a menu.
+
+DRY_RUN="DRY_RUN"
+SYS_IFS="$IFS"
+
+main() {
+	while true && (($# > 0)); do
+		case $1 in
+		--do-for-real)
+			DRY_RUN=""
+			shift
+			;;
+		--)
+			shift
+			break
+			;;
+		-?*)
+			_ltz_print_error "Unknown option: \"${1}\""
+			return 1
+			;;
+		*)
+			break
+			;;
+		esac
+	done
+
+	local options=(
+		# TODO: "lock screen"
+		"suspend"
+		"reboot"
+		"power off"
+	)
+
+	local chosen_option
+	IFS=$'\n'
+	chosen_option=$(
+		echo "${options[*]}" \
+		| fuzzel --dmenu --prompt="Power button options: " --placeholder=""
+	)
+	IFS="$SYS_IFS"
+
+	case "$chosen_option" in
+	"suspend")
+		do_if_not_dry_run "systemctl suspend"
+		;;
+	"reboot")
+		do_if_not_dry_run "systemctl reboot"
+		;;
+	"power off")
+		do_if_not_dry_run "systemctl poweroff"
+		;;
+	*)
+		_ltz_print_error "Unknown power off action: ${chosen_option}"
+		return 1
+		;;
+	esac
+}
+
+do_if_not_dry_run() {
+	local cmd=${1:-}
+	if [[ -n "$DRY_RUN" ]]; then
+		_ltz_print_info "Power option chosen: ${cmd}"
+		_ltz_print_info "(pass --do-for-real to actually do the thing)"
+		return 1
+	fi
+
+	eval "$cmd"
+}
+
+main "$@"
