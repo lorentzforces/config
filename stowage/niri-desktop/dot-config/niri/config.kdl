@@ -12,6 +12,8 @@ environment {
 // Find the full list of options on the wiki:
 // https://yalter.github.io/niri/Configuration:-Input
 input {
+	disable-power-key-handling
+
 	keyboard {
 		xkb {
 			// You can set rules, model, layout, variant and options.
@@ -422,6 +424,8 @@ binds {
 	// Mod-Shift-/, which is usually the same as Mod-?,
 	// shows a list of important hotkeys.
 	Mod+Shift+Slash { show-hotkey-overlay; }
+
+	// XF86PowerOff: bind this to tie into the system power button with a custom script
 
 	// Suggested binds for running programs: terminal, app launcher, screen locker.
 	Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }

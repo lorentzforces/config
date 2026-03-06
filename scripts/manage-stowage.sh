@@ -11,6 +11,7 @@ RESET=$(tput sgr0)
 main() {
 	# This wouldn't normally be good practice, but the alternative is obnoxious and this is where
 	# I'm going to be pretty much every time anyway.
+
 	if [[ ! -d './stowage/universal-scripts' ]]; then
 		print_error "Expected current directory to be the root of the config repo, but it looks like it isn't."
 		return 1
