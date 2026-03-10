@@ -305,7 +305,9 @@ overview {
 // See the binds section below for more spawn examples.
 
 spawn-at-startup "waybar"
-// spawn-at-startup "megasync"
+// Currently xdg autostart is initiated before this config is loaded, which makes anything
+// that relies on a system tray being available behave badly.
+spawn-sh-at-startup "sleep 5 && megasync"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
