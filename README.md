@@ -16,3 +16,4 @@ This readme isn't for you. It's just a landing page with notes for me.
     - screenshot in particular probably needs some love
   - make sure bluetooth and wifi management is installed
   - for laptop: make sure battery management is installed
+- move lombok to be treated as a library so it doesn't show up in the path
