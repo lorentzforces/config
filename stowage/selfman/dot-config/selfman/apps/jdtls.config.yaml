@@ -1,5 +1,8 @@
 name: jdtls
 flavor: web-fetch
+# jdtls releases are posted to https://download.eclipse.org/jdtls/milestones/ (sorted in
+# lexicographical order, not semver order). Choose a release from there, and also note the
+# timestamp string which is part of the artifact filename (and is part of the download URL).
 web-url: https://download.eclipse.org/jdtls/milestones/%VERSION%/jdt-language-server-%VERSION%-%TIMESTAMP_VERSION%.tar.gz
 version: 1.56.0
 build-action: script
