@@ -13,7 +13,7 @@ local sdk_location = home .. '/.local/share/sdkman/candidates/java'
 -- manually enable signature help capability ref:
 --   https://github.com/mfussenegger/nvim-jdtls/issues/88
 
-local root_markers = {'.git', 'gradlew', 'mvnw'}
+local root_markers = { '.jj', '.git', 'gradlew', 'mvnw' }
 local root_dir = require('jdtls.setup').find_root(root_markers)
 local workspace_dir = home .. '/.local/share/eclipse/' .. vim.fn.fnamemodify(root_dir, ':p:h:t')
 
