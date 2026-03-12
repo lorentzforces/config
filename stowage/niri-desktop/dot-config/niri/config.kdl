@@ -147,6 +147,7 @@ layout {
 	// - "on-overflow", focusing a column will center it if it doesn't fit
 	//   together with the previously focused column.
 	center-focused-column "never"
+	always-center-single-column
 
 	empty-workspace-above-first
 
@@ -629,7 +630,7 @@ binds {
 
 	Mod+Ctrl+F { switch-focus-between-floating-and-tiling; }
 
-	Mod+C { center-column; }
+	Mod+Z { center-window; }
 
 	// Center all fully visible columns on screen.
 	Mod+Ctrl+C { center-visible-columns; }
