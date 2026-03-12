@@ -60,6 +60,22 @@ window#waybar.solo {
 	color: rgba(33, 164, 223, 1);
 }
 
+#tray menu {
+	/* font-weight doesn't actually work for some reason, all menu entries are still bolded */
+	font-weight: normal;
+	background-color: rgba(48, 48, 48, 1);
+}
+
+#tray menu :hover {
+	font-weight: normal;
+	background-color: rgba(112, 0, 0, 0.99);
+}
+
+#tray menu :disabled {
+	font-weight: normal;
+	font-style: italic;
+}
+
 #mode,
 #battery,
 #cpu,
