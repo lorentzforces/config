@@ -74,7 +74,8 @@ main() {
 		stowage_targets+=("main-machine")
 		;;
 	"main-laptop")
-		stowage_targets+=("laptop-machine" "ssh-agent-systemd")
+		stowage_targets+=("${tumbleweed_targets[@]}")
+		stowage_targets+=("laptop-machine")
 		;;
 	"work-mac")
 		stowage_targets+=("work-machine" "k9s")
