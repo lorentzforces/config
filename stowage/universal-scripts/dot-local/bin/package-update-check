@@ -21,7 +21,7 @@ main() {
 	# root to update package metadata caches. The solution we use here is to require the overall
 	# script to be run as non-root, and then "cache" a sudo invocation so that subsequent sudo
 	# invocations will succeed non-interactively.
-	if (( EUID == 0)); then
+	if (( EUID == 0 )); then
 		_ltz_print_error "This script cannot be run overall as root, try again as a non-root user"
 		exit 1
 	fi
@@ -135,6 +135,8 @@ get_zypper_updates() {
 	section_header "ZYPPER PACKAGES"
 	sudo zypper refresh > /dev/null
 
+	# NB: 'v' is the status character for "different version installed" in zypper output
+	# see: zypper manpage, 'search' subcommand section
 	local notable_awk_script all_entries_awk_script zypper_output
 	notable_awk_script=$(cat << 'EOF'
 BEGIN {
@@ -172,7 +174,6 @@ EOF
 	gsub(/ /, "", $3)
 	gsub(/ /, "", $4)
 	gsub(/ /, "", $5)
-	# printf("%s %s->%s %s\n", $3, $4, $5, $2)
 	print($3)
 	printf("    %s  [%s]\n", $4, $2)
 	printf(" -> %s\n", $5)

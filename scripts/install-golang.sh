@@ -4,7 +4,7 @@ set -u
 # install the specified version of golang, pulling from the official site
 
 # update this to specify version for script to install
-GO_VERSION=1.25.4
+GO_VERSION=1.26.1
 
 GO_FILENAME="go${GO_VERSION}.linux-amd64.tar.gz"
 DOWNLOAD_DIR="/tmp/install-golang-script"
@@ -70,10 +70,12 @@ mv_old_install() {
 		return 0
 	fi
 
+	print_info "Backing up old install..."
 	sudo mv "$GO_INSTALL_PATH" "$GO_TEMP_SAVE_PATH"
 }
 
 unpack_install() {
+	print_info "Unpacking new installation..."
 	sudo tar -C "$GO_INSTALL_PARENT_DIR" -xf "$TARBALL_PATH"
 }
 
