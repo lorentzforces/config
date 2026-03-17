@@ -8,6 +8,8 @@ BLACK=$(tput setaf 8)
 BOLD=$(tput bold)
 RESET=$(tput sgr0)
 
+WORK_CONFIG_LOCATION="$HOME/config-work"
+
 main() {
 	# This wouldn't normally be good practice, but the alternative is obnoxious and this is where
 	# I'm going to be pretty much every time anyway.
@@ -61,7 +63,7 @@ main() {
 	)
 
 	# determine which machine we're operating on
-	local machine_label
+	local machine_label='' is_work_machine=''
 	if ! machine_label=$(2>/dev/null cat "$HOME/.ltz_machine_label"); then
 		print_error "Machine label file at $HOME/.ltz_machine_label does not exist."
 		return 1
@@ -76,6 +78,7 @@ main() {
 		;;
 	"work-mac")
 		stowage_targets+=("work-machine" "k9s")
+		is_work_machine='yes'
 		;;
 	*)
 		print_error "Machine label \"${machine_label}\" does not correspond to a known configuration."
@@ -87,9 +90,15 @@ main() {
 
 	# if clean operation, do that
 	if [[ -n "$operation_clean" ]]; then
-		do_clean "${stowage_targets[@]}"
+		do_clean "${stowage_targets[@]}" || return 1
+		if [[ -n "$is_work_machine" ]]; then
+			do_work_clean
+		fi
 	else
-		do_stow "${stowage_targets[@]}"
+		do_stow "${stowage_targets[@]}" || return 1
+		if [[ -n "$is_work_machine" ]]; then
+			do_work_stow
+		fi
 	fi
 }
 
@@ -144,6 +153,31 @@ do_stow() {
 			print_error "  ${RESET}${BLACK}systemctl --user reload-or-restart swaybg.service"
 		fi
 	fi
+}
+
+do_work_clean() {
+	if ! verify_work_exists; then return 1; fi
+
+	>&2 echo
+	print_info "WARNING: cleaning work stow collection"
+	stow --delete --dotfiles --target="$HOME" --dir="${WORK_CONFIG_LOCATION}" "stowage"
+}
+
+do_work_stow() {
+	if ! verify_work_exists; then return 1; fi
+
+	>&2 echo
+	print_info "Stowing work stow collection"
+	stow --restow --no-folding --dotfiles --target="$HOME" --dir="${WORK_CONFIG_LOCATION}" "stowage"
+}
+
+verify_work_exists() {
+	if [[ -d "$WORK_CONFIG_LOCATION/stowage" ]]; then
+		return 0
+	fi
+
+	print_error "Operation expected to operation on work config repo, but it was not found at ${WORK_CONFIG_LOCATION}"
+	return 1
 }
 
 print_info() {
