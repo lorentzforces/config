@@ -15,21 +15,35 @@ set -u
 # This kind of fuzzy-finding is helpful since jj has a much more robust file name specification
 # than git does.
 
+DEBUG=''
+
+BLACK=$(tput setaf 8)
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
+
 main() {
 	if ! &>/dev/null jj root; then
 		_ltz_print_error "Not inside a jujutsu repository."
 		return 1
 	fi
 
-	local use_jj_fileset_syntax=""
+	local use_jj_fileset_syntax='' from_trunk=''
 	while true && (($# > 0)); do
 		case $1 in
 		-h | --help)
 			print_help
 			exit 1
 			;;
+		--trunk)
+			from_trunk='yes'
+			shift
+			;;
 		--jj-fileset)
-			use_jj_fileset_syntax="yes"
+			use_jj_fileset_syntax='yes'
+			shift
+			;;
+		--debug)
+			DEBUG='yes'
 			shift
 			;;
 		--)
@@ -37,7 +51,7 @@ main() {
 			break
 			;;
 		-?*)
-			print_error "Unknown option: \"${1}\""
+			_ltz_print_error "Unknown option: \"${1}\""
 			exit 1
 			;;
 		*)
@@ -57,10 +71,18 @@ main() {
 
 	local jj_command='jj log --no-graph --no-pager --color always'
 	jj_command+=" --template 'personal_log_oneline(self)'"
-	jj_command+=" --revisions '::@'"
+	if [[ -n "$from_trunk" ]]; then
+		jj_command+=" --revisions '::trunk()'"
+	else
+		jj_command+=" --revisions '::@'"
+	fi
 
 	if [[ -n "$fileset" ]]; then
-		jj_command+=" $fileset"
+		jj_command+=" '$fileset'"
+	fi
+
+	if [[ -n "$DEBUG" ]]; then
+		_ltz_print_info "assembled jj command: ${jj_command}"
 	fi
 
 	local jj_output=''
@@ -85,24 +107,54 @@ get_fuzzy_fileset() {
 		return 0
 	fi
 
-	# If file_arg has a slash anywhere or a non-initial period, then look for a file with that exact
-	# name. Otherwise, append wildcards on either side of the passed string.
 	if echo "$file_arg" | &>/dev/null grep -E -e '/' -; then
-		echo -n "'"
+		# If there's a slash anywhere, treat it as an explicit full (but relative) path
 		echo -n "$file_arg"
-		echo -n "'"
 	elif echo "$file_arg" | &>/dev/null grep -E -e '.+\.' -; then
-		echo -n "'"
-		echo -n '**/'
-		echo -n "$file_arg"
-		echo -n "'"
+		# If there's a non-leading period, treat it as a full filename but look everywhere
+		printf 'glob:**/%s' "$file_arg"
 	else
-		echo -n "'"
-		echo -n '**/'
-		echo -n "$file_arg"
-		echo -n '*'
-		echo -n "'"
+		# Full wildcard globbing
+		printf 'glob:**/*%s*' "$file_arg"
 	fi
+}
+
+
+print_help() {
+	local msg
+	msg=${ cat <<EOF
+jujutsu commit browser, like git log + fuzzy-finding
+
+Will show only commits that are ancestors of the current commit.
+
+${BOLD}${BLACK}USAGE:${RESET} jj-log-fuzzy-search [OPTIONS] [--] <fileset-ish>
+
+The first/only argument is interpreted as follows:
+- if absent, do no file filtering
+- if it contains a forward slash, treat it as an explicit full (but relative) path
+- if it contains a non-leading period, treat it as a full filename but look everywhere
+- if neither of the above are true, just fully fuzzy-finds for the passed arg (anywhere in
+  filename, all files)
+
+${BOLD}${BLACK}OPTIONS${RESET}
+
+-h or --help
+Print this help message.
+
+--trunk
+Instead of the current commit, shows commits which are ancestors of the revision specified by
+'trunk()' in jujutsu.
+
+--jj-fileset
+Instead of doing any of the above treatment of the first argument, pass it literally through to
+jujutsu as a fileset specifier. (see: ${BLACK}jj help -k filesets${RESET} )
+
+--debug
+Print debug information as the script runs. Will show full text of invoked jj command.
+EOF
+	}
+
+	echo "$msg"
 }
 
 main "$@"
