@@ -2,6 +2,18 @@
 set -u
 
 # jujutsu commit browser, like git log + fuzzy-finding
+#
+# Accepts the '--jj-fileset' option to pass its first argument literally to 'jj log' as the fileset
+# specifier (see: jj help -k filesets).
+# Otherwise, interprets the incoming first argument as follows:
+# - if it contains a forward slash, treats it as an explicit, relative path
+# - if it contains a non-leading period, fuzzy-finds for it as a filename (preceeded under any
+#   directory path)
+# - if neither of the above are true, just fully fuzzy-finds for the passed arg (anywhere in
+#   path/name)
+#
+# This kind of fuzzy-finding is helpful since jj has a much more robust file name specification
+# than git does.
 
 main() {
 	if ! &>/dev/null jj root; then
@@ -9,9 +21,55 @@ main() {
 		return 1
 	fi
 
-	jj log --no-graph --no-pager --color always \
-		--template 'personal_log_oneline(self)' \
-		--revisions '::@' \
+	local use_jj_fileset_syntax=""
+	while true && (($# > 0)); do
+		case $1 in
+		-h | --help)
+			print_help
+			exit 1
+			;;
+		--jj-fileset)
+			use_jj_fileset_syntax="yes"
+			shift
+			;;
+		--)
+			shift
+			break
+			;;
+		-?*)
+			print_error "Unknown option: \"${1}\""
+			exit 1
+			;;
+		*)
+			break
+			;;
+		esac
+	done
+
+	local file_arg="${1:-}" fileset=''
+	if [[ -n "$file_arg" ]]; then
+		if [[ -n "$use_jj_fileset_syntax" ]]; then
+			fileset="$file_arg"
+		else
+			fileset=$(get_fuzzy_fileset "$file_arg")
+		fi
+	fi
+
+	local jj_command='jj log --no-graph --no-pager --color always'
+	jj_command+=" --template 'personal_log_oneline(self)'"
+	jj_command+=" --revisions '::@'"
+
+	if [[ -n "$fileset" ]]; then
+		jj_command+=" $fileset"
+	fi
+
+	local jj_output=''
+	if ! jj_output=${ eval "$jj_command"; }; then
+		_ltz_print_error "Error evaluating jj command"
+		return 1
+	fi
+
+	echo -n "$jj_output" \
 		| fzf --ansi --no-sort --reverse --tiebreak=index \
 		--bind=ctrl-s:toggle-sort \
 		--bind 'enter:execute: \
@@ -19,4 +77,32 @@ main() {
 			| nvim -R -c "set filetype=git" -
 		'
 }
-main
+
+get_fuzzy_fileset() {
+	local file_arg="${1:-}"
+	if [[ -z "$file_arg" ]]; then
+		echo -n ""
+		return 0
+	fi
+
+	# If file_arg has a slash anywhere or a non-initial period, then look for a file with that exact
+	# name. Otherwise, append wildcards on either side of the passed string.
+	if echo "$file_arg" | &>/dev/null grep -E -e '/' -; then
+		echo -n "'"
+		echo -n "$file_arg"
+		echo -n "'"
+	elif echo "$file_arg" | &>/dev/null grep -E -e '.+\.' -; then
+		echo -n "'"
+		echo -n '**/'
+		echo -n "$file_arg"
+		echo -n "'"
+	else
+		echo -n "'"
+		echo -n '**/'
+		echo -n "$file_arg"
+		echo -n '*'
+		echo -n "'"
+	fi
+}
+
+main "$@"
