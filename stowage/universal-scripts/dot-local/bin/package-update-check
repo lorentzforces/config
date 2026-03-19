@@ -120,7 +120,7 @@ export -f get_brew_updates
 
 get_flatpak_updates() {
 	section_header "FLATPAK PACKAGES"
-	{ flatpak remote-ls --updates --columns=name,version,download-size || return 1 ; } \
+	{ flatpak remote-ls --updates --columns=name,branch,version,download-size || return 1 ; } \
 		| column --table --separator $'\t' --output-width 100
 	echo ""
 }
