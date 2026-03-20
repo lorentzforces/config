@@ -35,7 +35,7 @@ main() {
 	if (( ${#require_sudo[@]} > 0 )); then
 		IFS=$' '; _ltz_print_info "[!] Root privileges required for: ${require_sudo[*]}"; IFS=$'\n\t'
 		_ltz_print_info "${BOLD}The script will now prompt you to authenticate using sudo."
-		if sudo true; then
+		if sudo --validate; then
 			_ltz_print_progress "Successfully elevated with sudo."
 		else
 			_ltz_print_error "Could not elevate privileges with sudo."
@@ -123,6 +123,10 @@ get_flatpak_updates() {
 	{ flatpak remote-ls --updates --columns=name,branch,version,download-size || return 1 ; } \
 		| column --table --separator $'\t' --output-width 100
 	echo ""
+	echo "Flatpak reminder:"
+	echo "  If a package name is listed multiple times for the same version and branch, it is"
+	echo "  probably both 32 and 64 bit versions."
+	echo ""
 }
 export -f get_flatpak_updates
 
@@ -136,6 +140,9 @@ BEGIN {
 	notables["openSUSE-release"] = "openSUSE tumbleweed snapshot"
 	notables["kernel-default"] = "kernel"
 	notables["nvidia-common-G06"] = "nvidia driver"
+	notables["niri"] = "niri desktop"
+	notables["bash"] = "bash"
+	notables["tmux"] = "tmux"
 }
 /^v/ {
 	gsub(/ /, "", $3)

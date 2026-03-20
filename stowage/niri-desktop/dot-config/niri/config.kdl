@@ -3,6 +3,8 @@
 // Check the wiki for a full description of the configuration:
 // https://yalter.github.io/niri/Configuration:-Introduction
 
+// Use NetworkManager-applet for wifi management in the tray
+
 // hint electron > v28 apps to use wayland support
 environment {
     ELECTRON_OZONE_PLATFORM_HINT "auto"
