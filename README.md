@@ -11,9 +11,5 @@ This readme isn't for you. It's just a landing page with notes for me.
   - this can be tricky because as far as I can tell, the bin scripts for intellij REALLY want to be in specific locations relative to the rest of the install files
   - maybe use selfman and make the install script something that creates a symlink(s) with an absolute path to the bins? or library it and add the library-ed bin paths to the PATH?
 - configure niri some more
-  - configure fuzzel launcher
-  - play with keybinds
-    - screenshot in particular probably needs some love
   - make sure bluetooth and wifi management is installed
   - for laptop: make sure battery management is installed
-- move lombok to be treated as a library so it doesn't show up in the path
