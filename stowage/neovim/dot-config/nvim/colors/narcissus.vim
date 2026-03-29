@@ -80,7 +80,7 @@ exe 'highlight SignColumn gui=NONE guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight FoldColumn gui=NONE guifg=' . slate_grey 'guibg=NONE'
 exe 'highlight netrwDir gui=NONE guifg=' . dull_orange
 exe 'highlight ColorColumn gui=NONE guibg=' . dull_white
-exe 'highlight QuickFixLine gui=NONE guibg=' . dull_white
+exe 'highlight QuickFixLine gui=NONE guifg=' . dull_purple 'guibg=' . dull_white
 exe 'highlight qfLineNr gui=NONE guifg=' . dull_green
 exe 'highlight Question gui=bold guifg=' . dull_red
 exe 'highlight NormalFloat gui=NONE guibg=' . dull_white

@@ -120,7 +120,8 @@ export -f get_brew_updates
 
 get_flatpak_updates() {
 	section_header "FLATPAK PACKAGES"
-	{ flatpak remote-ls --updates --columns=name,branch,version,download-size || return 1 ; } \
+	{ echo -e 'Name\tBranch\tVersion\tDL Size'; \
+		flatpak remote-ls --updates --columns=name,branch,version,download-size || return 1 ; } \
 		| column --table --separator $'\t' --output-width 100
 	echo ""
 	echo "Flatpak reminder:"
@@ -141,6 +142,7 @@ BEGIN {
 	notables["kernel-default"] = "kernel"
 	notables["nvidia-common-G06"] = "nvidia driver"
 	notables["niri"] = "niri desktop"
+	notables["alacritty"] = "alacritty"
 	notables["bash"] = "bash"
 	notables["tmux"] = "tmux"
 }

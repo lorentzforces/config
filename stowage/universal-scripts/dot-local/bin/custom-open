@@ -19,7 +19,7 @@ main() {
 
 	# always prefer the xdg option if it exists
 	if [[ -n "$xdg_present" ]]; then
-		xdg-open "$TARGET"
+		>/dev/null xdg-open --nowait -- "$TARGET"
 	elif [[ -n "$open_present" && -n "$is_macos" ]]; then
 		open "$TARGET"
 	else
