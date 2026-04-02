@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export EDITOR=nvim
 
 # our own dir structure, referenced by other commands

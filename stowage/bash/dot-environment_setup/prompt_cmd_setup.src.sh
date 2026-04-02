@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# shebang here is just for easy filetype detection; this script is always sourced
 
 __prompt_cmd() {
 	local prev_status="$?"

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 ### FZF Configuration ###
 
 dark_color_scheme_opts='--color fg:-1,bg:-1,fg+:-1,bg+:8,hl:12,hl+:12,pointer:5,info:14,prompt:13'

@@ -4,6 +4,7 @@ This readme isn't for you. It's just a landing page with notes for me.
 
 ## TODOS
 
+- add a check script (may be a sub-function of existing scripts) to do linting/checking/sanity on this repo
 - make a function in neovim config to make it simpler to set a window-scoped property across all windows
 - figure out what to do with intellij installs
   - may not be necessary for the time being since I haven't touched intellij on a personal machine in ages
