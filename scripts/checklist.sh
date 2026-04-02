@@ -32,6 +32,8 @@ programs=(
 	"selfman"
 	"stow"
 	"tmux"
+	# tree sitter cli is needed for the nvim-treesitter plugin to work
+	"tree-sitter"
 )
 
 package_managers=(

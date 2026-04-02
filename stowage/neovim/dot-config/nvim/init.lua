@@ -24,13 +24,13 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
 	spec = {
-	{ 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf', } },
+		{ 'junegunn/fzf.vim', dependencies = { 'junegunn/fzf', } },
 		{ 'airblade/vim-gitgutter', branch = 'main' },
 		-- Floaterm is technically a dependency of lf.vim, but needs to be loaded
 		-- after lf.vim for Reasons™. We declare lf.vim as a dependency to make sure
 		-- that it gets loaded first.
 		{ 'voldikss/vim-floaterm', dependencies = 'ptzz/lf.vim' },
-		{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+		{ 'nvim-treesitter/nvim-treesitter', branch = 'main', build = ':TSUpdate', lazy = false },
 		'neovim/nvim-lspconfig',
 		'mfussenegger/nvim-jdtls',
 		'towolf/vim-helm',
@@ -280,47 +280,31 @@ require('rectify-buffers').setup({
 	user_function = 'LspRestart'
 })
 
-require('nvim-treesitter.configs').setup({
-	ensure_installed = {
-		-- bash highlighting is variable, seems to be different between makefiles and plain
-		-- shell scripts
-		'bash',
-		'comment',
-		'go',
-		'html',
-		'java',
-		'javascript',
-		'json',
-		'markdown',
-		'markdown_inline', -- regular markdown TS is broken without this as well
-		'python',
-		'rust',
-		'sql',
-		'starlark',
-		'typescript',
-		'yaml',
-		-- the following are required due to this issue:
-		-- https://github.com/nvim-treesitter/nvim-treesitter/issues/3970#issuecomment-1377128659
-		'c',
-		'lua',
-		'query',
-		'vim',
-		'vimdoc',
-	},
-	sync_install = false,
-	highlight = {
-		enable = true,
-		disable = {},
-	},
-	playground = {
-		enable = true,
-		disable = {},
-		updatetime = 25,
-		persist_queries = false,
-	},
-	indent = {
-		enable = false
-	}
+require ('nvim-treesitter').install({
+	-- bash highlighting is variable, seems to be different between makefiles and plain
+	-- shell scripts
+	-- 'bash',
+	'comment',
+	'go',
+	'html',
+	'java',
+	'javascript',
+	'json',
+	'markdown',
+	'markdown_inline', -- regular markdown TS is broken without this as well
+	'python',
+	'rust',
+	'sql',
+	'starlark',
+	'typescript',
+	'yaml',
+	-- the following are required due to this issue:
+	-- https://github.com/nvim-treesitter/nvim-treesitter/issues/3970#issuecomment-1377128659
+	'c',
+	'lua',
+	'query',
+	'vim',
+	'vimdoc',
 })
 
 local auto_close_completion_group = util.augroup('auto_close_completion_group')
