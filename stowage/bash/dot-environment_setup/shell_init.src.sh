@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # entry point for shell setup
 
 env_setup="$HOME/.environment_setup/base_shell_setup.src.sh"

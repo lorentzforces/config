@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # I previously moved this to a more prominent PATH location, but I forgot why, and now I want
 # homebrew to take precedence
 PATH=${ ensure-path "/usr/local/bin"; }
