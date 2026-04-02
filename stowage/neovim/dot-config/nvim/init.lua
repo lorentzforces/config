@@ -284,7 +284,10 @@ require('no-neck-pain').setup({
 })
 
 require('rectify-buffers').setup({
-	user_function = 'LspRestart'
+	-- TODO: use vim.lsp.get_clients() to dynamically grab the list of running LSP sessions and
+	-- pass as arguments to restart them all regardless of what buffer is currently loaded
+	-- (this invocation with no args will only restart clients attached to current buffer)
+	user_function = 'lsp restart'
 })
 
 require ('nvim-treesitter').install({
@@ -298,7 +301,7 @@ require ('nvim-treesitter').install({
 	'javascript',
 	'json',
 	'markdown',
-	'markdown_inline', -- regular markdown TS is broken without this as well
+	'markdown_inline', -- regular markdown treesitter is broken without this as well
 	'python',
 	'rust',
 	'sql',
