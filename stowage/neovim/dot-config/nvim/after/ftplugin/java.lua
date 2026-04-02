@@ -31,7 +31,7 @@ local config = {
 		client.server_capabilities.semanticTokensProvider = nil
 
 		if client.config.settings then
-			client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
+			client:notify('workspace/didChangeConfiguration', { settings = client.config.settings })
 		end
 	end,
 	settings = {
