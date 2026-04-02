@@ -151,6 +151,13 @@ util.map_normal(
 	end
 )
 
+-- diagnostics: use callback to show diagnostic text in a floating view when jumped to
+vim.diagnostic.config({
+  jump = { on_jump = function(diagnostic, bufnr)
+    if not diagnostic then return end
+    vim.diagnostic.open_float({ bufnr = bufnr, scope = 'cursor', focus = false, })
+  end },
+})
 -- <leader>d is the prefix chosen for LSP diagnostic things
 util.map_normal(
 	'<leader>dv',
@@ -161,13 +168,13 @@ util.map_normal(
 util.map_normal(
 	'<leader>dn',
 	function()
-		vim.diagnostic.goto_next()
+		vim.diagnostic.jump({count = 1})
 	end
 )
 util.map_normal(
 	'<leader>dp',
 	function()
-		vim.diagnostic.goto_prev()
+		vim.diagnostic.jump({count = -1})
 	end
 )
 
