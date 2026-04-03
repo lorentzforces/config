@@ -2,17 +2,28 @@
 set -u
 
 # use fzf to fuzzy-find an AWS profile
+#
+# Any arguments will be passed through to fzf as the initial query.
+#
+# The official AWS CLI way to do this is slow (aws configure list-profiles).
+# Instead we make a couple small assumptions and search for the profile header in the typical AWS
+# config file.
+# For now this assumes the profile name is only ascii alphabetical letters and hyphens.
 
-INIT_QUERY=${1:-}
+AWS_CONFIG_FILE="$HOME/.aws/config"
 
 main() {
+	local initial_query="$*"
 	local target
 	target=${
-		aws configure list-profiles \
-		| fzf-tmux -h20 -- --no-hscroll --ansi --no-multi -q "$INIT_QUERY" \
-		| awk '{print ($1 == "*" ? $2 : $1)}' \
+		rg '\[profile ([-[:alpha:]]+)' --only-matching --replace='$1' "$AWS_CONFIG_FILE" \
+		| fzf-tmux -h20 -- --no-hscroll --ansi --no-multi --query="$initial_query" \
 	; } || return 1
 
+	if [[ -z "$target" ]]; then
+		return 1
+	fi
 	echo "$target"
 }
-main
+
+main "$@"
