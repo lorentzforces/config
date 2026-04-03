@@ -141,6 +141,7 @@ BEGIN {
 	notables["openSUSE-release"] = "openSUSE tumbleweed snapshot"
 	notables["kernel-default"] = "kernel"
 	notables["nvidia-common-G06"] = "nvidia driver"
+	notables["nvidia-open-driver-G06-signed-kmp-default"] = "nvidia open driver"
 	notables["niri"] = "niri desktop"
 	notables["alacritty"] = "alacritty"
 	notables["bash"] = "bash"
