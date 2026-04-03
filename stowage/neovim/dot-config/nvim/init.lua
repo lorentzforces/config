@@ -291,9 +291,7 @@ require('rectify-buffers').setup({
 })
 
 require ('nvim-treesitter').install({
-	-- bash highlighting is variable, seems to be different between makefiles and plain
-	-- shell scripts
-	-- 'bash',
+	'bash',
 	'comment',
 	'go',
 	'html',

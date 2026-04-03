@@ -117,16 +117,12 @@ alias reporoot='cd $(repo-root-dir)'
 
 # lf alias with directory following (when lf exits, cd to the directory it was in)
 fd() {
-	local tmp
-	tmp="$(mktemp --tmpdir 'lf_fd.XXXXX')"
-	lf -last-dir-path="$tmp" "$@"
-	if [[ -f "$tmp" ]]; then
-		local dir
-		dir="${ cat "$tmp"; }"
-		rm -f "$tmp"
-		if [[ -d "$dir" && "$dir" != "$(pwd)" ]]; then
-			cd "$dir" || { _ltz_print_error "cd to $dir failed"; exit 1; }
-		fi
+	local path=''
+	path=${ lf -print-last-dir "$@"; }
+
+	if [[ -n "$path" ]]; then
+		cd "$path" \
+			|| { _ltz_print_error "failed to follow lf last dir \"${path}\""; return 1; }
 	fi
 }
 
