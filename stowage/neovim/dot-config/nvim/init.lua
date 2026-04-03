@@ -290,8 +290,8 @@ require('rectify-buffers').setup({
 	user_function = 'lsp restart'
 })
 
-require ('nvim-treesitter').install({
-	'bash',
+require('nvim-treesitter').install({
+	-- 'bash', -- bash grammar can't handle bash 5.3 no-subshell command substitution
 	'comment',
 	'go',
 	'html',
@@ -315,15 +315,26 @@ require ('nvim-treesitter').install({
 	'vimdoc',
 })
 
+-- new version of treesitter needs to be enabled explicitly
+util.autocommand('FileType', {
+	pattern = {
+		'go', 'html', 'java',
+		'javascript', 'json', 'lua',
+		'markdown', 'python', 'rust',
+		'sql', 'starlark',
+		'typescript', 'yaml'
+	},
+	callback = function()
+		vim.treesitter.start()
+	end,
+})
+
 local auto_close_completion_group = util.augroup('auto_close_completion_group')
-util.autocommand(
-	'CompleteDone',
-	{
-		group = auto_close_completion_group,
-		pattern = '*',
-		command = 'pclose',
-	}
-)
+util.autocommand('CompleteDone', {
+	group = auto_close_completion_group,
+	pattern = '*',
+	command = 'pclose',
+})
 
 -- jdtls (Eclipse-based Java LSP) is configured separately in a ftplugin file for Java
 
