@@ -1,0 +1,6 @@
+name: prunejuice
+flavor: git
+version: origin/main
+remote-repo: 'https://github.com/lorentzforces/prunejuice.git'
+build-action: script
+build-cmd: 'make build'
