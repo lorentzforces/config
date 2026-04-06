@@ -170,6 +170,14 @@ do_work_stow() {
 	>&2 echo
 	print_info "Stowing work stow collection"
 	stow --restow --no-folding --dotfiles --target="$HOME" --dir="${WORK_CONFIG_LOCATION}" "stowage"
+
+	>&2 echo
+	local kube_clean_plist_path="$HOME/Library/LaunchAgents/clean-kube-config-files.plist"
+	# Will print "Unload failed: 5: Input/output error" if the file does not exist BUT will exit 0
+	launchctl unload "$kube_clean_plist_path"
+	if [[ -r "$kube_clean_plist_path" ]]; then
+		launchctl load "$kube_clean_plist_path"
+	fi
 }
 
 verify_work_exists() {
