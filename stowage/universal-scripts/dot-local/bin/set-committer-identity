@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+set -u
+
+# Set the user name and email for a source control repository.
+# Use default "anonymized" Github identity as a reasonable default.
+
+DEFAULT_NAME="Lorentz"
+DEFAULT_EMAIL="25649139+lorentzforces@users.noreply.github.com"
+
+BLACK=${ tput setaf 8; }
+BOLD=${ tput bold; }
+RESET=${ tput sgr0; }
+
+main() {
+	local is_jj_repo="" is_git_repo=""
+
+	if &>/dev/null git rev-parse --show-toplevel; then
+		is_git_repo="git"
+	fi
+	if &>/dev/null jj root; then
+		is_jj_repo="jujutsu"
+	fi
+
+	if [[ -z "$is_git_repo" ]] && [[ -z "$is_jj_repo" ]]; then
+		_ltz_print_error "Not in a source control repo."
+		return 1
+	fi
+
+	local use_defaults=""
+	while true && (($# > 0)); do
+		case $1 in
+		-h | --help)
+			print_help
+			exit 1
+			;;
+		--default)
+			use_defaults="yes"
+			shift
+			;;
+		--)
+			shift
+			break
+			;;
+		-?*)
+			print_error "Unknown option: \"${1}\""
+			exit 1
+			;;
+		*)
+			break
+			;;
+		esac
+	done
+
+	if [[ -z "$use_defaults" ]] && (( $# != 2 )); then
+		_ltz_print_error "Two arguments are required (name & email) when not using --default option."
+		return 1
+	elif [[ -n "$use_defaults" ]] && (( $# > 0 )); then
+		_ltz_print_error "Using default values, but values also provided. Instructions unclear, cooking face in microwave."
+		return 1
+	fi
+
+	local name="${1:-}"
+	local email="${2:-}"
+	if [[ -n "$use_defaults" ]]; then
+		name="$DEFAULT_NAME"
+		email="$DEFAULT_EMAIL"
+	fi
+
+	if [[ -z "$name" ]] || [[ -z "$email" ]]; then
+		_ltz_print_error "Arguments cannot be blank."
+		return 1
+	fi
+
+	if [[ -n "$is_git_repo" ]]; then
+		set_git_identity "$name" "$email"
+	fi
+	if [[ -n "$is_jj_repo" ]]; then
+		set_jj_identity "$name" "$email"
+	fi
+}
+
+set_git_identity() {
+	_ltz_print_progress "Setting git committer identity..."
+	git config set --local user.name "$1"
+	git config set --local user.email "$2"
+}
+
+set_jj_identity() {
+	_ltz_print_progress "Setting jujutsu committer identity..."
+	# silence warning from first command as second will give same warning
+	2>/dev/null jj config set --repo user.name "$1"
+	jj config set --repo user.email "$2"
+}
+
+print_help() {
+	local msg
+	msg=${ cat <<EOF
+Set my committer identity for user name and email in source control.
+
+${BOLD}${BLACK}USAGE:${RESET} set-github-committer-identity [OPTIONS] <name> <email>
+
+${BOLD}${BLACK}OPTIONS${RESET}
+
+-h or --help
+Print this help message.
+
+--default
+Populate with default identity used in public Github repos (using the provided Github-protected
+email).
+EOF
+	}
+	echo "$msg"
+}
+
+main "$@"
