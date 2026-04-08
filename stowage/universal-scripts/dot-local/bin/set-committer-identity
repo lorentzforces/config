@@ -1,15 +1,32 @@
 #!/usr/bin/env bash
 set -u
 
-# Set the user name and email for a source control repository.
-# Use default "anonymized" Github identity as a reasonable default.
-
 DEFAULT_NAME="Lorentz"
 DEFAULT_EMAIL="25649139+lorentzforces@users.noreply.github.com"
 
 BLACK=${ tput setaf 8; }
 BOLD=${ tput bold; }
 RESET=${ tput sgr0; }
+
+print_help() {
+	local msg
+	msg=${ cat <<EOF
+Set my committer identity for user name and email in source control.
+
+${BOLD}${BLACK}USAGE:${RESET} set-committer-identity [OPTIONS] <name> <email>
+
+${BOLD}${BLACK}OPTIONS${RESET}
+
+-h or --help
+Print this help message.
+
+--default
+Populate with default identity used in public Github repos (using the provided Github-protected
+email).
+EOF
+	}
+	echo "$msg"
+}
 
 main() {
 	local is_jj_repo="" is_git_repo=""
@@ -90,26 +107,6 @@ set_jj_identity() {
 	# silence warning from first command as second will give same warning
 	2>/dev/null jj config set --repo user.name "$1"
 	jj config set --repo user.email "$2"
-}
-
-print_help() {
-	local msg
-	msg=${ cat <<EOF
-Set my committer identity for user name and email in source control.
-
-${BOLD}${BLACK}USAGE:${RESET} set-github-committer-identity [OPTIONS] <name> <email>
-
-${BOLD}${BLACK}OPTIONS${RESET}
-
--h or --help
-Print this help message.
-
---default
-Populate with default identity used in public Github repos (using the provided Github-protected
-email).
-EOF
-	}
-	echo "$msg"
 }
 
 main "$@"

@@ -10,6 +10,43 @@ RESET=$(tput sgr0)
 
 WORK_CONFIG_LOCATION="$HOME/config-work"
 
+print_help() {
+	local msg
+	msg=$(cat <<EOF
+Personal stow files management
+
+${BOLD}${BLACK}USAGE:${RESET} scripts/manage-stowage.sh [OPTIONS]
+
+When invoked this tool (by default) will do a re-stow operation, cleaning up dangling symlinks and
+creating new ones where necessary. Note that this script ASSUMES that it is being run with the
+working directory being the root of my personal config repo so it can properly tell 'stow' where
+its files are.
+
+Some related setup steps are also done:
+- enable the ssh-agent systemd unit when relevant
+- enable the cleanup launchd task when relevant
+
+${BOLD}${BLACK}OPTIONS${RESET}
+
+-h or --help
+Print this help message.
+
+--clean
+Do a clean operation, deleting all symlinks to stow-managed files via 'stow --delete'. Will ONLY
+remove links, this operation does not re-stow anything.
+
+${BOLD}${BLACK}NOTES${RESET}
+
+There are situations where dangling symlinks will not be cleared up. Since stow only operates on
+the packages it is passed as arguments, if you remove a package from a list then run a re-stow or
+delete operation, it will not be removed. (That package isn't on the list being operated on!)
+The solution in that case is to do a clean/delete operation WITH that package listed, then remove
+it from the list and re-stow to add files back.
+EOF
+	)
+	echo "$msg"
+}
+
 main() {
 	# This wouldn't normally be good practice, but the alternative is obnoxious and this is where
 	# I'm going to be pretty much every time anyway.
@@ -197,42 +234,6 @@ print_info() {
 print_error() {
 	local msg=$1
 	>&2 echo "${YELLOW}${BOLD}${msg}${RESET}"
-}
-
-print_help() {
-	local msg
-	msg=$(cat <<EOF
-Personal stow files management
-
-${BOLD}${BLACK}USAGE:${RESET} scripts/manage-stowage.sh [OPTIONS]
-
-When invoked this tool (by default) will do a re-stow operation, cleaning up dangling symlinks and
-creating new ones where necessary. Note that this script ASSUMES that it is being run with the
-working directory being the root of my personal config repo so it can properly tell 'stow' where
-its files are.
-
-Some related setup steps are also done:
-- enable the ssh-agent systemd unit when relevant
-
-${BOLD}${BLACK}OPTIONS${RESET}
-
--h or --help
-Print this help message.
-
---clean
-Do a clean operation, deleting all symlinks to stow-managed files via 'stow --delete'. Will ONLY
-remove links, this operation does not re-stow anything.
-
-${BOLD}${BLACK}NOTES${RESET}
-
-There are situations where dangling symlinks will not be cleared up. Since stow only operates on
-the packages it is passed as arguments, if you remove a package from a list then run a re-stow or
-delete operation, it will not be removed. (That package isn't on the list being operated on!)
-The solution in that case is to do a clean/delete operation WITH that package listed, then remove
-it from the list and re-stow to add files back.
-EOF
-	)
-	echo "$msg"
 }
 
 main "$@"

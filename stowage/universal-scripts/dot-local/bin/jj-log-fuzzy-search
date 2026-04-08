@@ -3,23 +3,51 @@ set -u
 
 # jujutsu commit browser, like git log + fuzzy-finding
 #
-# Accepts the '--jj-fileset' option to pass its first argument literally to 'jj log' as the fileset
-# specifier (see: jj help -k filesets).
-# Otherwise, interprets the incoming first argument as follows:
-# - if it contains a forward slash, treats it as an explicit, relative path
-# - if it contains a non-leading period, fuzzy-finds for it as a filename (preceeded under any
-#   directory path)
-# - if neither of the above are true, just fully fuzzy-finds for the passed arg (anywhere in
-#   path/name)
-#
-# This kind of fuzzy-finding is helpful since jj has a much more robust file name specification
-# than git does.
+# Extensive options around file specification is helpful since jj has a much more robust file
+# name specification than git does.
 
 DEBUG=''
 
 BLACK=$(tput setaf 8)
 BOLD=$(tput bold)
 RESET=$(tput sgr0)
+
+print_help() {
+	local msg
+	msg=${ cat <<EOF
+jujutsu commit browser, like git log + fuzzy-finding
+
+Will show only commits that are ancestors of the current commit.
+
+${BOLD}${BLACK}USAGE:${RESET} jj-log-fuzzy-search [OPTIONS] [--] <fileset-ish>
+
+The first/only argument is interpreted as follows:
+- if absent, do no file filtering
+- if it contains a forward slash, treat it as an explicit full (but relative) path
+- if it contains a non-leading period, treat it as a full filename but look everywhere
+- if neither of the above are true, just fully fuzzy-finds for the passed arg (anywhere in
+  filename, all files)
+
+${BOLD}${BLACK}OPTIONS${RESET}
+
+-h or --help
+Print this help message.
+
+--trunk
+Instead of the current commit, shows commits which are ancestors of the revision specified by
+'trunk()' in jujutsu.
+
+--jj-fileset
+Instead of doing any of the above treatment of the first argument, pass it literally through to
+jujutsu as a fileset specifier. (see: ${BLACK}jj help -k filesets${RESET} )
+
+--debug
+Print debug information as the script runs. Will show full text of invoked jj command.
+EOF
+	}
+
+	echo "$msg"
+}
 
 main() {
 	if ! &>/dev/null jj root; then
@@ -117,44 +145,6 @@ get_fuzzy_fileset() {
 		# Full wildcard globbing
 		printf 'glob:**/*%s*' "$file_arg"
 	fi
-}
-
-
-print_help() {
-	local msg
-	msg=${ cat <<EOF
-jujutsu commit browser, like git log + fuzzy-finding
-
-Will show only commits that are ancestors of the current commit.
-
-${BOLD}${BLACK}USAGE:${RESET} jj-log-fuzzy-search [OPTIONS] [--] <fileset-ish>
-
-The first/only argument is interpreted as follows:
-- if absent, do no file filtering
-- if it contains a forward slash, treat it as an explicit full (but relative) path
-- if it contains a non-leading period, treat it as a full filename but look everywhere
-- if neither of the above are true, just fully fuzzy-finds for the passed arg (anywhere in
-  filename, all files)
-
-${BOLD}${BLACK}OPTIONS${RESET}
-
--h or --help
-Print this help message.
-
---trunk
-Instead of the current commit, shows commits which are ancestors of the revision specified by
-'trunk()' in jujutsu.
-
---jj-fileset
-Instead of doing any of the above treatment of the first argument, pass it literally through to
-jujutsu as a fileset specifier. (see: ${BLACK}jj help -k filesets${RESET} )
-
---debug
-Print debug information as the script runs. Will show full text of invoked jj command.
-EOF
-	}
-
-	echo "$msg"
 }
 
 main "$@"
