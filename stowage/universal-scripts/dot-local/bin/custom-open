@@ -13,7 +13,7 @@ main() {
 	if &>/dev/null type open; then
 		open_present="present"
 	fi
-	if [[ $(uname -s) == "Darwin" ]]; then
+	if [[ ${ uname -s; } == "Darwin" ]]; then
 		is_macos="yup it's MacOS"
 	fi
 
@@ -23,11 +23,13 @@ main() {
 	elif [[ -n "$open_present" && -n "$is_macos" ]]; then
 		open "$TARGET"
 	else
-		read -r -d '' ERROR_MSG <<-EOF
+		local error_msg
+		error_msg=${ cat <<- 'EOF'
 		Invoked custom open command but could not determine which open command to
 		delegate to.
 		EOF
-		_ltz_print_error "$ERROR_MSG"
+		}
+		_ltz_print_error "$error_msg"
 		exit 1
 	fi
 }

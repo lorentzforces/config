@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -u
 
+BASE_IFS="$IFS"
+
 # This script checks for a number of executables used throughout my environment setup for various
 # tasks. This is defined outside the Makefile to make it a much simpler task to check these upon
 # initially pulling down this repository - the only requirement is the presence of bash.
@@ -58,7 +60,8 @@ main() {
 	else
 		echo "Programs not found:"
 		echo ""
-		IFS=$'\t' echo "${not_found[*]}" | column -c 80
+		IFS=$'\t'; echo "${not_found[*]}" | column -c 80
+		IFS="$BASE_IFS"
 	fi
 
 	echo ""
@@ -72,7 +75,8 @@ main() {
 	done
 
 	if (( ${#found_pkg_mans[@]} > 0 )); then
-		IFS=$' ' echo "Package managers found: ${found_pkg_mans[*]}"
+		IFS=$' '; echo "Package managers found: ${found_pkg_mans[*]}"
+		IFS="$BASE_IFS"
 	fi
 
 	# miscellaneous warnings

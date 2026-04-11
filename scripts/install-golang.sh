@@ -29,11 +29,13 @@ main() {
 
 check_not_macos() {
 	if [[ $(uname -s) == "Darwin" ]]; then
-		read -r -d '' ERROR_MSG <<-EOF
+		local error_msg
+		error_msg=$(cat <<- 'EOF'
 		Manual installation from tarball is not recommended on MacOS.
 		Instead consider installing from homebrew:
 		EOF
-		print_error "$ERROR_MSG"
+		)
+		print_error "$error_msg"
 		print_shell_cmd "brew install go"
 		exit 1
 	fi
@@ -57,10 +59,10 @@ get_tarball() {
 		>&2 echo
 	else
 		mkdir -p "$DOWNLOAD_DIR"
-		local GO_DOWNLOAD_URL="https://go.dev/dl/${GO_FILENAME}"
-		print_info "Fetching golang install tarball from ${GO_DOWNLOAD_URL} ..."
+		local go_download_url="https://go.dev/dl/${GO_FILENAME}"
+		print_info "Fetching golang install tarball from ${go_download_url} ..."
 		print_info ""
-		curl --url "$GO_DOWNLOAD_URL" --follow --output "$TARBALL_PATH"
+		curl --url "$go_download_url" --follow --output "$TARBALL_PATH"
 		print_info ""
 	fi
 }
@@ -80,8 +82,8 @@ unpack_install() {
 }
 
 put_old_install_back() {
-	local msg=$1
-	print_error "ERROR: $1"
+	local msg=${1:-}
+	print_error "ERROR: $msg"
 	print_error "Aborting and replacing old install..."
 	sudo rm -rf "$GO_INSTALL_PATH"
 	sudo mv "$GO_TEMP_SAVE_PATH" "$GO_INSTALL_PATH"

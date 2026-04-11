@@ -138,7 +138,7 @@ get_zypper_updates() {
 	# NB: 'v' is the status character for "different version installed" in zypper output
 	# see: zypper manpage, 'search' subcommand section
 	local notable_awk_script all_entries_awk_script zypper_output
-	notable_awk_script=$(cat << 'EOF'
+	notable_awk_script=${ cat << 'EOF'
 BEGIN {
 	notables["openSUSE-release"] = "openSUSE tumbleweed snapshot"
 	notables["kernel-default"] = "kernel"
@@ -165,10 +165,10 @@ END {
 	}
 }
 EOF
-	)
+	}
 
 	local all_entries_awk_script
-	all_entries_awk_script=$(cat << 'EOF'
+	all_entries_awk_script=${ cat << 'EOF'
 /^v/ {
 	gsub(/ /, "", $2)
 	gsub(/ /, "", $3)
@@ -180,7 +180,7 @@ EOF
 }
 
 EOF
-	)
+	}
 	zypper_output=${ zypper list-updates; }
 	awk -F '|' "$notable_awk_script" <<< "$zypper_output"
 	echo ""
