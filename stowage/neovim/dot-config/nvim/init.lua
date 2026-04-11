@@ -284,10 +284,15 @@ require('no-neck-pain').setup({
 })
 
 require('rectify-buffers').setup({
-	-- TODO: use vim.lsp.get_clients() to dynamically grab the list of running LSP sessions and
-	-- pass as arguments to restart them all regardless of what buffer is currently loaded
-	-- (this invocation with no args will only restart clients attached to current buffer)
-	user_function = 'lsp restart'
+	user_function = function()
+		for _, client in pairs(vim.lsp.get_clients()) do
+			-- There doesn't seem to be a lua API to restart a client, only to stop it.
+			-- Since jdtls has its whole own set of config stuff it does, it's much easier to tell
+			-- all the clients to restart rather than trying to stop them, then pull up their
+			-- config and start that.
+			vim.api.nvim_command('lsp restart ' .. client.name)
+		end
+	end
 })
 
 require('nvim-treesitter').install({
