@@ -6,6 +6,7 @@ set -u
 INIT_QUERY=${1:-}
 
 DEFINED_SESSIONS=(
+	"default"
 	"updates"
 	"config"
 	"config-work"
@@ -19,6 +20,9 @@ main() {
 	)
 
 	case "$session_name" in
+		"default")
+			tmux-engage-basic-session "$HOME/mine" "default"
+			;;
 		"config")
 			tmux-engage-editor-session "$HOME/config"
 			;;
@@ -29,7 +33,10 @@ main() {
 			tmux-engage-updates-session
 			;;
 		*)
-			_ltz_print_error "Received session name \"$session_name\" was not configured as a defined tmux session."
+			local err_msg
+			err_msg="Received session name \"$session_name\" was not configured as a "
+			err_msg+=" defined tmux session."
+			_ltz_print_error "$err_msg"
 			return 1
 			;;
 	esac
