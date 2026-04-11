@@ -45,9 +45,9 @@ export K9S_CONFIG_DIR="$HOME/.config/k9s"
 export CHCK_CHNG_REVS="origin/main:origin/master"
 export UPDATE_LIST_OUTPUT_FILE="$HOME_MINE/updatable-packages.txt"
 
-eval "$(dircolors --bourne-shell "$HOME"/.config/ls-colors.conf)"
+eval "${ dircolors --bourne-shell "$HOME"/.config/ls-colors.conf; }"
 
-eval "$(fnm env)"
+eval "${ fnm env; }"
 # fix path after fnm chucks new stuff on it
 PATH=${ ensure-path --delete "fnm_multishells" "${FNM_MULTISHELL_PATH}/bin"; }
 export PATH

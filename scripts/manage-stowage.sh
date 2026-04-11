@@ -95,8 +95,9 @@ main() {
 	)
 
 	local tumbleweed_targets=(
-		"ssh-agent-systemd"
 		"niri-desktop"
+		"pulse-pipewire"
+		"ssh-agent-systemd"
 	)
 
 	# determine which machine we're operating on
