@@ -5,6 +5,7 @@ set -u
 # it will not be added again
 
 main() {
+	local window_name
 	for window_name in "$@"; do
 		tmux new-window -dS -n "$window_name"
 	done

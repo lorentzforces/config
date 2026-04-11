@@ -59,9 +59,9 @@ main() {
 # arg 2: array name to populate with check commands
 # arg 3: array name to populate with commands which require root access
 get_check_command_list() {
-	declare -n detected_package_managers=$1
-	declare -n output_commands=$2
-	declare -n output_require_sudo=$3
+	local -n detected_package_managers=$1
+	local -n output_commands=$2
+	local -n output_require_sudo=$3
 
 	if type -t apt-get > /dev/null ; then
 		detected_package_managers+=('apt')

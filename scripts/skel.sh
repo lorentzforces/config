@@ -18,6 +18,7 @@ paths=(
 )
 
 main() {
+	local skel_dir
 	for skel_dir in "${paths[@]}"; do
 		mkdir -p "$HOME/$skel_dir"
 	done

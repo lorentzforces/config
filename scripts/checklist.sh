@@ -45,7 +45,8 @@ package_managers=(
 )
 
 main() {
-	declare -a not_found=()
+	local -a not_found=()
+	local prog
 	for prog in "${programs[@]}"; do
 		if ! type -t "$prog" &>/dev/null ; then
 			not_found+=("$prog")
@@ -62,7 +63,8 @@ main() {
 
 	echo ""
 
-	declare -a found_pkg_mans=()
+	local -a found_pkg_mans=()
+	local pkg_man
 	for pkg_man in "${package_managers[@]}"; do
 		if type -t "$pkg_man" &>/dev/null ; then
 			found_pkg_mans+=("$pkg_man")
