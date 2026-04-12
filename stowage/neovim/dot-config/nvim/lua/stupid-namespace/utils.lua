@@ -28,13 +28,12 @@ M.autocommand = vim.api.nvim_create_autocmd
 M.create_lsp_keybinds = function(client, bufnr)
 	local bufopts = {buffer = bufnr}
 
-	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 	M.map_normal('K', vim.lsp.buf.hover, bufopts)
 	M.map_normal('gD', vim.lsp.buf.declaration, bufopts)
 	M.map_normal('gd', vim.lsp.buf.definition, bufopts)
 	M.map_normal('gt', vim.lsp.buf.type_definition, bufopts)
 	M.map_insert('<M-i>', '<C-x><C-o>', bufopts)
+	M.map_insert('<M-i>', vim.lsp.omnifunc, bufopts)
 	M.map_normal('<M-h>', vim.lsp.buf.signature_help, bufopts)
 	M.map_insert('<M-h>', vim.lsp.buf.signature_help, bufopts)
 	M.map_normal('<leader>a', vim.lsp.buf.code_action, bufopts)

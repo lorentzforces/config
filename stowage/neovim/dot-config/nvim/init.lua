@@ -158,6 +158,7 @@ vim.diagnostic.config({
     vim.diagnostic.open_float({ bufnr = bufnr, scope = 'cursor', focus = false, })
   end },
 })
+
 -- <leader>d is the prefix chosen for LSP diagnostic things
 util.map_normal(
 	'<leader>dv',
@@ -175,6 +176,12 @@ util.map_normal(
 	'<leader>dp',
 	function()
 		vim.diagnostic.jump({count = -1})
+	end
+)
+util.map_normal(
+	'<M-k>',
+	function()
+		vim.diagnostic.open_float()
 	end
 )
 
@@ -356,7 +363,44 @@ vim.lsp.config('gopls', {
 		},
 	},
 })
+vim.lsp.config('lua_ls', {
+	on_attach = util.create_lsp_keybinds,
+	-- adapted from lspconfig docs at: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+	on_init = function(client)
+		if client.workspace_folders then
+			local path = client.workspace_folders[1].name
+			if
+				path ~= vim.fn.stdpath('config') and path ~= os.getenv('HOME') .. '/config'
+				and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+			then
+				-- not in neovim config, bail on special setup
+				return
+			end
+		end
+
+		client.config.settings.Lua = vim.tbl_deep_extend(
+			'force',
+			client.config.settings.Lua,
+			{
+				runtime = {
+					-- neovim is probably using LuaJIT
+					version = 'LuaJIT',
+					path = {
+						'lua/?.lua',
+						'lua/?/init.lua',
+					}
+				},
+				workspace = {
+					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME,
+					},
+				}
+			}
+		)
+	end,
+})
 vim.lsp.config('rust_analyzer', {
 	on_attach = util.create_lsp_keybinds,
 })
-vim.lsp.enable({'bashls', 'gopls', 'rust_analyzer'})
+vim.lsp.enable({'bashls', 'gopls', 'lua_ls', 'rust_analyzer'})

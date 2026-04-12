@@ -25,6 +25,7 @@ programs=(
 	"jdtls"
 	"jj"
 	"lf"
+	"lua-language-server"
 	"make"
 	"nvim"
 	"parallel"
