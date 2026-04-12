@@ -365,8 +365,9 @@ vim.lsp.config('gopls', {
 })
 vim.lsp.config('lua_ls', {
 	on_attach = util.create_lsp_keybinds,
-	-- adapted from lspconfig docs at: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 	on_init = function(client)
+		-- adapted from lspconfig docs at:
+		-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 		if client.workspace_folders then
 			local path = client.workspace_folders[1].name
 			if
@@ -392,10 +393,14 @@ vim.lsp.config('lua_ls', {
 				},
 				workspace = {
 					checkThirdParty = false,
-					library = {
-						vim.env.VIMRUNTIME,
-					},
-				}
+					-- filtering required due to this issue: https://github.com/neovim/nvim-lspconfig/issues/3189
+					library = vim.tbl_filter(
+						function(d)
+							return not d:match(vim.fn.stdpath('config') .. '/?a?f?t?e?r?')
+						end,
+						vim.api.nvim_get_runtime_file('', true) -- all installed plugins
+					),
+				},
 			}
 		)
 	end,
