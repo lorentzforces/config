@@ -1,9 +1,20 @@
 local M = {}
 
--- the opts table is optional, but will default the following properties if not passed:
--- - noremap: true
--- - silent: true
+--- The opts table is optional, but will default the following properties if not passed:
+--- - noremap: true
+--- - silent: true
+---
+---@param mode string one of 'n', 'v', and 'i' corresponding to the respective editor modes
+---@param remap boolean whether mapper allows internal command remapping or not (usually not)
 local get_mapper = function(mode, remap)
+	---@param lhs string the triggering keybind in vim notation
+	---@param rhs string|function the action to be triggered - can be a vim sequence or a lua function
+	---@param opts? vim.keymap.set.Opts keymap options: see `:help map-arguments`
+	---
+	---@return nothing?
+	---
+	--- Map a keybind.
+	--- If options do not set the "silent" value, it will default to `true`.
 	return function(lhs, rhs, opts)
 		opts = opts or {}
 		opts.noremap = not remap
@@ -46,8 +57,10 @@ if vim.loop.os_uname().sysname == "Darwin" then
 	M.operating_system = "MAC_OS"
 end
 
-M.INDENT_TABS = "tabs"
-M.INDENT_SPACES = "spaces"
+M.INDENT_TABS = 'tabs'
+M.INDENT_SPACES = 'spaces'
+---@param indent_type 'tabs'|'spaces'
+---@param size integer the number of spaces for each indent level
 M.set_indents = function(indent_type, size)
 	local expandtab = false
 	if indent_type == M.INDENT_TABS then

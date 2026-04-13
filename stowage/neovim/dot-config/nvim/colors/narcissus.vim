@@ -220,6 +220,7 @@ exe 'highlight @label.json gui=NONE guifg=' . s:slate_grey
 
 " treesitter lua
 exe 'highlight @constant.builtin.lua gui=NONE guifg=' . s:dull_red
+exe 'highlight @lsp.typemod.function.defaultLibrary.lua gui=NONE guifg=' . s:dull_red
 
 " syntax makefile
 exe 'highlight makeCommands gui=NONE guifg=' . s:slate_grey

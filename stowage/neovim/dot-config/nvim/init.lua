@@ -35,7 +35,7 @@ require('lazy').setup({
 		'mfussenegger/nvim-jdtls',
 		'towolf/vim-helm',
 		{ 'shortcuts/no-neck-pain.nvim', version = "*" },
-		-- TODO: debug this and report back on plugin issue
+		-- TODO: debugging on dev branch, this is still broken for some reason for manpages
 		-- { 'shortcuts/no-neck-pain.nvim', branch = 'feat/integrations' },
 		{
 			'ovk/endec.nvim',
@@ -55,7 +55,9 @@ require('lazy').setup({
 	},
 })
 
--- TODO: add local import vars for plugins
+local no_neck_pain = require('no-neck-pain')
+local rectify_buffers = require('rectify-buffers')
+local nvim_treesitter = require('nvim-treesitter')
 
 -- currently experimenting with having numbers again
 util.options.number = true
@@ -126,8 +128,7 @@ util.map_normal('<leader>J', '<C-w>J')
 util.map_normal('<leader>K', '<C-w>K')
 util.map_normal('<leader>L', '<C-w>L')
 util.map_normal('<leader>x', ':q<CR>')
--- TODO: change this to use the plugin's Lua API
-util.map_normal('<leader>z', ':NoNeckPain<CR>')
+util.map_normal('<leader>z', no_neck_pain.toggle)
 
 -- sane movement with wrap turned on
 util.map_normal('j', 'v:count ? \'j\' : \'gj\'', {expr = true})
@@ -214,7 +215,11 @@ util.map_normal(
 vim.api.nvim_create_user_command(
 	'Tab',
 	function(opts)
-		local indent_size = tonumber(opts.fargs[1])
+		local parsed_num = tonumber(opts.fargs[1])
+		if parsed_num == nil then
+			error("Attempted to call tab indent function with a non-numeric argument")
+		end
+		local indent_size = math.floor(parsed_num)
 		util.set_indents(util.INDENT_TABS, indent_size)
 	end,
 	{ nargs = 1 }
@@ -223,11 +228,38 @@ vim.api.nvim_create_user_command(
 vim.api.nvim_create_user_command(
 	'Space',
 	function(opts)
-		local indent_size = tonumber(opts.fargs[1])
+		local parsed_num = tonumber(opts.fargs[1])
+		if parsed_num == nil then
+			error("Attempted to call space indent function with a non-numeric argument")
+		end
+		local indent_size = math.floor(parsed_num)
 		util.set_indents(util.INDENT_SPACES, indent_size)
 	end,
 	{ nargs = 1 }
 )
+
+local detect_indent_on_line = function()
+	local current_line = vim.api.nvim_get_current_line()
+	local first_non_whitespace, _ = string.find(current_line, "%S") or 1, 0
+	local indent_size = first_non_whitespace - 1
+
+	-- if there is no leading whitespace, then don't touch anything
+	if indent_size == 0 then
+		return
+	end
+
+	local first_char = string.sub(current_line, 1, 1)
+	if first_char == '\t' then
+		-- hardcode tabs to be 4 spaces
+		util.set_indents('tabs', 4)
+	elseif first_char == ' ' then
+		util.set_indents('spaces', indent_size)
+	else
+		error('Could not determine indent type from line.')
+	end
+end
+
+util.map_normal('<leader>I', detect_indent_on_line)
 
 -- experiment with relativenumber config
 
@@ -290,15 +322,15 @@ vim.filetype.add({
 	},
 })
 
-require('no-neck-pain').setup({
-	debug = true,
+no_neck_pain.setup({
+	-- debug = true,
 	width = 126,
 	autocmds = {
 		enableOnVimEnter = true,
 	},
 })
 
-require('rectify-buffers').setup({
+rectify_buffers.setup({
 	user_function = function()
 		for _, client in pairs(vim.lsp.get_clients()) do
 			-- There doesn't seem to be a lua API to restart a client, only to stop it.
@@ -310,7 +342,7 @@ require('rectify-buffers').setup({
 	end
 })
 
-require('nvim-treesitter').install({
+nvim_treesitter.install({
 	-- 'bash', -- bash grammar can't handle bash 5.3 no-subshell command substitution
 	'comment',
 	'go',
