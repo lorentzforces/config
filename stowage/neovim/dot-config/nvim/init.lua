@@ -35,6 +35,8 @@ require('lazy').setup({
 		'mfussenegger/nvim-jdtls',
 		'towolf/vim-helm',
 		{ 'shortcuts/no-neck-pain.nvim', version = "*" },
+		-- TODO: debug this and report back on plugin issue
+		-- { 'shortcuts/no-neck-pain.nvim', branch = 'feat/integrations' },
 		{
 			'ovk/endec.nvim',
 			event = 'VeryLazy',
@@ -52,6 +54,8 @@ require('lazy').setup({
 		path = '~/mine/repos',
 	},
 })
+
+-- TODO: add local import vars for plugins
 
 -- currently experimenting with having numbers again
 util.options.number = true
@@ -122,6 +126,7 @@ util.map_normal('<leader>J', '<C-w>J')
 util.map_normal('<leader>K', '<C-w>K')
 util.map_normal('<leader>L', '<C-w>L')
 util.map_normal('<leader>x', ':q<CR>')
+-- TODO: change this to use the plugin's Lua API
 util.map_normal('<leader>z', ':NoNeckPain<CR>')
 
 -- sane movement with wrap turned on
@@ -286,8 +291,11 @@ vim.filetype.add({
 })
 
 require('no-neck-pain').setup({
-	-- debug = true,
+	debug = true,
 	width = 126,
+	autocmds = {
+		enableOnVimEnter = true,
+	},
 })
 
 require('rectify-buffers').setup({
