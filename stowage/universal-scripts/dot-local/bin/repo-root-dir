@@ -1,16 +1,22 @@
 #!/usr/bin/env bash
 set -u
 
-# respond with the root dir of the git repo the current working directory is within
+# respond with the root dir of the vcs repo the current working directory is within
 # if not within a git repo, responds with the current working directory
 
 main() {
-	local root_dir
-	root_dir=$(2>/dev/null git rev-parse --show-toplevel)
-	local git_exit_status="$?"
-	if [[ $git_exit_status != 0 ]]; then
-		root_dir=${ pwd; }
+	local root_dir=""
+
+	if root_dir=${ 2>/dev/null git rev-parse --show-toplevel; }; then
+		echo "$root_dir"
+		return 0
 	fi
-	echo "$root_dir"
+
+	if root_dir=${ 2>/dev/null jj workspace root; }; then
+		echo "$root_dir"
+		return 0
+	fi
+
+	pwd
 }
 main
