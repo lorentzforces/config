@@ -33,7 +33,7 @@ require('lazy').setup({
 		{ 'nvim-treesitter/nvim-treesitter', branch = 'main', build = ':TSUpdate', lazy = false },
 		'neovim/nvim-lspconfig',
 		'mfussenegger/nvim-jdtls',
-		'towolf/vim-helm',
+		-- 'towolf/vim-helm',
 		{ 'shortcuts/no-neck-pain.nvim', version = "*" },
 		-- TODO: debugging on dev branch, this is still broken for some reason for manpages
 		-- { 'shortcuts/no-neck-pain.nvim', branch = 'feat/integrations' },
@@ -319,6 +319,9 @@ vim.filetype.add({
 	pattern = {
 		-- kubeconfig files are very naming-convention
 		['.*kube/config.*'] = 'yaml',
+		['.*/templates/.*%.tpl'] = 'helm',
+		['.*/templates/.*%.ya?ml'] = 'helm',
+		['helmfile.*%.ya?ml'] = 'helm',
 	},
 })
 
@@ -346,6 +349,8 @@ nvim_treesitter.install({
 	-- 'bash', -- bash grammar can't handle bash 5.3 no-subshell command substitution
 	'comment',
 	'go',
+	'gotmpl',
+	'helm',
 	'html',
 	'java',
 	'javascript',
@@ -370,7 +375,7 @@ nvim_treesitter.install({
 -- new version of treesitter needs to be enabled explicitly
 util.autocommand('FileType', {
 	pattern = {
-		'go', 'html', 'java',
+		'go', 'helm', 'html', 'java',
 		'javascript', 'json', 'lua',
 		'markdown', 'python', 'rust',
 		'sql', 'starlark',

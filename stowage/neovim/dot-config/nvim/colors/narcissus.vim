@@ -203,6 +203,10 @@ exe 'highlight @type.builtin.go gui=NONE guifg=' . s:dull_red
 exe 'highlight @type.definition.go gui=NONE guifg=' . s:slate_grey
 exe 'highlight @constant.builtin.go gui=NONE guifg=' . s:dull_red
 
+" treesitter helm
+"@punctuation.bracket.helm
+exe 'highlight @punctuation.bracket.helm gui=NONE guifg=' . s:dull_purple
+
 " treesitter html
 exe 'highlight @tag.attribute gui=NONE guifg=' . s:slate_grey
 
