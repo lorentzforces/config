@@ -113,13 +113,7 @@ main() {
 		_ltz_print_info "assembled jj command: ${jj_command}"
 	fi
 
-	local jj_output=''
-	if ! jj_output=${ eval "$jj_command"; }; then
-		_ltz_print_error "Error evaluating jj command"
-		return 1
-	fi
-
-	echo -n "$jj_output" \
+	eval "$jj_command" \
 		| fzf --ansi --no-sort --reverse --tiebreak=index \
 		--bind=ctrl-s:toggle-sort \
 		--bind 'enter:execute: \
