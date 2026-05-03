@@ -85,13 +85,27 @@ alias ll='ls -Aoh --time-style=long-iso'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+alias fenv='printenv | fzf'
+alias printpath='printenv PATH | sed s/:/\\n/g'
 alias cdm='cd $HOME_MINE'
+alias reporoot='cd $(repo-root-dir)'
+alias fcd='cd $(fzf_containing_dir)'
+alias fif='fzf_find_in_files'
+
+alias cdt='cd ${ print-session-base-dir; }'
+alias tmd='tmux-engage-basic-session "$HOME/mine" "default"'
+alias tmuxhere='tmux-engage-editor-session "$PWD"'
+alias tmux-build-windows='tmux-add-windows build run'
+
+alias page='nvim -R'
+alias pageify='fc -s | nvim -R -'
+alias lessify='fc -s | less -R'
 
 alias topline='top-line-status'
 
 alias g='git'
 __git_complete g __git_main
-alias kc='kubectl'
 alias gco='git-checkout-fuzzy'
 alias gdash='git-dash'
 alias fshow='git-log-fuzzy-search'
@@ -100,20 +114,9 @@ alias delete-branch='git-delete-branch-fuzzy'
 
 alias jshow='jj-log-fuzzy-search'
 
-alias fcd='cd $(fzf_containing_dir)'
-alias fif='fzf_find_in_files'
+alias kc='kubectl'
 
-alias tmd='tmux-engage-basic-session "$HOME/mine" "default"'
-alias tmuxhere='tmux-engage-editor-session "$PWD"'
-alias cdt='cd ${ print-session-base-dir; }'
-alias tmux-build-windows='tmux-add-windows build run'
-
-alias page='nvim -R'
-alias pageify='fc -s | nvim -R -'
-alias lessify='fc -s | less -R'
 alias restow='stow -R --no-folding'
-alias printpath='printenv PATH | sed s/:/\\n/g'
-alias reporoot='cd $(repo-root-dir)'
 
 # lf alias with directory following (when lf exits, cd to the directory it was in)
 fd() {
