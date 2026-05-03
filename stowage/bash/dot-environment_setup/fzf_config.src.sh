@@ -16,9 +16,11 @@ default_command='rg'
 # --hidden: Search hidden files and folders
 # --follow: Follow symlinks
 default_command+=' --files --hidden --follow --ignore-case'
-# ignore .git, node_modules, and MacOS metadata
-default_command+=' --glob "!.git" --glob "!.DS_STORE" --glob "!node_modules"'
+# ignore .git, .jj, node_modules, and MacOS metadata
+default_command+=' --glob "!.jj" --glob "!.git" --glob "!.DS_STORE" --glob "!node_modules"'
 
 # env var that replaces "find" as the command fzf uses by default
 export FZF_DEFAULT_COMMAND="$default_command"
 export FZF_CTRL_T_COMMAND="$default_command"
+
+eval "${ fzf --bash; }"
