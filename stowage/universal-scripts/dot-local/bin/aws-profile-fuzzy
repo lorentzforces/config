@@ -12,12 +12,83 @@ set -u
 
 AWS_CONFIG_FILE="$HOME/.aws/config"
 
+BLACK=${ tput setaf 8; }
+BOLD=${ tput bold; }
+RESET=${ tput sgr0; }
+
+print_help() {
+	local msg
+	msg=${ cat <<EOF
+Use fzf to fuzzy-find an AWS profile.
+
+${BOLD}${BLACK}USAGE:${RESET} aws-profile-fuzzy [OPTIONS] <initial_query>
+
+All of "initial query" will be passed through to fzf as the initial query.
+
+The official AWS CLI way to do this is slow (${BLACK}aws configure list-profiles${RESET}).
+Instead we make a couple small assumptions and search for the profile header in the typical AWS
+config file.
+For now this assumes the profile name is only ascii alphabetical letters and hyphens.
+
+${BOLD}${BLACK}OPTIONS${RESET}
+
+-h or --help
+Print this help message.
+
+--exclude <grep_expr>
+Exclude any entries which match the provided grep expression (i.e. passed through "rg -v")
+
+${BOLD}${BLACK}ENVIRONMENT${RESET}
+
+AWS_FUZZY_EXCLUDE
+If this is set, is used as the default value for the --exclude option. An explicit option value
+will override the value from the environment.
+EOF
+	}
+	echo "$msg"
+}
+
 main() {
+	local exclude_exp="${AWS_FUZZY_EXCLUDE:-}"
+	while true && (($# > 0)); do
+		case $1 in
+		-h | --help)
+			print_help
+			exit 1
+			;;
+		--exclude)
+			exclude_exp="$2"
+			shift 2
+			;;
+		--)
+			shift
+			break
+			;;
+		-?*)
+			_ltz_print_error "Unknown option: \"${1}\""
+			return 1
+			;;
+		*)
+			break
+			;;
+		esac
+	done
+
 	local initial_query="$*"
+
+	local profile_list
+	profile_list=${ rg '\[profile ([-[:alpha:]]+)' --only-matching --replace='$1' "$AWS_CONFIG_FILE"; }
+
+	if [[ -n "$exclude_exp" ]]; then
+		profile_list=${ rg --invert-match -- "$exclude_exp" <<< "$profile_list"; }
+	fi
+
 	local target
 	target=${
-		rg '\[profile ([-[:alpha:]]+)' --only-matching --replace='$1' "$AWS_CONFIG_FILE" \
-		| fzf-tmux -h20 -- --no-hscroll --ansi --no-multi --query="$initial_query" \
+		fzf-tmux -h20 \
+			-- \
+			--no-hscroll --ansi --no-multi --query="$initial_query" \
+		<<< "$profile_list" \
 	; } || return 1
 
 	if [[ -z "$target" ]]; then
