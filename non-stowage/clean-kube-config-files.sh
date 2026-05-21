@@ -5,6 +5,8 @@
 main() {
 	local timestamp
 	timestamp=${ date -d '2 weeks ago' '+%s'; }
+	echo "Removing the following files: [${ date '--iso-8601=seconds'; }]"
+	prunejuice --include '\Aconfig_' --since-unix-time "$timestamp" --print-only
 	prunejuice --include '\Aconfig_' --since-unix-time "$timestamp" --no-confirm "$HOME/.kube"
 }
 
