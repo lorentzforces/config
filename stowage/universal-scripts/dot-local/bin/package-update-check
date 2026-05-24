@@ -45,7 +45,7 @@ main() {
 
 	output="This information generated at: $(date)"
 	output+=$'\n'
-	output+=$(parallel ::: "${check_commands[@]}")
+	output+=${ parallel --keep-order ::: "${check_commands[@]}"; }
 
 	if [[ -n "$UPDATE_LIST_OUTPUT_FILE" ]]; then
 		echo "$output" > "$UPDATE_LIST_OUTPUT_FILE"
@@ -63,6 +63,14 @@ get_check_command_list() {
 	local -n output_commands=$2
 	local -n output_require_sudo=$3
 
+	if type -t flatpak > /dev/null ; then
+		detected_package_managers+=('flatpak')
+		output_commands+=('get_flatpak_updates')
+	fi
+	if type -t brew > /dev/null ; then
+		detected_package_managers+=('brew')
+		output_commands+=('get_brew_updates')
+	fi
 	if type -t apt-get > /dev/null ; then
 		detected_package_managers+=('apt')
 		output_require_sudo+=('apt-get')
@@ -71,14 +79,6 @@ get_check_command_list() {
 	if type -t dnf > /dev/null ; then
 		detected_package_managers+=('dnf')
 		output_commands+=('get_dnf_updates')
-	fi
-	if type -t brew > /dev/null ; then
-		detected_package_managers+=('brew')
-		output_commands+=('get_brew_updates')
-	fi
-	if type -t flatpak > /dev/null ; then
-		detected_package_managers+=('flatpak')
-		output_commands+=('get_flatpak_updates')
 	fi
 	if type -t zypper > /dev/null ; then
 		detected_package_managers+=('zypper')
@@ -107,9 +107,20 @@ get_dnf_updates() {
 export -f get_dnf_updates
 
 get_brew_updates() {
-	# brew is VERY spammy to stderr
+	# brew is VERY spammy to stderr, so we redirect it and only print if the brew command returns
+	# a nonzero exit status
+	local brew_err_output
+	if ! brew_err_output=${ mktemp "brew_err_output_XXX"; }; then
+		_ltz_print_error "Could not create temp file for brew output."
+		return 1
+	fi
+
 	section_header "HOMEBREW PACKAGES"
-	brew outdated --verbose
+	if ! brew outdated --verbose 2>"$brew_err_output"; then
+		>&2 cat "$brew_err_output"
+		return 1
+	fi
+
 	echo ""
 	echo "Homebrew reminder:"
 	echo "  To update homebrew itself, run \"brew update\""
