@@ -148,7 +148,7 @@ get_zypper_updates() {
 
 	# NB: 'v' is the status character for "different version installed" in zypper output
 	# see: zypper manpage, 'search' subcommand section
-	local notable_awk_script all_entries_awk_script zypper_output
+	local notable_awk_script
 	notable_awk_script=${ cat << 'EOF'
 BEGIN {
 	notables["openSUSE-release"] = "openSUSE tumbleweed snapshot"
@@ -192,6 +192,7 @@ EOF
 
 EOF
 	}
+	local zypper_output
 	zypper_output=${ zypper list-updates; }
 	awk -F '|' "$notable_awk_script" <<< "$zypper_output"
 	echo ""
