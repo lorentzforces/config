@@ -110,7 +110,7 @@ get_brew_updates() {
 	# brew is VERY spammy to stderr, so we redirect it and only print if the brew command returns
 	# a nonzero exit status
 	local brew_err_output
-	if ! brew_err_output=${ mktemp "brew_err_output_XXX"; }; then
+	if ! brew_err_output=${ mktemp --tmpdir "brew_err_output_XXX"; }; then
 		_ltz_print_error "Could not create temp file for brew output."
 		return 1
 	fi
