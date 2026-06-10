@@ -11,11 +11,11 @@ BOLD=${ tput bold; }
 RESET=${ tput sgr0; }
 
 main() {
-	date_string=$(date "+%a %b %d, %Y :: %R  (%:z)")
+	date_string=${ date "+%a %b %d, %Y :: %R  (%:z)"; }
 	indent "$date_string"
 
 	local tmux_line
-	tmux_line=$(tmux_status)
+	tmux_line=${ tmux_status; }
 	if [[ -z "$tmux_line" ]]; then
 		indent "no tmux sessions running"
 	else
@@ -23,13 +23,13 @@ main() {
 	fi
 
 	local aws_line
-	aws_line=$(aws_status)
+	aws_line=${ aws_status; }
 	if [[ -n "$aws_line" ]]; then
 		indent "$aws_line"
 	fi
 
 	local k8s_info
-	k8s_info=$(kubernetes_status)
+	k8s_info=${ kubernetes_status; }
 	if [[ -n "$k8s_info" ]]; then
 		indent "$k8s_info"
 	fi
@@ -45,9 +45,9 @@ tmux_status() {
 		return 0
 	fi
 
-	tmux_client_count=$(tmux list-clients | wc -l)
-	tmux_session_count=$(tmux list-sessions | wc -l)
-	tmux_window_count=$(tmux list-windows -a | wc -l)
+	tmux_client_count=${ tmux list-clients | wc -l; }
+	tmux_session_count=${ tmux list-sessions | wc -l; }
+	tmux_window_count=${ tmux list-windows -a | wc -l; }
 	printf "%s/%s/%s (sessions/windows/clients)" \
 		"$tmux_session_count" \
 		"$tmux_window_count" \
@@ -71,11 +71,11 @@ kubernetes_status() {
 	fi
 
 	local k8s_json
-	k8s_json=$(kubectl config view --minify --output "jsonpath={..context}")
+	k8s_json=${ kubectl config view --minify --output "jsonpath={..context}"; }
 
 	local cluster namespace
-	cluster=$(echo "$k8s_json" | jq -r ".cluster")
-	namespace=$(echo "$k8s_json" | jq -r ".namespace")
+	cluster=${ echo "$k8s_json" | jq -r ".cluster"; }
+	namespace=${ echo "$k8s_json" | jq -r ".namespace"; }
 	if [[ "$namespace" == "null" ]]; then
 		namespace="no namespace"
 	fi
@@ -85,7 +85,6 @@ kubernetes_status() {
 	else
 		printf "kubernetes: ${BOLD}${RED}[%s] %s${RESET}\n" "$namespace" "$cluster"
 	fi
-
 }
 
 INDENT_STRING="  "

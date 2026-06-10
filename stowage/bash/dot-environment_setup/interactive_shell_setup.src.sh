@@ -62,8 +62,8 @@ if [[ -r "$DEFAULT_GIT_COMPLETION_PATH" ]]; then
 fi
 
 if type brew &>/dev/null; then
-	HOMEBREW_PREFIX="$(brew --prefix)"
-BREW_BASH_COMPLETION_PATH="${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+	HOMEBREW_PREFIX="${ brew --prefix; }"
+	BREW_BASH_COMPLETION_PATH="${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 	if [[ -r "$BREW_BASH_COMPLETION_PATH" ]]; then
 		# shellcheck source=/dev/null
 		source "$BREW_BASH_COMPLETION_PATH"
