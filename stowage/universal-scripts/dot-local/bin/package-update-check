@@ -133,9 +133,10 @@ export -f get_brew_updates
 
 get_flatpak_updates() {
 	section_header "FLATPAK PACKAGES"
-	{ echo -e 'Name\tBranch\tVersion\tDL Size'; \
-		flatpak remote-ls --updates --columns=name,branch,version,download-size || return 1 ; } \
-		| column --table --separator $'\t' --output-width 100
+	{ \
+		echo -e 'Name\tBranch\tVersion\tDL Size'; \
+		flatpak remote-ls --updates --columns=name,branch,version,download-size || return 1 ; \
+	} | column --table --separator $'\t' --output-width 100
 	echo ""
 	echo "Flatpak reminder:"
 	echo "  If a package name is listed multiple times for the same version and branch, it is"
@@ -151,7 +152,7 @@ get_zypper_updates() {
 	# NB: 'v' is the status character for "different version installed" in zypper output
 	# see: zypper manpage, 'search' subcommand section
 	local notable_awk_script
-	notable_awk_script=${ cat << 'EOF'
+	notable_awk_script=$(cat << 'EOF'
 BEGIN {
 	notables["openSUSE-release"] = "openSUSE tumbleweed snapshot"
 	notables["kernel-default"] = "kernel"
@@ -178,7 +179,7 @@ END {
 	}
 }
 EOF
-	}
+	)
 
 	local all_entries_awk_script
 	all_entries_awk_script=${ cat << 'EOF'
@@ -191,7 +192,6 @@ EOF
 	printf("    %s  [%s]\n", $4, $2)
 	printf(" -> %s\n", $5)
 }
-
 EOF
 	}
 	local zypper_output

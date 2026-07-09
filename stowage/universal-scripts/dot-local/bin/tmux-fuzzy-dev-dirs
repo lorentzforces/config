@@ -7,7 +7,7 @@ INIT_QUERY=${1:-}
 
 main() {
 	local dev_dir
-	dev_dir=$(fzf_directories_at "$HOME/mine/repos" "$INIT_QUERY")
+	dev_dir=${ fzf_directories_at "$HOME/mine/repos" "$INIT_QUERY"; }
 	if [[ -z "$dev_dir" ]]; then
 		_ltz_print_error "fzf output was empty"
 		return 1

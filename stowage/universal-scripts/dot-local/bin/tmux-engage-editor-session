@@ -24,7 +24,7 @@ main() {
 	fi
 
 	local existing_sessions
-	existing_sessions="$(tmux list-sessions -F "#{session_name}")"
+	existing_sessions=${ tmux list-sessions -F "#{session_name}"; }
 
 	local session_exists=""
 	while IFS="" read -r line; do
