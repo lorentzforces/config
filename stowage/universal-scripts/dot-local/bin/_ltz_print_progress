@@ -10,6 +10,6 @@ CYAN=${ tput setaf 6; } # (cyan/6, purple for me)
 RESET=${ tput sgr0; }
 
 main() {
-	>&2 echo -e "${CYAN}🖍️  ${MSG}${RESET}"
+	>&2 printf "${CYAN}🖍️  %s${RESET}\n" "$MSG"
 }
 main

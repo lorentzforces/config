@@ -11,6 +11,7 @@ BOLD=${ tput bold; }
 RESET=${ tput sgr0; }
 
 main() {
-	>&2 echo -e "${BOLD}${YELLOW}❌  ${MSG}${RESET}"
+	>&2 printf  "${BOLD}${YELLOW}❌  %s${RESET}\n" "$MSG"
 }
+
 main

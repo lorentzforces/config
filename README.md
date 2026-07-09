@@ -5,13 +5,9 @@ This readme isn't for you. It's just a landing page with notes for me.
 ## TODOS
 
 - add a check script (may be a sub-function of existing scripts) to do linting/checking/sanity on this repo
+- find a replacement for nvim-treesitter
 - tweak niri configs and potentially split out machine-specific config for laptop stuff
 - make a function in neovim config to make it simpler to set a window-scoped property across all windows
-- figure out what to do with intellij installs
-  - may not be necessary for the time being since I haven't touched intellij on a personal machine in ages
-  - I install intellij with a non-flatpak installation because it needs to be aware of other dev tools on the PATH, JREs, etc etc
-  - this can be tricky because as far as I can tell, the bin scripts for intellij REALLY want to be in specific locations relative to the rest of the install files
-  - maybe use selfman and make the install script something that creates a symlink(s) with an absolute path to the bins? or library it and add the library-ed bin paths to the PATH?
 - configure niri some more
   - make sure bluetooth and wifi management is installed
   - for laptop: make sure battery management is installed
