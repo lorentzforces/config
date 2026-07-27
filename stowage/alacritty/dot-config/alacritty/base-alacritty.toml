@@ -73,3 +73,13 @@ magenta = "#fe9131"
 red = "#c2000f"
 white = "#eeeeee"
 yellow = "#f4e41f"
+
+[[keyboard.bindings]]
+key = "Tab"
+mods = "Control"
+chars = "\u001b[27;5;9~"
+
+[[keyboard.bindings]]
+key = "Tab"
+mods = "Control|Shift"
+chars = "\u001b[27;6;9~"
