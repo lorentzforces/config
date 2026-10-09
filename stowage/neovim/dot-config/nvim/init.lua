@@ -276,11 +276,6 @@ local toggle_numbers = function()
 	end
 end
 
-util.map_normal(
-	'<leader>N',
-	toggle_numbers
-)
-
 vim.api.nvim_create_user_command(
 	'Numbie',
 	toggle_numbers,
