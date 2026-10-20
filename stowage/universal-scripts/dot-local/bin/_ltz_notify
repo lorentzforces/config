@@ -35,7 +35,7 @@ main() {
 		esac
 	done
 
-	if [[ -z "$1" ]]; then
+	if [[ -z "${1:-}" ]]; then
 		_ltz_print_error "Called _ltz_notify with no text."
 		return 1
 	fi
