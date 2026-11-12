@@ -83,6 +83,7 @@ main() {
 	local stowage_targets=(
 		"alacritty"
 		"bash"
+		"ghostty"
 		"git-files"
 		"jujutsu"
 		"lf"

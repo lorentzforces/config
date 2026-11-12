@@ -1,0 +1,49 @@
+font-family = "SeriousShanns Nerd Font Mono"
+font-family = "MesloLGS Nerd Font Mono"
+
+# TODO: this may need to change on non-MacOS systems
+font-size = 16.5
+# font-thicken = true
+
+# colors
+
+background = 888888
+foreground = 303030
+
+# black
+palette = 0=#606060
+palette = 8=#010101
+# red
+palette = 1=#700000
+palette = 9=#c2000f
+# green
+palette = 2=#164f27
+palette = 10=#62ffc3
+# yellow
+palette = 3=#5b5500
+palette = 11=#f4e41f
+# blue
+palette = 4=#43698d
+palette = 12=#60c0ff
+# magenta
+palette = 5=#a05614
+palette = 13=#fe9131
+# cyan
+palette = 6=#6a2071
+palette = 14=#b000f7
+# white
+palette = 7=#bbbbbb
+palette = 15=#eeeeee
+
+cursor-style = block
+cursor-style-blink = false
+
+shell-integration = detect
+shell-integration-features = no-cursor
+
+macos-option-as-alt = true
+
+macos-auto-secure-input = true
+macos-secure-input-indication = true
+
+macos-icon = retro
