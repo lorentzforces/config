@@ -1,9 +1,9 @@
+config-file = ?local-machine-config.ghostty
+
 font-family = "SeriousShanns Nerd Font Mono"
 font-family = "MesloLGS Nerd Font Mono"
 
-# TODO: this may need to change on non-MacOS systems
-font-size = 16.5
-# font-thicken = true
+font-size = 11
 
 # colors
 
