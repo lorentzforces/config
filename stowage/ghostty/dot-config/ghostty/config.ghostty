@@ -38,6 +38,8 @@ palette = 15=#eeeeee
 cursor-style = block
 cursor-style-blink = false
 
+adjust-strikethrough-position = -20%
+
 shell-integration = detect
 shell-integration-features = no-cursor
 
