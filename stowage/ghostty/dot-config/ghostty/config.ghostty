@@ -25,10 +25,10 @@ palette = 11=#f4e41f
 # blue
 palette = 4=#43698d
 palette = 12=#60c0ff
-# magenta
+# magenta (orange here)
 palette = 5=#a05614
 palette = 13=#fe9131
-# cyan
+# cyan (purple here)
 palette = 6=#6a2071
 palette = 14=#b000f7
 # white
